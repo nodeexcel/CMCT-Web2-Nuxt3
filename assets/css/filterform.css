@@ -1,0 +1,262 @@
+.building-filter .input-group .input-group-text {
+    width: 85px;
+}
+
+.building-filter .big-label .input-group-text {
+    text-align: left;
+    white-space: initial;
+}
+
+.building-filter .dropdown-toggle::after {
+    content: none;
+}
+
+.building-filter.form-cms-build .input-group .input-group-text {
+    background-color: #77BF45;
+    border-color: #77BF45;
+    border-radius: 0;
+    padding: 0 15px;
+    font-size: 12px;
+    color: #fff;
+    height: 38px;
+    font-weight: 600;
+}
+
+.building-filter.form-cms-build .form-inputs {
+    border-color: #77BF45;
+    border-radius: 0;
+    /* color: #000 !important;
+    border: 1px solid #ced4da !important; */
+    font-size: 13px;
+    height: 38px;
+    font-weight: 500;
+}
+
+.building-filter .form-control:focus {
+    box-shadow: none;
+}
+
+.building-filter.form-cms-build .form-textarea {
+    border-color: #77BF45;
+    border-radius: 0;
+    color: #77BF45;
+    font-size: 13px;
+}
+
+.building-filter.form-cms-build input.form-inputs::placeholder,
+.building-filter.form-cms-build textarea::placeholder {
+    color: #77BF45;
+    font-size: 13px;
+}
+
+.building-filter.form-cms-build .form-group {
+    margin-bottom: 25px;
+    outline: 0;
+}
+
+.building-filter.form-cms-build .form-group.hidden-group {
+    margin-bottom: 0px;
+}
+
+.building-filter.form-cms-build .custom-control-label {
+    color: #77BF45;
+    font-size: 13px;
+    vertical-align: middle;
+    outline: 0;
+}
+
+.building-filter.form-cms-build .submit-btn {
+    margin-top: 10px;
+}
+
+.building-filter.form-cms-build .submit-btn button {
+    background-color: #77BF45;
+    border: none;
+    width: 150px;
+    margin: 0 auto;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 15px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+}
+
+.building-filter.form-cms-build .submit-btn button:hover {
+    background-color: #000 !important;
+    color: #fff;
+}
+
+.building-filter.form-cms-build .form-group input[type="checkbox"] {
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+    top: 10px;
+    left: 4px;
+}
+
+.building-filter.form-cms-build .custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+    content: '';
+    -webkit-appearance: none;
+    background-color: #77BF45;
+    border: none;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+    top: -2px;
+    left: 0;
+    box-shadow: none;
+}
+
+.building-filter.form-cms-build .custom-checkbox .custom-control-label::after {
+    background: none;
+    content: '';
+    top: 4px;
+    left: 7px;
+    width: 6px;
+    height: 15px;
+    border: none;
+    border-width: none;
+    transform: rotate(45deg);
+}
+
+.building-filter.form-cms-build .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+    background-image: none;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+}
+
+.building-filter.form-cms-build .custom-control-input:focus:not(:checked)~.custom-control-label::before {
+    box-shadow: none;
+}
+
+.building-filter.form-cms-build .custom-control-input:not(:disabled):active~.custom-control-label::before {
+    background-color: #77BF45;
+    border-color: #77BF45;
+}
+
+.building-filter.form-cms-build .comment-label legend {
+    background-color: #77BF45;
+    border-color: #77BF45;
+    border-radius: 0;
+    padding: 10px 15px !important;
+    font-size: 12px;
+    color: #fff;
+    height: 38px;
+    width: 150px;
+}
+
+.building-filter.form-cms-build .form-group.update-check .custom-control {
+    padding-left: 0;
+}
+
+.building-filter .custom-select:focus {
+    box-shadow: none;
+}
+
+@media (min-width: 992px) {
+    /*.building-filter.form-cms-build .form-group:nth-child(odd) {
+        padding-right: 30px;
+    }
+     .building-filter.form-cms-build .form-group:nth-child(even) {
+        padding-left: 30px;
+    } */
+    .building-filter.form-cms-build .form-group.update-check {
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .building-filter.form-cms-build {
+        padding: 60px 70px;
+    }
+}
+
+@media (max-width: 575px) {
+    .building-filter.form-cms-build {
+        padding: 50px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .building-filter.form-cms-build .input-group .input-group-text {
+        width: 99.60%;
+    }
+    .building-filter.form-cms-build .comment-label legend {
+        width: 100%;
+    }
+    .building-filter.form-cms-build .input-group {
+        display: block;
+    }
+}
+
+.b-toaster {
+    z-index: 9999999999;
+}
+
+.building-filter .b-form-spinbutton output {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.building-filter .form .title h1 {
+    color: #000;
+    position: relative;
+    font-weight: bold;
+    font-size: 48px;
+    text-transform: capitalize;
+}
+
+.building-filter .form .title h1:after {
+    content: '';
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 25px;
+    height: 2px;
+    background-color: #72bf44;
+}
+
+.building-filter .form .title,
+.building-filter .form .description {
+    margin-bottom: 50px;
+}
+
+.building-filter .form .description p {
+    font-size: 32px;
+    color: #000;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+    line-height: normal;
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .building-filter .form .title h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .building-filter .form .description p {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 375px) {
+    .building-filter .form .title h1 {
+        font-size: 26px;
+    }
+    .building-filter .form .description p {
+        font-size: 24px;
+    }
+}
