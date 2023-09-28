@@ -6,71 +6,66 @@
 					<!-- <router-link to="/" class="logo Homepage-btn" id="HomepageButton"> -->
 					<router-link to="/" class="logo Homepage-btn" id="CMLogo">
 					  <!-- <prismic-image :field="fields.logo"/> -->
-            <img src="https://images.prismic.io/cmct-web/84e86b12-dfd7-46eb-ac61-f2cb4f43f553_Logo+for+website.png" width="135" height="60" />
+            <img src="https://images.prismic.io/cmct-web/84e86b12-dfd7-46eb-ac61-f2cb4f43f553_Logo+for+website.png" width="135" height="60" :alt="fields.logo.alt"/>
 					</router-link>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-8 col-8 header-menu">
-					<!-- <prismic-rich-text :field="fields.tagline"/> -->
+					<prismic-rich-text :field="fields.tagline"/>
 					<div class="d-flex justify-content-between align-items-center navbar-heading-menu">
 						<nav class="navbar navbar-expand-lg">
 							<a class="navbar-brand title" href="#">Menu</a>
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarmenuContent" aria-controls="navbarmenuContent" aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon">
-									<!-- <prismic-image :field="fields.mobileMenu"/> -->
+									<prismic-image :field="fields.mobileMenu"/>
 								</span>
 							</button>
 
 							<div class="collapse navbar-collapse" id="navbarmenuContent">
 								<ul class="navbar-nav mr-auto">
-									<li >
-                                        <span class="menu-maintitle">  EASY LIVING </span>
-                                      
-										<template >
-											<!-- <span v-if="slice.primary.link.link_type == 'Any'"
+									<li v-for="(slice, index) in slices" :key="'slice-' + index" class="nav-item dropdown">
+										<template v-if="slice.slice_type === 'header'">
+											<span v-if="slice.primary.link.link_type == 'Any'"
 											:key="'nav-link-' + index"
 											:class="'menu-maintitle nav-link ' + [ slice.items.length >= 1 ? 'dropdown-toggle' : '']"  data-toggle="dropdown">
 											{{ $prismic.asText(slice.primary.label) }}
-											</span> -->
+											</span>
 
-											<template >
-												<!-- <prismic-link v-if="slice.items.length >= 1"
+											<template v-else>
+												<prismic-link v-if="slice.items.length >= 1"
 													:field="slice.primary.link"
 													:class="'menu-maintitle nav-link ' + [ slice.items.length > 1 ? 'dropdown-toggle' : '']"
 													data-toggle="dropdown"
 													:key="'nav-link-' + index">
 													{{ $prismic.asText(slice.primary.label) }}
-												</prismic-link> -->
-												<!-- <Menu-link-native-slice 
+												</prismic-link>
+												<Menu-link-native-slice 
 													v-else
 													:item="slice"
 													:class-name="'menu-maintitle nav-link'" 
 													@click.native="closeMenu()"
 													:key="'menu-header-item-' + index"
 													:index="index" 
-													:link-type="'main'"/> -->
+													:link-type="'main'"/>
 											</template>
-											<!-- <i v-if="slice.items.length > 1" class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> -->
-											<template >
+											<i v-if="slice.items.length > 1" class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+											<template v-if="slice.items.length >= 1">
+                        <!-- <MenuLinkNativSlice /> -->
 												<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-													<template >
-														<!-- <Menu-link-native-slice @click.native="closeMenu()" :key="'menu-header-item-' + index" :item="item" :index="index" :class-name="'menu-subtitle dropdown-item'" :link-type="'submenu'"/> -->
-													</template>
+                          <Menu-link-native-slice />
+													<div v-for="(item, index) in slice.items" :key="'menu-header-item-' + index">
+                            <!-- {{ item }} -->
+														<MenuLinkNativSlice @click.native="closeMenu()"  :item="item" :index="index" :class-name="'menu-subtitle dropdown-item'" :link-type="'submenu'"/>
+													</div>
 												</div>
 											</template>
 										</template>
-                                        <i class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
 									</li>
-                                    <li><span class="menu-maintitle">  EASY LEASING </span> <i class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i></li>
-                                    <li><span class="menu-maintitle">  EASY HOUSING </span><i class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i></li>
-                                    <li><span class="menu-maintitle">  RESOURCE CENTER</span><i class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i></li>
-                                    <li><span class="menu-maintitle">  ABOUT US </span><i class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i></li>
 								</ul>
 							</div>
 						</nav>
-						<!-- <prismic-link :field="fields.bolder_link" class="dashboard-btn" :style="button " id="FindAHome"> -->
+						<prismic-link :field="fields.bolder_link" class="dashboard-btn" :style="button " id="FindAHome">
 							<!-- {{ $prismic.asText(fields.bolder_link_label) }} -->
-						<!-- </prismic-link> -->
-                        <a href="#" class="dashboard-btn" :style="button " id="FindAHome">Find a Home</a>
+						</prismic-link>
 					</div>
 				</div>
 			</div>
@@ -79,179 +74,191 @@
 </template>
 
 <script>
-// import { mapMutations } from 'vuex'
-// const MenuLinkNativeSlice = () => import("./slices/MenuLinkNativSlice.vue");
+import * as prismic from '@prismicio/client'
+import { createClient } from '@prismicio/client';
+// import { useRuntimeConfig } from 'nuxt'
+// import linkResolver: '@/plugins/link-resolver',
 export default {
-  name: 'header-prismic',
-//  	components: { 
-// 		MenuLinkNativeSlice
-// 	},
-//   data () {
-//     return {
-//       hovered: false,
-//       slices: [],
-//       fields: {
-//         header: {
-//           background_color: '',
-//           text_color: '',
-//           transparency: ''
-//         },
-//         logo: {},
-//         tagline: [],
-//         background: [],
-//         transparency: [],
-//         bolder_link_label: [], 
-//         bolder_link: {},
-//         mobileMenu: {}
-//       }
-//     }
-//   },
-//   head () {
-//     return {
-//       meta: [
-//         { rel: 'stylesheet', href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" }
-//       ]
-//     }
-//   },
-//   watch: {
-//     "fields.logo"(newVal) {
-//       this.$store.commit('setHeaderLogo' ,newVal)
-//     }
-//   },
-//   computed:{
-//     color () {
-//       if (this.fields.header.background_color) {
-//         let transparency = Number(this.fields.header.transparency)/100 
+  data () {
+    return {
+      hovered: false,
+      slices: [],
+      prismicData:null,
+      fields: {
+        header: {
+          background_color: '',
+          text_color: '',
+          transparency: ''
+        },
+        logo: {},
+        tagline: [],
+        background: [],
+        transparency: [],
+        bolder_link_label: [], 
+        bolder_link: {},
+        mobileMenu: {}
+      }
+    }
+  },
+  head () {
+    return {
+      meta: [
+        { rel: 'stylesheet', href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" }
+      ]
+    }
+  },
+  computed:{
+    color () {
+      if (this.fields.header.background_color) {
+        let transparency = Number(this.fields.header.transparency)/100 
               
-//             // If the hex value is valid. 
-//             if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(this.fields.header.background_color)) { 
+            // If the hex value is valid. 
+            if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(this.fields.header.background_color)) { 
                   
-//                 // Getting the content after '#',
-//                 let ret = this.fields.header.background_color.slice(1); 
-//                 // Splitting each character 
-//                 ret = ret.split(''); 
+                // Getting the content after '#',
+                let ret = this.fields.header.background_color.slice(1); 
+                // Splitting each character 
+                ret = ret.split(''); 
                   
-//                 // Checking if the length is 3 
-//                 // then make that 6 
-//                 if(ret.length == 3) { 
-//                     var ar = []; 
-//                     ar.push(ret[0]);  
-//                     ar.push(ret[0]); 
-//                     ar.push(ret[1]); 
-//                     ar.push(ret[1]); 
-//                     ar.push(ret[2]); 
-//                     ar.push(ret[2]); 
-//                     ret = ar; 
-//                 } 
+                // Checking if the length is 3 
+                // then make that 6 
+                if(ret.length == 3) { 
+                    var ar = []; 
+                    ar.push(ret[0]);  
+                    ar.push(ret[0]); 
+                    ar.push(ret[1]); 
+                    ar.push(ret[1]); 
+                    ar.push(ret[2]); 
+                    ar.push(ret[2]); 
+                    ret = ar; 
+                } 
                   
-//                 // Starts with '0x'(in hexadecimal) 
-//                 ret = '0x'+ ret.join(''); 
+                // Starts with '0x'(in hexadecimal) 
+                ret = '0x'+ ret.join(''); 
                   
-//                 // Converting the first 2 characters 
-//                 // from hexadecimal to r value 
-//                 var r = (ret>>16)&255; 
+                // Converting the first 2 characters 
+                // from hexadecimal to r value 
+                var r = (ret>>16)&255; 
                   
-//                 // Converting the second 2 characters 
-//                 // to hexadecimal to g value 
-//                 var g = (ret>>8)&255; 
+                // Converting the second 2 characters 
+                // to hexadecimal to g value 
+                var g = (ret>>8)&255; 
                   
-//                 // Converting the last 2 characters 
-//                 // to hexadecimal to b value 
-//                 var b = ret&255; 
+                // Converting the last 2 characters 
+                // to hexadecimal to b value 
+                var b = ret&255; 
                   
-//                 // Appending all of them to make 
-//                 // the RGBA value 
+                // Appending all of them to make 
+                // the RGBA value 
                 
-//                 let color = 'rgba('+[r, g, b].join(',')+',' + transparency + ')';
-//                 return {
-//                   'background-color': color,
-//                   'border': '1px solid ' + color,
-//                   'color': this.fields.header.text_color
-//                 }
-//             }
-//         }
-//     },
-//     background(){
-//       if (this.fields.header.background_color) {
-//         if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(this.fields.header.background_color)) { 
-//           // Getting the content after '#',
-//           let ret = this.fields.header.background_color.slice(1); 
-//           // Splitting each character 
-//           ret = ret.split(''); 
+                let color = 'rgba('+[r, g, b].join(',')+',' + transparency + ')';
+                return {
+                  'background-color': color,
+                  'border': '1px solid ' + color,
+                  'color': this.fields.header.text_color
+                }
+            }
+        }
+    },
+    background(){
+      if (this.fields.header.background_color) {
+        if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(this.fields.header.background_color)) { 
+          // Getting the content after '#',
+          let ret = this.fields.header.background_color.slice(1); 
+          // Splitting each character 
+          ret = ret.split(''); 
                   
-//           // Checking if the length is 3 
-//           // then make that 6 
-//           if(ret.length == 3) { 
-//               var ar = []; 
-//               ar.push(ret[0]);  
-//               ar.push(ret[0]); 
-//               ar.push(ret[1]); 
-//               ar.push(ret[1]); 
-//               ar.push(ret[2]); 
-//               ar.push(ret[2]); 
-//               ret = ar; 
-//           } 
-//           ret = '0x'+ ret.join(''); 
+          // Checking if the length is 3 
+          // then make that 6 
+          if(ret.length == 3) { 
+              var ar = []; 
+              ar.push(ret[0]);  
+              ar.push(ret[0]); 
+              ar.push(ret[1]); 
+              ar.push(ret[1]); 
+              ar.push(ret[2]); 
+              ar.push(ret[2]); 
+              ret = ar; 
+          } 
+          ret = '0x'+ ret.join(''); 
                   
-//           var r = (ret>>16)&255;   
-//           var g = (ret>>8)&255;  
-//           var b = ret&255; 
-//           let color = 'rgba('+[r, g, b].join(',')+',' + 0.9 + ')';
-//           return {
-//             'background-color': color,
-//             'border': '1px solid ' + this.fields.header.text_color,
-//             'color': this.fields.header.text_color
-//           }
-//         }
-//       }
-//     },
-//     button () {
-//       return {
-//         '--color':  this.fields.header.text_color,
-//         '--border': '2px solid ' + this.fields.header.text_color,
-//         '--color-hover':  '#FFFFFF',
-//         '--border-hover': '2px solid ' + this.fields.header.text_color_hover,
-//         '--background-color-hover': this.fields.header.text_color_hover,
-//       }
-//     },
-//     hoverClass() {
-//       return {
-//         'color': 'red'
-//       }
-//     }
-//   },
-//   methods: {
-//     ...mapMutations(['setHeaderLogo']),
-//     closeMenu() {
+          var r = (ret>>16)&255;   
+          var g = (ret>>8)&255;  
+          var b = ret&255; 
+          let color = 'rgba('+[r, g, b].join(',')+',' + 0.9 + ')';
+          return {
+            'background-color': color,
+            'border': '1px solid ' + this.fields.header.text_color,
+            'color': this.fields.header.text_color
+          }
+        }
+      }
+    },
+    button () {
+      return {
+        '--color':  this.fields.header.text_color,
+        '--border': '2px solid ' + this.fields.header.text_color,
+        '--color-hover':  '#FFFFFF',
+        '--border-hover': '2px solid ' + this.fields.header.text_color_hover,
+        '--background-color-hover': this.fields.header.text_color_hover,
+      }
+    },
+    hoverClass() {
+      return {
+        'color': 'red'
+      }
+    }
+  },
+  methods: {
+    // ...mapMutations(['setHeaderLogo']),
+    closeMenu() {
 		
-//         $('#navbarmenuContent').collapse('hide');
-//     },
-//     async getMenu () {
-//       //Query to get menu content
-//       /* await this.$prismic.api.getSingle('menu')
-//         .then((menuContent) => { */
-//           let menuContent = this.$store.state.menu
-//           this.fields.logo = menuContent.data.logo
-//           this.fields.header.background_color = menuContent.data.background_color
-//           this.fields.header.transparency = 80 //menuContent.data.header_transparency_perc
-//           this.fields.header.text_color = '#f55e61' //menuContent.data.header_text_color
-//           this.fields.header.text_color_hover = '#72bf44' //menuContent.data.header_text_color
-//           this.fields.tagline = menuContent.data.brand_tag_line
+        $('#navbarmenuContent').collapse('hide');
+    },
+    async getMenu () {
+      //Query to get menu content
+      /* await this.$prismic.api.getSingle('menu')
+        .then((menuContent) => { */
+          
+        //})
+    }
+  },
+    mounted(){
+        const createPrismicClient = (accessToken) => {
+        return createClient('https://cmct-web.cdn.prismic.io/api/v2', {
+            accessToken,
+        });
+        };
+        let one =null
+        const client = createPrismicClient('MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA');
+                console.log(client)
+                client.getSingle('menu').then((result) => {
+                    this.prismicData=result
+                    let menuContent = this.prismicData
+          console.log(menuContent)
+          this.fields.logo = menuContent.data.logo
+          this.fields.header.background_color = menuContent.data.background_color
+          this.fields.header.transparency = 80 //menuContent.data.header_transparency_perc
+          this.fields.header.text_color = '#f55e61' //menuContent.data.header_text_color
+          this.fields.header.text_color_hover = '#72bf44' //menuContent.data.header_text_color
+          this.fields.tagline = menuContent.data.brand_tag_line
 
-//           this.fields.background = menuContent.data.background_color
-//           this.fields.transparency = menuContent.data.transparency
-//           this.fields.bolder_link_label = menuContent.data.get_in_touch
-//           this.fields.bolder_link = menuContent.data.get_in_touch_link
-//           this.fields.mobileMenu = menuContent.data.mobile_menu
-//           this.slices  = menuContent.data.nav.filter(function(navs) {
-//             return navs.slice_type === 'header';
-//           });
-//         //})
-//     }
-//   },
-//   mounted () {
-//     // this.getMenu()
-//   },
+          this.fields.background = menuContent.data.background_color
+          this.fields.transparency = menuContent.data.transparency
+          this.fields.bolder_link_label = menuContent.data.get_in_touch
+          this.fields.bolder_link = menuContent.data.get_in_touch_link
+          this.fields.mobileMenu = menuContent.data.mobile_menu
+          this.slices  = menuContent.data.nav.filter(function(navs) {
+            return navs.slice_type === 'header';
+          });
+                    console.log(one);
+                console.log(result);
+                }).catch((error) => {
+                console.error(error);
+                });
+                console.log(this.prismicData);
+    }
+
 }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
     <div >
-            123ghhh
-            <BuildingCardSlice />
-            </div>
+        <ListingSlice />
+    </div>
 </template>

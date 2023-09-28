@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-// import axios from 'axios'
+import axios from 'axios'
 
 const mainStore = () => {
     return new Vuex.Store({
@@ -100,6 +100,7 @@ const mainStore = () => {
             async fetchMenu({ commit }) {
 				try {
 					const menu = (await this.$prismic.api.getSingle('menu'))
+					console.log("yes",menu)
 					commit('SET_MENU', menu)
 				} catch (e) {
 					const error = 'Please create a menu document'

@@ -1,7 +1,7 @@
 <template>
-    <div>
-
-    </div>
+    <section>
+        <BuildingCardSlice />
+    </section>
 </template>
 <script>
 </script>

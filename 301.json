@@ -1,0 +1,198 @@
+[
+    {
+        "from": "/city/singapore",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/singapore",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/building/sg-est-015",
+        "to": "/findahome/SIN-EST-000-00"
+    },
+    {
+        "from": "/building/sg-nov-001",
+        "to": "/findahome/SIN-NOV-000-00"
+    },
+    {
+        "from": "/building/sg-rvr-002",
+        "to": "/findahome/SIN-RVR-000-00"
+    },
+    {
+        "from": "/building/sg-alx-005",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/building/sg-cbd-003",
+        "to": "/findahome/SIN-CBD-000-00"
+    },
+    {
+        "from": "/building/sg-rvr-004",
+        "to": "/findahome/SIN-RVR-004-00"
+    },
+    {
+        "from": "/building/sg-cbd-007",
+        "to": "/findahome/SIN-CBD-000-00"
+    },
+    {
+        "from": "/findahome/",
+        "to": "/page/find-your-new-home"
+    },
+    {
+        "from": "/findahome",
+        "to": "/page/find-your-new-home"
+    },
+    {
+        "from": "/page/",
+        "to": "/"
+    },
+    {
+        "from": "/page",
+        "to": "/"
+    },
+    {
+        "from": "/page/home",
+        "to": "/"
+    },
+    {
+        "from": "/page/home/",
+        "to": "/"
+    },
+    {
+        "from": "/page/why-casa-mia-coliving",
+        "to": "/page/easy-living-for-young-professionals"
+    },
+    {
+        "from": "/page/why-casa-mia-casa-tua",
+        "to": "/page/easy-living-for-young-professionals"
+    },
+    {
+        "from": "/page/landlords",
+        "to": "/page/easy-leasing-for-landlords"
+    },
+    {
+        "from": "/page/corporate-housing",
+        "to": "/page/easy-housing-for-corporates"
+    },
+    {
+        "from": "/page/membership",
+        "to": "/page/easy-living-for-young-professionals"
+    },
+    {
+        "from": "/blog/how-happy-are-our-coliving-members-august-2022",
+        "to": "/blog/how-happy-are-our-coliving-members-semi-annual-survey---august-2022"
+    },
+    {
+        "from": "/blog",
+        "to": "/page/blog"
+    },
+    {
+        "from": "/blog/",
+        "to": "/page/blog"
+    },
+    {
+        "from": "/faq",
+        "to": "/page/faqs"
+    },
+    {
+        "from": "/faq/",
+        "to": "/page/faqs"
+    },
+    {
+        "from": "/faqs",
+        "to": "/page/faqs"
+    },
+    {
+        "from": "/faqs/",
+        "to": "/page/faqs"
+    },
+    {
+        "from": "/newsroom",
+        "to": "/page/newsroom"
+    },
+    {
+        "from": "/page/brand-guide",
+        "to": "/page/brand-assets"
+    },
+    {
+        "from": "/brand-assets",
+        "to": "/page/brand-assets"
+    },
+    {
+        "from": "/careers",
+        "to": "/page/careers"
+    },
+    {
+        "from": "/about",
+        "to": "/page/about"
+    },
+    {
+        "from": "/page/easy-living-by-casa-mia-casa-tua",
+        "to": "/page/about"
+    },
+    {
+        "from": "/page/get-in-touch",
+        "to": "/page/contact"
+    },
+    {
+        "from": "/contactus",
+        "to": "/page/contact"
+    },
+    {
+        "from": "/contact",
+        "to": "/page/contact"
+    },
+    {
+        "from": "/blog/casa-mias-complete-guide-to-coliving-in-singapore",
+        "to": "/blog/casa-mias-complete-guide-to-coliving-in-singapore-2022-edition"
+    },
+    {
+        "from": "/findahome/SIN-RVR-000-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/findahome/SIN-NOV-000-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/findahome/SIN-RVR-012-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/findahome/SIN-RVR-013-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/findahome/SIN-NOV-009-01",
+        "to": "/findahome/SIN-NOV-009-00"
+    },
+    {
+        "from": "/findahome/SIN-CBD-000-00",
+        "to": "/page/singapore"
+    },  
+    {
+        "from": "/findahome/SIN-NOV-000-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/findahome/SIN-ORC-002-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/findahome/SIN-RVR-007-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/findahome/SIN-EST-000-00",
+        "to": "/page/singapore"
+    },
+    {
+        "from": "/blog/the-ultimate-guide-to-living-in-singapore---a-guide-for-young-professional-expats-2021-edition",
+        "to": "/blog/the-ultimate-guide-to-living-in-singapore---a-guide-for-young-professional-expats-2022-edition"
+    },
+    {
+        "from": "/blog/happy-are-our-casa-mia-casa-tua-customers-we-did-a-customhow-er-satisfaction-survey-to-find-out",
+        "to": "/blog/how-happy-are-our-casa-mia-casa-tua-customers-we-did-a-customer-satisfaction-survey-to-find-out"
+    }    
+]

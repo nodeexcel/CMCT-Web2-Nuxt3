@@ -1,6 +1,5 @@
 <template>
   <div class="homepage">
-    123
     <header-prismic/>
     <div class="content-wrap">
       <nuxt />

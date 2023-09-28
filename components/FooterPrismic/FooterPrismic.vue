@@ -84,6 +84,14 @@
 // import { defineComponent } from '@vue/composition-api'
 
 export default {
+  mounted(){
+    const config = useRuntimeConfig()
+process.env = config
+        // const { apiKey } = useRuntimeConfig()
+        // const config = useRuntimeConfig()
+        console.log(config.PRISMIC_ENDPOINT)
+    
+  }
 
 }
 </script>
