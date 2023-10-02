@@ -1,13 +1,19 @@
 <template>
     <div class="" :style="style">
-
-
-        op'pktailrhh,bshrkutgufdgsutrgfusdtrgjugtrtew7tguguft7t7tysfyjfyfchy6
     </div>
   </template>
   
   <script>
   export default {
-   
+    props: ['slice'],
+    name: 'background-slice',
+    data() {
+        return {
+          style:{
+              backgroundColor: this.slice.primary.background_color,
+              height: "100px" 
+          }
+        }
+    }
   }
   </script>

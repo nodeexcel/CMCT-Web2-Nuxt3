@@ -1,14 +1,76 @@
 <template>
     <section class="container-background-wrapper">
         <div class="container-background-sub-wrapper featured-post-section" :style="{ 'background-color': slice.primary.background }">
-          hiuhihairyhuggurtgujmbgs
+            <div class="inner-content-wrapper" >
+                <div class="cms-main-wrap blog-cms">
+                    <prismic-rich-text :field="slice.primary.title" class="topic-heading related blog-post-heading"/>
+                    <div class="blog-card">
+                        <div class="row">
+                            <div v-for="item in blogList" :key="item.uid+'_'+Math.ceil(Math.random()*10)"  class="card-main col-sm-6 mb-4 mb-xl-5">
+                                <div class="content-wrap">
+                                    <n-link :to="'/blog/'+item.uid" class="card-link">
+                                        <picture>
+                                            <img :src="item.hero_image.card.url" class="d-block w-100">
+                                        </picture>
+                                        <div class="desc-box">
+                                            <div class="desc text-left">
+                                                <span :href="'/blog/'+item.uid" variant="light" v-for="(topic) in item.topics1" :key="topic.topic.id">{{ topicList[topic.topic.id]}} </span>
+                                            </div>
+                                            <h3 class="name text-left mt-0 mb-3"> {{ item.page_title[0].text }} </h3>
+                                            <div class="blog-bottom-content">
+                                                <prismic-rich-text :field="item.summary"/>
+                                            </div>
+                                        </div>
+                                    </n-link>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
 
 <script>
 export default {
-
+    props: ['slice'],   
+    name: 'blog-cards-featured',
+    data() {
+        return {
+            topicList:[],
+            blogList: []
+        }
+    },
+    created() {
+        this.getData()
+        this.getTopicsData()
+    },  
+    methods: {
+          getData() {
+            this.slice.items.forEach((item, index) => {
+                this.$prismic.client.query(this.$prismic.predicate.at('document.id', item.blog_post.id)).then(async (response) => {
+                    Object.assign(response.results[0].data, { uid: item.blog_post.uid })
+                    this.blogList.push(response.results[0].data);
+                })
+            })
+        },
+        async getTopicsData() {
+            await this.$prismic.client.query(this.$prismic.predicate.at('document.type', 'topics'),{}).then(async (response) => {
+                var sortable = [];
+                for (let item of response.results) {
+                    sortable.push([item.id, item.data.topic]);
+                }
+                sortable.sort((a, b) => (a[1] > b[1]) ? 1 : -1);
+                
+                let newTopiclist = {}
+                sortable.forEach(function(item){
+                    newTopiclist[item[0]]=item[1]
+                })
+                this.topicList = newTopiclist
+            });
+        },
+    }
 }
 </script>
 

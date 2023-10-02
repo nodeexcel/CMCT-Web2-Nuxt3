@@ -62,6 +62,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
+ 
   // plugins: [
   //   { src: '@/plugins/bootstrap-vue',ssr: false  },
   //   { src: '@/plugins/vue-carousel', ssr: false },
@@ -81,6 +82,7 @@ export default {
     // '@/modules/crawler',
     // https://prismic-nuxt.js.org/
     '@nuxtjs/prismic',
+    // 'cookie-universal-nuxt',
     // '@nuxt/http', 
     // '@nuxtjs/axios',
     // '@nuxtjs/proxy',
@@ -92,7 +94,7 @@ export default {
     // 'vue-scrollto/nuxt',
     // 'nuxt-compress',
     // '@nuxt/image',
-    // ['vue-scrollto/nuxt', { duration: 300 }],
+    // ['vue-scrollto', { duration: 300 }],
     nuxtKitModule
   ],
   // axios: {
@@ -110,15 +112,19 @@ export default {
   prismic: {
     //endpoint: process.env.PRISMIC_ENDPOINT + '?access_token=' + process.env.PRISMIC_ACCESS_TOKEN,
     //endpoint: process.env.PRISMIC_ENDPOINT + '?ref=X3bW8RIAAIO-6d_n~X3MsZRIAAEyH2cYt&access_token=MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA',
-    // endpoint: process.env.PRISMIC_ENDPOINT + '?access_token=' + process.env.PRISMIC_ACCESS_TOKEN,
-    endpoint: process.env.PRISMIC_ENDPOINT + '?ref=YV7J-RIAABIAFEWQ~YV55AhIAACIAEsEf&access_token=MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA',
-    apiOptions: {
-      accessToken: process.env.PRISMIC_ACCESS_TOKEN || 'default-access-token-if-env-not-set',
+    endpoint: process.env.PRISMIC_ENDPOINT ,
+    clientConfig: {
+      accessToken: process.env.PRISMIC_ACCESS_TOKEN
     },
+    // accessToken:process.env.PRISMIC_ACCESS_TOKEN,
+    // endpoint: process.env.PRISMIC_ENDPOINT ,
+    // apiOptions: {
+    //   accessToken: process.env.PRISMIC_ACCESS_TOKEN || 'default-access-token-if-env-not-set',
+    // },
     // accessToken:'MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA',
     //endpoint: process.env.PRISMIC_ENDPOINT + '/documents/search?ref=YWYsdREAACUAgiw0&access_token=MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA',
-    linkResolver: '@/plugins/link-resolver',
-    htmlSerializer: '@/plugins/html-serializer',
+    // linkResolver: '@/plugins/link-resolver',
+    // htmlSerializer: '@/plugins/html-serializer',
     modern:true
   },
 

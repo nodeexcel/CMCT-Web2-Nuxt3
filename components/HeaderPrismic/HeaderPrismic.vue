@@ -74,8 +74,8 @@
 </template>
 
 <script>
-import * as prismic from '@prismicio/client'
-import { createClient } from '@prismicio/client';
+// import {client} from '~/prismic/prismic';
+import {state} from '~/store/index'
 // import { useRuntimeConfig } from 'nuxt'
 // import linkResolver: '@/plugins/link-resolver',
 export default {
@@ -210,7 +210,7 @@ export default {
     }
   },
   methods: {
-    // ...mapMutations(['setHeaderLogo']),
+    // ...mapMutations(['setHeaderLogo','SET_MENU']),
     closeMenu() {
 		
         $('#navbarmenuContent').collapse('hide');
@@ -221,20 +221,34 @@ export default {
         .then((menuContent) => { */
           
         //})
+    },
+    performPrismicOperation(prismicFunction, ...args) {
+      return new Promise((resolve, reject) => {
+        prismicFunction(...args)
+          .then(response => {
+            // Resolve the promise with the response data
+            resolve(response.data);
+          })
+          .catch(error => {
+            // Reject the promise with the error
+            reject(error);
+          });
+      });
     }
   },
-    mounted(){
-        const createPrismicClient = (accessToken) => {
-        return createClient('https://cmct-web.cdn.prismic.io/api/v2', {
-            accessToken,
-        });
-        };
-        let one =null
-        const client = createPrismicClient('MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA');
-                console.log(client)
-                client.getSingle('menu').then((result) => {
-                    this.prismicData=result
-                    let menuContent = this.prismicData
+       async mounted(){
+
+        this.performPrismicOperation(this.$prismic.client.getSingle, 'menu')
+          .then(menuData => {
+            // Use the menuData here
+            console.log(menuData);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+
+          this.$prismic.client.getSingle('menu').then((result) => {
+          let menuContent = result
           console.log(menuContent)
           this.fields.logo = menuContent.data.logo
           this.fields.header.background_color = menuContent.data.background_color
@@ -251,12 +265,11 @@ export default {
           this.slices  = menuContent.data.nav.filter(function(navs) {
             return navs.slice_type === 'header';
           });
-                    console.log(one);
-                console.log(result);
-                }).catch((error) => {
-                console.error(error);
-                });
-                console.log(this.prismicData);
+          }).catch((error) => {
+          console.error(error);
+          });
+          // const menu = this.$store
+          console.log("menu", this.$store)
     }
 
 }
