@@ -40,7 +40,7 @@
             <!-- Find-your-home component -->
             <!-- <FindYourHomeSlice :slice="slice"/>
           </div> -->
-          {{ slice }}
+          <!-- {{ slice }} -->
           <FindYourHomeSlice :slice="slice"/>
         	</div>
         </div>

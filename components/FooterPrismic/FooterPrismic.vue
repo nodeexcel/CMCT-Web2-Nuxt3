@@ -83,6 +83,7 @@
 
 <script>
 import {client} from '~/prismic/prismic';
+
 //import func from '../../vue-temp/vue-editor-bridge';
 export default {
   name: 'FooterPrismic',

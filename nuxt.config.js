@@ -3,6 +3,7 @@ const getAppRoutes = require('./utils/getRoutes.js');
 // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const path = require('path');
 import nuxtKitModule from './modules/nuxt-kit'
+import { client } from './prismic/prismic';
 // const TerserPlugin = require('terser-webpack-plugin');
 // const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 require('dotenv').config();
@@ -21,13 +22,14 @@ export default {
   /*
   ** Headers of the page
   */
+  app: {
   head: {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
       { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' },
-      // { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.14.0/bootstrap-vue.css' },
+      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.14.0/bootstrap-vue.css' },
       { rel: 'stylesheet', href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"},
       { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css" }
     ],
@@ -35,12 +37,16 @@ export default {
       {type:"module", src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', defer: true },
       { type:"module", src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', defer: true },
       { type:"module", src: "https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js", defer: true },
+      { type:"module", src: "http://maps.google.com/maps/api/js?v=3.5&sensor=false", defer: true },
+      { type:"module", src: "https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js", defer: true },
       // { src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js" }
+      
     ],
     meta: [
       { name:"viewport", content: "width=device-width, initial-scale=1"}
     ]
-  },
+  }
+},
 
   /*
   ** Customize the progress-bar color
@@ -53,10 +59,12 @@ export default {
   css: [
     '@/assets/css/resetr.css',
     '@/assets/css/common.css',
+    '@/assets/scss/bootstrap.scss',
     // Import the Bootstrap CSS
     'bootstrap/dist/css/bootstrap.css',
     // Import the BootstrapVue CSS
     'bootstrap-vue/dist/bootstrap-vue.css',
+    // 'vuetify/lib/styles/main.sass'
   ],
 
   /*
@@ -68,10 +76,7 @@ export default {
   //   { src: '@/plugins/vue-carousel', ssr: false },
   //   { src: '@/plugins/social-share', ssr: false },
   // ],
-  // plugins: [
-  //   // Other plugins...
-  //   '~/plugins/prismic.js', // Register the Prismic plugin
-  // ],
+  
 
   /*
   ** Nuxt.js modules
@@ -109,24 +114,27 @@ export default {
 	// 	  }
 	//   }
   // },
+  axios: {
+    proxy: true // Can be also an object with default options
+  },
+  proxy: {
+	  '/api/': {
+		  target: 'http://localhost:3000',
+		  changeOrigin: true,
+		  Headers: {
+			  connection: 'keep-alive'
+		  }
+	  }
+  },
   prismic: {
-    //endpoint: process.env.PRISMIC_ENDPOINT + '?access_token=' + process.env.PRISMIC_ACCESS_TOKEN,
-    //endpoint: process.env.PRISMIC_ENDPOINT + '?ref=X3bW8RIAAIO-6d_n~X3MsZRIAAEyH2cYt&access_token=MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA',
-    endpoint: process.env.PRISMIC_ENDPOINT ,
+    endpoint: process.env.PRISMIC_ENDPOINT,
     clientConfig: {
-      accessToken: process.env.PRISMIC_ACCESS_TOKEN
+      accessToken: process.env.PRISMIC_ACCESS_TOKEN,
     },
-    // accessToken:process.env.PRISMIC_ACCESS_TOKEN,
-    // endpoint: process.env.PRISMIC_ENDPOINT ,
-    // apiOptions: {
-    //   accessToken: process.env.PRISMIC_ACCESS_TOKEN || 'default-access-token-if-env-not-set',
-    // },
-    // accessToken:'MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA',
-    //endpoint: process.env.PRISMIC_ENDPOINT + '/documents/search?ref=YWYsdREAACUAgiw0&access_token=MC5YM1F4Z1JJQUFCR1IzazZl.77-9ZO-_ve-_ve-_ve-_ve-_ve-_vUXvv73vv73vv70fFe-_vV0UOglZIO-_ve-_ve-_ve-_vUFg77-977-977-977-9NA',
     // linkResolver: '@/plugins/link-resolver',
     // htmlSerializer: '@/plugins/html-serializer',
-    modern:true
   },
+  
 
   sitemap: {
     //hostname: "https://www.casamiacasatua.co", //process.env.baseUrl,
@@ -144,6 +152,7 @@ export default {
       threshold: 10240
     }
   },
+  
   /*
   ** Build configuration
   */
@@ -152,6 +161,11 @@ export default {
     ** You can extend webpack config here
     
     */
+    plugins: [
+      // Other plugins...
+     {src:'@/plugins/bootstrap.js',mode:client} ,
+    //  '~/plugins/prismic.js', // Register the Prismic plugin
+    ],
     transpile: ["@prismicio/vue"],
     extend(config, ctx) {
       // to transform link with <nuxt-link> for the htmlSerializer

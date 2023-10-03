@@ -38,11 +38,11 @@
 													:key="'nav-link-' + index">
 													{{ $prismic.asText(slice.primary.label) }}
 												</prismic-link>
-												<Menu-link-native-slice 
+												<MenuLinkNativSlice 
 													v-else
 													:item="slice"
 													:class-name="'menu-maintitle nav-link'" 
-													@click.native="closeMenu()"
+													@click="closeMenu()"
 													:key="'menu-header-item-' + index"
 													:index="index" 
 													:link-type="'main'"/>
@@ -54,7 +54,7 @@
                           <Menu-link-native-slice />
 													<div v-for="(item, index) in slice.items" :key="'menu-header-item-' + index">
                             <!-- {{ item }} -->
-														<MenuLinkNativSlice @click.native="closeMenu()"  :item="item" :index="index" :class-name="'menu-subtitle dropdown-item'" :link-type="'submenu'"/>
+														<MenuLinkNativSlice @click="closeMenu()"  :item="item" :index="index" :class-name="'menu-subtitle dropdown-item'" :link-type="'submenu'"/>
 													</div>
 												</div>
 											</template>
@@ -64,7 +64,7 @@
 							</div>
 						</nav>
 						<prismic-link :field="fields.bolder_link" class="dashboard-btn" :style="button " id="FindAHome">
-							<!-- {{ $prismic.asText(fields.bolder_link_label) }} -->
+							{{ $prismic.asText(fields.bolder_link_label) }}
 						</prismic-link>
 					</div>
 				</div>

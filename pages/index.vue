@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<!-- Slices block component -->
+		{{ envdeatils }}
 		<slices-block :slices="slices"/>
 	</section>
 </template>
@@ -23,7 +24,8 @@ export default {
 				meta_description:null,
 				meta_image: null,
 				meta_url: null,
-				meta_site_name: null
+				meta_site_name: null,
+				envdeatils: process.env.PROD_END_POINT ,
         }
     },
 	head () {
@@ -109,6 +111,7 @@ export default {
 		// }
   	},
     async mounted(){
+		console.log("envdeatils",this.envdeatils)
         try{
 			// Query to get the home page content
 			    await this.$prismic.client.getByUID('page', 'home').then((response)=>{

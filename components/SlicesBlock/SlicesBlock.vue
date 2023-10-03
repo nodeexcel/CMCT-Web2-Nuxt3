@@ -196,24 +196,25 @@ export default {
       }
   },
   mounted(){
+    // this.getClass(this.slice)
     console.log("slices",this.slices)
-    // if(this.$route.path == '/page/community'){
-	// 	this.hideLogos = true       
-	//   }
-    // if(this.$route.path == '/page/faqs'){
-    //  this.slices.forEach((item,index) =>{
-    //     if(item.slice_type == "faq_topic" ){
-    //    this.topicSlice.push(item)
-    //   }
-    //   if(index == 1 && item.slice_type == "faq_topic" ){
-    //     item.slice_type = "faq_topic" 
-    //   }
-    //   else if(index != 1 && item.slice_type == "faq_topic" ){
-    //     item.slice_type = ""
-    //   }     
-    //  })
-    // } 
-    // this.isTopicSlice = true   
+    if(this.$route.path == '/page/community'){
+		this.hideLogos = true       
+	  }
+    if(this.$route.path == '/page/faqs'){
+     this.slices.forEach((item,index) =>{
+        if(item.slice_type == "faq_topic" ){
+       this.topicSlice.push(item)
+      }
+      if(index == 1 && item.slice_type == "faq_topic" ){
+        item.slice_type = "faq_topic" 
+      }
+      else if(index != 1 && item.slice_type == "faq_topic" ){
+        item.slice_type = ""
+      }     
+     })
+    } 
+    this.isTopicSlice = true   
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <section :class="[isNormalLink ? 'custom-page-main' : '']">
     <!-- Slices block component -->
-    {{ slice }}
+    <!-- {{ slice }} -->
     <SlicesBlock :slices="slices" :banner="banner" :page-id="pageId" :isMapOnPage="isMapOnPage"/>
   </section>
 </template>
@@ -130,6 +130,7 @@ export default {
     //     var document = Response.data
     //     console.log("document",document)
     // })
+    // console.log()
 
 
     try{
@@ -182,6 +183,7 @@ export default {
         },
         // Set slices as variable
         this.slices = document.page_content;
+        console.log(this.slices)
         this.data= document;
         this.pageId = this.$route.params.uid;
 		    this.isMapOnPage= this.isMapOnPage;
