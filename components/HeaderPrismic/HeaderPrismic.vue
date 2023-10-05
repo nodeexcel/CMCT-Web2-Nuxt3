@@ -49,9 +49,7 @@
 											</template>
 											<i v-if="slice.items.length > 1" class="fa fa-caret-down" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
 											<template v-if="slice.items.length >= 1">
-                        <!-- <MenuLinkNativSlice /> -->
 												<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <Menu-link-native-slice />
 													<div v-for="(item, index) in slice.items" :key="'menu-header-item-' + index">
                             <!-- {{ item }} -->
 														<MenuLinkNativSlice @click="closeMenu()"  :item="item" :index="index" :class-name="'menu-subtitle dropdown-item'" :link-type="'submenu'"/>
@@ -241,7 +239,7 @@ export default {
         this.performPrismicOperation(this.$prismic.client.getSingle, 'menu')
           .then(menuData => {
             // Use the menuData here
-            console.log(menuData);
+            // console.log(menuData);
           })
           .catch(error => {
             console.error('Error fetching data:', error);
@@ -249,7 +247,7 @@ export default {
 
           this.$prismic.client.getSingle('menu').then((result) => {
           let menuContent = result
-          console.log(menuContent)
+          // console.log(menuContent)
           this.fields.logo = menuContent.data.logo
           this.fields.header.background_color = menuContent.data.background_color
           this.fields.header.transparency = 80 //menuContent.data.header_transparency_perc
@@ -269,7 +267,7 @@ export default {
           console.error(error);
           });
           // const menu = this.$store
-          console.log("menu", this.$store)
+          // console.log("menu", this.$store)
     }
 
 }

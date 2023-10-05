@@ -15,7 +15,7 @@
                                         </picture>
                                         <div class="desc-box">
                                             <div class="desc text-left">
-                                                {{ item.data.publish_date | moment }}
+                                                {{ item.data.publish_date}}
                                             </div>
                                             <h3 class="name text-left"> {{ item.data.page_title[0].text }} </h3>
                                             <div class="blog-bottom-content">

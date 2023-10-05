@@ -1,6 +1,7 @@
 <template>
 	<div class="image-map-section">
 	  <b-row  ref="map-block" class="d-flex mx-0">
+		<!-- {{newHomeLists}} -->
 		<b-col cols="12" v-if="slice.primary.map === true">
 		  <div class="showHideButton">
 			<button
@@ -1807,6 +1808,7 @@
 	  },
 	  routeChange() {
 		let query = Object.assign({}, this.$route.query);
+		console.log("query",query)
 		const searchResultsFor = this.resultFor;
 		if(this.resultFor == "Rooms"){
 			query = { }
@@ -2994,6 +2996,9 @@
 	  }
 	},
 	mounted() {
+		this.routeChange();
+		let query = Object.assign({}, this.$route.query);
+		console.log("query123",query)
 	  if (this.slice.primary.map === true) this.setCoordinates();
 	  // ---- <!-- =========[Range-Start]=========== -->----//
 	  const range = document.querySelectorAll(".range-slider span input");

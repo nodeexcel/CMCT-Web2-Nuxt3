@@ -1,6 +1,7 @@
 <template>
     <section class="calltoaction-slice-section">
-        {{ slice }}
+        <!-- {{ slice }} -->
+        {{ cta }}
         <div class="">
             <div v-if="slice.slice_label == 'button'" class="cta_button">
                 <div class="pt-xl-5 container-background-wrapper">
@@ -92,6 +93,7 @@
 </template>
 
 <script>
+import * as prismic from "@prismicio/vue";
 const anotherHtmlSerializer = function (type, element, content, children) {} // Keep this line for link https://prnt.sc/v9tq4e
 export default {
     props: ['slice'],
@@ -107,9 +109,23 @@ export default {
     },
     methods: {
         async getCTAData() {
+            // let  predicate = usePrismic()
+            console.log(this.$prismic,this.$route)
+            
+//             // const client = prismic.createClient(endpoint, { fetch })
+//             const filteredDocuments = this.$prismic.client.get({
+//     predicate: this.$prismic.filter.at(
+//         'document.id', 'YWj_dhEAACMAjoMt'
+//     )
+//   })
+//   console.log(this.$prismic.client.get(this.$prismic.filter.at('document.id', 'YWj_dhEAACMAjoMt')))
             let _this = this;
             this.slice.items.forEach((item, index) => {
-                this.$prismic.client.query(this.$prismic.predicate.at('document.id', item.cta_link.id)).then(async (response) => {
+                const path = 'document.id'; // Replace with the actual path to the field you want to filter on
+                const value = item.cta_link.id;
+                // console.log("bholenath",this.$prismic.client.get().this.$prismic.filter.at(path, value))
+                this.$prismic.client.get(this.$prismic.filter.at(this.$route.path,item.cta_link.id)).then(async (response) => {
+                    console.log("response 114",response,item.cta_link.id,this.$prismic.filter.at('document.id',item.cta_link.id))
                     if(this.slice.slice_label == 'button') {
                         Object.assign(item, { image: response.results[0].data.image.regular })
                     } else if(this.slice.slice_label == 'left-right') {
@@ -142,7 +158,21 @@ export default {
         }
     },
     created() {
-        // this.getCTAData();
+        this.getCTAData();
+    },
+    mounted(){
+        // const { predicate } = usePrismic();
+        this.getCTAData()
+        var Data = null
+        this.slice.items.forEach((item, index) => {
+            this.$prismic.client.get(('document.id', item.cta_link.id)).then(async (response) => {
+                // console.log("response 152",response)
+                // Data=response
+                // console.log("response 153",Data)
+        })
+    })
+    // console.log("response 152",Data)
+        // console.log(this.$prismic.client.get(('document.type', 'topics'),{}))
     }
 }
 </script>

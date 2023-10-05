@@ -1,25 +1,26 @@
 <template>
 	<section class="content-page findahome">
 		<!-- <building-card-slice :home-lists="homeLists" :home-lists-copy="homeLists" :default-filter="defaultFilter"/> -->
-		<slices-block :slices="slices"/>
-		<div class="slider-cms">	
+		123
+		<!-- <SlicesBlock :slices="slices"/> -->
+		<!-- <div class="slider-cms">	
 			<div v-if="pending" class="loader"></div>
-		</div>
+		</div> -->
 	</section>
 </template>
 
 <script>
 // Imports for all components
-import SlicesBlock from '~/components/SlicesBlock.vue'
-import BuildingCardSlice from '~/components/slices/BuildingCardSlice.vue'
+// import SlicesBlock from '~/components/SlicesBlock.vue'
+// import BuildingCardSlice from '~/components/slices/BuildingCardSlice.vue'
 export default {
 	name: 'findahome',
 	layout: 'homepage',
 	props: ['defaultFilter'],
-	components: {
-		SlicesBlock,
-		BuildingCardSlice
-	},
+	// components: {
+	// 	SlicesBlock,
+	// 	BuildingCardSlice
+	// },
 	data () {
 		return {
 			homeLists: [],

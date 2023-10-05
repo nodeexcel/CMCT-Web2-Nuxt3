@@ -1,10 +1,19 @@
 <template>
 	<section>
 		<!-- Slices block component -->
-		{{ envdeatils }}
-		<slices-block :slices="slices"/>
+		<!-- {{ envdeatils }} -->
+		<!-- <nuxt-img src="~/public/gif_Butler.gif"  /> -->
+{{ envdeatils }}
+		<SlicesBlock :slices="slices"/>
 	</section>
+	
 </template>
+
+<script setup>
+const counter = useCookie()
+// counter.value = counter.value || Math.round(Math.random() * 1000)
+
+</script>
 
 <script>
 // Imports for all components
@@ -111,7 +120,12 @@ export default {
 		// }
   	},
     async mounted(){
-		console.log("envdeatils",this.envdeatils)
+		// console.log("menu", this.$store.state)
+		const envVars = useRuntimeConfig();
+		console.log("env",envVars)
+
+		console.log("blog_content",this.$prismic.client.get(this.$prismic.filter.at('document.type', 'blogpage')))
+		// console.log(require("dotenv").config())
         try{
 			// Query to get the home page content
 			    await this.$prismic.client.getByUID('page', 'home').then((response)=>{

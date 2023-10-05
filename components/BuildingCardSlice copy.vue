@@ -118,14 +118,14 @@ export default {
         }
     },
     created() {
-        this.filterSel = []
-        if(this.$route.query.topic != undefined) {
-            this.getTopicsData()
-            this.topicFilter(this.$cookies.get("topicId"))
-        } else {
-            this.$cookies.set("topicId", '');
-            this.getData()
-        }
+        // this.filterSel = []
+        // if(this.$route.query.topic != undefined) {
+        //     this.getTopicsData()
+        //     this.topicFilter(this.$cookies.get("topicId"))
+        // } else {
+        //     this.$cookies.set("topicId", '');
+        //     this.getData()
+        // }
     },
     methods: {
         async getTopicsData() {

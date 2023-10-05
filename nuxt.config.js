@@ -4,12 +4,25 @@ const getAppRoutes = require('./utils/getRoutes.js');
 const path = require('path');
 import nuxtKitModule from './modules/nuxt-kit'
 import { client } from './prismic/prismic';
+// require('dotenv').config(); 
 // const TerserPlugin = require('terser-webpack-plugin');
 // const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-require('dotenv').config();
+// require('dotenv').config();
 export default {
+  // srcDir: 'src',
   server: {
     compression: true,
+  },
+  runtimeConfig: {
+    public: {
+    env:process.env,
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000/',
+    mapKey: process.env.GOOGLE_MAP_KEY,
+    // proxyUrl: 'https://cors-anywhere.herokuapp.com/',
+    bearer: process.env.MODE === 'prod' ? process.env.PROD_COLIV_HQ_KEY : process.env.DEV_COLIV_HQ_KEY,
+    prismicEndPoint: process.env.PRISMIC_ENDPOINT,
+    googleApiKey: process.env.GOOGLE_MAP_KEY
+    },
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000/',
@@ -87,6 +100,13 @@ export default {
     // '@/modules/crawler',
     // https://prismic-nuxt.js.org/
     '@nuxtjs/prismic',
+    
+    
+    // {
+    //   autoImports: ['defineStore', 'acceptHMRUpdate'],
+    // },
+    // 'nuxt3-vuex-module',
+    // '@nuxtjs/dotenv',
     // 'cookie-universal-nuxt',
     // '@nuxt/http', 
     // '@nuxtjs/axios',
@@ -100,8 +120,11 @@ export default {
     // 'nuxt-compress',
     // '@nuxt/image',
     // ['vue-scrollto', { duration: 300 }],
-    nuxtKitModule
+    // nuxtKitModule
   ],
+  image: {
+    dir: "assets/images",
+  },
   // axios: {
   //   proxy: true // Can be also an object with default options
   // },
@@ -134,8 +157,6 @@ export default {
     // linkResolver: '@/plugins/link-resolver',
     // htmlSerializer: '@/plugins/html-serializer',
   },
-  
-
   sitemap: {
     //hostname: "https://www.casamiacasatua.co", //process.env.baseUrl,
     //path: '/sitemap.xml',
@@ -151,6 +172,17 @@ export default {
     brotli: {
       threshold: 10240
     }
+  },
+  nuxt: {
+    // Set the target for your application (server, static, or serverless).
+    target: 'server',
+
+    // Define the server host and port.
+    server: {
+      host: '0.0.0.0', // Listen on all network interfaces.
+      port: 3000,      // Specify the port to run your app on.
+    },
+
   },
   
   /*
@@ -287,8 +319,10 @@ export default {
   },
   buildModules: [
     '@nuxtjs/gtm',
-    '@nuxtjs/dotenv',
-    '@nuxtjs/prismic',
+    '@pinia/nuxt',
+    'cookie-universal-nuxt',
+    // '@nuxtjs/dotenv',
+    // '@nuxtjs/prismic',
     // '~/modules/crawler',
     // '@nuxt/image'
   ],
@@ -301,7 +335,7 @@ export default {
   },
   
   serverMiddleware: [
-    '~/servermiddleware/seo.js'
+    '~/middleware/seo'
   ],
 }
 

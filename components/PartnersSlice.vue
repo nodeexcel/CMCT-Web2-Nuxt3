@@ -80,24 +80,31 @@
     return{
       Partnerslice: null,
       partnerContent: null,
-      flag:false
+      flag:false,
+      MODE:'prod',
+      PROD_END_POINT:'https://asia-east2-colivhq-backend.cloudfunctions.net/apiHomes',
+      DEV_END_POINT :'https://asia-east2-colivhq-dev.cloudfunctions.net/apiHomes',
+      PROD_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoiSGFGNm1iMTlMNkF6V1ZhdlByNXQiLCJjb2xpdmhxIjpmYWxzZSwiaWF0IjoxNTkyOTkwNDc2fQ.m5cUdPaf6TErOJUbmSfG2qusUdwQY4QOnv61o-tY0Zk',
+      DEV_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoidk9yWkxrY2kyb2lWb1plZlZTWmIiLCJjb2xpdmhxIjp0cnVlLCJpYXQiOjE1OTExMDMyMjh9.qsB8ioqPm197CFxnN-SPAr3UJFHeNhH6fTQ2L652nzA',
+      PROD_PARTNER_API_URL:'https://asia-east2-colivhq-backend.cloudfunctions.net/getPartner',
+      DEV_PARTNER_API_URL:'https://asia-east2-colivhq-dev.cloudfunctions.net/getPartner'
     }
   },
   methods: {
       async getPartner (){
         this.slicess  = await axios.post(
-        process.env.MODE === "prod"
-          ? process.env.PROD_PARTNER_API_URL
-          : process.env.DEV_PARTNER_API_URL,
+        this.MODE === "prod"
+          ? this.PROD_PARTNER_API_URL
+          : this.DEV_PARTNER_API_URL,
         {
           cityId: "6504b37d-f43e-4d0d-959c-719b94bd127f",
         },
         {
           headers: {
             Authorization:
-              process.env.MODE === "prod"
-                ? "Bearer " + process.env.PROD_COLIV_HQ_KEY
-                : "Bearer " + process.env.DEV_COLIV_HQ_KEY,
+              this.MODE === "prod"
+                ? "Bearer " + this.PROD_COLIV_HQ_KEY
+                : "Bearer " + this.DEV_COLIV_HQ_KEY,
           },
         }
       ).then(async (response) => {

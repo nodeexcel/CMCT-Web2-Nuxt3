@@ -28,9 +28,10 @@
                 </template>
                 <!-- Section Blog Card slice -->
                 <template v-else-if="slice.slice_type === 'blog_cards'">
-                    <!-- <BlogCardFeaturedSlice v-if="slice.slice_label === 'featured'" :slice="slice"/> -->
-                    <BlogCardSlice  :slice="slice"/>
-                </template>            
+                    <!-- {{ slice.slice_label }} -->
+                    <BlogCardFeaturedSlice v-if="slice.slice_label === 'featured'" :slice="slice" />
+                    <BlogCardSlice v-else :slice="slice"/>
+                </template>             
                 <!-- Section Text-image slice -->
                 <template v-else-if="slice.slice_type === 'text-image'">
                     <TextImageSlice :slice="slice"/>
