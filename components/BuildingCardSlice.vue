@@ -1070,13 +1070,13 @@
 			</div>
 		  </div>
 		</b-col>
-		<!-- <b-col
+		<b-col
 		  cols="4 pl-md-0 image-map-col-2"
 		  :class="[isMap ? (!isList ? 'col-12' : '') : 'map-hide'] + ' map-outer'"
 		  v-if="slice.primary.map === true"
 		>
 		  <div class="google-map" :id="mapName"></div>
-		</b-col> -->
+		</b-col>
 	  </b-row>
 	</div>
   </template>

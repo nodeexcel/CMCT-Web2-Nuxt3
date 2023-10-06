@@ -1,7 +1,6 @@
 <template>
     <section class="calltoaction-slice-section">
         <!-- {{ slice }} -->
-        {{ cta }}
         <div class="">
             <div v-if="slice.slice_label == 'button'" class="cta_button">
                 <div class="pt-xl-5 container-background-wrapper">
@@ -124,8 +123,8 @@ export default {
                 const path = 'document.id'; // Replace with the actual path to the field you want to filter on
                 const value = item.cta_link.id;
                 // console.log("bholenath",this.$prismic.client.get().this.$prismic.filter.at(path, value))
-                this.$prismic.client.get(this.$prismic.filter.at(this.$route.path,item.cta_link.id)).then(async (response) => {
-                    console.log("response 114",response,item.cta_link.id,this.$prismic.filter.at('document.id',item.cta_link.id))
+                this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',item.cta_link.id)}).then(async (response) => {
+                    console.log("response 114",response)
                     if(this.slice.slice_label == 'button') {
                         Object.assign(item, { image: response.results[0].data.image.regular })
                     } else if(this.slice.slice_label == 'left-right') {

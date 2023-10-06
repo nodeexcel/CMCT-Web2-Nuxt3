@@ -1,6 +1,6 @@
 <template>
     <section class="container-background-wrapper" >
-       123
+       <!-- 123 -->
     </section>
 </template>
 

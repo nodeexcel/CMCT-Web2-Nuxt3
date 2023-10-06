@@ -147,7 +147,6 @@
       },
       
       mounted(){
-        console.log("blog_content",this.$prismic.client.get(this.$prismic.filter.at('document.type', 'blogpage')))
         client.getByUID('page', 'blog').then((result) => {
         //   letdocument = result.data
         //   let document= document,

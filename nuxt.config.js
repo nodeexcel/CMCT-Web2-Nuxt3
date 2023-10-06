@@ -77,6 +77,7 @@ export default {
     'bootstrap/dist/css/bootstrap.css',
     // Import the BootstrapVue CSS
     'bootstrap-vue/dist/bootstrap-vue.css',
+    'bootstrap/dist/css/bootstrap.min.css',
     // 'vuetify/lib/styles/main.sass'
   ],
 
@@ -157,6 +158,12 @@ export default {
     // linkResolver: '@/plugins/link-resolver',
     // htmlSerializer: '@/plugins/html-serializer',
   },
+  // plugins: [
+  //   {
+  //       src: '~/plugins/bootstrap.client.ts',
+  //       mode: "client"
+  //   }
+  //  ],
   sitemap: {
     //hostname: "https://www.casamiacasatua.co", //process.env.baseUrl,
     //path: '/sitemap.xml',

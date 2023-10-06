@@ -10,18 +10,51 @@
         <div class="main-part form-cms-build cms-main-wrap px-3">
             <b-form @submit="onSubmit">
                 <div class="row mx-md-0">
-                    <div class="row mx-md-0">
-                        <input type="text">
-                    </div>
-                    <div class="col-sm-12 text-center">
-                        <b-button type="submit" :disabled="form.isActive" class="pt-3 pb-3 pl-5 pr-5 submitBtn FindAHomeRequest-btn large-button large-button-submit"
-                        id="FindYourNewHomeNow">SUBMIT</b-button>
-                    </div>
-                </div>
-            </b-form>
-        </div>
+                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
+                        <b-input-group prepend="FIRST NAME" class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <b-form-input
+                                id="first_name"
+                                v-model="form.firstName"
+                                placeholder="Required Field"
+                                type="text"
+                                class="form-inputs"
+                            ></b-form-input>
+                            <span class="mt-2" v-html="invalidtext"></span>
+                        </b-input-group>
+                        <!-- <div class="mt-2" v-if="showValidationError.firstName">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please enter First Name</span>
+                        </div> -->
+                    </b-form-group>
+                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
+                        <b-input-group prepend="LAST NAME" class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <b-form-input
+                                id="last_name"
+                                v-model="form.lastName"
+                                type="text"
+                                class="form-inputs"
+                            ></b-form-input>
+                        </b-input-group>
+                    </b-form-group>
+                
+                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
+                        <b-input-group prepend-html="BATHROOM TYPE" class="input-group mb-2 mr-sm-2 mb-sm-0 big-label">
+                             <div class="position-relative">
+                                <b-form-select id="room_type" v-model="form.bathroomType" :options="bathroomTypeOptions" class="form-inputs"></b-form-select>
+                                <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+                             </div>
+                        </b-input-group>
+                        <!-- <div class="mt-2" v-if="showValidationError.bathroomType">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select bathroom type</span>
+                        </div> -->
+                    </b-form-group>
+                </div>    
+            </b-form>    
+         </div>           
+                   
     </div>
-</template>
+  </template>
 
 <script>
 import moment from "moment";
