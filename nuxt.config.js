@@ -1,36 +1,15 @@
-const getAppRoutes = require('./utils/getRoutes.js');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const path = require('path');
-import nuxtKitModule from './modules/nuxt-kit'
+
+
 import { client } from './prismic/prismic';
-// require('dotenv').config(); 
-// const TerserPlugin = require('terser-webpack-plugin');
-// const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-// require('dotenv').config();
-export default {
+export default defineNuxtConfig({
   // srcDir: 'src',
   server: {
     compression: true,
   },
   runtimeConfig: {
     public: {
-    env:process.env,
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000/',
-    mapKey: process.env.GOOGLE_MAP_KEY,
-    // proxyUrl: 'https://cors-anywhere.herokuapp.com/',
-    bearer: process.env.MODE === 'prod' ? process.env.PROD_COLIV_HQ_KEY : process.env.DEV_COLIV_HQ_KEY,
-    prismicEndPoint: process.env.PRISMIC_ENDPOINT,
-    googleApiKey: process.env.GOOGLE_MAP_KEY
+    env:process.env
     },
-  },
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000/',
-    mapKey: process.env.GOOGLE_MAP_KEY,
-    // proxyUrl: 'https://cors-anywhere.herokuapp.com/',
-    bearer: process.env.MODE === 'prod' ? process.env.PROD_COLIV_HQ_KEY : process.env.DEV_COLIV_HQ_KEY,
-    prismicEndPoint: process.env.PRISMIC_ENDPOINT,
-    googleApiKey: process.env.GOOGLE_MAP_KEY
   },
   /*
   ** Headers of the page
@@ -78,18 +57,7 @@ export default {
     // Import the BootstrapVue CSS
     'bootstrap-vue/dist/bootstrap-vue.css',
     'bootstrap/dist/css/bootstrap.min.css',
-    // 'vuetify/lib/styles/main.sass'
   ],
-
-  /*
-  ** Plugins to load before mounting the App
-  */
- 
-  // plugins: [
-  //   { src: '@/plugins/bootstrap-vue',ssr: false  },
-  //   { src: '@/plugins/vue-carousel', ssr: false },
-  //   { src: '@/plugins/social-share', ssr: false },
-  // ],
   
 
   /*
@@ -101,6 +69,7 @@ export default {
     // '@/modules/crawler',
     // https://prismic-nuxt.js.org/
     '@nuxtjs/prismic',
+    // '@nuxt/image'
     
     
     // {
@@ -158,18 +127,7 @@ export default {
     // linkResolver: '@/plugins/link-resolver',
     // htmlSerializer: '@/plugins/html-serializer',
   },
-  // plugins: [
-  //   {
-  //       src: '~/plugins/bootstrap.client.ts',
-  //       mode: "client"
-  //   }
-  //  ],
   sitemap: {
-    //hostname: "https://www.casamiacasatua.co", //process.env.baseUrl,
-    //path: '/sitemap.xml',
-    routes() {
-      return getAppRoutes();
-    },
     generate: false
   },
   'nuxt-compress': {
@@ -214,40 +172,9 @@ export default {
       // For Gzip compression
       if (isClient) {
         config.plugins.push(
-        //   new BundleAnalyzerPlugin({
-        //   analyzerMode: 'static',
-        //   openAnalyzer: false,
-        //   reportFilename: 'bundle-analyzer-report.html',
-        // }),
-        // new HardSourceWebpackPlugin({
-        //   // Configuration options
-        //   cacheDirectory: path.resolve(__dirname, '.cache/hard-source'),
-        //   cachePrune: true,
-        //   // configHash: function (webpackConfig) {
-        //   //   return require('node-object-hash')({ sort: false }).hash(webpackConfig);
-        //   // },
-        // }), 
-        );
-        // config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin());
+        )
       }
     },
-    // postcssOptions: {
-    //   plugins: [
-    //     require('autoprefixer')({
-    //       overrideBrowserslist: ['last 2 versions', '> 1%'],
-    //     }),
-    //     require('postcss-preset-env')({
-    //       stage: 3,
-    //     }),
-    //     require('cssnano')({
-    //       preset: ['default', {
-    //         discardComments: {
-    //           removeAll: true,
-    //         },
-    //       }],
-    //     }),
-    //   ],
-    // },
     optimization: {
       splitChunks: {
         maxSize: 500000,
@@ -267,31 +194,10 @@ export default {
             chunks: 'initial',
             reuseExistingChunk: true,
           },
-          // styles: {
-          //   name: 'styles',
-          //   test: /\.(css|vue)$/,
-          //   chunks: 'all',
-          //   enforce: true
-          // }
         },
       },
       minimize: true,
       minimizer: [
-        // new TerserPlugin({
-        //   // TerserPlugin configuration options
-        //   exclude: /\/excludes/,
-        //   include: /\/includes/,
-        //   exclude: /\/excludes/,
-        //   parallel: true,
-        //   terserOptions: {
-        //     compress: {
-        //       drop_console: true, // Remove console.* statements
-        //     },
-        //     output: {
-        //       comments: false, // Remove comments from the output file
-        //     },
-        //   },
-        // }),
       ],
     },
       html:{
@@ -327,11 +233,7 @@ export default {
   buildModules: [
     '@nuxtjs/gtm',
     '@pinia/nuxt',
-    'cookie-universal-nuxt',
-    // '@nuxtjs/dotenv',
-    // '@nuxtjs/prismic',
-    // '~/modules/crawler',
-    // '@nuxt/image'
+    'cookie-universal-nuxt'
   ],
   gtm: {
     id: process.env.GTM_KEY
@@ -344,5 +246,5 @@ export default {
   serverMiddleware: [
     '~/middleware/seo'
   ],
-}
+})
 

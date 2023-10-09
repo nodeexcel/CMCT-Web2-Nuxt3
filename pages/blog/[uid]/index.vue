@@ -500,7 +500,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .blog-detail-section{
   background-color: #f7f7f7;
 }

@@ -134,7 +134,7 @@ export default {
   },
 }
 </script>
-<style>
+<style  scoped>
 .team-slice-line-elipse{
     display: -webkit-box !important;
     -webkit-line-clamp: 5 !important;

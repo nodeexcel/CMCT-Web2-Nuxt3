@@ -739,7 +739,7 @@ methods: {
 }
 }
 </script>
-<style>
+<style scoped>
 @import "@/assets/css/form.css";
 
 .pop{

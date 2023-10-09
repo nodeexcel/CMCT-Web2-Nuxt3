@@ -108,21 +108,11 @@ export default {
     },
     methods: {
         async getCTAData() {
-            // let  predicate = usePrismic()
             console.log(this.$prismic,this.$route)
-            
-//             // const client = prismic.createClient(endpoint, { fetch })
-//             const filteredDocuments = this.$prismic.client.get({
-//     predicate: this.$prismic.filter.at(
-//         'document.id', 'YWj_dhEAACMAjoMt'
-//     )
-//   })
-//   console.log(this.$prismic.client.get(this.$prismic.filter.at('document.id', 'YWj_dhEAACMAjoMt')))
             let _this = this;
             this.slice.items.forEach((item, index) => {
                 const path = 'document.id'; // Replace with the actual path to the field you want to filter on
                 const value = item.cta_link.id;
-                // console.log("bholenath",this.$prismic.client.get().this.$prismic.filter.at(path, value))
                 this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',item.cta_link.id)}).then(async (response) => {
                     console.log("response 114",response)
                     if(this.slice.slice_label == 'button') {
@@ -160,17 +150,7 @@ export default {
         this.getCTAData();
     },
     mounted(){
-        // const { predicate } = usePrismic();
-        this.getCTAData()
         var Data = null
-        this.slice.items.forEach((item, index) => {
-            this.$prismic.client.get(('document.id', item.cta_link.id)).then(async (response) => {
-                // console.log("response 152",response)
-                // Data=response
-                // console.log("response 153",Data)
-        })
-    })
-    // console.log("response 152",Data)
         // console.log(this.$prismic.client.get(('document.type', 'topics'),{}))
     }
 }

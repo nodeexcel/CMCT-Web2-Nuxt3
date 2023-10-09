@@ -4,7 +4,6 @@
  */
 
 export default function (doc) {
-    // console.log('Link resolver:', doc.type+':'+doc.uid)
     if (doc.isBroken) {
       return '/not-found'
     }

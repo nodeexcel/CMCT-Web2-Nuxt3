@@ -86,7 +86,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
     .pagination { 
         width: fit-content;
         margin: 0 auto;

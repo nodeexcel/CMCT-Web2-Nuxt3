@@ -218,7 +218,7 @@ footer .footer-detail .footer-logo {
   height: 26px;
   background-color: #000;
   border-radius: 50%;
-   line-height: 26px;
+   line-height: 23px;
 }
 .footer .footer-content .footer-sublink {
   display: block;
@@ -409,11 +409,11 @@ footer .footer-logo {
   .footer-copyright ,.footer-privacy-policy li a{
     font-size: 13px;
   }
-  .footer .footer-content .footer-soical-icon{
-    width: 22px;
-    height: 22px;
-    line-height: 25px;
-  }
+  /* .footer .footer-content .footer-soical-icon{
+    width: 24px;
+    height: 24px;
+    line-height: 20px;
+  } */
   .footer .footer-content .footer-soical-icon img{
     height: 13px;
     line-height: 13px;

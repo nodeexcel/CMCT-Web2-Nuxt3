@@ -165,7 +165,7 @@
       }
   }
   </script>
-  <style>
+  <style scoped>
   .blog-listing {
       margin-top: 150px;
   }

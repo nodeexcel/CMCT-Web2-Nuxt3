@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .newsroom-section{
     margin-bottom: 100px;
 }

@@ -49,7 +49,7 @@
 									<prismic-rich-text :field="slice.primary.subtitle" v-if="slice.primary.subtitle" class="description silder-content-box-subheading mt-0 mt-md-0 mb-0"/>
 									<p class="title content-h5-heading mb-0 mb-lg-3 mb-xl-4 pb-xl-2 text-center text-md-left"><prismic-rich-text :field="slice.primary.title"/></p>
 									<prismic-rich-text :field="slice.primary.body_text" v-if="slice.primary.body_text" class="description silder-content-box-description mb-0 mb-lg-4 mb-xl-5 pb-xl-3"/>
-									<prismic-link v-if="slice.primary.button_text != '' && slice.primary.button_text != null" :field="slice.primary.button_link1" class="btn btn-success book-now-table-btn d-inline-block silder-content-fullbox-btn ">
+									<prismic-link v-if="slice.primary.button_text != '' && slice.primary.button_text != null" :field="slice.primary.button_link1" class="btn  book-now-table-btn d-inline-block silder-content-fullbox-btn ">
 										{{ slice.primary.button_text }} 
 									</prismic-link>
 								</div>
@@ -88,7 +88,7 @@
 									<div>
 										<prismic-rich-text :field="slice.primary.subtitle" v-if="slice.primary.subtitle" class="description square-type-subheading"/>
 										<p class="title content-h3-heading mb-3 pt-xl-1 mb-xl-5 pb-xl-3"><prismic-rich-text :field="slice.primary.title"/></p>
-										<prismic-link :field="slice.primary.button_link1" class="btn btn-success book-now-table-btn d-inline-block silder-content-box-btn ">
+										<prismic-link :field="slice.primary.button_link1" class="btn book-now-table-btn d-inline-block silder-content-box-btn ">
 											{{ slice.primary.button_text }} 
 										</prismic-link>
 									</div>
@@ -101,7 +101,8 @@
 								img-width="1024"
 								img-height="480" class="slider-img home-subbanner-carousel home-subbanner-carousel-square">
 								<template v-for="(value,index) in items" :key="index">
-									<b-carousel-slide :img-src="value.image['square'].url" ></b-carousel-slide>
+									<img :src="value.image['square'].url" alt="">
+									<!-- <b-carousel-slide :img-src="value.image['square'].url" ></b-carousel-slide> -->
 								</template>
 							</b-carousel>
 						</div>
@@ -130,9 +131,6 @@
 export default {
   props: ['slice'],
   name: 'welcome-banner',
-    // components: {
-    //     VueHorizontalList
-    // },
   data () {
         return {
             options: {
@@ -205,7 +203,9 @@ export default {
 }
 .home-subbanner-page .silder-content-box-btn{
 	height: 60px;
-	line-height: 60px;
+	line-height: 47px;
+
+	background-color:#72BF44 !important;
 	border-radius: 30px;
 }
 .home-subbanner-page  .square-type-subheading :first-child{
@@ -328,7 +328,7 @@ export default {
 	}
 	.home-subbanner-page .silder-content-box-btn{
 		height: 45px;
-		line-height: 45px;
+		line-height: 32px;
 	}
 	.home-subbanner-page .silder-content-box-subheading :first-child{
 		font-size: 13px;
@@ -423,7 +423,7 @@ export default {
 	}
 	.home-subbanner-page .silder-content-box-btn{
 		height: 47px;
-    	line-height: 47px;
+    	line-height: 33px;
 	}
 	.home-subbanner-page .square-type-banner{
 		padding-left: 30px;

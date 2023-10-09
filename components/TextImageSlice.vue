@@ -70,7 +70,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .text-image-slice .left-img-section .left-img-part{
     width: 100%;
     max-width: 762px;

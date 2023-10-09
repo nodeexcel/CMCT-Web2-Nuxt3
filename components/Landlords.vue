@@ -284,7 +284,7 @@ export default {
 	}
 };
 </script>
-<style>
+<style scoped>
 @import "@/assets/css/form.css";
 /* phone number */
 .country-selector__input{

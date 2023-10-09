@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /************ Begin Feature-list-css ***********/
 .navigation-button {
     display: none;

@@ -512,7 +512,7 @@ methods: {
 }
 }
 </script>
-<style>
+<style scoped>
 @import "@/assets/css/form.css";
 .country-selector__input , .input-tel__input{
 background: #fff !important;

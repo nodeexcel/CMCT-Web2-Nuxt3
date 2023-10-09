@@ -1,14 +1,276 @@
 <template>
     <section class="container-background-wrapper" >
-       <!-- 123 -->
+        <div class=" container-background-sub-wrapper blogcard-space" :style="{ 'background-color': slice.primary.background }">
+            <div class="inner-content-wrapper" >
+                <div class="cms-main-wrap blog-cms">
+                    <prismic-rich-text :field="slice.primary.title" class="topic-heading related blog-post-heading"/>
+                    <div class="blog-card row">
+                        <div :class="[ topics_and_authors ? 'col-lg-9': 'col-lg-12']">
+                            <div class="row" id="blogwrap">
+                                <div v-for="(commentIndex,key) in recordsToShow" :key="key" :class="'card-main col-sm-6 col-xs-12 mb-4 mb-xl-5 pb-xl-3' + [(slice.page_type != undefined && slice.page_type == 'blog_details') ? 'col-lg-4 col-md-4 three-col' : 'col-lg-4 col-md-4 three-col']"> 
+                                    <div v-if="key < slice.primary.card_limit && (Records[key] != undefined || Records[key] != null)">
+                                        <div v-if="Records[key] != undefined" class="content-wrap" :id="Records[key].id">
+                                            <n-link :to="'/blog/'+Records[key].uid" class="card-link">
+                                            <!-- <prismic-link :field="item.blog_link" class="card-link"> -->
+                                                <picture>
+                                                    <!-- <img :src="Records[key].data.hero_image.card.url" class="d-block w-100"> -->
+                                                </picture>
+                                                <div class="desc-box">
+                                                    <div class="desc text-left">
+                                                        <span :href="'/blog/'+Records[key].uid" variant="light" v-for="(topic) in Records[key].data.topics" :key="topic+'_'+Math.ceil(Math.random()*10)">{{ topicList[topic]}} </span>
+                                                    </div>
+                                                    <!-- <h3 class="name text-left mt-0"> {{ Records[key].data.page_title[0].text }} </h3> -->
+                                                    <div class="blog-bottom-content">
+                                                        <!-- <prismic-rich-text :field="Records[key].data.summary"/> -->
+                                                    </div>
+                                                </div>
+                                            <!-- </prismic-link> -->
+                                            </n-link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" v-if="(this.slice.page_type != 'blog_details' && slice.slice_type=='blog_cards' && showButton)">
+                                <div class="col-lg-12 text-center">
+                                    <span  @click="pagechanged" class="load-more-btn large-button d-inline-block"> Load More</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 blog-filter-topics mt-3 mt-md-0  pr-lg-0 pl-lg-3 pl-xl-5">
+                            <div class="box" v-if="topics_and_authors">
+                                   <div class="blog-post-heading"> <h2 class="py-0 my-0 mb-3">Topics</h2></div>
+                                <div class="blog-topic-items">
+                                    <b-badge :class="'tags ' + [(filterSel != '') ? filterSel.includes(index) ? 'filter-applied' : 'filter-applied-all' : 'no-filter-applied']" variant="light" v-for="(topic, index) in topicList" :key="'fil_top_'+index" @click="topicFilter(index)">{{topic}}</b-badge>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="row view-more -blogs" v-if="slice.primary.blog_link != undefined && slice.primary.blog_link.length != 0">
+                        <div class="col-lg-12 text-center mb-4 mb-xl-5 pb-xl-3">
+                            <prismic-link v-if="slice.primary.blog_link[0].spans.length !=0" :field="slice.primary.blog_link[0].spans[0].data" class="more-blog-link text-center large-button d-inline-block">
+                                {{ slice.primary.blog_link[0].text }}
+                            </prismic-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
 <script>
+// let topic = this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)})
 // import moment from 'moment'
 // import Paginate from '~/components/Paginate.vue'
+import Paginate from '~/components/Paginate.vue'
 export default {
-  
+    props: ['slice'],   
+    name: 'blog-cards',
+    components: {
+        Paginate
+    },
+    data() {
+        return {
+            blogList: [],
+            blogListCopy: [],
+            topicList:[],
+            authorList:[],
+            tempTopicList:[],
+            tempAuthorList:[],
+            topics_and_authors: (this.slice.primary.authors_and_topics != undefined) ? this.slice.primary.authors_and_topics : false,
+            btcmsFilter: (this.slice.primary.topic != undefined) ? this.slice.primary.topic.id : '',
+            filterSel: [],
+            athourSel: [],
+            finished: false,
+            totalResult: '',
+            perPage: this.slice.page_type == 'blog_details' ? this.slice.primary.card_limit : 9,
+            totalPages: 0,
+            currentPage: 1,
+            // load More code
+            recordsToShow : 9,
+            totalRecords : 0,
+            Records : [],
+        }
+    },
+    computed: {
+        showButton(){
+            if(this.totalResult > this.perPage){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        maxVisibleButtons() {
+            return this.totalPages > 3 ? 3 : this.totalPages
+        },
+    },
+    filters: {
+        moment: function (date) {
+            if (date && date.length) {
+                const dateParts = date.split("-")
+                const aDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`
+                return aDate
+                // return moment(date).format('DD-MM-YYYY');
+            } else {
+                return ''
+            }
+        }
+    },
+    mounted(){
+        this.getTopicsData()
+    },
+    async created() {
+        this.filterSel = []
+        this.getTopicsData()
+        // this.getTopics()
+        this.filterBlog()
+        // if(this.$route.query.topic != undefined) {
+        //     await this.getTopicsData()
+        //     this.topicFilter(this.$cookies.get("topicId"))
+        // } else {
+        //     this.$cookies.set("topicId", '');
+        //     this.getData()
+        // }
+    },
+//     "orderings": [
+//     {
+//       "field": "my.product.price"
+//     },
+//     {
+//       "field": "my.product.title"
+//     }
+//   ]
+    methods: {
+        async getTopicsData() {
+             var self = this
+             console.log("response 158", this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')}))
+             this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')}).then(async (response) => {
+                console.log("response 155", this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')}))
+             })
+             
+            await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')},{}).then(async (response) => {
+                var sortable = [];
+                console.log("response 135",response)
+                for (let item of response.results) {
+                    sortable.push([item.id, item.data.topic]);
+                }
+                sortable.sort((a, b) => (a[1] > b[1]) ? 1 : -1);
+                
+                let newTopiclist = {}
+                sortable.forEach(function(item){
+                    if(self.$route.query.topic != undefined) {
+                        if(self.$route.query.topic.toLowerCase() === item[1].toLowerCase()) {
+                            self.$cookies.set("topicId", item[0]);
+                        }
+                    }
+                    newTopiclist[item[0]]=item[1]
+                })
+                this.topicList = newTopiclist
+            });
+        },
+        async getData() {
+            let limit= (this.slice.type !=undefined && this.slice.slice_type == 'blog_cards') ? this.perPage : this.slice.primary.card_limit+1;
+            let topicArray = await this.getTopicsData()
+            this.filterBlog();
+        },
+        setBlogcards(response) {
+            this.totalRecords = response.results.length;
+            this.Records = response.results;
+            this.blogList = [];
+            this.totalResult = response.total_results_size;
+            this.totalPages = response.total_pages;
+            for (let blog of Object.values(response.results)) { 
+                if(blog.uid != this.slice.current_blog && this.blogList.length <= this.slice.primary.card_limit) {
+                    blog.data.filtertopics = [];
+                    let btfilter = false;
+                    for (let i = 0; i < blog.data.topics1.length; i++) {
+                        if (blog.data.topics1[i] && typeof blog.data.topics1[i].topic == 'object' && blog.data.topics1[i].topic.id) {
+                            if( this.btcmsFilter != '' && this.btcmsFilter != undefined && this.btcmsFilter == blog.data.topics1[i].topic.id) {
+                                btfilter = true; 
+                            }
+                            blog.data.filtertopics.push(blog.data.topics1[i].topic.id)
+                        }
+                    }
+                    blog.data.topics = blog.data.filtertopics.length ? blog.data.filtertopics.slice(0, 3) : []
+                    if( this.btcmsFilter != '' && this.btcmsFilter != undefined) {
+                        if(btfilter == true) {
+                            this.blogList.push(blog)
+                            this.slice.page_type = 'blog_details'// To Show 4 in one row
+                            this.perPage = this.slice.primary.card_limit
+                        }
+                    } else { 
+                        this.blogList.push(blog)
+                    }
+                }
+            } 
+            if( this.slice.page_type == 'blog_details') {
+                this.totalRecords = this.blogList.length;
+                this.Records = this.blogList;
+                this.totalResult = response.total_results_size;
+                this.totalPages = response.total_pages;
+            } else {
+                this.blogList = this.blogList.slice(0,  this.perPage)
+                this.blogListCopy = this.blogList.slice(0,  this.perPage);
+                this.countData = this.blogListCopy.length;
+            }
+        },
+        pagechanged(page) {
+            this.recordsToShow += 9;
+            this.currentPage = page
+            this.perPage =  this.perPage + 9
+            this.getData()
+         
+        },
+        async getTopics (blog) {
+            let topicArray = []
+            for (let i = 0; i < blog.data.topics1.length; i++) {
+                if (blog.data.topics1[i] && typeof blog.data.topics1[i].topic == 'object' && blog.data.topics1[i].topic.id) {
+                    
+                    // let topic = await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)})
+                    let topic = await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)}).then(async (response) => {
+                        console.log("response 135",response)
+                        topicArray.push(response.results[0])
+                    })
+                    // topicArray.push(topic.results[0])
+                }
+            }
+            return topicArray
+        },
+        async filterBlog() {
+            let limit= (this.slice.type !=undefined && this.slice.type == 'blog_listing') ? this.perPage : 100;
+            if(this.filterSel.length > 0) {
+                await this.$prismic.client.get([
+                {filters:this.$prismic.filter.at('document.type','blogpage')},
+                {filters:this.$prismic.filter.at('my.blogpage.topics1.topic',this.filterSel)},
+                        // this.$prismic.predicates.at('document.type', 'blogpage'),
+                        // this.$prismic.predicates.any('my.blogpage.topics1.topic', this.filterSel),
+                    ],
+                    { orderings : '[my.blogpage.publish_date desc]', 'pageSize': limit }
+                ).then(async (response) => {
+                    console.log("response 135",response)
+                    this.setBlogcards(response);
+                });
+            } else {
+                await this.$prismic.client.get([
+                {filters:this.$prismic.filter.at('document.type','blogpage')}
+                    ],
+                    { orderings : '[my.blogpage.publish_date desc]', 'pageSize': limit }
+                ).then(async (response) => {
+                    console.log("response 135",response)
+                    this.setBlogcards(response);
+                });
+            }
+        },
+        topicFilter(topic) {
+            this.currentPage = 1;
+            if(this.filterSel.includes(topic)) {
+                this.filterSel.splice(this.filterSel.indexOf(topic), 1);
+            } else {
+                this.filterSel.push(topic)
+            }
+            this.filterBlog()
+        }
+    }
 }
 </script>
 

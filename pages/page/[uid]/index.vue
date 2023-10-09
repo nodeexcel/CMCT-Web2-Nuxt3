@@ -124,15 +124,6 @@ export default {
 	  }
   },
   mounted(){
-    // const route = useRoute();
-    // console.log("document",this.$route.params)
-    //  this.$prismic.client.getByUID('page', this.$route.params.uid).then((Response) =>{
-    //     var document = Response.data
-    //     console.log("document",document)
-    // })
-    // console.log()
-
-
     try{
       // Query to get post content
       this.$prismic.client.getByUID('page', this.$route.params.uid).then((Response) =>{
@@ -183,7 +174,6 @@ export default {
         },
         // Set slices as variable
         this.slices = document.page_content;
-        console.log(this.slices)
         this.data= document;
         this.pageId = this.$route.params.uid;
 		    this.isMapOnPage= this.isMapOnPage;
@@ -204,7 +194,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .custom-page-main .text-slice-cms .details p a {
   background-color: transparent;
   color: #72bf44;

@@ -100,7 +100,8 @@ export default {
     },
     async created() {
         let limit= this.slice.primary.card_limit + 1;
-        this.$prismic.client.query(this.$prismic.predicate.at('document.type', 'blogpage'), 	
+        this.$prismic.client.get({filters:this.$prismic.filter.at('document.type','blogpage')},
+        // this.$prismic.api.query(this.$prismic.predicates.at('document.type', 'blogpage'), 	
         { orderings : '[my.blogpage.publish_date desc]', 'pageSize': limit }).then(async (response) => {
             //this.blogList1 = response.results
             //this.slice.primary.card_limit = 100;
@@ -157,7 +158,8 @@ export default {
             let topicArray = []
             for (let i = 0; i < blog.data.topics1.length; i++) {
                 if (blog.data.topics1[i] && typeof blog.data.topics1[i].topic == 'object' && blog.data.topics1[i].topic.id) {
-                    let topic = await this.$prismic.client.query(this.$prismic.predicate.at('document.id', blog.data.topics1[i].topic.id))
+                    
+                    let topic = this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)})
                     topicArray.push(topic.results[0])
                 }
             }

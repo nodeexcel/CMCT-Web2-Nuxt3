@@ -8,6 +8,17 @@
         
     </section>
 </template>
+
+<script setup>
+const envVars = useRuntimeConfig();
+useHead({
+    script: [
+                { src: `https://maps.googleapis.com/maps/api/js?key=${envVars.public.env.GOOGLE_MAP_KEY}&map_ids=4df64ef1b112569a`}
+            ]
+    })     
+    
+</script>
+
 <script>
     export default {
     name: 'google-map',

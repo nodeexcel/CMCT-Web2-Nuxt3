@@ -70,12 +70,15 @@
 		</header>
 	</div>
 </template>
+<script setup>
+ // Check if we're on the client side before accessing window
+ useHead({
+  meta: [
+    { rel: 'stylesheet', href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" }]
+})
+ </script>
 
 <script>
-// import {client} from '~/prismic/prismic';
-import {state} from '~/store/index'
-// import { useRuntimeConfig } from 'nuxt'
-// import linkResolver: '@/plugins/link-resolver',
 export default {
   data () {
     return {
@@ -98,13 +101,11 @@ export default {
       }
     }
   },
-  head () {
-    return {
-      meta: [
-        { rel: 'stylesheet', href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" }
-      ]
-    }
-  },
+  // watch: {
+  //   "fields.logo"(newVal) {
+  //     this.$store.commit('setHeaderLogo' ,newVal)
+  //   }
+  // },
   computed:{
     color () {
       if (this.fields.header.background_color) {
@@ -266,8 +267,6 @@ export default {
           }).catch((error) => {
           console.error(error);
           });
-          // const menu = this.$store
-          // console.log("menu", this.$store)
     }
 
 }

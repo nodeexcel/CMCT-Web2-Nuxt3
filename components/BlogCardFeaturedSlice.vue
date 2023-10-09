@@ -43,33 +43,33 @@ export default {
         }
     },
     created() {
-        // this.getData()
-        // this.getTopicsData()
+        this.getData()
+        this.getTopicsData()
     },  
     methods: {
-        //   getData() {
-        //     this.slice.items.forEach((item, index) => {
-        //         this.$prismic.api.query(this.$prismic.predicates.at('document.id', item.blog_post.id)).then(async (response) => {
-        //             Object.assign(response.results[0].data, { uid: item.blog_post.uid })
-        //             this.blogList.push(response.results[0].data);
-        //         })
-        //     })
-        // },
-        // async getTopicsData() {
-        //     await this.$prismic.api.query(this.$prismic.predicates.at('document.type', 'topics'),{}).then(async (response) => {
-        //         var sortable = [];
-        //         for (let item of response.results) {
-        //             sortable.push([item.id, item.data.topic]);
-        //         }
-        //         sortable.sort((a, b) => (a[1] > b[1]) ? 1 : -1);
+          getData() {
+            this.slice.items.forEach((item, index) => {
+                this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',item.blog_post.id)}).then(async (response) => {
+                    Object.assign(response.results[0].data, { uid: item.blog_post.uid })
+                    this.blogList.push(response.results[0].data);
+                })
+            })
+        },
+        async getTopicsData() {
+            await  this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')}).then(async (response) => {
+                var sortable = [];
+                for (let item of response.results) {
+                    sortable.push([item.id, item.data.topic]);
+                }
+                sortable.sort((a, b) => (a[1] > b[1]) ? 1 : -1);
                 
-        //         let newTopiclist = {}
-        //         sortable.forEach(function(item){
-        //             newTopiclist[item[0]]=item[1]
-        //         })
-        //         this.topicList = newTopiclist
-        //     });
-        // },
+                let newTopiclist = {}
+                sortable.forEach(function(item){
+                    newTopiclist[item[0]]=item[1]
+                })
+                this.topicList = newTopiclist
+            });
+        },
     }
 }
 </script>

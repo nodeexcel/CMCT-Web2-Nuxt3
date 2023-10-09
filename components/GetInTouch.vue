@@ -324,7 +324,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 @import "@/assets/css/form.css";
 /* phone input */
 .country-selector__input{

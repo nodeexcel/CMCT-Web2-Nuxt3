@@ -19,6 +19,21 @@
 		</div>
 	</section>
 </template>
+<script setup>
+ import { ref } from 'vue'
+//  const title = ref('Casa Mia Coliving Website')
+
+// useHead({
+//   title: 'My App',
+//   meta: [
+//     { name: 'description', content: 'My amazing site.' }
+//   ],
+//   bodyAttrs: {
+//     class: 'test'
+//   },
+//   script: [ { innerHTML: 'console.log(\'Hello world\')' } ]
+// })
+ </script>
 
 <script>
 // import SlicesBlock from '~/components/SlicesBlock.vue'
@@ -46,12 +61,12 @@ export default {
 			divider_and_button_color: '',
 			homeListLd: [],
 			queryParam: this.slice.primary.query_param,
-      envdeatils: process.env.PROD_END_POINT ,
-      MODE:'prod',
-      PROD_END_POINT:'https://asia-east2-colivhq-backend.cloudfunctions.net/apiHomes',
-      DEV_END_POINT :'https://asia-east2-colivhq-dev.cloudfunctions.net/apiHomes',
-      PROD_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoiSGFGNm1iMTlMNkF6V1ZhdlByNXQiLCJjb2xpdmhxIjpmYWxzZSwiaWF0IjoxNTkyOTkwNDc2fQ.m5cUdPaf6TErOJUbmSfG2qusUdwQY4QOnv61o-tY0Zk',
-      DEV_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoidk9yWkxrY2kyb2lWb1plZlZTWmIiLCJjb2xpdmhxIjp0cnVlLCJpYXQiOjE1OTExMDMyMjh9.qsB8ioqPm197CFxnN-SPAr3UJFHeNhH6fTQ2L652nzA',
+    //   envdeatils: process.env.PROD_END_POINT ,
+    //   MODE:'prod',
+    //   PROD_END_POINT:'https://asia-east2-colivhq-backend.cloudfunctions.net/apiHomes',
+    //   DEV_END_POINT :'https://asia-east2-colivhq-dev.cloudfunctions.net/apiHomes',
+    //   PROD_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoiSGFGNm1iMTlMNkF6V1ZhdlByNXQiLCJjb2xpdmhxIjpmYWxzZSwiaWF0IjoxNTkyOTkwNDc2fQ.m5cUdPaf6TErOJUbmSfG2qusUdwQY4QOnv61o-tY0Zk',
+    //   DEV_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoidk9yWkxrY2kyb2lWb1plZlZTWmIiLCJjb2xpdmhxIjp0cnVlLCJpYXQiOjE1OTExMDMyMjh9.qsB8ioqPm197CFxnN-SPAr3UJFHeNhH6fTQ2L652nzA',
 		}
 	},
 	head () {
@@ -123,21 +138,22 @@ export default {
   },
   mounted () {
 	this.getData()
-  console.log(" process.env.PROD_END_POINT : process.env.DEV_END_POINT", this.PROD_END_POINT)
+  
   },
   fetchOnServer: false,
   methods: {
     async getData () {
+		const envVars = useRuntimeConfig();
       try{
         // Query to get post content
 			//const document = (await $prismic.api.getByUID('page', params.uid)).data
-        const appartments = await axios.post(this.MODE === 'prod' ? this.PROD_END_POINT : this.DEV_END_POINT, {
+        const appartments = await axios.post(envVars.public.env.MODE === 'prod' ? envVars.public.env.PROD_END_POINT : envVars.public.env.DEV_END_POINT, {
           //"operatorId": "HaF6mb19L6AzWVavPr5t",
           "neighborhoodId": (this.slice != undefined && this.slice.primary.neighbourhood_id != undefined) ? this.slice.primary.neighbourhood_id : "",
           "cityId": (this.slice != undefined && this.slice.primary.cityid != undefined) ? this.slice.primary.cityid : ""
         },{
           headers: {
-            Authorization: this.MODE === 'prod' ? 'Bearer '+this.PROD_COLIV_HQ_KEY : 'Bearer '+this.DEV_COLIV_HQ_KEY
+            Authorization: envVars.public.env.MODE === 'prod' ? 'Bearer '+envVars.public.env.PROD_COLIV_HQ_KEY : 'Bearer '+envVars.public.env.DEV_COLIV_HQ_KEY
           }
         })
         console.log("123",appartments)
@@ -280,7 +296,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .toggle-map-button {
     min-width: 225px;
     color: #fff;

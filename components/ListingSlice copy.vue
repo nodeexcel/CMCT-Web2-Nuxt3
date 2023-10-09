@@ -494,7 +494,7 @@
   }
   </script>
   
-  <style>
+  <style scoped>
   .toggle-map-button {
       min-width: 225px;
       color: #fff;

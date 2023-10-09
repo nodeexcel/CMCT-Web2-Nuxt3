@@ -197,8 +197,6 @@ export default {
       }
   },
   mounted(){
-    // this.getClass(this.slice)
-    console.log("slices",this.slices)
     if(this.$route.path == '/page/community'){
 		this.hideLogos = true       
 	  }
@@ -219,7 +217,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .section-overlap .image-gallery {
     position: relative;
     margin-bottom: 0;

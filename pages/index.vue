@@ -1,24 +1,15 @@
 <template>
 	<section>
-		<!-- Slices block component -->
-		<!-- {{ envdeatils }} -->
-		<!-- <nuxt-img src="~/public/gif_Butler.gif"  /> -->
-{{ envdeatils }}
 		<SlicesBlock :slices="slices"/>
 	</section>
 	
 </template>
 
 <script setup>
-const counter = useCookie()
-// counter.value = counter.value || Math.round(Math.random() * 1000)
 
 </script>
 
 <script>
-// Imports for all components
-// import SlicesBlock from '~/components/SlicesBlock.vue'
-
 export default {
 	name: 'Home',
 	layout: 'homepage',
@@ -34,7 +25,6 @@ export default {
 				meta_image: null,
 				meta_url: null,
 				meta_site_name: null,
-				envdeatils: process.env.PROD_END_POINT ,
         }
     },
 	head () {
@@ -120,12 +110,9 @@ export default {
 		// }
   	},
     async mounted(){
-		// console.log("menu", this.$store.state)
 		const envVars = useRuntimeConfig();
 		console.log("env",envVars)
-
 		console.log("blog_content",this.$prismic.client.get(this.$prismic.filter.at('document.type', 'blogpage')))
-		// console.log(require("dotenv").config())
         try{
 			// Query to get the home page content
 			    await this.$prismic.client.getByUID('page', 'home').then((response)=>{
@@ -134,13 +121,6 @@ export default {
 				console.log(" response.data", response.data)
 
             })
-			
-			// return {
-			// 	// Page content
-			// 	// Set slices as variable
-			// 	slices: homepage.page_content,
-			// 	//SEO
-			// }
 		} catch (e) {
 			console.log('EE: ' ,e)
 			error({ statusCode: 404, message: 'Page not found' })

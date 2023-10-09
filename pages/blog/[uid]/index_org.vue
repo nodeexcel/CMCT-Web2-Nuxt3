@@ -13,7 +13,7 @@
      
   }
   </script>
-  <style>
+  <style scoped>
   
   .topic-href, .topic-href:hover {
       text-decoration: none;

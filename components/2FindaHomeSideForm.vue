@@ -436,7 +436,7 @@ methods: {
 }
 }
 </script>
-<style>
+<style scoped>
 @import "@/assets/css/form.css";
 #sideform header {
 border: none;
