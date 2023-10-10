@@ -1,3 +1,4 @@
+
 <template>
     <!-- <div class="bg-image-outer">
         <picture>
@@ -8,59 +9,287 @@
     </div> -->
     <div class="inner-content-wrapper form form-comman-input mb-5 pb-5">
         <div class="main-part form-cms-build cms-main-wrap px-3">
-            <b-form @submit="onSubmit">
+            <BForm @submit="onSubmit">
                 <div class="row mx-md-0">
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                        <b-input-group prepend="FIRST NAME" class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <b-form-input
+                    <BFormGroup label="FIRST NAME" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4   ">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <BFormInput
                                 id="first_name"
                                 v-model="form.firstName"
                                 placeholder="Required Field"
                                 type="text"
                                 class="form-inputs"
-                            ></b-form-input>
+                            ></BFormInput>
                             <span class="mt-2" v-html="invalidtext"></span>
-                        </b-input-group>
-                        <!-- <div class="mt-2" v-if="showValidationError.firstName">
+                        <!-- </b-input-group> -->
+                        <div class="mt-2" v-if="showValidationError.firstName">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
                             <span class="error">Please enter First Name</span>
-                        </div> -->
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                        <b-input-group prepend="LAST NAME" class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <b-form-input
+                        </div>
+                    </BFormGroup>
+                    <BFormGroup  label="LAST NAME"  class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4  ">
+                        <!-- <b-input-group class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <BFormInput
                                 id="last_name"
                                 v-model="form.lastName"
                                 type="text"
                                 class="form-inputs"
-                            ></b-form-input>
-                        </b-input-group>
-                    </b-form-group>
+                            ></BFormInput>
+                        <!-- </b-input-group> -->
+                    </BFormGroup>
                 
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                        <b-input-group prepend-html="BATHROOM TYPE" class="input-group mb-2 mr-sm-2 mb-sm-0 big-label">
+                    <!-- <BFormGroup label="PHONE"  class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4"> -->
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="form.phoneNumber" /> -->
+                            <!-- <BFormInput
+                                id="phone_number"
+                                v-model="form.phone"
+                                type="text"
+                                class="form-inputs"
+                                required
+                            ></BFormInput> -->
+                        <!-- </b-input-group> -->
+                        <!-- <div class="mt-2" v-if="showValidationError.phoneNumber">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select phoneNumber with country-code</span>
+                        </div>
+                    </BFormGroup> -->
+                    <!-- <BFormGroup  label="WHATSAPP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4"> -->
+                        <!-- <b-input-group -->
+                           
+                            <!-- class="input-group mb-4 mr-sm-2 mb-sm-0"
+                        > -->
+                            <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="form.whatsappNumber" /> -->
+                        <!-- </b-input-group> -->
+                        <!-- <div class="mt-2" v-if="showValidationError.whatsappNumber">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select whatsappNumber with country-code</span>
+                        </div>
+                    </BFormGroup> -->
+                    <BFormGroup label="EMAIL" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <BFormInput
+                                id="email"
+                                v-model="form.email"
+                                type="email"
+                                class="form-inputs"
+                                placeholder="Required Field"
+                            ></BFormInput>
+                        <!-- </b-input-group> -->
+                        <div class="mt-2" v-if="showValidationError.email">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please enter email</span>
+                        </div>
+                    </BFormGroup>
+                    <BFormGroup  label="NATIONALITY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group class="input-group mb-4 mr-sm-2 mb-sm-0 search-ct-imput input-groups"> -->
+                            <!-- <div class="position-relative"> -->
+                                <!-- <VueMultiselect v-model="form.nationality" :options="nationalityOptions" :multiple="false" placeholder="Select nationality" class="form-inputs ct-dropdown-selector" required></VueMultiselect> -->
+                                <!-- <b-form-select id="nationality"  v-model="form.nationality" :options="nationalityOptions" class="form-inputs"></b-form-select> -->
+                                <!-- <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i> -->
+                            <!-- </div> -->
+                        <!-- </b-input-group> -->
+                        <!-- <div class="mt-2" v-if="showValidationError.nationality">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select nationality</span>
+                        </div> -->
+                    </BFormGroup>
+                    <BFormGroup label="GENDER" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <div class="position-relative">
+                                <b-form-select id="gender"  v-model="form.gender" :options="genderOptions" class="form-inputs"></b-form-select>
+                                <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+                            </div>
+                        <!-- </b-input-group> -->
+                        <!-- <div class="mt-2" v-if="showValidationError.gender">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select Gender</span>
+                        </div> -->
+                    </BFormGroup>
+                    <BFormGroup label="JOB" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <BFormInput
+                                id="job_function"
+                                v-model="form.job"
+                                class="form-inputs"
+                                type="text"
+                            ></BFormInput>
+                        <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup  label="AGE GROUP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <div class="position-relative">
+                                <b-form-select id="age_group"  v-model="form.ageGroup" :options="ageGroupOptions" class="form-inputs"></b-form-select>
+                                <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+                            </div>
+                        <!-- </b-input-group> -->
+                        <div class="mt-2" v-if="showValidationError.ageGroup">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select age group</span>
+                        </div>
+                    </BFormGroup>
+                    
+                    <BFormGroup label="BUDGET" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                         <div class="mainRangeSlide">
+                            <div class=" ">
+                             <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div class="min-value numberVal">
+                                    <input type="text" class="" value="900" disabled/>
+                                </div>
+                                <div class="max-value numberVal">
+                                    <input type="text" class="border text-center" value="5,000" disabled />
+                                </div>
+                             </div>
+                             <div class="range-slider">
+                                <div class="progress"></div>
+                                <span class="range-min-wrapper">
+                                    <input class="range-min" type="range" min="900" step="100" max="4600"  v-model="form.minPrice"/>
+                                    <!-- <span class="range-min-value">0</span> -->
+                                </span> 
+                                <span class="range-max-wrapper">
+                                    <input class="range-max" type="range" min="900" step="100" max="5000" v-model="form.maxPrice"/>
+                                    <!-- <span class="range-max-value">100</span> -->
+                                </span>
+                             </div>
+                            </div>
+                         </div>
+                        <!-- </b-input-group> -->
+                        <div class="mt-2" v-if="showValidationError.maxPrice">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select your budget</span>
+                        </div>
+                    </BFormGroup>
+                    <BFormGroup label="BATHROOM TYPE" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0 big-label"> -->
                              <div class="position-relative">
                                 <b-form-select id="room_type" v-model="form.bathroomType" :options="bathroomTypeOptions" class="form-inputs"></b-form-select>
                                 <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
                              </div>
-                        </b-input-group>
+                        <!-- </b-input-group> -->
                         <!-- <div class="mt-2" v-if="showValidationError.bathroomType">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
                             <span class="error">Please select bathroom type</span>
                         </div> -->
-                    </b-form-group>
-                </div>    
-            </b-form>    
-         </div>           
-                   
+                    </BFormGroup>
+                    <!-- <BFormGroup class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0">
+                              <div class="position-relative">
+                                    <b-form-select id="los" v-model="form.sos" :options="sosOptions" class="form-inputs" required></b-form-select>
+                                    <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+                                </div>
+                        </b-input-group>
+                    </BFormGroup> -->
+                    <BFormGroup label="ROOM FOR" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                             <div class="position-relative">
+                                <b-form-select id="los" v-model="form.forCouples" :options="forCouplesOptions" class="form-inputs"></b-form-select>
+                                <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+                            </div>
+                        <!-- </b-input-group> -->
+                        <!-- <div class="mt-2" v-if="showValidationError.forCouples">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select forCouples</span>
+                        </div> -->
+                    </BFormGroup> 
+                    <BFormGroup  label="START OF STAY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <div class="position-relative">
+                                <BFormInput id="example-datepicker" type="date" placeholder="yyyy-mm-dd" v-model="form.sos" class=" form-inputs d-flex"></BFormInput>
+                            </div>
+                        <!-- </b-input-group> -->
+                        <div class="mt-2" v-if="showValidationError.sos">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please enter start of stay</span>
+                        </div>
+                      </BFormGroup>
+                    <BFormGroup  label="LENGTH OF STAY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <div class="position-relative">
+                                <b-form-select id="los" v-model="form.los" :options="losOptions" class="form-inputs" disabled-field="disabled"></b-form-select>
+                                <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+                            </div>
+                        <!-- </b-input-group> -->
+                        <div class="mt-2" v-if="showValidationError.los">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select length of stay</span>
+                        </div>
+                    </BFormGroup>
+                     <BFormGroup label="CITY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                             <div class="position-relative">
+                                <b-form-select id="los" v-model="form.city" :options="cityOptions" class="form-inputs"></b-form-select>
+                                <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+                            </div>
+                        <!-- </b-input-group> -->
+                        <div class="mt-2" v-if="showValidationError.city">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please select city</span>
+                        </div>
+                    </BFormGroup>   
+                     
+                    <BFormGroup label="AREA" class="col-12 pr-3 form-checkbox-label  mb-4 ">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0 d-block"> -->
+                            <b-row class="multiSelectWrapper border-0 px-0">
+                                <b-col class="col-lg-3 col-md-4 col-sm-6 col-12" v-for="(item, index) in areaOptions" :key="index">
+                                <b-form-checkbox v-model="form.area" class="custom-checkbox" :value="item.value">{{item.text}}</b-form-checkbox></b-col>
+                                <!-- <b-form-checkbox-group id="checkbox-group-1" v-model="form.area" :options="areaOptions"></b-form-checkbox-group> -->
+                            </b-row>
+                        <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup class="col-sm-12 update-check form-checkbox-label">
+                        <b-form-checkbox
+                            id="marketing_update"
+                            v-model="form.status"
+                            :checked="form.status"
+                            name="marketing_update"
+                            class="custom-checkbox d-flex single-checkbox"
+                            >
+                            I would like to receive marketing updates from Casa Mia Coliving.
+                        </b-form-checkbox>
+                        <div class="mt-4" v-if="showValidationError.status">
+                            <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                            <span class="error">Please agree for our marketing updates</span>
+                        </div>
+                    </BFormGroup>
+                    <BFormGroup label="DISCOUNT CODE" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
+                            <BFormInput
+                                id="discount_code"
+                                v-model="form.discount_code"
+                                class="form-inputs"
+                                type="text"
+                            ></BFormInput>
+                        <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <div class="col-sm-12 text-center mb-4" v-if="errorMessage.length">
+                        <svg style="height: 50px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
+                        <div class="error">{{ errorMessage }}</div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <b-button type="submit" :disabled="form.isActive" class="pt-3 pb-3 pl-5 pr-5 submitBtn FindAHomeRequest-btn large-button large-button-submit"
+                        id="FindYourNewHomeNow">SUBMIT</b-button>
+                    </div>
+                </div>
+            </BForm>
+        </div>
+        <section v-if="showPopOver == true" class="pop">
+            <div class="d-flex justify-content-end pr-2 pt-1">
+                <i class="fa fa-times ml-3 " aria-hidden="true" @click="closeIdealForPopover()"></i>
+            </div>
+            <div class="d-flex  mascot-row-submitMascot">
+                <span class="col-4 col-lg-4 col-md-4 col-sm-4 p-0"><img class="mascot-image-submitMascot ml-1" src="~/public/Butler_Cartoon_Waving.gif" alt="popover_logo"/></span>
+                <span class="pop-text col-8 col-lg-8 col-md-8 col-sm-8 pl-0 mascot-text">Thank You. We will get in touch with you soon !</span>
+            </div>
+        </section>
     </div>
-  </template>
+</template>
 
 <script>
 import moment from "moment";
 import axios from 'axios';
-import VuePhoneNumberInput from 'vue-phone-number-input';
-import VueMultiselect from "vue-multiselect";
+// import VuePhoneNumberInput from 'vue-phone-number-input';
+// import VueMultiselect from "vue-multiselect";
 import countryList from "./countryList.json";
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {  
@@ -740,7 +969,8 @@ methods: {
 }
 </script>
 <style scoped>
-@import "@/assets/css/form.css";
+@import "../assets/css/form.css";
+@import "../assets/css/common.css";
 
 .pop{
 position: fixed;

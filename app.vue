@@ -19,8 +19,6 @@ export default {
         },
   mounted(){
     console.log("increment",this.increment())
-    // console.log("jjj",process.env.PRISMIC_ENDPOINT)
-    // console.log("jjj",this.$store)
   }
 }
 </script>

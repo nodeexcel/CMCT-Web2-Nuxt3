@@ -61,9 +61,10 @@
 								</ul>
 							</div>
 						</nav>
-						<prismic-link :field="fields.bolder_link" class="dashboard-btn" :style="button " id="FindAHome">
-							{{ $prismic.asText(fields.bolder_link_label) }}
-						</prismic-link>
+						<NuxtLink  :to="`/page/${fields.bolder_link.uid}`" class="dashboard-btn" :style="button " id="FindAHome">
+							<!-- {{ $prismic.asText(fields.bolder_link_label[0]) }} -->
+                Find A Home 
+						</NuxtLink>
 					</div>
 				</div>
 			</div>

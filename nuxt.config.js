@@ -230,21 +230,21 @@ export default defineNuxtConfig({
         }
       }
   },
-  buildModules: [
-    '@nuxtjs/gtm',
-    '@pinia/nuxt',
-    'cookie-universal-nuxt'
-  ],
-  gtm: {
-    id: process.env.GTM_KEY
-  },
+  // buildModules: [
+  //   '@nuxtjs/gtm',
+  //   '@pinia/nuxt',
+  //   'cookie-universal-nuxt'
+  // ],
+  // gtm: {
+  //   id: process.env.GTM_KEY
+  // },
   
-  generate: {
-    fallback: '404.html' // Netlify reads a 404.html, Nuxt will load as an SPA
-  },
+  // generate: {
+  //   fallback: '404.html' // Netlify reads a 404.html, Nuxt will load as an SPA
+  // },
   
-  serverMiddleware: [
-    '~/middleware/seo'
-  ],
+  // serverMiddleware: [
+  //   '~/middleware/seo'
+  // ],
 })
 

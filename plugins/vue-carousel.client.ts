@@ -1,6 +1,5 @@
-import { Carousel, Slide } from 'vue3-carousel';
+import VueMultiselect from 'vue-multiselect';
 
 export default defineNuxtPlugin(nuxtApp => {
-    nuxtApp.vueApp.component('carousel', Carousel);
-    nuxtApp.vueApp.component('slide', Slide);
+    nuxtApp.vueApp.component('VueMultiselect', VueMultiselect);
 })

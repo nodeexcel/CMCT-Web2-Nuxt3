@@ -31,127 +31,127 @@
                 <h2>Fill the form below and we will be in touch soon.</h2>
               </div>
               <div class="ml-xl-5">
-                <b-form @submit="onSubmit" id="New ContactUs">
+                <BForm @submit="onSubmit" id="New ContactUs">
                   <div class="row mx-md-0">
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                      <b-input-group
+                    <BFormGroup label="FIRST NAME" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                      <!-- <b-input-group
                         prepend="FIRST NAME"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
-                        <b-form-input
+                      > -->
+                        <BFormInput
                           id="first_name"
                           v-model="form.firstName"
                           placeholder="Required Field"
                           type="text"
                           class="form-inputs"
                           required
-                        ></b-form-input>
-                      </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                      <b-input-group
+                        ></BFormInput>
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup label="LAST NAME" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                      <!-- <b-input-group
                         prepend="LAST NAME"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
-                        <b-form-input
+                      > -->
+                        <BFormInput
                           id="last_name"
                           v-model="form.lastName"
                           type="text"
                           class="form-inputs"
-                        ></b-form-input>
-                      </b-input-group>
-                    </b-form-group>
+                        ></BFormInput>
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
 
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                      <b-input-group
+                    <BFormGroup label="PHONE" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                      <!-- <b-input-group
                         prepend="PHONE"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
+                      > -->
                       <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" />
                         
-                      </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                      <b-input-group
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup  label="EMAIL" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                      <!-- <b-input-group
                         prepend="EMAIL"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
-                        <b-form-input
+                      > -->
+                        <BFormInput
                           id="email"
                           v-model="form.email"
                           type="email"
                           class="form-inputs"
                           placeholder="Required Field"
                           required
-                        ></b-form-input>
-                      </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
+                        ></BFormInput>
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup label="WHATSAPP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                       
-                      <b-input-group
+                      <!-- <b-input-group
                         prepend="WHATSAPP"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
-                      <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" />
-                      </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                      <b-input-group
+                      > -->
+                      <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" /> -->
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup  label="COMPANY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                      <!-- <b-input-group
                         prepend="COMPANY"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
-                        <b-form-input
+                      > -->
+                        <BFormInput
                           id="company"
                           v-model="form.company"
                           type="text"
                           class="form-inputs"
-                        ></b-form-input>
-                      </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                      <b-input-group
+                        ></BFormInput>
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup  label="ADDRESS" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                      <!-- <b-input-group
                         prepend="ADDRESS"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
-                        <b-form-input
+                      > -->
+                        <BFormInput
                           id="address"
                           v-model="form.address"
                           type="text"
                           class="form-inputs"
-                        ></b-form-input>
-                      </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                        <b-input-group prepend="CITY" class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <b-form-input
+                        ></BFormInput>
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup label="CITY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <!-- <b-input-group prepend="CITY" class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
+                            <BFormInput
                           id="country"
                           v-model="form.city"
                           type="text"
                           class="form-inputs"
-                        ></b-form-input>
-                        </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-lg-6 col-md-12 col-sm-12 form-input-label">
-                      <b-input-group
+                        ></BFormInput>
+                        <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup label="COUNTRY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                      <!-- <b-input-group
                         prepend="COUNTRY"
                         class="input-group mb-2 mr-sm-2 mb-sm-0"
-                      >
-                        <b-form-input
+                      > -->
+                        <BFormInput
                           id="country"
                           v-model="form.country"
                           type="text"
                           class="form-inputs"
-                        ></b-form-input>
-                      </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-12 form-input-label text-area px-0 mx-0">
-                        <b-input-group prepend="MESSAGE" class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <b-row class="multiSelectWrapper mx-0">
+                        ></BFormInput>
+                      <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup label="MESSAGE" class="col-12 form-input-label text-area  mx-0 mb-4">
+                        <!-- <b-input-group prepend="MESSAGE" class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
+                            <b-row class="multiSelectWrapper">
                               <b-form-textarea id="message" class="mx-3" v-model="form.message" rows="3" placeholder="Required Field" required></b-form-textarea>
                             </b-row>
-                        </b-input-group>
-                    </b-form-group>
-                    <b-form-group class="col-sm-12 update-check form-checkbox-label">
+                        <!-- </b-input-group> -->
+                    </BFormGroup>
+                    <BFormGroup  class="col-sm-12 update-check form-checkbox-label mb-4">
                           <b-form-checkbox
                                 id="marketing_update"
                                 v-model="form.status"
@@ -161,7 +161,7 @@
                               >
                             I would like to receive marketing updates from Casa Mia Coliving.
                           </b-form-checkbox>
-                      </b-form-group>
+                      </BFormGroup>
                     <div class="col-sm-12 text-center text-md-right mt-3 mt-xl-4">
                       <b-button
                         type="submit"
@@ -172,7 +172,7 @@
                       >
                     </div>
                   </div>
-                </b-form>
+                </BForm>
               </div>
             </div>
         </div>
@@ -211,18 +211,18 @@ export default {
     };
   },
 	created() {
-		var formData = this.$store.state.preFillForm
-		this.form.firstName = formData.firstName
-		this.form.lastName = formData.lastName
-		this.form.phone = formData.phone
-		this.phoneNumber = formData.phone
-		this.form.email = formData.email
-		this.form.whatsapp = formData.whatsapp
-		this.whatsappNumber = formData.whatsapp
-		this.form.company = formData.company
-		this.form.address = formData.address
-		this.form.city = formData.city
-		this.form.country = formData.country
+		// var formData = this.$store.state.preFillForm
+		// this.form.firstName = formData.firstName
+		// this.form.lastName = formData.lastName
+		// this.form.phone = formData.phone
+		// this.phoneNumber = formData.phone
+		// this.form.email = formData.email
+		// this.form.whatsapp = formData.whatsapp
+		// this.whatsappNumber = formData.whatsapp
+		// this.form.company = formData.company
+		// this.form.address = formData.address
+		// this.form.city = formData.city
+		// this.form.country = formData.country
 	},
   methods: {
     getWhatsappNumber(data){
@@ -326,6 +326,7 @@ export default {
 </script>
 <style scoped>
 @import "@/assets/css/form.css";
+@import "../assets/css/common.css";
 /* phone input */
 .country-selector__input{
   border-top-left-radius: 10px !important;

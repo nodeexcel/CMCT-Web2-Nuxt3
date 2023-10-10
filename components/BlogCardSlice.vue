@@ -143,14 +143,8 @@ export default {
     methods: {
         async getTopicsData() {
              var self = this
-             console.log("response 158", this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')}))
-             this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')}).then(async (response) => {
-                console.log("response 155", this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')}))
-             })
-             
             await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')},{}).then(async (response) => {
                 var sortable = [];
-                console.log("response 135",response)
                 for (let item of response.results) {
                     sortable.push([item.id, item.data.topic]);
                 }

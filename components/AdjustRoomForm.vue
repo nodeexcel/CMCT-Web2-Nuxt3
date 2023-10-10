@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-12 col-lg-6 col-md-12 mx-md-0 align-items-center d-flex">
                     <div class="step-1 modal-right-padding" v-show="currentStep === 1">
-                        <form ref="form" @submit="onSubmit">
+                        <BForm ref="form" @submit="onSubmit">
                             <div class="row mx-md-0">
                                 <div class="col-md-12 top-text-box">
                                     <h1>EXPLORE LEASING OPTIONS</h1>
@@ -63,14 +63,14 @@
                                         </span></h2>
                                         <div class="sub-title" v-if="this.$store.state.sideFormTop.availableDate != ''">{{ this.$store.state.sideFormTop.availableDate }}</div>
                                     </div>
-                                    <b-form-group
+                                    <BFormGroup
                                         label="Room Type"
                                         class="col-lg-12 col-md-12 col-sm-12"
                                         >
                                         <b-form-select id="roomtype" v-model="form.roomType" :options="roomTypeOptions"  v-on:change="getSelectedItem" class="form-inputs find-select" required ></b-form-select>
                                         <i class="fa fa-sort-desc find-form-dropdown-arrow" aria-hidden="true"></i>
-                                    </b-form-group>
-                                    <b-form-group
+                                    </BFormGroup>
+                                    <BFormGroup
                                         label="Bed Type"
                                         class="col-lg-12 col-md-12 col-sm-12"
                                         v-if="bedsTypeOptions.length > 0 && bedsDropdown == true"
@@ -79,8 +79,8 @@
                                                 :options="bedsTypeOptions" v-on:change="getSelectedBed"
                                                 class="form-inputs find-select" required></b-form-select>
                                               <i class="fa fa-sort-desc find-form-dropdown-arrow" aria-hidden="true"></i>
-                                    </b-form-group>
-                                    <b-form-group
+                                    </BFormGroup>
+                                    <BFormGroup
                                         label="Start of stay"
                                         class="col-lg-12 col-md-12 col-sm-12"
                                         >
@@ -93,8 +93,8 @@
                                                 placeholder="yyyy-mm-dd"
                                                 required
                                             ></b-form-input>
-                                    </b-form-group>
-                                    <b-form-group
+                                    </BFormGroup>
+                                    <BFormGroup
                                         label="Lease Length"
                                         class="col-lg-12 col-md-12 col-sm-12"
                                         >
@@ -104,7 +104,7 @@
                                             <!-- <b-form-input id="los" v-model="form.los" type="range" step="3" min="3" max="12"></b-form-input> -->
                                             <b-form-input id="AdjustLeaseDuration" v-model="form.los" type="range" step="3" min="3" max="12"></b-form-input>
                                         </div>
-                                    </b-form-group>
+                                    </BFormGroup>
                                 </div>
                            </div>
                            <div class="row">
@@ -116,11 +116,11 @@
                                     </div>
                                 </div>
                            </div>
-                        </form>
+                        </BForm>
                     </div>
 
                     <div class="step-2" v-show="currentStep === 2">
-                        <form ref="form" @submit="onSubmit">
+                        <BForm ref="form" @submit="onSubmit">
                             <div class="row mx-md-0">
                                 <div class="col-md-12 step-2-text">
                                     <h1>TELL US ABOUT YOURSELF</h1>
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="row mx-md-0">
-                                <b-form-group
+                                <BFormGroup
                                     label="First name"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
@@ -140,8 +140,8 @@
                                         class="form-inputs"                                    
                                         required
                                     ></b-form-input>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Last name"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
@@ -153,20 +153,20 @@
                                         class="form-inputs"
                                         required
                                     ></b-form-input>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Phone"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
                                     <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true"  :required="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" />
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="WhatsApp"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
                                     <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" />
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Email"
                                     class="col-lg-12 col-md-12 col-sm-12"
                                     >
@@ -178,8 +178,8 @@
                                         placeholder="Required Field"
                                         required
                                     ></b-form-input>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Job"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
@@ -191,8 +191,8 @@
                                         type="text"
                                         required
                                     ></b-form-input>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Company/school"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
@@ -202,15 +202,15 @@
                                         class="form-inputs"
                                         type="text"
                                     ></b-form-input>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Age group"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
                                     <b-form-select id="age_group" v-model="form.ageGroup" :options="ageGroupOptions" class="form-inputs find-select" required ></b-form-select>
                                     <i class="fa fa-sort-desc find-form-dropdown-arrow" aria-hidden="true"></i>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Discount code"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
@@ -220,14 +220,14 @@
                                         class="form-inputs"
                                         type="text"
                                     ></b-form-input>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     label="Other requests"
                                     class="col-lg-12 col-md-12 col-sm-12"
                                     >
                                     <b-form-textarea id="other_request" v-model="form.other_request" rows="3"></b-form-textarea>
-                                </b-form-group>
-                                <b-form-group class="col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form">
+                                </BFormGroup>
+                                <BFormGroup class="col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form">
                                     <b-form-checkbox
                                         id="roominperson"
                                         class="d-flex"
@@ -238,9 +238,9 @@
                                         >
                                         I would like to view the room in person.
                                     </b-form-checkbox>
-                                </b-form-group>
-                                <b-form-group v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
-                                    <b-form-group
+                                </BFormGroup>
+                                <BFormGroup v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                                    <BFormGroup
                                         label="Preferred date for a viewing"
                                         >
                                         <b-form-input
@@ -253,10 +253,10 @@
                                             placeholder="yyyy-mm-dd"
                                             required
                                         ></b-form-input>
-                                    </b-form-group>
-                                </b-form-group>
-                                <b-form-group v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
-                                    <b-form-group
+                                    </BFormGroup>
+                                </BFormGroup>
+                                <BFormGroup v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                                    <BFormGroup
                                         label="Preferred time for a viewing"
                                         >
                                         <b-form-input
@@ -267,15 +267,15 @@
                                             placeholder="Time"
                                             required
                                         ></b-form-input>
-                                    </b-form-group>
-                                </b-form-group>
-                                <b-form-group v-if="form.roominperson" class="col-lg-12 col-md-12 col-sm-12 mx-auto">
-                                    <b-form-group
+                                    </BFormGroup>
+                                </BFormGroup>
+                                <BFormGroup v-if="form.roominperson" class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+                                    <BFormGroup
                                         label="The viewing is not confirmed yet. One of our Sales representatives will contact you about your request."
                                         >
-                                    </b-form-group>
-                                </b-form-group>
-                                <b-form-group class="col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form">
+                                    </BFormGroup>
+                                </BFormGroup>
+                                <BFormGroup class="col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form mb-4">
                                     <b-form-checkbox
                                         id="marketing_update"
                                         class="d-flex"
@@ -286,13 +286,13 @@
                                         >
                                         I would like to receive marketing updates from Casa Mia Coliving.
                                     </b-form-checkbox>
-                                </b-form-group>
+                                </BFormGroup>
                                 <div class="col-sm-12 mb-5 text-center submit-btn">
                                     <b-button type="button" class="btn cancel-btn" @click="currentStep = 1">Back</b-button>
                                     <b-button type="submit" :id="$store.state.roomId != '' ? 'Home(specific)Request-' + $store.state.roomId : 'Home(specific)Request-' + slice.homeID" :disabled="(form.isActive || disableButton)">Continue <b-spinner v-if="(form.isActive || disableButton)" class="loading-spinner" small label="Small Spinner"></b-spinner></b-button>
                                 </div>
                             </div>
-                        </form>
+                        </BForm>
                     </div>
                     <div class="step-3" v-show="currentStep === 3">
                         <div class="row mx-md-0 ">
@@ -339,14 +339,14 @@
 <script>
 import axios from 'axios';
 import moment from 'moment'
-import VuePhoneNumberInput from 'vue-phone-number-input';
+// import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {  
     name: 'adjust-home-form',
     props: ['slice'],
-    components:{
-        VuePhoneNumberInput
-    },
+    // components:{
+    //     VuePhoneNumberInput
+    // },
     data() {
         return {
             sideFormBackgroundColor: '#ffb903', //this.slice.sideFormBackgroundColor,
@@ -549,15 +549,15 @@ export default {
         }
     },
     created () {
-        var formData = this.$store.state.preFillForm
-		this.form.firstName = formData.firstName
-		this.form.lastName = formData.lastName
-		this.form.phone = formData.phone
-		this.form.email = formData.email
-        this.form.los = formData.los == null ? 12 : formData.los
-        this.form.ageGroup = formData.ageGroup
-        this.form.job = formData.job
-        this.form.discount_code = formData.discount_code
+        // var formData = this.$store.state.preFillForm
+		// this.form.firstName = formData.firstName
+		// this.form.lastName = formData.lastName
+		// this.form.phone = formData.phone
+		// this.form.email = formData.email
+        // this.form.los = formData.los == null ? 12 : formData.los
+        // this.form.ageGroup = formData.ageGroup
+        // this.form.job = formData.job
+        // this.form.discount_code = formData.discount_code
     },
     methods: {
         getNow(days) {
@@ -804,6 +804,7 @@ export default {
 </script>
 <style scoped>
 @import "@/assets/css/form.css";
+@import "../assets/css/common.css";
 .country-selector__input , .input-tel__input{
     background: #fff !important;
 }

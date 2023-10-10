@@ -1,10 +1,10 @@
 <template>
-    <router-link v-if="linkType == 'submenu'" :to="`/page/${item.sub_nav_link.uid}`" :key="'header-item-' + index" @click="closeMenu()" :class="className">
+    <NuxtLink v-if="linkType == 'submenu'" :to="`/page/${item.sub_nav_link.uid}`" :key="'header-item-' + index" @click="closeMenu()" :class="className">
         {{ $prismic.asText(item.sub_nav_link_label) }}
-    </router-link >
-    <prismic-link v-else :field="item.primary.link" :class="className" @click="closeMenu()" :key="'nav-link-' + index">
+    </NuxtLink >
+    <NuxtLink  v-else :to="`/page/${item.primary.link.uid}`"   :class="className" @click="closeMenu()" :key="'nav-link-' + index">
         {{ $prismic.asText(item.primary.label) }}
-    </prismic-link>
+    </NuxtLink >
 </template>
 
 <script>

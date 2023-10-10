@@ -46,6 +46,7 @@
 
 // import VueSlickCarousel from 'vue-slick-carousel'
 // import {  VueSlickCarousel }  from 'vue-slick-ts' 
+  
   import "vue-slick-ts/dist/css/slick.css";
 
 export default {

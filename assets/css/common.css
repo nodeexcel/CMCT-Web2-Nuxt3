@@ -6,13 +6,13 @@
 
 @font-face {
     font-family: 'helveticaneue-bold';
-    src: url('/fonts/Helvetica Neu Bold.ttf') format('truetype');
+    src: url('/assets/fonts/Helvetica\ Neu\ Bold.ttf') format('truetype');
     font-display: optional
 }
 
 @font-face {
     font-family: 'helveticaneue-font';
-    src: url('/fonts/HelveticaNeue.ttf') format('truetype');
+    src: url('') format('truetype');
     font-display: optional
 }
 
