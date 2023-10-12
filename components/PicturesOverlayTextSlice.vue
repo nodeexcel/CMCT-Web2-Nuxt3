@@ -10,7 +10,7 @@
                           <div class="picturesoverlay-heading-text text-center" :style="{'color': item.top_bubble_text_color}" >{{ item.top_overlay_text}}</div>
                           <div class="picturesoverlay-img"> 
                               <source :data-srcset="item.image.url" media="(max-width: 750px)" class="lazyload" >
-                              <img :data-src="item.image.desktop_three_pictures.url" class="lazyload" >
+                              <nuxt-img :src="item.image.desktop_three_pictures.url" class="lazyload" />
                           </div>
                           <div class="picturesoverlay-subheading">{{item.bottom_overlay_text}}</div>
                       </div>

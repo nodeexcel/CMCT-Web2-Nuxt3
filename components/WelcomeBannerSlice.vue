@@ -88,9 +88,9 @@
 									<div>
 										<prismic-rich-text :field="slice.primary.subtitle" v-if="slice.primary.subtitle" class="description square-type-subheading"/>
 										<p class="title content-h3-heading mb-3 pt-xl-1 mb-xl-5 pb-xl-3"><prismic-rich-text :field="slice.primary.title"/></p>
-										<prismic-link :field="slice.primary.button_link1" class="btn book-now-table-btn d-inline-block silder-content-box-btn ">
+										<NuxtLink :to="`/blog/${slice.primary.button_link1.uid}`" class="btn book-now-table-btn d-inline-block silder-content-box-btn ">
 											{{ slice.primary.button_text }} 
-										</prismic-link>
+										</NuxtLink>
 									</div>
 								</div>
 							</div>
@@ -175,6 +175,8 @@ export default {
 }
 </script>
 <style scoped>
+/* @import "../assets/css/common.css"; */
+
 .home-subbanner-page .silder-content-box{
 	width: 674px;
 	z-index: 2;
@@ -288,6 +290,20 @@ export default {
 	margin-bottom: 0px !important;
 	padding-bottom: 100px !important;
 }
+:deep(.silder-content-box-description > h4)
+{
+	border: 0;
+    font-size: 100%;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+:deep(.silder-content-box-description > p)
+{
+	font-weight: 400 !important;
+}
+
 /* .mosaic-image img:nth-child(1){
 	width: calc(35.5% - 7.5px);
 	height: calc(50% - 7.5px);

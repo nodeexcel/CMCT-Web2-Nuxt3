@@ -291,7 +291,7 @@ import axios from 'axios';
 import VueTelInput from 'vue3-tel-input'
 // import VuePhoneNumberInput from 'vue-phone-number-input';
 // import VueMultiselect from "vue-multiselect";
-// import countryList from "./countryList.json";
+import countryList from "./countryList.json";
 import 'vue3-tel-input/dist/vue3-tel-input.css'
 export default {  
 name: 'finda-home-form',

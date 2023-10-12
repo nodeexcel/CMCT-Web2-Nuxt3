@@ -44,7 +44,7 @@
                                                 class="text-md-center mb-0"
                                             >
                                             <div class="position-relative">
-                                                <b-form-select id="city" v-model="form.city" :options="item.drop_down_list" class="form-inputs" required></b-form-select>
+                                                <b-form-select id="city" v-model="form.city" :options="item.drop_down_list" class="form-inputs custom-select" required></b-form-select>
                                                  <i class="fa fa-sort-desc call-form-dropdown-arrow" aria-hidden="true"></i>
                                             </div>
                                             </b-form-group>
