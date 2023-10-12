@@ -1,5 +1,5 @@
 <template>
-  <section class="content-page findahome">
+  <section >
     <!-- {{ envdeatils }} -->
     <b-container fluid class="px-0">
           <BuildingCardSlice

@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 const appRoutes = require('../routes.json');
 const Prismic = require('@prismicio/client');
 

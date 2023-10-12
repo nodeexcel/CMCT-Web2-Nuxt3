@@ -62,8 +62,9 @@
 							</div>
 						</nav>
 						<NuxtLink  :to="`/page/${fields.bolder_link.uid}`" class="dashboard-btn" :style="button " id="FindAHome">
+              <prismic-rich-text class="details text-image-slice-description" :field="fields.bolder_link_label"/> 
 							<!-- {{ $prismic.asText(fields.bolder_link_label[0]) }} -->
-                Find A Home 
+                <!-- Find A Home  -->
 						</NuxtLink>
 					</div>
 				</div>
@@ -238,14 +239,7 @@ export default {
   },
        async mounted(){
 
-        this.performPrismicOperation(this.$prismic.client.getSingle, 'menu')
-          .then(menuData => {
-            // Use the menuData here
-            // console.log(menuData);
-          })
-          .catch(error => {
-            console.error('Error fetching data:', error);
-          });
+        
 
           this.$prismic.client.getSingle('menu').then((result) => {
           let menuContent = result

@@ -10,6 +10,7 @@
 </script>
 
 <script>
+import { client } from '~/prismic/prismic'
 export default {
 	name: 'Home',
 	layout: 'homepage',
@@ -112,7 +113,7 @@ export default {
     async mounted(){
 		const envVars = useRuntimeConfig();
 		console.log("env",envVars)
-		console.log("blog_content",this.$prismic.client.get(this.$prismic.filter.at('document.type', 'blogpage')))
+		console.log("blog_content",client.get(this.$prismic.filter.at('document.type', 'blogpage')))
         try{
 			// Query to get the home page content
 			    await this.$prismic.client.getByUID('page', 'home').then((response)=>{

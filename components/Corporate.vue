@@ -44,7 +44,7 @@
                 prepend="PHONE"
                 class="input-group mb-2 mr-sm-2 mb-sm-0"
               > -->
-              <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" />
+              <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" /> -->
               <!-- </b-input-group> -->
             </BFormGroup>
             <BFormGroup  label="EMAIL" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
@@ -67,7 +67,7 @@
                 prepend="WHATSAPP"
                 class="input-group mb-2 mr-sm-2 mb-sm-0"
               > -->
-                <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" />
+                <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" /> -->
               <!-- </b-input-group> -->
             </BFormGroup>
             <BFormGroup label="COMPANY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">

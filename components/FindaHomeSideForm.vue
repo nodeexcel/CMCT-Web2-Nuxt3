@@ -168,11 +168,11 @@
                                         type="text" class="form-inputs" required></b-form-input>
                                 </b-form-group>
                                 <b-form-group label="Phone" class="col-lg-6 col-md-12 col-sm-12">
-                                    <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true"
+                                    <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" -->
                                         :no-example="true" :required="true" no-use-browser-locale v-model="phoneNumber" />
                                 </b-form-group>
                                 <b-form-group label="WhatsApp" class="col-lg-6 col-md-12 col-sm-12">
-                                    <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true"
+                                    <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" -->
                                         :no-example="true" no-use-browser-locale v-model="whatsappNumber" />
                                 </b-form-group>
                                 <b-form-group label="Email" class="col-lg-12 col-md-12 col-sm-12">
@@ -297,8 +297,8 @@
 <script>
 import axios from 'axios';
 import moment from 'moment'
-import VuePhoneNumberInput from 'vue-phone-number-input';
-import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+// import VuePhoneNumberInput from 'vue-phone-number-input';
+// import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {
     name: 'finda-home-side-form',
     props: ['slice'],

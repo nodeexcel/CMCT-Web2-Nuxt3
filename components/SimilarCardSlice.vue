@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import lazysizes from 'lazysizes';
+// import lazysizes from 'lazysizes';
 import Multiselect from 'vue-multiselect'
 import VueHorizontalList from 'vue-horizontal-list';
 import axios from 'axios';

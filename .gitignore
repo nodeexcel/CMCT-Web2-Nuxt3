@@ -5,17 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
-.DS_Store
-.fleet
-.idea
-# Node dependencies
-node_modules
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

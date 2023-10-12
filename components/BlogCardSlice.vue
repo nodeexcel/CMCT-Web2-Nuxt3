@@ -62,13 +62,13 @@
 // let topic = this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)})
 // import moment from 'moment'
 // import Paginate from '~/components/Paginate.vue'
-import Paginate from '~/components/Paginate.vue'
+// import Paginate from '~/components/Paginate.vue'
 export default {
     props: ['slice'],   
     name: 'blog-cards',
-    components: {
-        Paginate
-    },
+    // components: {
+    //     Paginate
+    // },
     data() {
         return {
             blogList: [],

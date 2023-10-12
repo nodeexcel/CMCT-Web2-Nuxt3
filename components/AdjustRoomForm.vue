@@ -10,7 +10,7 @@
                     <div class="header-modal-xl d-flex align-items-center justify-content-between">
                         <div>
                             <a href="/" id="HomepageButton" class="modal-header-logo" data-v-a9656efa="">
-                            <img src="https://images.prismic.io/cmct-web/84e86b12-dfd7-46eb-ac61-f2cb4f43f553_Logo+for+website.png?auto=compress,format&amp;rect=0,0,3992,1774&amp;w=135&amp;h=60" alt="Casa Mia Coliving logo" copyright="Casa Mia Coliving, 2021" data-v-a9656efa=""></a>
+                            <nuxt-img src="https://images.prismic.io/cmct-web/84e86b12-dfd7-46eb-ac61-f2cb4f43f553_Logo+for+website.png?auto=compress,format&amp;rect=0,0,3992,1774&amp;w=135&amp;h=60" alt="Casa Mia Coliving logo" copyright="Casa Mia Coliving, 2021" data-v-a9656efa="" format="webp"/></a>
                         </div>
                         <button type="button" class="header-close-button" @click="closeModal()">Close</button>
                     </div>
@@ -23,7 +23,7 @@
                         :src="slice.threeDtourLink"
                         allowfullscreen
                     ></b-embed>
-                    <img v-else-if="this.$store.state.sideFormTop.mainImage != ''" :src="this.$store.state.sideFormTop.mainImage" class="detail-box-img"/>
+                    <nuxt-img v-else-if="this.$store.state.sideFormTop.mainImage != ''" :src="this.$store.state.sideFormTop.mainImage" class="detail-box-img" format="webp"/>
                 </div>
                 <div class="col-sm-12 col-lg-6 col-md-12 mx-md-0 align-items-center d-flex">
                     <div class="step-1 modal-right-padding" v-show="currentStep === 1">
@@ -158,13 +158,13 @@
                                     label="Phone"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
-                                    <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true"  :required="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" />
+                                    <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true"  :required="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" /> -->
                                 </BFormGroup>
                                 <BFormGroup
                                     label="WhatsApp"
                                     class="col-lg-6 col-md-12 col-sm-12"
                                     >
-                                    <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" />
+                                    <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" /> -->
                                 </BFormGroup>
                                 <BFormGroup
                                     label="Email"
@@ -340,7 +340,7 @@
 import axios from 'axios';
 import moment from 'moment'
 // import VuePhoneNumberInput from 'vue-phone-number-input';
-import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+// import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {  
     name: 'adjust-home-form',
     props: ['slice'],

@@ -54,18 +54,18 @@
                             <span class="error">Please select phoneNumber with country-code</span>
                         </div>
                     </BFormGroup> -->
-                    <!-- <BFormGroup  label="WHATSAPP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4"> -->
+                    <BFormGroup  label="WHATSAPP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group -->
                            
                             <!-- class="input-group mb-4 mr-sm-2 mb-sm-0"
                         > -->
-                            <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="form.whatsappNumber" /> -->
+                            <!-- <VueTelInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="form.whatsappNumber" /> -->
                         <!-- </b-input-group> -->
                         <!-- <div class="mt-2" v-if="showValidationError.whatsappNumber">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
                             <span class="error">Please select whatsappNumber with country-code</span>
-                        </div>
-                    </BFormGroup> -->
+                        </div>-->
+                    </BFormGroup> 
                     <BFormGroup label="EMAIL" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
                             <BFormInput
@@ -288,10 +288,11 @@
 <script>
 import moment from "moment";
 import axios from 'axios';
+import VueTelInput from 'vue3-tel-input'
 // import VuePhoneNumberInput from 'vue-phone-number-input';
 // import VueMultiselect from "vue-multiselect";
-import countryList from "./countryList.json";
-import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+// import countryList from "./countryList.json";
+import 'vue3-tel-input/dist/vue3-tel-input.css'
 export default {  
 name: 'finda-home-form',
 props: ['banner'],

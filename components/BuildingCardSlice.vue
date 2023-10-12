@@ -70,7 +70,7 @@
 					  <p>{{ currentHomeLists.length }} {{ resultFor }}</p>
 					  <b-button
 					    v-if="temp !== true"
-						@click="changeList"
+						@click="changeList()"
 						style="background-color: #72BF44; border: none;"
 						>See By
 						{{
@@ -236,12 +236,12 @@
 															  </datalist>
 													  </b-input-group>
 												  </b-form-group> -->
-						<b-form-group
+						<BFormGroup
 						  class="col-lg-12 col-md-12 col-sm-12 neighbourhood-check"
 						>
-						  <b-input-group
+						  <!-- <b-input-group
 							class="neighbour mb-2 mr-sm-2 mb-sm-0 city-list-main"
-						  >
+						  > -->
 							<template v-slot:prepend>
 							  <b-input-group-text
 								:style="{ 'background-color': '#72bf44' }"
@@ -249,17 +249,17 @@
 								AREA
 							  </b-input-group-text>
 							</template>
-							<b-form-checkbox-group
+							<BFormCheckboxGroup
 							  id="neighbour"
 							  @change="areaChange($event)"
 							  class="form-inputs custom-checkbox-true checkbox-dropdown"
 							  v-model="searchFilter.area"
 							  :options="areas"
 							  name="flavour-1"
-							></b-form-checkbox-group>
-						  </b-input-group>
+							></BFormCheckboxGroup>
+						  <!-- </b-input-group> -->
 						  <!-- :style="{'border-color': divider_and_button_color, 'color': divider_and_button_color, '--divider-and-button-color': divider_and_button_color}" -->
-						</b-form-group>
+						</BFormGroup>
 						<div class="col-sm-12 text-center submit-btn">
 						  <b-button
 							variant="primary"
@@ -628,14 +628,14 @@
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label search-ct-imput"
 						  >
-							<vue-multiselect
+							<!-- <vue-multiselect
 							  v-model="searchFilter.nationality"
 							  :options="nationalityOptions"
 							  :multiple="false"
 							  placeholder="Select nationality"
 							  class="form-inputs ct-dropdown-selector"
 							  required
-							></vue-multiselect>
+							></vue-multiselect> -->
 							<!-- <b-form-select
 														  filter
 														  id="ageGroup"
@@ -694,7 +694,7 @@
 					  <template v-slot:default="{ item }">
 						<div class="item">
 						  <div class="content-wrap">
-							<n-link
+							<NuxtLink
 							  :to="'/findahome/' + item.homeID"
 							  class="card-link"
 							  :id="'HomeDetails Card - ' + item.homeID"
@@ -769,7 +769,7 @@
 								  </div>
 								</div>
 							  </div>
-							</n-link>
+							</NuxtLink>
 						  </div>
 						</div>
 					  </template>
@@ -790,25 +790,27 @@
 					  "
 					>
 					  <div class="content-wrap h-100">
-						<n-link
+						<NuxtLink
 						  :to="'/findahome/' + item.homeID"
 						  class="card-link"
 						  :id="'HomeDetails Card - ' + item.homeID"
 						>
 						  <div class="room-image">
-							<img
+							<nuxt-img
 							  v-if="item.banner.url == ''"
 							  src="~/assets/img/noImageAvailable.png"
 							  :alt="item.banner.altText"
 							  class="w-100 d-block"
+							  format="webp"
 							/>
 							<!-- <prismic-image v-else  :field="item.image"  /> -->
-							<img
+							<nuxt-img
 							  v-else
 							  :src="item.banner.url"
 							  :key="item.banner.url"
 							  class="lazyload w-100 d-block full-width-image"
 							  :alt="item.banner.altText"
+							  format="webp"
 							/>
 							<div
 							  class="overlay"
@@ -1061,7 +1063,7 @@
 														  </div> -->
 							</div>
 						  </div>
-						</n-link>
+						</NuxtLink>
 					  </div>
 					</div>
 				  </template>
@@ -1075,7 +1077,7 @@
 		  :class="[isMap ? (!isList ? 'col-12' : '') : 'map-hide'] + ' map-outer'"
 		  v-if="slice.primary.map === true"
 		>
-		  <div class="google-map" :id="mapName"></div>
+		  <!-- <div class="google-map" :id="mapName"></div> -->
 		</b-col>
 	  </b-row>
 	</div>
@@ -1086,13 +1088,13 @@
 //   import LottieAnimation   from "lottie-web-vue";
 //   import lottie from 'lottie-web';
   import moment from "moment";
-  import Multiselect from "vue-multiselect";
+//   import Multiselect from "vue-multiselect";
   import VueHorizontalList from "vue-horizontal-list";
   import axios from "axios";
   import countryList from "./countryList.json";
   //import VueSingleSelect from "vue-single-select";
-  import VueMultiselect from "vue-multiselect";
-  import "vue-multiselect/dist/vue-multiselect.min.css";
+//   import VueMultiselect from "vue-multiselect";
+//   import "vue-multiselect/dist/vue-multiselect.min.css";
   function elementInViewport(el) {
 	if (el != null) {
 	  var top = el.offsetTop;
@@ -1524,6 +1526,7 @@
 		this.sortHomelist();
 	  },
 	 changeList() {
+		console.log("ok")
 		let homeList = []
 		const searchResultsFor = this.resultFor === "Homes" ? "Rooms" : "Homes"
 		if(this.isSingaporeMasterPage) {
@@ -1803,7 +1806,7 @@
 		this.totalResult = null
 		this.openFilterbox(this.boxtype);
 		this.searchResult(this.boxtype);
-		this.setCoordinates();
+		// this.setCoordinates();
 		this.sortHomelist();
 	  },
 	  routeChange() {
@@ -2542,7 +2545,7 @@
 			else{
 			  this.newHomeLists  = JSON.parse(JSON.stringify(filteredarray));
 			}
-		this.setCoordinates();
+		// this.setCoordinates();
 		this.routeChange();
 	  },
 	  setArea(selCity) {
@@ -2821,7 +2824,7 @@
 		if (this.currentWidth != window.innerWidth) {
 		  if (window.innerWidth < 768) {
 			if (this.isMap == true && this.isList == true) {
-			  this.setCoordinates();
+			//   this.setCoordinates();
 			  this.isList = false;
 			  this.showMapOrList();
 			}
@@ -2999,7 +3002,7 @@
 		this.routeChange();
 		let query = Object.assign({}, this.$route.query);
 		console.log("query123",query)
-	  if (this.slice.primary.map === true) this.setCoordinates();
+	//   if (this.slice.primary.map === true) this.setCoordinates();
 	  // ---- <!-- =========[Range-Start]=========== -->----//
 	  const range = document.querySelectorAll(".range-slider span input");
 	  var progress = document.querySelector(".range-slider .progress");
@@ -3220,6 +3223,7 @@
   @import "../assets/css/filterform.css";
   @import "../assets/css/MultiRangeSliderBlack.css";
   @import "../assets/css/MultiRangeSliderBarOnly.css";
+  @import "../assets/css/common.css";
   /* ----------mainRangeSlide-range-start----- */
   .mainRangeSlide {
 	width: 100%;
@@ -3465,6 +3469,7 @@
 	border-radius: 4px;
 	line-height: 31px;
 	padding: 0 4px;
+	background-color: rgb(114, 191, 68);
 	transition: all 0.5s ease;
   }
   .building-cms .room-image .overlay :first-child:hover {

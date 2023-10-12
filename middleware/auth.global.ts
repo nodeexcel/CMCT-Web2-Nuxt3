@@ -1,3 +1,3 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
-  console.log('middleware/auth.global',to)
-})
+    console.log('middleware/auth.global',to)
+  })

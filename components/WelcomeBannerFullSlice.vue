@@ -8,7 +8,7 @@
 					<picture>
 						<source :data-srcset="slice.primary.image.mobile.url" media="(max-width: 750px)" class="lazyload" >
             <div :style="{'height': JSON.stringify(css) - 177 +'px'}" class="welcome-banner-section-div">
-						  <img :data-src="slice.primary.image.url" class="lazyload welcome-banner-section-img">
+						  <nuxt-img :src="slice.primary.image.url" class="lazyload welcome-banner-section-img" />
             </div>
 					</picture>
           <div class="silder-content inner-content-wrapper">
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import lazysizes from 'lazysizes';
+// import lazysizes from 'lazysizes';
 // import FindYourHomeForm from '~/components/slices/FindYourHomeSlice.vue'
 export default {
   props: ['slice', 'FindYourHome'],

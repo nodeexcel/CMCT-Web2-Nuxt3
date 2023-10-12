@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import {client} from '~/prismic/prismic';
+// import {client} from '~/prismic/prismic';
 
 //import func from '../../vue-temp/vue-editor-bridge';
 export default {
@@ -127,7 +127,7 @@ export default {
   },
   mounted () {
     // this.getMenu()
-         client.getSingle('menu').then((result) => {
+         this.$prismic.client.getSingle('menu').then((result) => {
           // let menuContent = result
           let footerContent = result
           //console.log('footerContent: ', footerContent.data)

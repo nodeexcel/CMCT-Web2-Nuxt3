@@ -14,7 +14,7 @@
 									<prismic-link v-if="slice.primary.button_text != null && slice.primary.button_text != ''" :field="slice.primary.button_link1" class="btn btn-success book-now-table-btn d-inline-block silder-content-box-btn ">
 										{{ slice.primary.button_text }} 
 									</prismic-link>
-								</div>>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -101,7 +101,7 @@
 								img-width="1024"
 								img-height="480" class="slider-img home-subbanner-carousel home-subbanner-carousel-square">
 								<template v-for="(value,index) in items" :key="index">
-									<img :src="value.image['square'].url" alt="">
+									<nuxt-img :src="value.image['square'].url" format="webp" alt="" />
 									<!-- <b-carousel-slide :img-src="value.image['square'].url" ></b-carousel-slide> -->
 								</template>
 							</b-carousel>
@@ -115,7 +115,7 @@
 				<div class="row align-items-center">
 					<div class="col-md-12 order-1 order-md-2 mb-3 mb-md-0 mosaic-image">
 						<template v-for="(value,index) in items" :key="index">
-							<img :src="value.image['mosaic1'].url"  class="">
+							<nuxt-img :src="value.image['mosaic1'].url" format="webp" sizes="100vw sm:50vw md:400px" class="" />
 						</template>
 					</div>
 				</div>
@@ -162,7 +162,6 @@ export default {
 				play: true,
 				// the delay duration between slides in milliseconds
 				speed: 1800,
-				// if setup, the slideshow will be in the loop.
 				repeat: true,
 			},
             items: this.slice.items
