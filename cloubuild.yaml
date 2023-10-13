@@ -1,0 +1,28 @@
+steps:
+- name: node:19.6.1
+  entrypoint: npm
+  args: ["install"]
+- name: node:19.6.1
+  entrypoint: npm
+  args: ["run", "build"]
+  env:
+  - 'PRISMIC_ENDPOINT=${_PRISMIC_ENDPOINT}'
+  - 'GTM_KEY=${_GTM_KEY}'
+  - 'GOOGLE_MAP_KEY=${_GOOGLE_MAP_KEY}'
+  - 'COMPANY_NAME=${_COMPANY_NAME}'
+  - 'BASE_URL=${_BASE_URL}'
+  - 'PRISMIC_ACCESS_TOKEN=${_PRISMIC_ACCESS_TOKEN}'
+  - 'TWITTER_HANDLE=${_TWITTER_HANDLE}'
+  - 'COLIV_HQ_KEY=${_COLIV_HQ_KEY}'
+  - 'MODE=dev'
+  - 'PROD_END_POINT=${_PROD_END_POINT}'
+  - 'PROD_FORM_API_URL=${_PROD_FORM_API_URL}'
+  - 'PROD_HOME_FORM_API_URL=${_PROD_HOME_FORM_API_URL}'
+  - 'PROD_COLIV_HQ_KEY=${_PROD_COLIV_HQ_KEY}'
+  - 'DEV_END_POINT=${_DEV_END_POINT}'
+  - 'Dev_FORM_API_URL=${_DEV_FORM_API_URL}'
+  - 'DEV_HOME_FORM_API_URL=${_DEV_HOME_FORM_API_URL}'
+  - 'DEV_COLIV_HQ_KEY=${_DEV_COLIV_HQ_KEY}'
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
+timeout: "1600s"
