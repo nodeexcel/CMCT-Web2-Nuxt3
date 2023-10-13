@@ -19,14 +19,13 @@
 						</div>
 					</div>
 					<div class="col-md-9 order-1 order-md-2 mb-3 mb-md-0">
-						<b-carousel 
+						<BCarousel 
+						    v-for="(value,index) in items" :key="index"
 							:indicators="items.length > 1"
 							img-width="1024"
-							img-height="480" class="slider-img home-subbanner-carousel">
-							<template v-for="(value,index) in items" :key="index">
-								<b-carousel-slide :img-src="value.image['3/4'].url" ></b-carousel-slide>
-							</template>
-						</b-carousel>
+							 class="slider-img slicer-image-full home-subbanner-carousel">
+								<BCarouselSlide :img-src="value.image['3/4'].url" />
+						</BCarousel>
 					</div>
 				</div>
         	</div>
@@ -36,14 +35,12 @@
 				<div class="row align-items-center">
 					<div class="col-md-12 order-1 order-md-2 mb-3 mb-md-0">
 						<div class="position-relative slicer-image-full">
-							<b-carousel 
+							<BCarousel 
+							    v-for="(value,index) in items" :key="index"
 								:indicators="items.length > 1"
-								img-width="1024"
-								img-height="480" class="slider-img home-subbanner-carousel">
-								<template v-for="(value,index) in items" :key="index">
-									<b-carousel-slide :img-src="value.image['full'].url" ></b-carousel-slide>
-								</template>
-							</b-carousel>
+								img-width="1024" class="slider-img slicer-image-full home-subbanner-carousel">
+									<BCarouselSlide :img-src="value.image['full'].url" />
+							</BCarousel>
 							<div class="slicer-image-full-content">
 								<div>
 									<prismic-rich-text :field="slice.primary.subtitle" v-if="slice.primary.subtitle" class="description silder-content-box-subheading mt-0 mt-md-0 mb-0"/>
@@ -63,14 +60,10 @@
 			<div class="slicer-image-full">
 				<div class="row align-items-center">
 					<div class="col-md-12 order-1 order-md-2 mb-3 mb-md-0 position-relative">
-						<b-carousel 
-							:indicators="items.length > 1"
-                            img-width="1024"
-                            img-height="480" class="slider-img home-subbanner-carousel">
-							<div v-for="(value,index) in items" :key="index">
-                            	<b-carousel-slide :img-src="value.image['banner'].url" ></b-carousel-slide>
-							</div>
-                        </b-carousel>
+						<BCarousel  v-for="(value,index) in items" :key="index" :indicators="items.length > 1"
+                            img-width="1024" class="slider-img home-subbanner-carousel">
+                         <BCarouselSlide :img-src="value.image['banner'].url" />
+                        </BCarousel>
 						<div>
 							<p class="title content-h5-heading banner-type-heading my-2 my-lg-3 mt-xl-3 pt-xl-1 mb-xl-4 pb-xl-3 text-center text-md-left"><prismic-rich-text :field="slice.primary.title"/></p>
 						</div>
@@ -88,23 +81,22 @@
 									<div>
 										<prismic-rich-text :field="slice.primary.subtitle" v-if="slice.primary.subtitle" class="description square-type-subheading"/>
 										<p class="title content-h3-heading mb-3 pt-xl-1 mb-xl-5 pb-xl-3"><prismic-rich-text :field="slice.primary.title"/></p>
-										<NuxtLink :to="`/blog/${slice.primary.button_link1.uid}`" class="btn book-now-table-btn d-inline-block silder-content-box-btn ">
+										<prismic-link :field="slice.primary.button_link1" class="btn btn-success book-now-table-btn d-inline-block silder-content-box-btn ">
 											{{ slice.primary.button_text }} 
-										</NuxtLink>
+										</prismic-link>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-6 col-xl-7 order-1 order-md-2 mb-3 mb-md-0 offset-xl-1 pl-xl-0">
-							<b-carousel 
+							<div
+							     v-for="(value,index) in items" :key="index"
 								:indicators="items.length > 1"
 								img-width="1024"
 								img-height="480" class="slider-img home-subbanner-carousel home-subbanner-carousel-square">
-								<template v-for="(value,index) in items" :key="index">
-									<nuxt-img :src="value.image['square'].url" format="webp" alt="" />
-									<!-- <b-carousel-slide :img-src="value.image['square'].url" ></b-carousel-slide> -->
-								</template>
-							</b-carousel>
+								<nuxt-img :src="value.image['square'].url" format="webp" alt="" />
+									<!-- <BCarousel-slide :img-src="value.image['square'].url" ></b-carousel-slide> -->
+							</div>
 						</div>
 					</div>
 				</div>
@@ -249,6 +241,9 @@ export default {
 }
 .mosaic-image img{
 	object-fit: cover;
+}
+:deep(.carousel-inner) {
+	border-radius: 20px;
 }
 .mosaic-image{
 	height: 902px;

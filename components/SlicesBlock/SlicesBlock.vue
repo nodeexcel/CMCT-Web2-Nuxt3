@@ -2,114 +2,114 @@
     <div :class="'slices-wrapper1 faq-content'">
         <!-- Slice section template -->
         <div :class="[(isHomeDetail != undefined && isHomeDetail === true)? 'cust-findhome-wrap': '']">
-             <section v-for="(slice, index) in slices" :key="'slice-' + index" :class="getClass(slice)" :style="{'--background-color': '#fff'}"> 
-                <template v-if="slice.slice_type === 'text'">
+             <section v-for="(slice, index) in slices" :key="'slice-' + index" class="d-flex flex-column" :class="getClass(slice)" :style="{'--background-color': '#fff'}"> 
+                <div v-if="slice.slice_type === 'text'">
                     <TextSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Quote slice component -->
-                <template v-else-if="slice.slice_type === 'quote'">
+                <div v-else-if="slice.slice_type === 'quote'">
                     <QuoteSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Image Gallery slice component -->
-                <template v-else-if="slice.slice_type === 'image_gallery'">
+                <div v-else-if="slice.slice_type === 'image_gallery'">
                     <ImageGallery :slice="slice"/>
-                </template>
+                </div>
                 <!-- Section Spacer -->
-                <template v-else-if="slice.slice_type === 'spacer'">
+                <div v-else-if="slice.slice_type === 'spacer'">
                     <SpacerSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Section Background slice -->
-                <template v-else-if="slice.slice_type === 'background'">
+                <div v-else-if="slice.slice_type === 'background'">
                     <BackgroundSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Section Form slice -->
-                <template v-else-if="slice.slice_type === 'form'">
+                <div v-else-if="slice.slice_type === 'form'">
                     <FormSlice :slice="slice" :banner="banner"/>
-                </template>
+                </div>
                 <!-- Section Blog Card slice -->
-                <template v-else-if="slice.slice_type === 'blog_cards'">
+                <div v-else-if="slice.slice_type === 'blog_cards'">
                     <!-- {{ slice.slice_label }} -->
                     <BlogCardFeaturedSlice v-if="slice.slice_label === 'featured'" :slice="slice" />
                     <BlogCardSlice v-else :slice="slice"/>
-                </template>             
+                </div>             
                 <!-- Section Text-image slice -->
-                <template v-else-if="slice.slice_type === 'text-image'">
+                <div v-else-if="slice.slice_type === 'text-image'">
                     <TextImageSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Bedrooms -->
-                <template v-else-if="slice.slice_type === 'rooms'">
+                <div v-else-if="slice.slice_type === 'rooms'">
                     <BedroomsSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Maprooms -->
-                <template v-else-if="slice.slice_type === 'map'">
+                <div v-else-if="slice.slice_type === 'map'">
                     <MapSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Building cards -->
-                <template v-else-if="slice.slice_type === 'building_cards'">
+                <div v-else-if="slice.slice_type === 'building_cards'">
                     <BuildingCardSlice :slice="slice" :home-lists="slice.items" :home-lists-copy="slice.items" :hide-filter="true"/>
-                </template>
+                </div>
                 <!-- Similar cards -->
-                <template v-else-if="slice.slice_type === 'similar_cards'">
+                <div v-else-if="slice.slice_type === 'similar_cards'">
                     <SimilarCardSlice :slice="slice" :home-lists="slice.items" :home-lists-copy="slice.items" :hide-filter="true"/>
-                </template>
+                </div>
                 <!-- Listing cards -->
-                <template v-else-if="slice.slice_type === 'listing'">
+                <div v-else-if="slice.slice_type === 'listing'">
                     <ListingSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Room Listing cards -->
-                <template v-else-if="slice.slice_type === 'listing1'">
+                <div v-else-if="slice.slice_type === 'listing1'">
                     <RoomListingSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- table slice -->
-                <template v-else-if="slice.slice_type === 'table'">
+                <div v-else-if="slice.slice_type === 'table'">
                     <TableSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Recommandation slice -->
-                <template v-else-if="slice.slice_type === 'recommendations'">
+                <div v-else-if="slice.slice_type === 'recommendations'">
                     <RecommendationSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- FAQ topic team -->
-                <template v-else-if="slice.slice_type === 'faq_topic' && isTopicSlice == true">
+                <div v-else-if="slice.slice_type === 'faq_topic' && isTopicSlice == true">
                     <TopicSlice :slice="topicSlice" :faq-icon="false"/>
-                </template>
+                </div>
                 <!-- Welcome banner full -->
-                <template v-else-if="slice.slice_type === 'welcome_banner_full'">
+                <div v-else-if="slice.slice_type === 'welcome_banner_full'">
                     <WelcomeBannerFullSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Welcome banner -->
-                <template v-else-if="slice.slice_type === 'welcome_banner'">
+                <div v-else-if="slice.slice_type === 'welcome_banner'">
                     <WelcomeBannerSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- youtube-video -->
-                <template v-else-if="slice.slice_type === 'youtube_video'">
+                <div v-else-if="slice.slice_type === 'youtube_video'">
                     <YoutubeVideoSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Picture and overlay text  -->
-                <template v-else-if="slice.slice_type === 'pictures_and_overlay_text'">
+                <div v-else-if="slice.slice_type === 'pictures_and_overlay_text'">
                     <PicturesOverlayTextSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Members Testimonial  -->
-                <template v-else-if="slice.slice_type === 'members_testimonials'">
+                <div v-else-if="slice.slice_type === 'members_testimonials'">
                     <MembersTestimonialSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Call t action  -->
-                <template v-else-if="slice.slice_type === 'call_to_action'">
+                <div v-else-if="slice.slice_type === 'call_to_action'">
                     <CallToActionSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Team section  -->
-                <template v-else-if="slice.slice_type === 'team'">
+                <div v-else-if="slice.slice_type === 'team'">
                     <TeamSlice :slice="slice"/>
-                </template>
-                <template v-else-if="slice.slice_type === 'news'">
+                </div>
+                <div v-else-if="slice.slice_type === 'news'">
                     <NewsSlice :slice="slice"/>
-                </template>
+                </div>
                 <!-- Logo section  -->
-                <template v-else-if="slice.slice_type === 'partners'">
+                <div v-else-if="slice.slice_type === 'partners'">
                     <PartnersSlice :slice="slice"/>
-                </template>
-                <template v-else-if="slice.slice_type === 'logos'">
+                </div>
+                <div v-else-if="slice.slice_type === 'logos'">
                     <LogosSlice :slice="slice"/>
-                </template>
+                </div>
             </section>
         </div>    
     </div>

@@ -65,8 +65,8 @@ export default defineNuxtConfig({
       include: ['lodash'],
     },
   
-  //   // linkResolver: '@/plugins/link-resolver',
-  //   // htmlSerializer: '@/plugins/html-serializer',
+    linkResolver: '@/prismic/link-resolver',
+    htmlSerializer: '@/prismic/html-serializer',
   },
   sitemap: {
     //hostname: "https://www.casamiacasatua.co", //process.env.baseUrl,

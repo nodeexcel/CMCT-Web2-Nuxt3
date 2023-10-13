@@ -40,6 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+node_modules
 
 # TypeScript v1 declaration files
 typings/
@@ -70,7 +71,8 @@ typings/
 
 # dotenv environment variables file
 .env
-.env.test
+.env.*
+!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -79,7 +81,11 @@ typings/
 .next
 
 # Nuxt.js build / generate output
+.output
+.data
 .nuxt
+.nitro
+.cache
 dist
 
 # Gatsby files
@@ -107,3 +113,7 @@ dist
 sw.*
 ENV
 package-lock.json
+# Misc
+.DS_Store
+.fleet
+.idea
