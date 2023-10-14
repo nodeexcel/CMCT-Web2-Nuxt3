@@ -106,13 +106,13 @@
 			<div class="slicer-image-full">
 				<div class="row align-items-center">
 					<div class="col-md-12 order-1 order-md-2 mb-3 mb-md-0 mosaic-image">
-						<template v-for="(value,index) in items" :key="index">
+					<template v-for="(value,index) in items" :key="index">
 							<nuxt-img :src="value.image['mosaic1'].url" format="webp" sizes="100vw sm:50vw md:400px" class="" />
-						</template>
+				     </template>
 					</div>
 				</div>
         	</div>
-        </div>
+        </div>	
       </div>
     </section>
 </template>
@@ -241,6 +241,8 @@ export default {
 }
 .mosaic-image img{
 	object-fit: cover;
+	width: 100%;
+	height: 100%;
 }
 :deep(.carousel-inner) {
 	border-radius: 20px;

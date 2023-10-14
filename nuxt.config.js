@@ -27,8 +27,8 @@ export default defineNuxtConfig({
         {type:"module", src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', defer: true },
         { type:"module", src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', defer: true },
         { type:"module", src: "https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js", defer: true },
-        { type:"module", src: "http://maps.google.com/maps/api/js?v=3.5&sensor=false", defer: true },
-        { type:"module", src: "https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js", defer: true },
+        // { type:"module", src: "http://maps.google.com/maps/api/js", defer: true },
+        // { type:"module", src: "https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js", defer: true }
         // { src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js" }
         
       ],

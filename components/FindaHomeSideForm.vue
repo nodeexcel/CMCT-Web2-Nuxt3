@@ -50,10 +50,11 @@
                                 </div>
                                 <div class="description">{{ this.$store.state.sideFormTop.description }}</div>
                             </div>
-                            <b-form @submit="onSelectRoom">
+                            <BForm @submit="onSelectRoom">
                                 <div class="row">
-                                    <b-form-group class="col-lg-12 col-md-12 col-sm-12 mx-auto">
-                                        <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                    
+                                    <BFormGroup class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+                                        <!-- <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
                                             <template v-slot:prepend>
                                                 <b-input-group-text class="text-wrap">
                                                     Room Type
@@ -65,10 +66,10 @@
                                                     class="form-inputs find-select" required></b-form-select>
                                                 <i class="fa fa-sort-desc find-form-dropdown-arrow" aria-hidden="true"></i>
                                             </div>
-                                        </b-input-group>
-                                    </b-form-group>
-                                    <b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-2" v-if="bedsTypeOptions.length > 0  && bedsDropdown == true">
-                                        <b-input-group class="input-group mb-2 mr-sm-3 mb-sm-0">
+                                        <!-- </b-input-group> -->
+                                    </BFormGroup>
+                                    <BFormGroup class="col-lg-12 col-md-12 col-sm-12 mb-2" v-if="bedsTypeOptions.length > 0  && bedsDropdown == true">
+                                        <!-- <b-input-group class="input-group mb-2 mr-sm-3 mb-sm-0"> -->
                                             <template v-slot:prepend>
                                                 <b-input-group-text class="text-wrap">
                                                     Bed Type
@@ -80,23 +81,23 @@
                                                 class="form-inputs find-select" required></b-form-select>
                                               <i class="fa fa-sort-desc find-form-dropdown-arrow" aria-hidden="true"></i>
                                             </div>   
-                                        </b-input-group> 
-                                    </b-form-group>
-                                    <b-form-group class="col-lg-12 col-md-12 col-sm-12 mx-auto">
-                                        <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                        <!-- </b-input-group>  -->
+                                    </BFormGroup>
+                                    <BFormGroup class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+                                        <!-- <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
                                             <template v-slot:prepend>
                                                 <b-input-group-text class="text-wrap">
                                                     Start of stay
                                                 </b-input-group-text>
                                             </template>
-                                            <b-form-input id="startofstay" v-model="form.sos" type="date"
+                                            <BFormInput id="startofstay" v-model="form.sos" type="date"
                                                 class="form-inputs"
                                                 :min="this.$store.state.sideFormTop.curDate != undefined ? this.$store.state.sideFormTop.curDate : curDate"
-                                                placeholder="yyyy-mm-dd" required></b-form-input>
-                                        </b-input-group>
-                                    </b-form-group>
-                                    <b-form-group class="col-lg-12 col-md-12 col-sm-12 mx-auto">
-                                        <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                                placeholder="yyyy-mm-dd" required></BFormInput>
+                                        <!-- </b-input-group> -->
+                                    </BFormGroup>
+                                    <BFormGroup class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+                                        <!-- <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
                                             <template v-slot:prepend>
                                                 <b-input-group-text class="text-wrap">
                                                     Lease Length
@@ -107,13 +108,13 @@
                                             </template>
                                             <div class="position-relative range-slider">
                                                 <div id="tooltip" v-show="form.los == 12"><span>Best Deals</span></div>
-                                                <b-form-input id="AdjustLeaseDuration" v-model="form.los" type="range" step="3" min="3"
-                                                    max="12"></b-form-input>
+                                                <BFormInput id="AdjustLeaseDuration" v-model="form.los" type="range" step="3" min="3"
+                                                    max="12"></BFormInput>
                                                 <!-- <b-form-input id="AdjustLeaseDuration" v-model="form.los" type="range" step="3" min="3"
                                                     max="12"></b-form-input> -->
                                             </div>
-                                        </b-input-group>
-                                    </b-form-group>
+                                        <!-- </b-input-group> -->
+                                    </BFormGroup>
                                     <div class="col-sm-12 text-center submit-btn">
                                         <b-button type="submit"
                                             :style="{ 'background-color': '#72bf44', 'border-color': '2px solid #72bf44' }"
@@ -121,7 +122,7 @@
                                             Room</b-button>
                                     </div>
                                 </div>
-                            </b-form>
+                            </BForm>
                         </div>
                     </div>
                 </div>
@@ -129,7 +130,7 @@
         </div>
         <!-- 2nd Step Form: START  -->
 
-        <b-modal id="second-step-modal" size="xl" :hide-footer="true" :hide-header="true" :no-close-on-backdrop="true"
+        <Bmodal id="second-step-modal" size="xl" :hide-footer="true" :hide-header="true" :no-close-on-backdrop="true"
             :no-close-on-esc="true">
             <div class="row mx-md-0">
                 <div class="col-lg-12">
@@ -150,7 +151,7 @@
                 </div>
                 <div class="col-lg-6 col-md-12 mx-md-0 second-right-form align-items-center d-flex">
                     <div class="step-2" v-show="currentStep === 2">
-                        <form ref="form" @submit="onSubmit">
+                        <BForm ref="form" @submit="onSubmit">
                             <div class="row mx-md-0">
                                 <div class="col-md-12">
                                     <h1>TELL US ABOUT YOURSELF</h1>
@@ -159,81 +160,81 @@
                                 </div>
                             </div>
                             <div class="row mx-md-0">
-                                <b-form-group label="First name" class="col-lg-6 col-md-12 col-sm-12">
-                                    <b-form-input id="first_name" v-model="form.firstName" placeholder="Required Field"
-                                        type="text" class="form-inputs" required></b-form-input>
-                                </b-form-group>
-                                <b-form-group label="Last name" class="col-lg-6 col-md-12 col-sm-12">
-                                    <b-form-input id="last_name" placeholder="Required Field" v-model="form.lastName"
-                                        type="text" class="form-inputs" required></b-form-input>
-                                </b-form-group>
-                                <b-form-group label="Phone" class="col-lg-6 col-md-12 col-sm-12">
+                                <BFormGroup label="First name" class="col-lg-6 col-md-12 col-sm-12">
+                                    <BFormInput id="first_name" v-model="form.firstName" placeholder="Required Field"
+                                        type="text" class="form-inputs" required></BFormInput>
+                                </BFormGroup>
+                                <BFormGroup label="Last name" class="col-lg-6 col-md-12 col-sm-12">
+                                    <BFormInput id="last_name" placeholder="Required Field" v-model="form.lastName"
+                                        type="text" class="form-inputs" required></BFormInput>
+                                </BFormGroup>
+                                <BFormGroup label="Phone" class="col-lg-6 col-md-12 col-sm-12">
                                     <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" -->
-                                        :no-example="true" :required="true" no-use-browser-locale v-model="phoneNumber" />
-                                </b-form-group>
-                                <b-form-group label="WhatsApp" class="col-lg-6 col-md-12 col-sm-12">
+                                        <!-- :no-example="true" :required="true" no-use-browser-locale v-model="phoneNumber" /> -->
+                                </BFormGroup>
+                                <BFormGroup label="WhatsApp" class="col-lg-6 col-md-12 col-sm-12">
                                     <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" -->
-                                        :no-example="true" no-use-browser-locale v-model="whatsappNumber" />
-                                </b-form-group>
-                                <b-form-group label="Email" class="col-lg-12 col-md-12 col-sm-12">
-                                    <b-form-input id="email" v-model="form.email" type="email" class="form-inputs"
-                                        placeholder="Required Field" required></b-form-input>
-                                </b-form-group>
-                                <b-form-group label="Job" class="col-lg-6 col-md-12 col-sm-12">
-                                    <b-form-input id="job_function" v-model="form.job" placeholder="Required Field"
-                                        class="form-inputs" type="text" required></b-form-input>
-                                </b-form-group>
-                                <b-form-group label="Company/school" class="col-lg-6 col-md-12 col-sm-12">
-                                    <b-form-input id="company_school" v-model="form.company_school" class="form-inputs"
-                                        type="text"></b-form-input>
-                                </b-form-group>
-                                <b-form-group label="Age group" class="col-lg-6 col-md-12 col-sm-12">
+                                        <!-- :no-example="true" no-use-browser-locale v-model="whatsappNumber" /> -->
+                                </BFormGroup>
+                                <BFormGroup label="Email" class="col-lg-12 col-md-12 col-sm-12">
+                                    <BFormInput id="email" v-model="form.email" type="email" class="form-inputs"
+                                        placeholder="Required Field" required></BFormInput>
+                                </BFormGroup>
+                                <BFormGroup label="Job" class="col-lg-6 col-md-12 col-sm-12">
+                                    <BFormInput id="job_function" v-model="form.job" placeholder="Required Field"
+                                        class="form-inputs" type="text" required></BFormInput>
+                                </BFormGroup>
+                                <BFormGroup label="Company/school" class="col-lg-6 col-md-12 col-sm-12">
+                                    <BFormInput id="company_school" v-model="form.company_school" class="form-inputs"
+                                        type="text"></BFormInput>
+                                </BFormGroup>
+                                <BFormGroup label="Age group" class="col-lg-6 col-md-12 col-sm-12">
                                     <b-form-select id="age_group" v-model="form.ageGroup" :options="ageGroupOptions"
                                         class="form-inputs find-select" required></b-form-select>
                                     <i class="fa fa-sort-desc find-form-dropdown-arrow" aria-hidden="true"></i>
-                                </b-form-group>
-                                <b-form-group label="Discount code" class="col-lg-6 col-md-12 col-sm-12">
-                                    <b-form-input id="discount_code" v-model="form.discount_code" class="form-inputs"
-                                        type="text"></b-form-input>
-                                </b-form-group>
-                                <b-form-group label="Other requests" class="col-lg-12 col-md-12 col-sm-12">
+                                </BFormGroup>
+                                <BFormGroup label="Discount code" class="col-lg-6 col-md-12 col-sm-12">
+                                    <BFormInput id="discount_code" v-model="form.discount_code" class="form-inputs"
+                                        type="text"></BFormInput>
+                                </BFormGroup>
+                                <BFormGroup label="Other requests" class="col-lg-12 col-md-12 col-sm-12">
                                     <b-form-textarea id="other_request" v-model="form.other_request"
                                         rows="2"></b-form-textarea>
-                                </b-form-group>
-                                <b-form-group
+                                </BFormGroup>
+                                <BFormGroup
                                     class="col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form">
                                     <b-form-checkbox id="marketing_update" class="d-flex" v-model="form.roominperson"
                                         :checked="form.roominperson" name="marketing_update"
                                         :style="{ 'border-color': sideFormBackgroundColor, '--sideFormBackgroundColor': sideFormBackgroundColor }">
                                         I would like to view the room in person.
                                     </b-form-checkbox>
-                                </b-form-group>
-                                <b-form-group v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
-                                    <b-form-group label="Preferred date for a viewing">
-                                        <b-form-input id="startofstay" v-model="form.prefDate" type="date"
+                                </BFormGroup>
+                                <BFormGroup v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                                    <BFormGroup label="Preferred date for a viewing">
+                                        <BFormInput id="startofstay" v-model="form.prefDate" type="date"
                                             class="form-inputs" :min="minDate" :max="maxDate" placeholder="yyyy-mm-dd"
-                                            required></b-form-input>
-                                    </b-form-group>
-                                </b-form-group>
-                                <b-form-group v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
-                                    <b-form-group label="Preferred time for a viewing">
-                                        <b-form-input id="startofstay" v-model="form.prefTime" type="time"
-                                            class="form-inputs" placeholder="Time" required></b-form-input>
-                                    </b-form-group>
-                                </b-form-group>
-                                <b-form-group v-if="form.roominperson" class="col-lg-12 col-md-12 col-sm-12 mx-auto">
-                                    <b-form-group
+                                            required></BFormInput>
+                                    </BFormGroup>
+                                </BFormGroup>
+                                <BFormGroup v-if="form.roominperson" class="col-lg-6 col-md-12 col-sm-12 mx-auto">
+                                    <BFormGroup label="Preferred time for a viewing">
+                                        <BFormInput id="startofstay" v-model="form.prefTime" type="time"
+                                            class="form-inputs" placeholder="Time" required></BFormInput>
+                                    </BFormGroup>
+                                </BFormGroup>
+                                <BFormGroup v-if="form.roominperson" class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+                                    <BFormGroup
                                         label="The viewing is not confirmed yet. One of our Sales representatives will contact you about your request.">
-                                    </b-form-group>
-                                </b-form-group>
-                                <b-form-group
+                                    </BFormGroup>
+                                </BFormGroup>
+                                <BFormGroup
                                     class="col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form">
                                     <b-form-checkbox id="marketing_update" class="d-flex" v-model="form.status"
                                         :checked="form.status" name="marketing_update"
                                         :style="{ 'border-color': sideFormBackgroundColor, '--sideFormBackgroundColor': sideFormBackgroundColor }">
                                         I would like to receive marketing updates from Casa Mia Coliving.
                                     </b-form-checkbox>
-                                </b-form-group>
+                                </BFormGroup>
                                 <div class="col-sm-12 mb-5 text-center submit-btn">
                                     <b-button type="button" class="btn cancel-btn" @click="close2ndStep()">Cancel</b-button>
                                     <b-button type="submit"
@@ -244,7 +245,7 @@
                                             class="loading-spinner" small label="Small Spinner"></b-spinner></b-button>
                                 </div>
                             </div>
-                        </form>
+                        </BForm>
                     </div>
                     <div class="step-3" v-show="currentStep === 3">
                         <div class="row mx-md-0 ">
@@ -268,9 +269,9 @@
                     </div>
                 </div>
             </div>
-        </b-modal>
+        </Bmodal>
         <!-- 2nd Step Form: END  -->
-        <b-modal id="schedule-modal" title="Modal with Popover" :hide-footer="true" :hide-header="true"
+        <Bmodal id="schedule-modal" title="Modal with Popover" :hide-footer="true" :hide-header="true"
             :no-close-on-backdrop="true" :no-close-on-esc="true">
             <div class="row main-detail-top">
                 <div class="col-lg-8">
@@ -290,7 +291,7 @@
                     <a target="_blank" :href="linkSchedule" class="btn pt-2 pb-2 btn-default" :style="{'background-color': sideFormBackgroundColor, 'border-color': sideFormBackgroundColor}">Book a Viewing</a>
                 </p> -->
             <b-button class="pull-right" @click="closeScheduleModal()">Close</b-button>
-        </b-modal>
+        </Bmodal>
     </div>
 </template>
 
@@ -800,7 +801,8 @@ export default {
 }
 </script>
 <style scoped>
-@import "@/assets/css/form.css";
+@import "../assets/css/common.css";
+@import "../assets/css/form.css";
 
 .country-selector__input,
 .input-tel__input {

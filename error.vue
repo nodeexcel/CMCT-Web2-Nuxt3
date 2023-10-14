@@ -1,6 +1,9 @@
 
 <template>
     <div class="content-page page-not-found">
+      <!-- data: {{ data }} <br /> -->
+    pending: {{ pending }}
+
    <!-- <div class="container">
      <h1>Page not found</h1>
      <p>Sorry we were unable to find the page you are looking for.</p>
@@ -11,7 +14,7 @@
                <p  @click="handleError">Sorry, but the page you were trying to view does not exist.</p>
                <i>{{ error.statusCode }}</i>
                <div>
-                   <button @click="handleError">Go to the home page</button>
+                   <button @click="handleError()">Go to the home page</button>
                </div>
                
            </div>
@@ -25,6 +28,11 @@ const props = defineProps({
  error: Object,
  required: true,
 });
+// const {data} = useAsyncTest()
+// const { data, pending } = useAsyncData(async () => {
+//   await new Promise((resolve) => setTimeout(resolve, 2000))
+//   return 42
+// })
 
 const handleError = () => clearError({ redirect: '/' });
 </script>

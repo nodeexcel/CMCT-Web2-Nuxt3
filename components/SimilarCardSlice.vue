@@ -6,9 +6,10 @@
                     <div v-if="slice != undefined" class="section-main-title mb-0 mb-3 mb-xl-4">
                         <prismic-rich-text :field="slice.primary.title" class="cms-title similar-cardslice-heading px-sm-3"/>
                     </div>
+                    buildingbuildingbuildingbuildingbuildingbuildingbuildingbuilding
                     <div class="building-card">
                         <template>
-                            <vue-horizontal-list :items="newHomeLists" :options="options" class="card-main">
+                            <VueHorizontalList :items="newHomeLists" :options="options" class="card-main">
                                 <template v-slot:default="{item}">
                                 <div class="item">
                                     <div class="content-wrap">
@@ -54,7 +55,7 @@
                                     </div>
                                 </div>
                                 </template>
-                            </vue-horizontal-list>
+                            </VueHorizontalList>
                         </template>
                     </div> 
                 </div>
@@ -65,8 +66,8 @@
 
 <script>
 // import lazysizes from 'lazysizes';
-import Multiselect from 'vue-multiselect'
-import VueHorizontalList from 'vue-horizontal-list';
+// import Multiselect from 'vue-multiselect'
+// import VueHorizontalList from 'vue-horizontal-list';
 import axios from 'axios';
 export default {
     name: 'similar-cards',
