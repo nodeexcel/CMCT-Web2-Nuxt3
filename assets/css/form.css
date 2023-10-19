@@ -1,6 +1,10 @@
 .input-group .input-group-text {
     width: 150px;
 }
+.VueMultiselect{
+    width: 100% !important;
+    box-sizing: border-box;
+}
 
 .big-label .input-group-text {
     text-align: left;
@@ -17,26 +21,26 @@
     border-color: #f55e61;
     border-radius: 0;
     padding: 0 15px;
-    font-size: 12px;
+    font-size: 11px;
     height: 38px;
 }
 
 .form-cms-build .form-inputs {
     border-color: var(--sideFormBackgroundColor);
     border-radius: 0;
-    font-size: 13px;
+    font-size: 12px;
     height: 38px;
 }
 
 .form-cms-build .form-textarea {
     border-color: #f55e61;
     border-radius: 0;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .form-cms-build input.form-inputs::placeholder,
 .form-cms-build textarea::placeholder {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .form-cms-build .form-group {
@@ -49,7 +53,7 @@
 }
 
 .form-cms-build .custom-control-label {
-    font-size: 13px;
+    font-size: 12px;
     vertical-align: middle;
     outline: 0;
 }
@@ -61,7 +65,7 @@
 .form-cms-build .submit-btn button {
     background-color: var(--sideFormBackgroundColor);
     border: none;
-    font-size: 18px;
+    font-size: 17px;
     max-width: 175px;
     margin: 0 auto;
     width: 100%;
@@ -126,7 +130,7 @@
     border-color: #f55e61;
     border-radius: 0;
     padding: 10px 15px !important;
-    font-size: 12px;
+    font-size: 11px;
     color: #fff;
     height: 38px;
     width: 150px;
@@ -155,7 +159,7 @@
 .form-comman-input .form-input-label .input-group-text,
 .form-checkbox-label .input-group-text {
     border: 0;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 17px;
     font-weight: 400;
     padding: 0;
@@ -179,7 +183,7 @@
 }
 
 .form-comman-input .form-input-label .form-inputs.b-form-spinbutton button svg {
-    font-size: 18px !important;
+    font-size: 17px !important;
     transform: scale(1) !important;
 }
 
@@ -202,7 +206,7 @@
 .form-comman-input .form-input-label textarea,
 .form-comman-input .form-input-label textarea::placeholder {
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .form-checkbox-label .custom-checkbox .custom-control-label:before,
@@ -326,7 +330,7 @@
     color: #000;
     position: relative;
     font-weight: bold;
-    font-size: 48px;
+    font-size: 47px;
     text-transform: capitalize;
 }
 
@@ -348,7 +352,7 @@
 }
 
 .form .description p {
-    font-size: 32px;
+    font-size: 31px;
     color: #000;
     font-weight: 200;
     letter-spacing: 1.2px;
@@ -358,20 +362,20 @@
 
 @media (max-width: 767px) {
     .form .title h1 {
-        font-size: 32px;
+        font-size: 31px;
         line-height: 40px;
     }
     .form .description p {
-        font-size: 26px;
+        font-size: 25px;
     }
 }
 
 @media (max-width: 375px) {
     .form .title h1 {
-        font-size: 26px;
+        font-size: 25px;
     }
     .form .description p {
-        font-size: 24px;
+        font-size: 23px;
     }
 }
 

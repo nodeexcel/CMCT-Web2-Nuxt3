@@ -104,7 +104,7 @@
 						class="box row"
 						:style="background"
 					  >
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 						  >
@@ -128,7 +128,7 @@
 							></b-form-select>
 						  </b-input-group>
 						</b-form-group>
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 						  >
@@ -196,7 +196,7 @@
 						class="box row"
 						:style="background"
 					  >
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0">
 							<div class="position-relative w-100">
 							  <b-form-input
@@ -237,7 +237,7 @@
 													  </b-input-group>
 												  </b-form-group> -->
 						<BFormGroup
-						  class="col-lg-12 col-md-12 col-sm-12 neighbourhood-check"
+						  class="col-lg-12 col-md-12 col-sm-12 neighbourhood-check w-100 mb-4"
 						>
 						  <!-- <b-input-group
 							class="neighbour mb-2 mr-sm-2 mb-sm-0 city-list-main"
@@ -299,7 +299,7 @@
 						class="box row"
 						:style="background"
 					  >
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 						  >
@@ -338,7 +338,7 @@
 					</div>
 				  </div>
 				  <div class="sos-popover">
-					<b-popover v-if="currentHomeLists.length <= 3 &&  currentHomeLists.length > 0" target="Start-of-Stay-popover" :show="PopOverSos" :disabled="disabledPopOver" placement="top">
+					<BPopover v-if="currentHomeLists.length <= 3 &&  currentHomeLists.length > 0" target="Start-of-Stay-popover" :show="PopOverSos" :disabled="disabledPopOver" placement="top">
 						<div class="d-flex justify-content-end">
                           <i class="fa fa-times" aria-hidden="true" @click="closeSosPopover()"></i>
                         </div>
@@ -350,7 +350,7 @@
 						  <span v-if="(sosOptions.some(obj => obj.text === 'Next two weeks') || sosOptions.some(obj => obj.text === 'Immediately') || sosOptions.some(obj => obj.text === 'Two weeks to a month')) && sosOptions.some(obj => obj.text === 'More than a month')">,</span>
 						  <span v-if="sosOptions.some(obj => obj.text === 'More than a month')">{{ moreThanAMonthlength4 }}  rooms available more than a month from now</span>)</span>
 						</div>
-					</b-popover>
+					</BPopover>
 				</div>
 				  <div
 					class="col-12 col-lg-4 col-xl-2 input-serach-main mb-sm-3 mb-md-0"
@@ -500,7 +500,7 @@
 						class="box row"
 						:style="background"
 					  >
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 						  >
@@ -517,7 +517,7 @@
 							></b-form-select>
 						  </b-input-group>
 						</b-form-group>
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 						  >
@@ -572,7 +572,7 @@
 						class="box row"
 						:style="background"
 					  >
-			            <b-form-group class="col-lg-12 col-md-12 col-sm-12">
+			            <b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 						  >
@@ -590,7 +590,7 @@
 							></b-form-select>
 						  </b-input-group>
 						</b-form-group>
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 							<b-input-group
 								class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 							>
@@ -607,7 +607,7 @@
 								></b-form-select>
 							</b-input-group>
 						</b-form-group>
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label"
 						  >
@@ -624,18 +624,18 @@
 							></b-form-select>
 						  </b-input-group>
 						</b-form-group>
-						<b-form-group class="col-lg-12 col-md-12 col-sm-12">
+						<b-form-group class="col-lg-12 col-md-12 col-sm-12 mb-4">
 						  <b-input-group
 							class="input-group mb-2 mr-sm-2 mb-sm-0 big-label search-ct-imput"
 						  >
-							<!-- <vue-multiselect
+							<VueMultiselect
 							  v-model="searchFilter.nationality"
 							  :options="nationalityOptions"
 							  :multiple="false"
 							  placeholder="Select nationality"
 							  class="form-inputs ct-dropdown-selector"
 							  required
-							></vue-multiselect> -->
+							></VueMultiselect>
 							<!-- <b-form-select
 														  filter
 														  id="ageGroup"
@@ -665,7 +665,7 @@
 				  
 				</div>
 				<!-- close_popover -->
-				<b-popover target="ideal-for-popover" :show="showPopOver" :disabled="disabledPopOver" placement="top">
+				<BPopover target="ideal-for-popover" :hide="showPopOverr" :disabled="disabledPopOver" placement="top">
 					    <div class="d-flex justify-content-end">
                           <i class="fa fa-times ml-3" aria-hidden="true" @click="closeIdealForPopover()"></i>
                         </div>
@@ -673,7 +673,7 @@
 						  <span class="col-3 col-lg-3 col-md-3 col-sm-3 p-0"><img class="mascot-image-idealfor ml-1" src="~/public/Butler_Cartoon_Waving.gif" alt="popover_logo"/></span>
 						  <span class="pop-text col-9 col-lg-9 col-md-9 col-sm-9 mascot-text">Let us help you find your perfect new home. Click here to start!</span>
 					    </div>
-					</b-popover>
+					</BPopover>
 				<div
 				  :class="
 					[slice != undefined ? '' : 'row'] + ' row building-card'
@@ -1077,7 +1077,7 @@
 		  :class="[isMap ? (!isList ? 'col-12' : '') : 'map-hide'] + ' map-outer'"
 		  v-if="slice.primary.map === true"
 		>
-		  <div class="google-map" :id="mapName"></div>
+		  <div class="google-map" :id="mapName" style="height:100vh"></div>
 		</b-col>
 	  </b-row>
 	</div>
@@ -1141,13 +1141,15 @@
 	],
 	data() {
 	  return {
+		envVars:useRuntimeConfig(),
 		sosOptionsCopy:[],
 		immediateLength1:null,
 		nextTwoWeeksLength2:null,
 		twoWeeksToAmonthlength3:null,
 		moreThanAMonthlength4:null,
 		disabledPopOver: true,
-		showPopOver: false,
+		showPopOver: true,
+		showPopOverr:false,
 		PopOverSos: false,
 		boxtype:null,
 		filter: "",
@@ -1369,10 +1371,10 @@
 	},
 	methods: {
 	closeIdealForPopover(){
-		this.showPopOver = false
+		this.showPopOver = true
 	  },
 	  closeSosPopover(){
-        this.PopOverSos = false
+        this.PopOverSos = true
 	  },
 	  availabilityDate(enddate) {
 			if(enddate != '' && enddate != null) {
@@ -1945,7 +1947,7 @@
 	  },
 	  searchResult(boxType, event) {
 		// event.preventDefault();
-		this.showPopOver = false
+		this.showPopOver = true
 		this.boxtype = boxType;
 		this.openFilterbox(boxType);
 		if (boxType == "city") {
@@ -2584,235 +2586,244 @@
 		this.scrollToMap("map-block");
 	  },
 	  setCoordinates() {
-    if (this.slice.primary.map) {
-        if (this.newHomeLists.length) {
-            this.markers = [];
-            this.markerCoordinates = [];
-            this.markerCoordinatesforStudents = [];
-            let mapCentre = null;
-            let buildings = [];
-            if (this.newHomeListsAfterFilter.length) {
-                buildings = JSON.parse(JSON.stringify(this.newHomeListsAfterFilter));
-            } else {
-                buildings = JSON.parse(JSON.stringify(this.newHomeLists));
-            }
-            for (let item of buildings) {
-                if (item.forStudents !== null) {
-                    let link = process.env.baseUrl + "/findahome/" + item.homeID;
-                    this.markerCoordinates.push({
-                        latitude: item.mapLocation._latitude,
-                        longitude: item.mapLocation._longitude,
-                        name: item.name,
-                        link: link,
-                        homeID: item.homeID,
-                        image: item.banner.url,
-                    });
-                    mapCentre = this.markerCoordinates[0];
-                } else {
-                    let link = process.env.baseUrl + "/findahome/" + item.homeID;
-                    this.markerCoordinatesforStudents.push({
-                        latitude: item.mapLocation._latitude,
-                        longitude: item.mapLocation._longitude,
-                        name: item.name,
-                        link: link,
-                        homeID: item.homeID,
-                        image: item.banner.url,
-                    });
-                    mapCentre = this.markerCoordinatesforStudents[0];
-                }
-            }
-            this.bounds = new google.maps.LatLngBounds();
-            const element = document.getElementById(this.mapName);
-            const options = {
-                center: new google.maps.LatLng(
-                    mapCentre.latitude,
-                    mapCentre.longitude
-                ),
-                fullscreenControl: false,
-                zoom: 12,
-                mapId: "4df64ef1b112569a",
-            };
-            this.map = new google.maps.Map(element, options);
-            var infowindow = new google.maps.InfoWindow();
-            const that = this;
+		if (this.slice.primary.map) {
+		  if (this.newHomeLists.length) {
+			this.markers = [];
+			this.markerCoordinates = [];
+			this.markerCoordinatesforStudents = [];
+			let  mapCentre = null;
+			let buildings = [];
+			if(this.newHomeListsAfterFilter.length){
+			  buildings = JSON.parse(JSON.stringify(this.newHomeListsAfterFilter));
+			}
+			else{
+			  buildings = JSON.parse(JSON.stringify(this.newHomeLists));
+			}
+			for (let item of buildings) {
+				if((item.forStudents !== null))
+				{
+					let link = this.envVars.public.env.BASE_URL + "/findahome/" + item.homeID;
+				    this.markerCoordinates.push({
+					latitude: item.mapLocation._latitude,
+					longitude: item.mapLocation._longitude,
+					name: item.name,
+					link: link,
+					homeID: item.homeID,
+					image: item.banner.url,
+			   });
+			        mapCentre = this.markerCoordinates[0]
+				}
+				else{
+					let link = this.envVars.public.env.BASE_URL + "/findahome/" + item.homeID;
+					this.markerCoordinatesforStudents.push({
+					latitude: item.mapLocation._latitude,
+					longitude: item.mapLocation._longitude,
+					name: item.name,
+					link: link,
+					homeID: item.homeID,
+					image: item.banner.url,
+					});
+				    mapCentre = this.markerCoordinatesforStudents[0]
+				}
+			}
+			this.bounds = new google.maps.LatLngBounds();
+			const element = document.getElementById(this.mapName);
+			const options = {
+			  center: new google.maps.LatLng(
+				mapCentre.latitude,
+				mapCentre.longitude
+			  ),
+			  fullscreenControl: false,
+			  zoom: 12,
+			  mapId: "4df64ef1b112569a",
+			};
+			this.map = new google.maps.Map(element, options);
+			var infowindow = new google.maps.InfoWindow();
+			const that = this;
+			this.markerCoordinates.forEach((coord) => {
+			  if (
+				typeof coord.latitude != "undefined" &&
+				typeof coord.longitude != "undefined"
+			  ) {
+				const position = new google.maps.LatLng(
+				  coord.latitude,
+				  coord.longitude
+				);
+				const marker = new google.maps.Marker({
+				  position,
+				  map: this.map,
+				  animation: google.maps.Animation.DROP,
+				  url: coord.link,
+				  icon: this.markerIcon,
+				  title: coord.name,
+				  homeID: coord.homeID,
+				  image: coord.image,
+				});
+				marker.addListener("mouseover", function () {
+				  infowindow.setContent(
+					'<div class="map-popup"><a class="cluster-home-link" href="' +
+					  coord.link +
+					  '"><img class="map-home-img" data-skip-lazy=""  src="' +
+					  coord.image +
+					  '"/><span>' +
+					  coord.name +
+					  "</span></a></div>"
+				  );
+				  infowindow.open(this.map, marker);
+				  that.removeLazyLoad();
+				});
+				marker.addListener("mouseout", function () {
+				  infowindow.close(this.map, marker);
+				});
+				marker.addListener("click", function () {
+				  if (marker.getAnimation() !== null) {
+					marker.setAnimation(null);
+				  } else {
+					marker.setAnimation(google.maps.Animation.BOUNCE);
+				  }
+				  window.location.href = marker.url;
+				});
+				this.markers.push(marker);
+				this.map.fitBounds(this.bounds.extend(position));
+			  }
+			});
 
-            window.addEventListener('load', function () {
-                that.markerCoordinates.forEach((coord) => {
-                    if (typeof coord.latitude != "undefined" && typeof coord.longitude != "undefined") {
-                        const position = new google.maps.LatLng(
-                            coord.latitude,
-                            coord.longitude
-                        );
-                        const marker = new google.maps.Marker({
-                            position,
-                            map: this.map,
-                            animation: google.maps.Animation.DROP,
-                            url: coord.link,
-                            icon: this.markerIcon,
-                            title: coord.name,
-                            homeID: coord.homeID,
-                            image: coord.image,
-                        });
-
-                        marker.addListener("mouseover", function () {
-                            infowindow.setContent(
-                                '<div class="map-popup"><a class="cluster-home-link" href="' +
-                                coord.link +
-                                '"><img class="map-home-img" data-skip-lazy=""  src="' +
-                                coord.image +
-                                '"/><span>' +
-                                coord.name +
-                                "</span></a></div>"
-                            );
-                            infowindow.open(that.map, marker);
-                            that.removeLazyLoad();
-                        });
-
-                        marker.addListener("mouseout", function () {
-                            infowindow.close(that.map, marker);
-                        });
-
-                        marker.addListener("click", function () {
-                            if (marker.getAnimation() !== null) {
-                                marker.setAnimation(null);
-                            } else {
-                                marker.setAnimation(google.maps.Animation.BOUNCE);
-                            }
-                            window.location.href = marker.url;
-                        });
-
-                        this.markers.push(marker);
-                        this.map.fitBounds(this.bounds.extend(position));
-                    }
-                });
-
-                that.markerCoordinatesforStudents.forEach((coord) => {
-                    if (typeof coord.latitude != "undefined" && typeof coord.longitude != "undefined") {
-                        const position = new google.maps.LatLng(
-                            coord.latitude,
-                            coord.longitude
-                        );
-                        const marker = new google.maps.Marker({
-                            position,
-                            map: that.map,
-                            animation: google.maps.Animation.DROP,
-                            url: coord.link,
-                            icon: that.markerIcon,
-                            title: coord.name,
-                            homeID: coord.homeID,
-                            image: coord.image,
-                        });
-
-                        marker.addListener("mouseover", function () {
-                            infowindow.setContent(
-                                '<div class="map-popup"><a class="cluster-home-link" href="' +
-                                coord.link +
-                                '"><img class="map-home-img" data-skip-lazy=""  src="' +
-                                coord.image +
-                                '"/><span>' +
-                                coord.name +
-                                "</span></a></div>"
-                            );
-                            infowindow.open(that.map, marker);
-                            that.removeLazyLoad();
-                        });
-
-                        marker.addListener("mouseout", function () {
-                            infowindow.close(that.map, marker);
-                        });
-
-                        marker.addListener("click", function () {
-                            if (marker.getAnimation() !== null) {
-                                marker.setAnimation(null);
-                            } else {
-                                marker.setAnimation(google.maps.Animation.BOUNCE);
-                            }
-                            window.location.href = marker.url;
-                        });
-
-                        that.markers.push(marker);
-                        that.map.fitBounds(that.bounds.extend(position));
-                    }
-                });
-
-                var mc = new MarkerClusterer(that.map, that.markers, {
-                    zoomOnClick: false,
-                    imagePath: that.custerIcon,
-                });
-
-                mc.setStyles(
-                    mc.getStyles().map(function (style) {
-                        style.textColor = "#fff";
-                        style.textSize = 15;
-                        style.width = 57;
-                        style.lineHeight = 55;
-                        return style;
-                    })
-                );
-
-                mc.addMarkers(that.markers);
-
-                var infoWin = new google.maps.InfoWindow();
-
-                google.maps.event.addListener(mc, "clusterclick", function (cluster) {
-                    if (that.map.getZoom() > 17) {
-                        infoWin.close();
-                        var content = "";
-                        content += cluster.getMarkers().map((cl) =>
-                            '<div class="map-popup"><a class="cluster-home-link" href="' +
-                            cl.url +
-                            '"><img class="map-home-img" data-skip-lazy=""  src="' +
-                            cl.image +
-                            '"/><span>' +
-                            cl.title +
-                            "</span></a></div>"
-                        );
-                        content = content.split(",").join("");
-                        var info = new google.maps.MVCObject();
-                        info.set("position", cluster.center_);
-                        infoWin.setContent(content);
-                        infoWin.open(that.map, info);
-                        that.removeLazyLoad();
-                    } else {
-                        that.map.setCenter(cluster.getCenter());
-                        that.map.setZoom(that.map.getZoom() + 1);
-                    }
-                });
-
-                google.maps.event.addListener(that.map, "bounds_changed", function () {
-                    infoWin.close();
-                    if (that.currentWidth > 768) {
-                        var inBoundHome = [];
-                        for (var i = 0; i < that.markers.length; i++) {
-                            if (that.map.getBounds().contains(that.markers[i].getPosition())) {
-                                inBoundHome.push(that.markers[i].homeID); // in visible bounds
-                            }
-                        }
-                        const isHomeInBound = [];
-                        that.homeListsCopy.forEach((home, index) => {
-                            if (inBoundHome.includes(home.homeID)) {
-                                isHomeInBound.push(home);
-                            }
-                        });
-                        if (this.newHomeListsAfterFilter) {
-                            this.newHomeListsAfterFilter = isHomeInBound;
-                        }
-                        that.newHomeLists = isHomeInBound;
-                    }
-                });
-            });
-        } else {
-            const element = document.getElementById(this.mapName);
-            const options = {
-                center: new google.maps.LatLng(1.3649170000000002, 103.82287200000002), // Default singapore
-                fullscreenControl: false,
-                zoom: 12,
-                mapId: "4df64ef1b112569a",
-            };
-            this.map = new google.maps.Map(element, options);
-        }
-    }
-},
+			this.markerCoordinatesforStudents.forEach((coord) => {
+			  if (
+				typeof coord.latitude != "undefined" &&
+				typeof coord.longitude != "undefined"
+			  ) {
+				const position = new google.maps.LatLng(
+				  coord.latitude,
+				  coord.longitude
+				);
+				const marker = new google.maps.Marker({
+				  position,
+				  map: this.map,
+				  animation: google.maps.Animation.DROP,
+				  url: coord.link,
+				  icon: this.markerIcon,
+				  title: coord.name,
+				  homeID: coord.homeID,
+				  image: coord.image,
+				});
+				marker.addListener("mouseover", function () {
+				  infowindow.setContent(
+					'<div class="map-popup"><a class="cluster-home-link" href="' +
+					  coord.link +
+					  '"><img class="map-home-img" data-skip-lazy=""  src="' +
+					  coord.image +
+					  '"/><span>' +
+					  coord.name +
+					  "</span></a></div>"
+				  );
+				  infowindow.open(this.map, marker);
+				  that.removeLazyLoad();
+				});
+				marker.addListener("mouseout", function () {
+				  infowindow.close(this.map, marker);
+				});
+				marker.addListener("click", function () {
+				  if (marker.getAnimation() !== null) {
+					marker.setAnimation(null);
+				  } else {
+					marker.setAnimation(google.maps.Animation.BOUNCE);
+				  }
+				  window.location.href = marker.url;
+				});
+				this.markers.push(marker);
+				this.map.fitBounds(this.bounds.extend(position));
+			  }
+			});
+			var mc = new MarkerClusterer(this.map, this.markers, {
+			  zoomOnClick: false,
+			  imagePath: this.custerIcon,
+			});
+			mc.setStyles(
+			  mc.getStyles().map(function (style) {
+				//style.textColor = '#fb1a4e';
+				style.textColor = "#fff";
+				style.textSize = 15;
+				style.width = 57;
+				style.lineHeight = 55;
+				return style;
+			  })
+			);
+			mc.addMarkers(this.markers);
+			var infoWin = new google.maps.InfoWindow();
+  
+			google.maps.event.addListener(mc, "clusterclick", function (cluster) {
+			  if (this.map.getZoom() > 17) {
+				infoWin.close();
+				var content = "";
+				content += cluster
+				  .getMarkers()
+				  .map(
+					(cl) =>
+					  '<div class="map-popup"><a class="cluster-home-link" href="' +
+					  cl.url +
+					  '"><img class="map-home-img" data-skip-lazy=""  src="' +
+					  cl.image +
+					  '"/><span>' +
+					  cl.title +
+					  "</span></a></div>"
+				  );
+				content = content.split(",").join("");
+				var info = new google.maps.MVCObject();
+				info.set("position", cluster.center_);
+				infoWin.setContent(content);
+				infoWin.open(this.map, info);
+				that.removeLazyLoad();
+			  } else {
+				this.map.setCenter(cluster.getCenter());
+				this.map.setZoom(this.map.getZoom() + 1);
+			  }
+			});
+  
+			google.maps.event.addListener(
+			  this.map,
+			  "bounds_changed",
+			  function () {
+				infoWin.close();
+				if (that.currentWidth > 768) {
+				  var inBoundHome = [];
+				  for (var i = 0; i < that.markers.length; i++) {
+					if (
+					  that.map.getBounds().contains(that.markers[i].getPosition())
+					) {
+					  inBoundHome.push(that.markers[i].homeID); // in visible bounds
+					}
+				  }
+				  const isHomeInBound = [];
+				  that.homeListsCopy.forEach((home, index) => {
+					if (inBoundHome.includes(home.homeID)) {
+					  isHomeInBound.push(home);
+					}
+				  });
+				  if(this.newHomeListsAfterFilter){
+					this.newHomeListsAfterFilter = isHomeInBound
+				  }
+				  that.newHomeLists = isHomeInBound;
+				} /* else {
+							  that.newHomeLists = that.homeListsCopy
+						  } */
+			  }
+			);
+		  } else {
+			const element = document.getElementById(this.mapName);
+			const options = {
+			  center: new google.maps.LatLng(
+				1.3649170000000002,
+				103.82287200000002
+			  ), // Default singapore
+			  fullscreenControl: false,
+			  zoom: 12,
+			  mapId: "4df64ef1b112569a",
+			};
+			this.map = new google.maps.Map(element, options);
+		  }
+		}
+	  },
 // ... (rest of your code)
 
 
@@ -2954,12 +2965,12 @@
 	  },
 	  showPopOverDelayed() {
 			setTimeout(() => {
-			this.showPopOver = true;
+			this.showPopOver = false;
 			}, 10000);
 		},
 	  hidePopOverDelayed() {
 			setTimeout(() => {
-			this.showPopOver = false;
+			this.showPopOver = true;
 			}, 10000);
 		}
 	},
@@ -3218,15 +3229,25 @@
   </script>
   
   <style scoped>
-  @import "../assets/css/filterform.css";
-  @import "../assets/css/MultiRangeSliderBlack.css";
-  @import "../assets/css/MultiRangeSliderBarOnly.css";
+  @import "@/assets/css/filterform.css";
+  @import "@/assets/css/MultiRangeSliderBlack.css";
+  @import "@/assets/css/MultiRangeSliderBarOnly.css";
   @import "../assets/css/common.css";
   /* ----------mainRangeSlide-range-start----- */
+  :deep(.multiselect-clear-icon){
+   display: none;
+	}
+	:deep(.multiselect-caret) {
+		display: none;
+	}
   .mainRangeSlide {
 	width: 100%;
 	display: block;
 	padding: 0px 20px;
+  }
+  :deep(.checkbox-dropdown){
+	display:flex;
+	flex-direction: column;
   }
   .mainRangeSlide .numberVal input {
 	padding: 10px 10px 10px 20px;
@@ -3234,7 +3255,7 @@
 	border-radius: 10px;
 	color: #000;
 	border: 1px solid #000 !important;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 600;
 	text-align: center;
 	width: 100px;
@@ -3330,7 +3351,7 @@
   }
   }
   .filter-item #neighbour {
-	width: 100%;
+	width: 100% !important;
 	height: 100%;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -3341,7 +3362,7 @@
 	text-align: left;
   }
   .map-image-heading :first-child {
-	font-size: 28px;
+	font-size: 27px;
 	letter-spacing: normal;
 	font-weight: 700;
 	line-height: 34px;
@@ -3349,7 +3370,7 @@
 	margin-bottom: 0;
   }
   .map-image-subheading {
-	font-size: 16px;
+	font-size: 15px;
 	line-height: 19px;
 	font-weight: 400;
 	letter-spacing: normal;
@@ -3360,7 +3381,7 @@
 	height: 40px;
 	line-height: 40px;
 	/* border: 1px #8D8D8D solid !important; */
-	font-size: 12px;
+	font-size: 11px;
 	font-weight: 700;
 	letter-spacing: normal;
 	/* color: #8D8D8D !important; */
@@ -3376,7 +3397,7 @@
 	left: auto !important;
   }
   .sort-by-filter button .dropdown-icon {
-	font-size: 20px;
+	font-size: 19px;
   }
   .section-main-title .cms-title ::v-deep(:first-child) {
 	color: #222222;
@@ -3388,7 +3409,7 @@
 	position: relative;
   }
   .building-cms .building-card .name {
-	font-size: 18px;
+	font-size: 17px;
 	color: #000;
 	font-weight: 600;
 	text-transform: capitalize;
@@ -3410,7 +3431,7 @@
   }
   .building-cms .building-card .price p,
   .building-cms .building-card .title ::v-deep(:first-child) {
-	font-size: 14px;
+	font-size: 13px;
 	letter-spacing: normal;
 	line-height: 27px;
 	color: #000;
@@ -3423,7 +3444,7 @@
 	background-color: #feefef;
 	border: 1px solid #ef5357;
 	color: #000;
-	font-size: 12px;
+	font-size: 11px;
 	font-weight: 600;
 	padding: 0 4px;
 	margin-bottom: 0;
@@ -3457,7 +3478,7 @@
   }
   
   .building-cms .room-image .overlay :first-child {
-	font-size: 11px;
+	font-size: 10px;
 	font-weight: 700;
 	color: #fff;
 	text-transform: initial;
@@ -3467,7 +3488,7 @@
 	border-radius: 4px;
 	line-height: 31px;
 	padding: 0 4px;
-	background-color: rgb(114, 191, 68);
+	/* background-color: rgb(114, 191, 68); */
 	transition: all 0.5s ease;
   }
   .building-cms .room-image .overlay :first-child:hover {
@@ -3482,14 +3503,14 @@
 	border-radius: 10px;
   }
   .building-cms .building-card .content-wrap .desc {
-	font-size: 12px;
+	font-size: 11px;
 	line-height: 15px;
 	letter-spacing: normal;
 	color: #8d8d8d;
 	text-transform: uppercase;
   }
   .building-cms .building-card .content-wrap .name {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 700;
 	line-height: 27px;
 	letter-spacing: normal;
@@ -3497,7 +3518,7 @@
   }
   .building-cms .building-card .content-wrap .address {
 	line-height: 27px;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 400;
 	letter-spacing: normal;
 	color: #000;
@@ -3556,7 +3577,7 @@
 	  max-width: 100%;
 	}
 	.section-main-title .cms-title ::v-deep(:first-child) {
-	  font-size: 24px;
+	  font-size: 23px;
 	}
 	.building-card .card-main .card-link img {
 	  max-height: 243px;
@@ -3584,7 +3605,7 @@
   .filter-item .btn-outline-primary {
 	border: 0;
 	color: #000 !important;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 400;
 	line-height: 19px;
 	padding: 0 15px;
@@ -3600,7 +3621,7 @@
 	justify-content: space-between;
   }
   .filter-item .filter-item-type {
-	font-size: 12px;
+	font-size: 11px;
 	font-weight: 700;
 	color: #000;
 	line-height: 15px;
@@ -3608,7 +3629,7 @@
   }
   .filter-item .dropdown-icon {
 	float: right;
-	font-size: 20px;
+	font-size: 19px;
 	margin-bottom: 6px;
   }
   .filter-item .city-dropdown-arrow {
@@ -3698,38 +3719,38 @@
 	  padding: 0;
 	}
 	.map-image-heading :first-child {
-	  font-size: 20px;
+	  font-size: 19px;
 	}
 	.map-image-subheading {
-	  font-size: 14px;
+	  font-size: 13px;
 	}
 	.filter-item .btn-outline-primary {
-	  font-size: 14px;
+	  font-size: 13px;
 	}
 	.filter-item .dropdown-icon,
 	.sort-by-filter button .dropdown-icon {
-	  font-size: 16px;
+	  font-size: 15px;
 	}
 	.building-cms .building-card .content-wrap .desc-box {
 	  padding: 15px;
 	}
 	.building-cms .building-card .content-wrap .desc {
-	  font-size: 11px;
+	  font-size: 10px;
 	}
 	.building-cms .building-card .content-wrap .name {
-	  font-size: 16px;
+	  font-size: 14px;
 	}
 	.building-cms .building-card .content-wrap .address {
-	  font-size: 14px;
+	  font-size: 13px;
 	}
 	.building-cms .building-card .price p,
 	.building-cms .building-card .title :first-child {
-	  font-size: 13px;
+	  font-size: 12px;
 	}
   }
   @media (min-width: 992px) and (max-width: 1199px) {
 	.map-image-heading :first-child {
-	  font-size: 22px;
+	  font-size: 21px;
 	}
 	.building-card .card-main .card-link img {
 	  max-height: 243px;
@@ -3768,10 +3789,10 @@
 	  margin-bottom: 30px !important;
 	}
 	.map-image-heading :first-child {
-	  font-size: 25px;
+	  font-size: 24px;
 	}
 	.map-image-subheading {
-	  font-size: 15px;
+	  font-size: 14px;
 	}
 	.building-card .card-main .card-link img {
 	  height: 200px;
@@ -3859,7 +3880,7 @@
   }
   .reset-price {
 	float: left;
-	font-size: 25px;
+	font-size: 24px;
 	margin-left: 10px;
 	margin-top: 5px;
   }
@@ -3898,7 +3919,7 @@
 	transform: translateY(-50%);
 	line-height: normal;
 	height: 26px;
-	font-size: 18px;
+	font-size: 17px;
   }
   .ct-filter-selector {
 	border-radius: 10px !important;
@@ -3925,7 +3946,7 @@
 	}
 	.building-filter.form-cms-build .input-group:before {
 	  height: 25px;
-	  font-size: 16px;
+	  font-size: 15px;
 	}
   }
   :deep(.popover-body) {

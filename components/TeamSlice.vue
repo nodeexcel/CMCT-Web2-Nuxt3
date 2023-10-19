@@ -147,7 +147,7 @@ export default {
 }
 .readLineTag {
     color: #72767b !important;
-    font-size: 18px !important;
+    font-size: 17px !important;
     line-height: 27px !important;
     font-weight: 400 !important;
 }
@@ -164,13 +164,13 @@ export default {
 }
 .team-slice-section .team-slice-sub-heading{
     color: #8D8D8D;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 36px;
     font-weight: 400;
 }
 .team-slice-section  .team-slice-paragraph{
     color: #000;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 27px;
     font-weight: 400;
 }
@@ -182,11 +182,11 @@ export default {
 }
 @media (max-width:1199px){
     .team-slice-section .team-slice-sub-heading{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 20px;
     }
     .team-slice-section  .team-slice-paragraph{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 22px;
     }
     .team-slice-section .team-slice-img img{
@@ -198,7 +198,7 @@ export default {
 }
 @media  (max-width:575px){
     .team-slice-section  .team-slice-icon {
-        font-size: 20px;
+        font-size: 19px;
     }
 }
 @media (min-width:992px){
@@ -212,13 +212,13 @@ export default {
 }
 @media (min-width:768px) and (max-width:1199px){
     .team-slice-section .team-slice-sub-heading, .team-slice-section  .team-slice-paragraph{
-        font-size: 15px;
+        font-size: 14px;
         line-height: 24px;
     }
 }
 @media (min-width:768px) and (max-width:1199px){
     .team-slice-section .team-slice-sub-heading, .team-slice-section  .team-slice-paragraph{
-        font-size: 16px;
+        font-size: 15px;
         line-height: 26px;
     }
 }

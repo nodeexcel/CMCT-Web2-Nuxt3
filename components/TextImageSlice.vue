@@ -89,7 +89,7 @@ export default {
 .text-image-slice .text-image-slice-description{
     color: #000;
     letter-spacing: normal;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 31.5px;
 }
@@ -105,7 +105,7 @@ export default {
     background-color: #72BF44;
     border-radius: 30px;
     letter-spacing: normal;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 60px;
     font-weight: 700;
     height: 60px;
@@ -145,7 +145,7 @@ export default {
         padding: 30px 15px;
     }
     .text-image-slice .text-image-slice-description{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 22px;
 
     }
@@ -153,7 +153,7 @@ export default {
         min-width: 200px;
         height: 50px;
         line-height: 50px;
-        font-size: 16px;
+        font-size: 15px;
     }
     .text-image-slice .text-image-slice-description p{
         margin-bottom: 10px;
@@ -168,7 +168,7 @@ export default {
         padding: 30px;
     }
     .text-image-slice .text-image-slice-description{
-        font-size: 15px;
+        font-size: 14px;
         line-height: 24px;
     }
     .right-video-part ,.left-video-part{

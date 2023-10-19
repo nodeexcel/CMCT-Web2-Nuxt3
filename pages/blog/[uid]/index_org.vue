@@ -20,11 +20,11 @@
   }
   
   .f-12 {
-      font-size: 12px;
+      font-size: 11px;
   }
   
   .f-10 {
-      font-size: 10px;
+      font-size: 9px;
   }
   
   .line-height {
@@ -61,7 +61,7 @@
   /* Slider Bottom */
   .blog .blog-slider .blog-title h1 {
       font-weight: bold;
-      font-size: 38px;
+      font-size: 37px;
   }
   .blog .blog-slider .blog-slider-content {
       margin-top: -300px;
@@ -121,7 +121,7 @@
       background-color: #feefef;
       border: 1px solid #ef5357;
       color: #000;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       padding: 0 4px;
       margin-bottom: 0;
@@ -178,7 +178,7 @@
       display: block;
   }
   .blog .blog-slider-content .build-desc a, .blog .blog-slider-content-outer .build-desc a {
-      font-size: 16px;
+      font-size: 15px;
   }
   .blog .blog-slider-content-outer .build-desc a, .blog .blog-slider-content-outer .build-desc h3, .blog .blog-slider-content-outer .build-desc h2 {
       color: #000;

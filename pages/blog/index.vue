@@ -15,7 +15,9 @@
   
   export default {
     data(){
+        
         return{
+            envVars: useRuntimeConfig(),
             document :null,
             slices: []
         }
@@ -107,8 +109,8 @@
               meta_title:  document.meta_title[0].text ,
               meta_description: (document.meta_description.length) ? document.meta_description[0].text : '',
               meta_image: (document.meta_image.url) ? document.meta_image.url : '',
-              meta_url: process.env.baseUrl + '/blog',
-              meta_site_name: process.env.COMPANY_NAME
+              meta_url: this.envVars.public.env.baseUrl + '/blog',
+              meta_site_name: this.envVars.public.env.COMPANY_NAME
           }
           }).catch((error) => {
           console.error(error);
@@ -157,8 +159,8 @@
               meta_title = (document.meta_title.length) ? document.meta_title[0].text : ''
               meta_description= (document.meta_description.length) ? document.meta_description[0].text : ''
               meta_image = (document.meta_image.url) ? document.meta_image.url : ''
-              meta_url = process.env.baseUrl + '/blog'
-              meta_site_name = process.env.COMPANY_NAME
+              meta_url = this.envVars.public.env.BASE_URL + '/blog'
+              meta_site_name = this.envVars.public.env.COMPANY_NAME
             console.log("hh", client.getByUID('page', 'blog'),this.slices )
       })
         

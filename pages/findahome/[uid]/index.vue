@@ -7,6 +7,255 @@
       JSON.stringify(css) != ''
     "
   >
+ <div class="home-detail-slider slider-cms">
+      <div class="container-background-wrapper">
+        <div class="container-background-sub-wrapper">
+          <!-- <div v-if="Homedetails" class="loader"></div> -->
+          <client-only  v-if="Homedetails">
+            <div class="position-relative find-home-carousel-with-tabs">
+              <carousel
+                v-show="activeTab == 1"
+                class="find-home-carousel"
+                v-if="
+                  Homedetails.hero_banner &&
+                  Homedetails.hero_banner.toLowerCase() === 'slider'
+                "
+                :autoplay="true"
+                :loop="true"
+                :perPage="1"
+                :navigationEnabled="true"
+                :paginationEnabled="true"
+                :speed="2000"
+                navigationNextLabel="<i class='fa angle-right cust-icon'></i>"
+                navigationPrevLabel="<i class='fa angle-left cust-icon'></i>"
+                paginationActiveColor="#72bf44"
+                :autoplayTimeout="3000"
+                :spacePadding="0"
+                :margin="10"
+              >
+                <slide
+                  v-for="(images, index) in Homedetails.picturesArray"
+                  :key="index"
+                  :style="{ height: JSON.stringify(css) - 174 + 'px' }"
+                >
+                  <picture class="slider-img" v-if="images">
+                    <template v-for="(image, inx) in images.versions"  :key="inx">
+                      <img
+                        v-if="
+                          image.versionsName == 'phone' && screenSize <= 750
+                        "
+                       
+                        :alt="images.description"
+                        :src="image.link"
+                        media="(max-width: 750px)"
+                      />
+                      <img
+                        v-else-if="
+                          image.versionsName == 'tablet' &&
+                          screenSize > 750 &&
+                          screenSize <= 991
+                        "
+                        
+                        :alt="images.description"
+                        :src="image.link"
+                        media="(max-width: 991px)"
+                      />
+                      <img
+                        :alt="images.description"
+                        v-else-if="
+                          image.versionsName == 'desk' && screenSize > 991
+                        "
+                        
+                        :src="image.link"
+                      />
+                    </template>
+                  </picture>
+                </slide>
+              </carousel>
+              <div
+                v-show="activeTab == 2"
+                class="video-section"
+                :style="{ height: JSON.stringify(css) - 174 + 'px' }"
+              >
+                <iframe
+                  v-if="
+                    activeTab == 2 &&
+                    Homedetails.threeD_tour &&
+                    Homedetails['3DtourLink'] != null
+                  "
+                  data-not-lazy
+                  width="100%"
+                  allowfullscreen
+                  v-lazy-load
+                  :src="embedSlice.embed_url"
+                  frameborder="0"
+                ></iframe>
+              </div>
+              <location-slice
+                v-if="activeTab == 3 && mapSlice != null"
+                :slice="mapSlice"
+                class="location-section"
+                :style="{ height: JSON.stringify(css) - 174 + 'px' }"
+              />
+              <div class="findhome-card-tabs mt-3 mt-md-0">
+                <b-card no-body>
+                  <b-tabs card>
+                    <b-tab @click="activeTab = 1" title="Photos" active>
+                    </b-tab>
+                    <b-tab
+                      @click="activeTab = 2"
+                      title="Virtual Tour"
+                      id="ViewVirtualTour"
+                      v-if="
+                        Homedetails.threeD_tour &&
+                        Homedetails['3DtourLink'] != null
+                      "
+                    >
+                    </b-tab>
+                    <b-tab
+                      @click="activeTab = 3"
+                      title="Location"
+                      id="ViewLocation"
+                    >
+                    </b-tab>
+                  </b-tabs>
+                </b-card>
+              </div>
+            </div>
+            <div
+              v-if="
+                Homedetails.hero_banner &&
+                Homedetails.hero_banner.toLowerCase() != 'slider'
+              "
+            >
+              <template
+                v-for="(image, inx) in Homedetails.picturesArray[0].versions"  :key="inx"
+              >
+                <img
+                  v-if="image.versionsName == 'phone' && screenSize <= 750"
+                 
+                  :alt="image.description"
+                  :src="image.link"
+                  media="(max-width: 750px)"
+                />
+                <img
+                  v-else-if="
+                    image.versionsName == 'tablet' &&
+                    screenSize > 750 &&
+                    screenSize <= 991
+                  "
+                 
+                  :alt="image.description"
+                  :src="image.link"
+                  media="(max-width: 991px)"
+                />
+                <img
+                  :alt="image.description"
+                  v-else-if="image.versionsName == 'desk' && screenSize > 991"
+                  
+                  :src="image.link"
+                />
+              </template>
+            </div>
+          </client-only>
+
+          <div class="inner-content-wrapper mb-0 mb-xl-5 pb-xl-5" v-if="Homedetails">
+            <div class="cms-main-wrap">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="home-detail-slider-content">
+                    <div class="nb-main mt-3 row">
+                      <!-- <i class="fa fa-map icon_ font-weight-bold" aria-haspopup="true" aria-expanded="false"></i> -->
+                      <div class="col-md-12 mb-1 mb-xl-3">
+                        <div class="city-text">
+                          {{ Homedetails.cityName }},
+                          {{ Homedetails.neighbourhoodName }}
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="home-detail-title">
+                          <h1 class="mb-2 mb-xl-4">{{ Homedetails.name }}</h1>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 mb-3 mb-sm-0 text-sm-right">
+                        <div class="row justify-content-start justify-content-md-end">
+                          <div
+                            v-if="Homedetails.totalBedrooms != null"
+                            class="icons-details col-4 "
+                          >
+                            <div class="icon-1 icon">
+                              <div class="icon-wrap">
+                                <!-- <i class="fa fa-bed icon_ font-weight-bold" aria-haspopup="true" aria-expanded="false"></i> -->
+                                <!-- <img src="~/assets/img/bedroom.png" alt="bedroom" class="build-icon"> -->
+                              </div>
+                              <div
+                                class="desc d-flex align-items-center justify-content-center mb-2"
+                              >
+                                <p>{{ Homedetails.totalBedrooms }} bedrooms</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row justify-content-start justify-content-md-end">
+                          <div
+                            v-if="Homedetails.totalBathrooms != null"
+                            class="icons-details col-4 "
+                          >
+                            <div class="icon-1 icon">
+                              <div class="icon-wrap">
+                                <!-- <i class="fa fa-bed icon_ font-weight-bold" aria-haspopup="true" aria-expanded="false"></i> -->
+                                <!-- <img src="~/assets/img/bedroom.png" alt="bedroom" class="build-icon"> -->
+                              </div>
+                              <div
+                                class="desc d-flex align-items-center justify-content-center"
+                              >
+                                <p>{{ Homedetails.totalBathrooms }} bathrooms</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2 pl-0">
+                        <div v-if="Homedetails.forStudents == 1" class="student-logo">
+                          <img src="~/public/casamia_forstudents-4@4x.png" alt="student_logo">
+                        </div>
+                    </div>
+                    <div class="home-detail-address mb-3 mb-xl-5">
+                      {{ Homedetails.address }}
+                    </div>
+                    <div class="build-desc">
+                      <p v-html="Homedetails.description" class="homeDetailsDescription"></p>
+                    </div>
+                    <p
+                      v-if="Homedetails.listingType == 'whole apartment'"
+                      class="whole-apartment-price"
+                    >
+                      {{
+                        "Starting at " +
+                        Homedetails.priceCurrency +
+                        " " +
+                        Number(Homedetails.startingPrice).toLocaleString() +
+                        " " +
+                        Homedetails.priceUnit
+                      }}
+                    </p>
+                    <!-- <p class="location">Location: {{ fields.geohome-detail.latitude }}, {{ fields.geohome-detail.longitude }}</p> -->
+                  </div>
+                </div>
+                <div class="col-md-3 side-form-wrapper">
+                  <slices-block
+                    :slices="sideFormSlice"
+                    :is-home-detail="true"
+                    page-id="findahome"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <slices-block :slices="slices" :is-home-detail="true" page-id="findahome" />
   </section>
@@ -19,11 +268,13 @@ import axios from 'axios';
 import { useStore } from 'vuex'
 
 
+let activeTab= ref(1)
 let slices = ref(null)
 let homeDetails = ref(null)
 let Homedetails = ref (null)
 let anyRoomAvailable = ref(null)
 let mapSlice = ref([])
+mapSlice = ref({})
 let meta_title = ref(null)
 let meta_description = ref(null)
 let meta_image = ref(null)
@@ -76,19 +327,21 @@ let banner = ref({})
            homeData = result.data;
           console.log("in 67",document)
 
-          var meta_image = "";
+          var meta_image = null;
         if (
           homeData.data[0].picturesArray != undefined &&
           homeData.data[0].picturesArray.length > 0
         ) {
           homeData.data[0].picturesArray[0].versions.forEach(function (image) {
             if (image.versionsName == "desk") {
+              console.log("image1",image)
               meta_image = image.link;
+              
             }
           });
         }
         let amenitiesFeatures = [];
-        console.log("appartments",homeData)
+        // console.log("appartments",homeData)
         homeData.data[0].amenitiesArray = homeData.data[0].amenitiesArray.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         );
@@ -158,9 +411,9 @@ let banner = ref({})
           (homeData.data[0]["similar_homes"] = document.similar_homes);
         // return {
           slices.value = document.body
-          console.log("homeDatahomeDatahomeDatahomeData",homeData.data[0]);
+          // console.log("homeDatahomeDatahomeDatahomeData",homeData.data[0]);
           homeDetails.value = JSON.parse(JSON.stringify(homeData.data[0]))
-          console.log("5464",homeDetails.value);
+          // console.log("5464",homeDetails.value,anyRoomAvailable);
           // anyRoomAvailable.value = anyRoomAvailable
           mapSlice.value = []
           //SEO
@@ -171,9 +424,11 @@ let banner = ref({})
                 ? homeData.data[0].description.substring(0, 167) + "..."
                 : homeData.data[0].description
               : ""
-          // meta_image.value = meta_image
+             
+          meta_image = meta_image
+          console.log("image2",typeof meta_image,meta_image)
           meta_site_name.value = envVars.public.env.COMPANY_NAME
-          meta_url.value = envVars.public.env.baseUrl + "/findahome/" + router.params.uid
+          meta_url.value = envVars.public.env.BASE_URL + "/findahome/" + router.params.uid
           structuredData.value = {
             "@context": "http://schema.org/",
             "@type": "Apartment",
@@ -185,7 +440,7 @@ let banner = ref({})
               " " +
               homeData.data[0].cityName,
             description: homeData.data[0].description,
-            image: meta_image,
+            image: meta_image.value,
             name: homeData.data[0].name,
             numberOfRooms: homeData.data[0].totalBedrooms,
             url: envVars.public.env.BASE_URL + "/findahome/" + router.params.uid,
@@ -210,7 +465,7 @@ let banner = ref({})
             tagline: document.page_description,
           }
           // return result
-          console.log("201",banner.value);
+          // console.log("201",banner.value);
 
 
           // new--------------------------------------------------
@@ -234,21 +489,21 @@ let banner = ref({})
         },
       }
     );
-    console.log("231",similarAppartments,homeDetails.value);
+    // console.log("231",similarAppartments,homeDetails.value);
     // var _this = this;
     homeDetails.value.picturesArray.filter(function (item, index) {
       var list = [];
-      console.log("ok");
+      // console.log("ok");
       Object.keys(item).map(function (key) {
         if (key.includes("versions")) {
           homeDetails.value.picturesArray[index].versions = item[key].sort(
             (a, b) => (a.versionsName < b.versionsName ? 1 : -1)
           );
-          console.log("ok1");
+          // console.log("ok1");
         }
       });
     });
-    console.log("ok1",homeDetails.value);
+    // console.log("ok1",homeDetails.value);
     // Home details slice
     store.commit("setSideFormTop", {
       name: homeDetails.value.name,
@@ -264,10 +519,11 @@ let banner = ref({})
             homeDetails.value.priceUnit
           : "",
     });
-    console.log("ok1",homeDetails.value);
+    // console.log("store",store)
+    // console.log("ok1",homeDetails.value);
     // Similar homes
     if (homeDetails.value) {
-      console.log("ok11",homeDetails.value);
+      // console.log("ok11",homeDetails.value);
       let homeList = [];
       let homeIdsArr = [];
       let curHomeId = router.params.uid;
@@ -380,9 +636,9 @@ let banner = ref({})
             });
           }
         });
-        console.log("ok1333",homeDetails.value,homeList);
+        // console.log("ok1333",homeDetails.value,homeList);
         if (homeList.length < 4) {
-          console.log("ok1333444",homeDetails.value);
+          // console.log("ok1333444",homeDetails.value);
           const newSimilarAppartments = await axios.post(
             envVars.public.env.MODE === "prod"
               ? envVars.public.env.PROD_END_POINT
@@ -640,7 +896,7 @@ let banner = ref({})
     ];
 
     // Map slice
-    console.log("ok1333",homeDetails.value);
+    // console.log("ok1333",homeDetails.value);
     if (homeDetails.value.map) {
       /* this.slices = [{
 				primary:{
@@ -862,17 +1118,7 @@ let banner = ref({})
     }
 
     // Spacer slice
-    slices.value = [
-      {
-        slice_type: "spacer",
-        slice_label: null,
-        items: [],
-        primary: {
-          pixels: 50,
-        },
-      },
-      ...slices.value,
-    ];
+   
 
     // Rooms slice
     if (
@@ -908,16 +1154,16 @@ let banner = ref({})
         ...slices.value,
       ];
     }
-      console.log("ok1333okfinaloooooooooooo",homeDetails.value);
+      // console.log("ok1333okfinaloooooooooooo",homeDetails.value);
       Homedetails.value = homeDetails.value
-      console.log("ok1333okfinalooooooooooooDob",Homedetails.value);
+      // console.log("ok1333okfinalooooooooooooDob",Homedetails.value);
       }).catch((error) => {
           console.error(error);
           });
-          console.log("ok1333okfinalno",homeDetails.value);
+          // console.log("ok1333okfinalno",homeDetails.value);
       homeLists.value = homeList;
     }
-    console.log("ok1333ok",homeDetails.value);
+    // console.log("ok1333ok",homeDetails.value);
 
     
 
@@ -925,9 +1171,9 @@ let banner = ref({})
           console.error(error);
           });
 
-          appartments.then((data)=>{
-            console.log("in 74",data);
-          })
+          // appartments.then((data)=>{
+          //   // console.log("in 74",data);
+          // })
 
         // console.log("appartments2",appartments.then((ress) => {
         //   return ress
@@ -957,16 +1203,9 @@ let banner = ref({})
   
   <script>
   import axios from 'axios';
-  // Imports for all components
-//   import SlicesBlock from "~/components/SlicesBlock.vue";
-//   import LocationSlice from "~/components/slices/MapSlice.vue";
   export default {
     name: "home-details",
     layout: "homepage",
-    // components: {
-    //   SlicesBlock,
-    //   LocationSlice,
-    // },
     data() {
       return {
         activeTab: 1,
@@ -1023,7 +1262,7 @@ let banner = ref({})
     },
     async mounted() {
         let envVars = useRuntimeConfig();
-      await this.$fetch();
+      // await this.$fetch();
       // Remove lazy-load attribute
       $(".find-home-carousel-with-tabs iframe").removeAttr("v-lazy-load");
       var src = $(".find-home-carousel-with-tabs iframe").attr("data-src");
@@ -1037,6 +1276,7 @@ let banner = ref({})
       this.params = this.$route.params;
       this.handleResize();
     },
+    
     methods: {
       handleResize() {
         this.screenSize = process.browser ? screen.width : "";
@@ -1128,7 +1368,7 @@ let banner = ref({})
   </script>
   <style scoped>
   h3 {
-    font-size: 32px;
+    font-size: 31px;
   }
   .nb-main img {
     width: 60px;
@@ -1137,12 +1377,12 @@ let banner = ref({})
   .nb-main .nb-label {
     display: inline-block;
     vertical-align: middle;
-    font-size: 25px;
+    font-size: 24px;
     color: #000;
   }
   
   .icon_ {
-    font-size: 25px;
+    font-size: 24px;
   }
   /* --------------findhome-card-tabs--------- */
   .find-home-carousel-with-tabs {
@@ -1166,7 +1406,7 @@ let banner = ref({})
   }
   .home-detail .home-detail-slider .home-detail-title h1 {
     font-weight: bold;
-    font-size: 38px;
+    font-size: 37px;
   }
   .home-detail .home-detail-slider .home-detail-slider-content {
     z-index: 99;
@@ -1195,7 +1435,7 @@ let banner = ref({})
     background-color: #feefef;
     border: 1px solid #ef5357;
     color: #000;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     padding: 0 4px;
     margin-bottom: 0;
@@ -1208,7 +1448,7 @@ let banner = ref({})
   }
   .home-detail .home-detail-slider .home-detail-title > :first-child {
     color: #000;
-    font-size: 36px;
+    font-size: 35px;
     font-weight: 700;
     line-height: 44px;
     letter-spacing: normal;
@@ -1224,7 +1464,7 @@ let banner = ref({})
     display: block;
   }
   .home-detail .home-detail-slider .icons-details .desc {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     color: #000;
     text-transform: capitalize;
@@ -1237,7 +1477,7 @@ let banner = ref({})
   }
   .home-detail .home-detail-slider .build-desc p {
     color: #000;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 31.5px;
   }
@@ -1250,7 +1490,7 @@ let banner = ref({})
     display: block;
   }
   .home-detail .home-detail-slider-content .build-desc a {
-    font-size: 16px;
+    font-size: 15px;
   }
   /* Slider section */
   .home-detail .home-detail-slider .VueCarousel-navigation-button {
@@ -1376,7 +1616,7 @@ let banner = ref({})
     margin-right: 15px;
   }
   .home-detail-slider .home-detail-slider-content .city-text {
-    font-size: 16px;
+    font-size: 15px;
     color: #8d8d8d;
     line-height: 19px;
     font-weight: 400;
@@ -1387,7 +1627,7 @@ let banner = ref({})
   }
   .home-detail .home-detail-slider .home-detail-address {
     color: #000;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
     line-height: 27px;
   }
@@ -1427,7 +1667,7 @@ let banner = ref({})
   }
   .home-detail .new-room-box .detail-inner .desc .feature {
     color: #222;
-    font-size: 14px;
+    font-size: 13px;
     padding-left: 20px;
     margin-bottom: 0;
   }
@@ -1447,7 +1687,7 @@ let banner = ref({})
   
   :deep(.homeDetailsDescription a) {
       color: #000;
-      font-size: 19px;
+      font-size: 18px;
     line-height: 25px;
   }
   /* image-gallery  */
@@ -1504,21 +1744,21 @@ let banner = ref({})
   }
   @media (max-width: 1199px) {
     .home-detail-slider .home-detail-slider-content .city-text {
-      font-size: 13px;
+      font-size: 12px;
     }
     .home-detail .home-detail-slider .home-detail-title > :first-child {
-      font-size: 22px;
+      font-size: 21px;
     }
     .home-detail .home-detail-slider .icons-details .desc {
       min-width: 120px;
       min-height: 38px;
-      font-size: 16px;
+      font-size: 15px;
     }
     .home-detail .home-detail-slider .home-detail-address {
-      font-size: 16px;
+      font-size: 15px;
     }
     .home-detail .home-detail-slider .build-desc p {
-      font-size: 17px;
+      font-size: 16px;
       line-height: 25px;
     }
     /* --------------findhome-card-tabs--------- */
@@ -1564,26 +1804,26 @@ let banner = ref({})
   }
   @media (min-width: 992px) and (max-width: 1199px) {
     .home-detail-slider .home-detail-slider-content .city-text {
-      font-size: 14px;
+      font-size: 13px;
     }
     .home-detail .home-detail-slider .home-detail-title > :first-child {
-      font-size: 23px;
+      font-size: 22px;
     }
     .home-detail .home-detail-slider .icons-details .desc {
       min-width: 130px;
       min-height: 40px;
-      font-size: 17px;
+      font-size: 16px;
     }
     .home-detail .home-detail-slider .home-detail-address {
-      font-size: 17px;
+      font-size: 16px;
     }
     .home-detail .home-detail-slider .build-desc p {
-      font-size: 18px;
+      font-size: 17px;
       line-height: 28px;
     }
   }
   .whole-apartment-price {
-    font-size: 20px;
+    font-size: 19px;
     color: #72bf44;
     font-weight: 700;
   }

@@ -8,7 +8,9 @@
         </picture>
     </div> -->
     <div class="inner-content-wrapper form form-comman-input mb-5 pb-5">
-        <div class="main-part form-cms-build cms-main-wrap px-3">
+        <CountryCodeselector  v-model="selectedCountryCode" />
+        <input />
+               <div class="main-part form-cms-build cms-main-wrap px-3">
             <BForm @submit="onSubmit">
                 <div class="row mx-md-0">
                     <BFormGroup label="FIRST NAME" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4   ">
@@ -20,7 +22,7 @@
                                 type="text"
                                 class="form-inputs"
                             ></BFormInput>
-                            <span class="mt-2" v-html="invalidtext"></span>
+                            <!-- <span class="mt-2" v-html="invalidtext"></span> -->
                         <!-- </b-input-group> -->
                         <div class="mt-2" v-if="showValidationError.firstName">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
@@ -38,9 +40,9 @@
                         <!-- </b-input-group> -->
                     </BFormGroup>
                 
-                    <!-- <BFormGroup label="PHONE"  class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4"> -->
+                    <BFormGroup label="PHONE"  class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
-                            <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="form.phoneNumber" /> -->
+                            <!-- <VuePhoneNumberInput class="phoneInput" /> -->
                             <!-- <BFormInput
                                 id="phone_number"
                                 v-model="form.phone"
@@ -52,8 +54,8 @@
                         <!-- <div class="mt-2" v-if="showValidationError.phoneNumber">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
                             <span class="error">Please select phoneNumber with country-code</span>
-                        </div>
-                    </BFormGroup> -->
+                        </div> -->
+                    </BFormGroup> 
                     <BFormGroup  label="WHATSAPP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group -->
                            
@@ -83,11 +85,11 @@
                     </BFormGroup>
                     <BFormGroup  label="NATIONALITY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group class="input-group mb-4 mr-sm-2 mb-sm-0 search-ct-imput input-groups"> -->
-                            <!-- <div class="position-relative"> -->
-                                <!-- <VueMultiselect v-model="form.nationality" :options="nationalityOptions" :multiple="false" placeholder="Select nationality" class="form-inputs ct-dropdown-selector" required></VueMultiselect> -->
-                                <!-- <b-form-select id="nationality"  v-model="form.nationality" :options="nationalityOptions" class="form-inputs"></b-form-select> -->
-                                <!-- <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i> -->
-                            <!-- </div> -->
+                            <div class="position-relative">
+                                <VueMultiselect v-model="form.nationality" :options="nationalityOptions" :multiple="false" placeholder="Select nationality" class="form-inputs w-100 VueMultiselect ct-dropdown-selector" required></VueMultiselect>
+                                <!-- <b-form-select id="nationality"  v-model="form.nationality" :options="nationalityOptions" class="form-inputs"></b-form-select>
+                                <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i> -->
+                            </div>
                         <!-- </b-input-group> -->
                         <!-- <div class="mt-2" v-if="showValidationError.nationality">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
@@ -288,27 +290,22 @@
 <script>
 import moment from "moment";
 import axios from 'axios';
-import VueTelInput from 'vue3-tel-input'
-// import VuePhoneNumberInput from 'vue-phone-number-input';
+
+// import VueTelInput from 'vue3-tel-input'
 // import VueMultiselect from "vue-multiselect";
 import countryList from "./countryList.json";
-import 'vue3-tel-input/dist/vue3-tel-input.css'
+// import 'vue3-tel-input/dist/vue3-tel-input.css'
 export default {  
 name: 'finda-home-form',
 props: ['banner'],
 // components:{
-//     VuePhoneNumberInput,VueMultiselect
+//     VuePhoneNumberInput
 // },
 data() {
     return {
-        MODE:'prod',
-      PROD_END_POINT:'https://asia-east2-colivhq-backend.cloudfunctions.net/apiHomes',
-      DEV_END_POINT :'https://asia-east2-colivhq-dev.cloudfunctions.net/apiHomes',
-      PROD_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoiSGFGNm1iMTlMNkF6V1ZhdlByNXQiLCJjb2xpdmhxIjpmYWxzZSwiaWF0IjoxNTkyOTkwNDc2fQ.m5cUdPaf6TErOJUbmSfG2qusUdwQY4QOnv61o-tY0Zk',
-      DEV_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoidk9yWkxrY2kyb2lWb1plZlZTWmIiLCJjb2xpdmhxIjp0cnVlLCJpYXQiOjE1OTExMDMyMjh9.qsB8ioqPm197CFxnN-SPAr3UJFHeNhH6fTQ2L652nzA',
-      PROD_HOME_FORM_API_URL:'https://asia-east2-colivhq-backend.cloudfunctions.net/apiFormSubmit',
-      DEV_HOME_FORM_API_URL:'https://asia-east2-colivhq-dev.cloudfunctions.net/apiFormSubmi',
+        envVars:useRuntimeConfig(),
         cities: [],
+        selectedCountryCode:'SA',
         RedirectedProspectTo: null,
         showPopOver: false,
         invalidtext:'',
@@ -429,7 +426,7 @@ data() {
 			},
     }
 },
-mounted() { axios.post( this.MODE === 'prod' ? this.PROD_END_POINT : this.DEV_END_POINT, {}, { headers: { Authorization: "Bearer " + this.MODE === 'prod' ? this.PROD_COLIV_HQ_KEY : this.DEV_COLIV_HQ_KEY, }, } ) 
+mounted() { axios.post(this.envVars.public.env === 'prod' ? this.envVars.public.env.PROD_END_POINT : this.envVars.public.env.DEV_END_POINT, {}, { headers: { Authorization: "Bearer " + this.envVars.public.env.MODE === 'prod' ? this.envVars.public.env.PROD_COLIV_HQ_KEY : this.envVars.public.env.DEV_COLIV_HQ_KEY, }, } ) 
 .then((response) => { 
     this.cityOptions = [],this.cities = []; 
     this.cities = response.data.data
@@ -534,6 +531,7 @@ beforeMount() {
 },
 created() {
     var formData = this.preFillForm
+    console.log("formData" ,formData)
     this.form.firstName = formData.firstName
     this.form.lastName = formData.lastName
     this.form.phone = formData.phone
@@ -638,8 +636,8 @@ methods: {
     onSubmit(evt) {
         evt.preventDefault();      
         // this.invalidText();     
-        this.form.whatsappNumber = this.whatsapp;
-        this.form.phoneNumber = this.phone;
+        this.form.whatsappNumber = '9999999';
+        this.form.phoneNumber = '9999999';
         if(!this.form.firstName.length) {
             this.errorMessage = "Please Enter First Name"
         } else if(!this.form.email.length) {
@@ -685,7 +683,7 @@ methods: {
             this.errorMessage = ''
             this.form.isActive = true;                
             var source = window.location.href;
-            var sourceDetails = this.$cookies.get("link_source"); 
+            // var sourceDetails = this.$cookies.get("link_source"); 
             let flag = '/page/'+this.form.city.toLocaleLowerCase()+'?byRooms=&';
            
             let query =JSON.parse(JSON.stringify(this.form));
@@ -817,7 +815,7 @@ methods: {
                 }
             }
             flag = flag.substring(0, flag.length-1);
-            axios.post(process.env.MODE === 'prod' ? this.PROD_HOME_FORM_API_URL: this.DEV_HOME_FORM_API_URL, {
+            axios.post(this.envVars.public.env.MODE === 'prod' ? this.envVars.public.env.PROD_HOME_FORM_API_URL: this.envVars.public.env.DEV_HOME_FORM_API_URL, {
                 ageGroup: this.form.ageGroup,
                 phoneNumber: this.form.phoneNumber,
                 whatsappNumber: this.form.whatsappNumber,
@@ -839,7 +837,7 @@ methods: {
                 bathroomType: this.form.bathroomType,
                 source: source,
                 sourceDetails: sourceDetails,
-                uid: process.env.firebaseID,
+                uid: this.envVars.public.env.firebaseID,
                 whatsApp: this.form.whatsappNumber,
                 marketingUpdate: this.form.status,
                 activityDescription: 'Discount code: ' + this.form.discount_code,
@@ -847,7 +845,7 @@ methods: {
                 useSales: true
             },{
                 headers: {
-                    Authorization: process.env.MODE === 'prod' ? 'Bearer '+process.env.PROD_COLIV_HQ_KEY : 'Bearer '+process.env.DEV_COLIV_HQ_KEY
+                    Authorization: this.envVars.public.env.MODE === 'prod' ? 'Bearer '+this.envVars.public.env.PROD_COLIV_HQ_KEY : 'Bearer '+this.envVars.public.env.DEV_COLIV_HQ_KEY
                 }
             }).then((response) => {
                 if(response.data.status == 1) {
@@ -969,9 +967,10 @@ methods: {
 }
 }
 </script>
-<style scoped>
+<style>
 @import "../assets/css/form.css";
-@import "../assets/css/common.css";
+@import "@/assets/css/common.css";
+@import "@/assets/css/filterform.css";
 
 .pop{
 position: fixed;
@@ -984,6 +983,9 @@ width:20rem;
 z-index: 9999;
 border: 2px solid #72bf44;
 box-shadow:0px 0px 12px rgb(119, 191, 69), 0 0 5px rgba(0, 0, 0, 0.5) inset
+}
+:deep(.form-check-input) {
+    background-color: #d8d8d8;
 }
 .mascot-image-submitMascot{
 height: 7.5rem;
@@ -1002,7 +1004,7 @@ width: auto;
 border-radius: 10px;
 color: #000;
 border: 1px solid #000 !important;
-font-size: 16px;
+font-size: 15px;
 font-weight: 600;
 text-align: center;
 width: 100px;
@@ -1142,7 +1144,7 @@ display: none !important;
 .error {
     color: #e44e4e;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 13px;
 }
 .ct-dropdown-selector {
 width: auto;
@@ -1160,7 +1162,7 @@ font: normal normal normal 14px/1 FontAwesome;
 transform: translateY(-50%);
 line-height: normal;
 height: 26px;
-font-size: 18px;
+font-size: 17px;
 z-index: 9;
 }
 .multiselect * {
@@ -1215,9 +1217,6 @@ border-top: 1px solid #e8e8e8 !important;
 background: #41b883 !important;
 outline: none !important;
 color: #fff !important;
-}
-.large-button{
-    line-height: 15px !important;
 }
 @media (max-width: 425px) {
     

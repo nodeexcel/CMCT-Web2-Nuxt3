@@ -170,7 +170,7 @@ export default {
 }
 .topic .show-more-link ,
 .topic .show-less-link {
-  font-size: 14px;
+  font-size: 13px;
   color: #f06161;
   font-weight: 500;
   line-height: normal;
@@ -179,12 +179,12 @@ export default {
 .topic .show-more-link i,
 .topic .show-less-link i {
   margin: 0 12px 0 5px;
-  font-size: 14px;
+  font-size: 13px;
 }
 .topic .topic-heading ::v-deep(:first-child) {
     color: #000;
     margin-bottom: 0;
-    font-size: 42px;
+    font-size: 41px;
     letter-spacing: normal;
     line-height: 50px;
     font-weight: 700;
@@ -192,7 +192,7 @@ export default {
 .topic .gallery-item .topic-title ::v-deep(:first-child) {
   color: #222;
   margin-bottom: 0;
-    font-size: 24px;
+    font-size: 23px;
     line-height: 29px;
     letter-spacing: normal;
     font-weight: 700;
@@ -267,13 +267,13 @@ export default {
 .topic .gallery-item .topic-desc ::v-deep(:first-child) {
   color: #222;
   letter-spacing: normal;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 27px;
   font-weight: 400;
   margin-bottom: 24px;
 }
 .topic .gallery-item .topic-desc{
- font-size: 18px;
+ font-size: 17px;
   line-height: 27px;
   font-weight: 400;
   letter-spacing: normal;
@@ -286,7 +286,7 @@ export default {
 .topic-slice-title :first-child{
   color: #000;
   margin-bottom: 0;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 22px;
   letter-spacing: normal;
   font-weight: 700;
@@ -299,20 +299,20 @@ export default {
     padding: 0 15px 24px 15px;
   }
   .topic .topic-heading :first-child{
-    font-size: 24px;
+    font-size: 23px;
     line-height: normal;
     margin-bottom: 0;
   }
   .topic .gallery-item .topic-title :first-child{
-    font-size: 17px;
+    font-size: 16px;
   }
   .topic .gallery-item .topic-desc{
-    font-size: 14px;
+    font-size: 13px;
     padding-left: 0;
     line-height: 21px;
   }
   .topic .gallery-item .topic-desc :first-child{
-    font-size: 14px;
+    font-size: 13px;
     line-height: 21px;
   } 
   .topic .gallery-item .card-collapse-header {
@@ -332,7 +332,7 @@ export default {
     padding: 12px 0;
   }
   .topic-slice-title :first-child{
-    font-size: 16px;
+    font-size: 15px;
   }
   .faq-wrapper-sidebar{
     padding: 20px;
@@ -353,7 +353,7 @@ export default {
     border-radius: 10px;
   }
   .topic-slice-title :first-child{
-    font-size: 14px;
+    font-size: 13px;
   }
   .topic-right-sidebar{
     padding: 10px 0;
@@ -369,22 +369,22 @@ export default {
     padding: 0 30px 32px 30px;
   }
   .topic .topic-heading :first-child{
-    font-size: 35px;
+    font-size: 34px;
   }
   .topic .gallery-item .topic-title :first-child{
-    font-size: 21px;
+    font-size: 20px;
   }
   .topic .gallery-item .topic-desc{
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
     padding-left: 20px;
   }
   .topic .gallery-item .topic-desc :first-child{
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
   } 
   .topic-slice-title :first-child{
-    font-size: 16px;
+    font-size: 15px;
   }
    .topic-right-sidebar{
     padding: 15px 0;
@@ -396,7 +396,7 @@ export default {
     border-radius: 10px;
   }
   .topic-slice-title :first-child{
-    font-size: 16px;
+    font-size: 15px;
   }
   .topic-right-sidebar{
     padding: 15px 0;

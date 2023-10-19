@@ -39,7 +39,7 @@
       top: 30px;
       left: 30px;
       background-color: #000;
-      font-size: 14px;
+      font-size: 13px;
       color: #fff !important;
       text-transform: uppercase;
       border-radius: 20px;
@@ -52,7 +52,7 @@
       transition: all 0.5s;
     }  
     .picturesoverlay-slice-section .picturesoverlay-subheading{
-      font-size: 24px;
+      font-size: 23px;
       font-family: 'helveticaneue-bold';
       line-height: 29px;
       color: #fff;
@@ -94,7 +94,7 @@
          margin-bottom: 50px;
        }
        .picturesoverlay-slice-section .picturesoverlay-heading-text{
-         font-size: 12px;
+         font-size: 11px;
        }
        .picturesoverlay-slice-section .picturesoverlay-heading-text{
           min-width: 125px;
@@ -104,7 +104,7 @@
           top: 15px;
        }
        .picturesoverlay-slice-section .picturesoverlay-subheading{
-         font-size: 16px;
+         font-size: 15px;
          line-height: 22px;
          left:15px;
          bottom: 30px;
@@ -133,7 +133,7 @@
     @media (min-width:768px) and (max-width:1199px){
       .picturesoverlay-slice-section .picturesoverlay-subheading{
         bottom: 25px;
-        font-size: 14px;
+        font-size: 13px;
         max-width: 200px;
       }
        .picturesoverlay-slice-section{
@@ -143,7 +143,7 @@
     }
     @media (min-width:992px) and (max-width:1199px){
       .picturesoverlay-slice-section .picturesoverlay-subheading{
-          font-size: 16px;
+          font-size: 15px;
       }
        .picturesoverlay-slice-section{
          padding: 50px 0;

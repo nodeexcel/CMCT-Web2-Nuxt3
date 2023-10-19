@@ -360,7 +360,7 @@
         object-fit: cover;
     }
     .image-gallery.content-section .paragraph-description{
-      font-size: 21px;
+      font-size: 20px;
       color: #000;
       line-height: 31.5px;
       font-weight: 400;
@@ -388,11 +388,11 @@
         padding-left: 32px;
     }
     .image-gallery-section .image-gallery-3-col .image-gallery-heading :first-child{
-        font-size: 24px;
+        font-size: 23px;
         line-height: 36px;
     }
     .image-gallery-section .image-gallery-3-col-description{
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 400;
         line-height: 27px;
         letter-spacing: normal;
@@ -410,10 +410,10 @@
     }
     .image-gallery-section .col_3_with_icons .image-gallery-heading :first-child{
         line-height: 36px;
-        font-size: 24px;
+        font-size: 23px;
     }
     .image-gallery-section .col_3_with_icons .main-sub-paragraph{
-        font-size: 21px;
+        font-size: 20px;
         line-height: 31.5px;
         margin-bottom: 50px;
     }
@@ -428,7 +428,7 @@
         font-weight: 700;
     }
     .image-gallery-section .col_3_with_icons .col_3_with_icons_white .main-sub-paragraph :last-child{
-        font-size: 18px;
+        font-size: 17px;
         line-height: 27px;
         font-weight: 400;
     }
@@ -443,14 +443,14 @@
         top: -33px;
     }
     .main-sub-paragraph {
-        font-size: 18px;
+        font-size: 17px;
         line-height: 27px;
         color: #000;
          letter-spacing: normal;
          font-weight: 500;
     }
     .image-gallery-section .image-gallery-heading :first-child{
-        font-size: 21px;
+        font-size: 20px;
         font-weight: 700;
         line-height: 25px;
         color: #000;
@@ -462,7 +462,7 @@
         background-color: #72BF44;
         border-radius: 30px;
         letter-spacing: normal;
-        font-size: 18px;
+        font-size: 17px;
         cursor: pointer;
         line-height: 60px;
         font-weight: 700;
@@ -492,7 +492,7 @@
         padding-bottom: 165px;
     }
      .galley-custom-icon .title .galley-item-content{
-        font-size: 16px;
+        font-size: 15px;
         line-height: 21px;
         letter-spacing: normal;
         font-weight: 400;
@@ -505,7 +505,7 @@
          height: 44px;
      }
      .image-gallery .view-more-content{
-         font-size: 16px;
+         font-size: 15px;
          font-weight: 700;
          letter-spacing: normal;
          color: #000;
@@ -521,13 +521,13 @@
         letter-spacing: normal;
     }
     .image-gallery .gallery-item-mf-title .gallery-item-mf-heading{
-        font-size: 16px;
+        font-size: 15px;
         line-height: 21px;
         font-weight: 400;
         color: #000;
     }
     .image-gallery .gallery-item-mf-title .gallery-item-mf-years{
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         color: #8D8D8D;
         line-height: 21px;
@@ -551,12 +551,12 @@
         border-radius: 10px 10px 0 0;
     }
     .gallery-item-section .fourcol_icons_heading{
-        font-size: 21px;
+        font-size: 20px;
         line-height: 25px;
         font-weight: 700;
     }
     .gallery-item-section .fourcol_icons_description{
-        font-size: 18px;
+        font-size: 17px;
         line-height: 27px;
         font-weight: 400;
          display: -webkit-box;
@@ -570,7 +570,7 @@
         height: 100%;
     }
     .gallery-items-mf-status {
-        font-size: 12px;
+        font-size: 11px;
           font-weight: 700;
           color: #fff;
           text-transform: lowercase;
@@ -632,14 +632,14 @@
           padding-right: 15px;
       }
       .image-gallery.content-section .paragraph-description{
-          font-size: 13px;
+          font-size: 12px;
           line-height: 20px;
       }
       .image-gallery-section .image-gallery-col-section{
         padding: 0px 15px !important;
       }
       .main-sub-paragraph{
-          font-size:13px;
+          font-size:12px;
           line-height: 22px;
       }
       .container-background-wrapper{
@@ -658,24 +658,24 @@
             padding: 0 15px !important;
         }
         .image-gallery-section .image-gallery-3-col .image-gallery-heading :first-child{
-            font-size: 18px;
+            font-size: 17px;
         }
         .image-gallery-section .image-gallery-3-col-description{
-            font-size: 15px;
+            font-size: 14px;
             line-height: 25px;
         }
         .image-gallery-section .col_3_with_icons .col_3_with_icons_section_image{
             height: 30px;
         }
         .image-gallery-section .col_3_with_icons .image-gallery-heading :first-child{
-            font-size: 18px;
+            font-size: 17px;
         }
         .image-gallery-section .col_3_with_icons .col_3_with_icons_white .main-sub-paragraph :last-child{
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 10px;
         }
         .image-gallery-section .col_3_with_icons .main-sub-paragraph{
-            font-size: 15px;
+            font-size: 14px;
             line-height: 24px;
             margin-bottom: 10px;
         }
@@ -700,33 +700,33 @@
             padding: 15px;		
         }
         .gallery-item-section .fourcol_icons_heading{
-            font-size: 16px;
+            font-size: 15px;
             line-height: 24px;
         }
         .gallery-item-section .fourcol_icons_description{
-            font-size: 14px;
+            font-size: 13px;
             line-height: 22px;
         }
         .galley-custom-icon .title .galley-item-content{
-            font-size: 15px;
+            font-size: 14px;
         }
         .image-gallery .gallery-item-mf-title .gallery-item-mf-heading{
-            font-size: 15px;
+            font-size: 14px;
         }	
         .image-gallery .gallery-item-mf-title .gallery-item-mf-years{
-            font-size: 13px;
+            font-size: 12px;
         }
         .image-gallery .view-more-content{
-            font-size: 15px;
+            font-size: 14px;
         }
         .image-gallery-section .image-gallery-heading :first-child{
-            font-size: 16px;
+            font-size: 15px;
         }
         .image-gallery-section .image-gallery-description{
             padding: 15px;
         }
         .image-gallery-section .gallery-btn{
-            font-size: 16px;
+            font-size: 15px;
             height: 45px;
             line-height: 45px;
             min-width: 250px;
@@ -734,13 +734,13 @@
     }	
     @media (min-width:768px) and (max-width:991px){
         .image-gallery-section .image-gallery-3-col-description{
-            font-size: 14px;
+            font-size: 13px;
             line-height: 22px;
         }
     }
     @media (min-width:768px) and (max-width:1199px){
         .image-gallery.content-section .paragraph-description{
-            font-size: 14px;
+            font-size: 13px;
         }
         .container-background-wrapper{
             padding-bottom: 75px;
@@ -768,11 +768,11 @@
     }
     @media (min-width:992px) and (max-width:1199px){
         .image-gallery.content-section .paragraph-description{
-            font-size: 17px;
+            font-size: 16px;
             line-height: 22px;
         }
         .main-sub-paragraph{
-            font-size: 16px;
+            font-size: 15px;
             line-height: 22px;
         }
         .image-gallery-section{
@@ -791,21 +791,21 @@
             padding: 25px;		
         }
         .gallery-item-section .fourcol_icons_heading{
-            font-size: 18px;
+            font-size: 17px;
             line-height: 26px;
         }
         .gallery-item-section .fourcol_icons_description{
-            font-size: 15px;
+            font-size: 14px;
             line-height: 24px;
         }
         .image-gallery-section .image-gallery-heading :first-child{
-            font-size: 18px;
+            font-size: 17px;
         }
         .image-gallery-section .gallery-btn{
             min-width: 280px;
             height: 55px;
             line-height: 55px;
-            font-size: 17px;
+            font-size: 16px;
         }
         .image-gallery-section .image-gallery-4-col-image{
             height: 240px;
@@ -857,14 +857,14 @@
             font-size: 18px;
         }
         .image-gallery-4-col-section .main-sub-paragraph{
-            font-size: 16px;
+            font-size: 15px;
             line-height: 24px;
         }
         .image-gallery-section .gallery-btn{
             min-width: 300px;
             height: 55px;
             line-height: 55px;
-            font-size: 17px;
+            font-size: 16px;
         }
         .image-gallery-4-col-main .content-h3-heading{
             padding-bottom: 0 !important;
@@ -880,11 +880,11 @@
             padding: 50px 25px 25px 25px;
         }
         .image-gallery-section .col_3_with_icons .main-sub-paragraph{
-            font-size: 19px;
+            font-size: 18px;
             margin-bottom: 30px;
         }
         .image-gallery-section .col_3_with_icons .col_3_with_icons_white .main-sub-paragraph :last-child{
-            font-size: 17px;
+            font-size: 16px;
         }
         .image-gallery-section .col_3_with_icons .col_3_with_icons_white .main-sub-paragraph :first-child{
             margin-bottom: 20px;

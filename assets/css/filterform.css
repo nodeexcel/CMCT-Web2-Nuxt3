@@ -16,7 +16,7 @@
     border-color: #77BF45;
     border-radius: 0;
     padding: 0 15px;
-    font-size: 12px;
+    font-size: 11px;
     color: #fff;
     height: 38px;
     font-weight: 600;
@@ -27,7 +27,7 @@
     border-radius: 0;
     /* color: #000 !important;
     border: 1px solid #ced4da !important; */
-    font-size: 13px;
+    font-size: 12px;
     height: 38px;
     font-weight: 500;
 }
@@ -40,13 +40,13 @@
     border-color: #77BF45;
     border-radius: 0;
     color: #77BF45;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .building-filter.form-cms-build input.form-inputs::placeholder,
 .building-filter.form-cms-build textarea::placeholder {
     color: #77BF45;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .building-filter.form-cms-build .form-group {
@@ -60,7 +60,7 @@
 
 .building-filter.form-cms-build .custom-control-label {
     color: #77BF45;
-    font-size: 13px;
+    font-size: 12px;
     vertical-align: middle;
     outline: 0;
 }
@@ -74,7 +74,7 @@
     border: none;
     width: 150px;
     margin: 0 auto;
-    font-size: 14px;
+    font-size: 12px;
     height: 36px;
     line-height: 36px;
     padding: 0 15px;
@@ -148,7 +148,7 @@
     border-color: #77BF45;
     border-radius: 0;
     padding: 10px 15px !important;
-    font-size: 12px;
+    font-size: 11px;
     color: #fff;
     height: 38px;
     width: 150px;
@@ -212,7 +212,7 @@
     color: #000;
     position: relative;
     font-weight: bold;
-    font-size: 48px;
+    font-size: 47px;
     text-transform: capitalize;
 }
 
@@ -234,7 +234,7 @@
 }
 
 .building-filter .form .description p {
-    font-size: 32px;
+    font-size: 31px;
     color: #000;
     font-weight: 200;
     letter-spacing: 1.2px;
@@ -244,19 +244,19 @@
 
 @media (max-width: 767px) {
     .building-filter .form .title h1 {
-        font-size: 32px;
+        font-size: 31px;
         line-height: 40px;
     }
     .building-filter .form .description p {
-        font-size: 26px;
+        font-size: 25px;
     }
 }
 
 @media (max-width: 375px) {
     .building-filter .form .title h1 {
-        font-size: 26px;
+        font-size: 25px;
     }
     .building-filter .form .description p {
-        font-size: 24px;
+        font-size: 23px;
     }
 }

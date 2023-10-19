@@ -55,13 +55,13 @@ export default {
     border-bottom: 0px;
 }
 .newsroom-section .newsroom-subheading{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     line-height: 17px;
     text-transform: uppercase;
 }
 .newsroom-section .paragraph-description{
-     font-size: 28px;
+     font-size: 27px;
     font-weight: 700;
     line-height: 42px;
 }
@@ -70,10 +70,10 @@ export default {
         margin-bottom: 50px;
     }
     .newsroom-section .newsroom-subheading{
-        font-size: 12px;     
+        font-size: 11px;     
     }
     .newsroom-section .paragraph-description{
-        font-size: 16px;
+        font-size: 15px;
         line-height: 24px;
     }
     .newsroom-section .newsroom-row{
@@ -95,10 +95,10 @@ export default {
 } 
 @media (min-width:1200px) and (max-width:1400px){
      .newsroom-section .newsroom-subheading{
-        font-size: 13px;     
+        font-size: 12px;     
     }
     .newsroom-section .paragraph-description{
-        font-size: 24px;
+        font-size: 23px;
         line-height: 35px;
     }
     .newsroom-section .newsroom-row{

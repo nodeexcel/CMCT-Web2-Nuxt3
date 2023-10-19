@@ -359,7 +359,7 @@ export default {
   padding: 64px;
 }
 .contact-us-section  .contact-us-heading :first-child{
-  font-size: 28px;
+  font-size: 27px;
   letter-spacing: normal;
   line-height: 34px;
   font-weight: 700;
@@ -378,7 +378,7 @@ export default {
   color: #fff;
 }
 .contact-us-section .contact-des{
-  font-size: 18px;
+  font-size: 17px;
   line-height: normal;
   font-weight: 400;
   line-height: 22px;
@@ -393,14 +393,14 @@ export default {
 }
 @media (max-width:1199px){
   .contact-us-section  .contact-us-heading :first-child{
-    font-size: 18px;
+    font-size: 17px;
     line-height: 25px;
   }
   .contact-us-section .contact-us-box{
     padding: 15px;
   }
   .contact-us-section .contact-des{
-      font-size: 15px;
+      font-size: 14px;
   }
   .contact-us-section .contact-icon{
     width: 28px;
@@ -408,12 +408,12 @@ export default {
      line-height: 25px;
   }
   .contact-us-section .contact-icon i{
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 @media (min-width:768px) and (max-width:1199px){
    .contact-us-section  .contact-us-heading :first-child{
-    font-size: 22px;
+    font-size: 21px;
     line-height: 28px;
   }
 }

@@ -800,7 +800,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style  scoped>
 @import "../assets/css/common.css";
 @import "../assets/css/form.css";
 
@@ -825,7 +825,7 @@ export default {
     font-weight: 700;
     line-height: 40px;
     height: 40px;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: normal;
     padding: 0 !important;
     max-width: none;
@@ -854,7 +854,7 @@ export default {
 } */
 /* START:: find home side form- DAB (16/09/2020) */
 .find-home-outer .form-top-content .main-detail-top .title {
-    font-size: 18px;
+    font-size: 17px;
     color: #000;
     font-weight: 700;
     line-height: 27px;
@@ -862,7 +862,7 @@ export default {
 }
 
 .find-home-outer .form-top-content .main-detail-top .sub-title {
-    font-size: 14px;
+    font-size: 13px;
     color: #72BF44;
     font-weight: 700;
     line-height: 27px;
@@ -878,7 +878,7 @@ export default {
 
 .find-home-outer .form-top-content .description {
     color: #222;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 18px;
     margin-top: 5px;
@@ -896,7 +896,7 @@ export default {
 }
 
 .find-home-outer .form-cms-build .input-group .input-group-text {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: #000;
     letter-spacing: normal;
@@ -931,7 +931,7 @@ export default {
 .find-home-outer .form-cms-build .input-group .form-control,
 .find-home-outer .form-cms-build .input-group .custom-select option,
 .find-home-outer .form-cms-build .input-group .custom-select {
-    font-size: 14px;
+    font-size: 13px;
     color: #8D8D8D;
     font-weight: 400;
     letter-spacing: normal;
@@ -948,7 +948,7 @@ export default {
     top: 45%;
     transform: translateY(-50%);
     color: #000;
-    font-size: 18px;
+    font-size: 17px;
     right: 15px;
 }
 
@@ -1004,11 +1004,11 @@ export default {
     }
 
     .find-home-outer .form-top-content .main-detail-top .title {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .find-home-outer .form-top-content .main-detail-top .sub-title {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .find-home-outer .form-top-content .main-detail-top .detail-box-img {
@@ -1017,14 +1017,14 @@ export default {
     }
 
     .find-home-outer .form-cms-build .input-group .input-group-text {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .find-home-outer .form-cms-build .input-group .form-control::placeholder,
     .find-home-outer .form-cms-build .input-group .form-control,
     .find-home-outer .form-cms-build .input-group .custom-select option,
     .find-home-outer .form-cms-build .input-group .custom-select {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .find-home-outer .form-cms-build .form-group {
@@ -1060,11 +1060,11 @@ export default {
 
 @media (min-width:992px) and (max-width:1199px) {
     .find-home-outer .form-top-content .main-detail-top .title {
-        font-size: 18px;
+        font-size: 17px;
     }
 
     .find-home-outer .form-top-content .main-detail-top .sub-title {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .find-home-outer .form-top-content .main-detail-top .detail-box-img {
@@ -1103,13 +1103,13 @@ export default {
 
 #second-step-modal h1 {
     color: #000;
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 600;
     line-height: 35px;
 }
 
 #second-step-modal p {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
     margin-bottom: 10px;
     line-height: 22px;
@@ -1121,7 +1121,7 @@ export default {
     height: 40px;
     padding: 10px 16px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: #000;
     font-weight: 500;
 }
@@ -1131,7 +1131,7 @@ export default {
     height: 40px !important;
     padding: 10px 16px !important;
     border-radius: 10px !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     color: #000 !important;
     margin-left: 10px;
     width: calc(100% - 10px);
@@ -1142,7 +1142,7 @@ export default {
     height: 40px !important;
     padding: 10px 16px !important;
     border-radius: 10px !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
     color: #000 !important;
     font-weight: 600 !important;
 }
@@ -1158,7 +1158,7 @@ export default {
 }
 
 #second-step-modal .col-form-label {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #000;
 }
@@ -1172,7 +1172,7 @@ export default {
     background: #f8f8f8;
     height: 40px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: #000;
     font-weight: 500;
     position: relative;
@@ -1182,7 +1182,7 @@ export default {
     position: absolute;
     right: 34px;
     top: 4px;
-    font-size: 23px;
+    font-size: 22px;
 }
 
 #second-step-modal textarea.form-control {
@@ -1190,7 +1190,7 @@ export default {
 }
 
 #second-step-modal .custom-control-label {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
 }
 
@@ -1208,7 +1208,7 @@ export default {
 }
 
 #second-step-modal .input-group .input-group-text {
-    font-size: 12px;
+    font-size: 11px;
     line-height: 13px;
     color: #000;
     width: 140px;
@@ -1233,7 +1233,7 @@ export default {
     font-weight: 600;
     color: #fff;
     padding: 10px 40px;
-    font-size: 17px;
+    font-size: 16px;
     border-radius: 40px;
     min-height: 54px;
     margin-top: 15px;
@@ -1351,7 +1351,7 @@ export default {
 #second-step-modal .header-modal-xl .header-close-button {
     padding: 3px 56px;
     height: 34px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #000;
     border: 0px;
@@ -1399,22 +1399,22 @@ export default {
 /*---------MEDIA-CSS---------- */
 @media (min-height:500px) and (max-height:800px) {
     #second-step-modal h1 {
-        font-size: 25px;
+        font-size: 24px;
         line-height: 27px;
     }
 
     #second-step-modal p {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     #second-step-modal .col-form-label {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     #second-step-modal .form-control {
         height: 35px;
         padding: 5px 16px;
-        font-size: 14px;
+        font-size: 13px;
         border-radius: 5px;
     }
 
@@ -1429,20 +1429,20 @@ export default {
         height: 35px !important;
         min-height: 35px !important;
         padding: 5px 16px !important;
-        font-size: 14px !important;
+        font-size: 13px !important;
         border-radius: 5px !important;
     }
 
     #second-step-modal .custom-select {
         height: 35px;
         padding: 5px 16px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     #second-step-modal i {
         right: 32px;
         top: 4px;
-        font-size: 20px;
+        font-size: 19px;
     }
 
     #second-step-modal textarea.form-control {
@@ -1450,12 +1450,12 @@ export default {
     }
 
     #second-step-modal .custom-control-label {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     #second-step-modal .btn {
         padding: 5px 10px;
-        font-size: 15px;
+        font-size: 14px;
         min-height: 40px;
     }
 
@@ -1597,7 +1597,7 @@ export default {
     #adjust-lease-modal .header-modal-xl .header-close-button {
         padding: 3px 29px;
         height: 30px;
-        font-size: 13px;
+        font-size: 12px;
         line-height: 10px;
     }
 
@@ -1649,7 +1649,7 @@ export default {
 
     #second-step-modal .btn {
         padding: 1px 17px;
-        font-size: 15px;
+        font-size: 12px;
         min-height: 43px;
     }
 
@@ -1667,7 +1667,7 @@ export default {
     }
 
     #second-step-modal h1 {
-        font-size: 28px;
+        font-size: 27px;
     }
 }
 
@@ -1739,7 +1739,7 @@ export default {
     color: #fff;
     border-radius: 5px;
     background: #000;
-    font-size: 12px;
+    font-size: 11px;
     left: 50%;
     transform: translate(-63%, 0);
     width: 85px;
@@ -1787,7 +1787,7 @@ export default {
 
 .end-date {
     color: #8D8D8D;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 #side-form {

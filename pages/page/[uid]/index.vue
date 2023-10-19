@@ -10,6 +10,7 @@
 // Imports for Prismic Slice components
 // import SlicesBlock from '~/components/SlicesBlock.vue'
 
+
 export default {
   name: 'page',
   layout: 'homepage',
@@ -99,11 +100,12 @@ export default {
       ],
     }
   },
-  async asyncData({ $prismic, params, error,store }) {
-    console.log("params",params)
+  // async asyncData({ $prismic, params, error,store }) {
+  //   console.log("params",params)
     
-  },
+  // },
   created () {
+    
 	let query_param = this.$route.query;
   console.log("this.slices",this.slices)
     // const isForm = this.slices.filter(function(slice) {                
@@ -119,9 +121,25 @@ export default {
     if(this.$route.params.uid == 'privacy' || this.$route.params.uid == 'termsofservice') {
       this.isNormalLink = true;
     }
+    // console.log("routing path",Object.keys(this.$route.query).length , !this.$route.fullPath.includes("?byHomes"),this.$route.path)
 	  if((Object.keys(this.$route.query).length == 0 || !this.$route.fullPath.includes("?byHomes")) && this.$route.path == '/page/singapore'){
-		this.$router.push({path: '/page/'+'singapore'+'?byRooms='})
+      const query = {}
+     query.byRooms = ""
+     this.$router.push({ path: this.$route.path ,
+        query})
 	  }
+
+  //   if(this.$store.state.faq_topic !== null){
+  //   this.$store.state.faq_topic.forEach((item) =>{
+  //     console.log("item",item)
+  //     if(this.$route.fullPath.includes(item.primary.title[0].text)){
+  //       var id = (item.primary.title[0].text).replace(/ /g,'')
+  //       id = ('#'+id).split('#').join('')
+  //       this.$router.push({ path: this.$route.path,
+  //       query: {'#': id}})
+  //     }
+  //   })
+  // }
   },
   mounted(){
     try{
@@ -139,6 +157,8 @@ export default {
       });
 
       // in store set faq_topics
+      // const store = useStore()
+     
       var data = [];
       document.page_content.filter(function(slice) {                
         if(slice.slice_type == 'faq_topic') {
@@ -146,7 +166,7 @@ export default {
         }
       });
       if(data.length>0){
-          store.commit('SET_FAQ', data);
+          // this.$store.commit('SET_FAQ', data);
       }
 
 

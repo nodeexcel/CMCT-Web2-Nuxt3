@@ -2,7 +2,7 @@
 <template>
     <div class="content-page page-not-found">
       <!-- data: {{ data }} <br /> -->
-    pending: {{ pending }}
+    <!-- pending: {{ pending }} -->
 
    <!-- <div class="container">
      <h1>Page not found</h1>

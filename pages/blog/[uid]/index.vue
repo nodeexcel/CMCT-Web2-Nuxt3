@@ -120,11 +120,11 @@
 						<div class="author_box mx-3">
 							<div class="row">
 								<div class="col-lg-8 d-sm-flex">
-									<!-- <div class="mr-sm-4 text-center text-lg-left">
-										<prismic-image :field="author.data.author_picture" class="author-image w-100"/>
-									</div> -->
+									<div class="mr-sm-4 text-center text-lg-left">
+										<!-- <prismic-image :field="author.data.author_picture" class="author-image w-100"/> -->
+									</div>
 									<div>
-										<!-- <span class="author_box_heading mb-2 d-inline-block">{{author.data.author}}</span> -->
+										 <!-- <span class="author_box_heading mb-2 d-inline-block">{{author.data.author}}</span>  -->
 										<!-- <prismic-rich-text :field="author.data.author_bio" class="author_bio author_box_paragraph"/> -->
 										<!-- <figure v-for="(item, index) in author.data.social_networks"
 											:key="'social_media_links-item-' + index">  
@@ -332,7 +332,9 @@ export default {
 		  console.log("document",document)
 		  if (document.author.id) {
 			console.log("document",document)
-			//   author = (await store.dispatch('fetchAuthor', document.author.id))
+
+			//    let author = (await this.$store.dispatch('fetchAuthor', 'YLXe5hIAACUAoSkS'))
+			//   console.log("jjj", mainStore)
 		  }
 		//   let topic = (await store.dispatch('fetchAuthor', 'topics')).results
 
@@ -643,7 +645,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style >
 .blog-detail-section{
   background-color: #f7f7f7;
 }
@@ -668,19 +670,19 @@ export default {
 }
 .toc-content-container .blog-detail-sidebar .badge,.toc-content-container .blog-detail-sidebar {
   display: block;
-  color: #000;
+  color: #000 !important;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 20px;
   letter-spacing: normal;
   font-weight: 700;
-  background-color: #F7F7F7;
+  background-color: #F7F7F7 !important;
   text-align: left;
   white-space: normal;
   cursor: pointer;
 }
 .toc-content-container .blog-detail-heading	 {
-  font-size: 22px;
+  font-size: 21px;
   padding-bottom: 20px;
 }
 .toc-content-container .blog-detail-sidebar:last-child{
@@ -710,19 +712,19 @@ export default {
   padding: 0px 15px;
 }
 .build-desc {
-  font-size: 21px;
+  font-size: 20px;
   letter-spacing: normal;
   line-height:31.5px;
   font-weight: 400;
   color: #000;
 }
 .build-desc a{
-  font-size: 20px;
+  font-size: 19px;
   color: #000;
   text-decoration: underline;
 }
 .blog-detail-social-media .roommates-heading a{
-  font-size: 16px;
+  font-size: 15px;
   text-transform: uppercase;
   font-weight: 700;
   line-height:19px;
@@ -738,13 +740,13 @@ export default {
   border: 1px #E4E4E4 solid;
 }
 .blog-detail-social-media .blog-name{
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   line-height:22px;
   color: #000;
 }
 .blog-detail-social-media .blog-date,.blog-share{
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   line-height:17px;
   color: #000;
@@ -757,7 +759,7 @@ export default {
   /* margin-top: 30px; */
 }
 .blog .blog-slider .build-desc h2{
-  font-size: 36px;
+  font-size: 35px;
   font-weight: 700;
   line-height:44px;
   color: #000;
@@ -779,13 +781,13 @@ export default {
   padding: 120px 0px 165px 0;
 }
 .author_box .author_box_heading{
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   line-height:22px;
   color: #000;
 }
 .author_box .author_box_paragraph{
-  font-size: 16px;
+  font-size: 15px;
   line-height:24px;
   font-weight: 400;
   color: #000;
@@ -821,7 +823,7 @@ list-style-type: disc;
 
 .blog_body ul li a {
 text-decoration: none;
-color: blue;
+color: blue !important;
 }
 
 .blog_body ul li a:hover {
@@ -836,30 +838,30 @@ text-decoration: underline;
 	  display: block;
   }
   .blog-detail-social-media .roommates-heading a{
-	  font-size: 13px;
+	  font-size: 12px;
   }
   .blog-detail-social-media .blog-img-rounded{
 	  width: 50px;
 	  height: 50px;
   }
   .blog-detail-social-media .blog-name{
-	  font-size: 15px;
+	  font-size: 14px;
   }
   .blog-detail-social-media .blog-date, .blog-share{
-	  font-size: 13px;
+	  font-size: 12px;
   }
   .social-icon{
 	  margin-right: 10px;
   }
   .build-desc,.build-desc a{
-	  font-size: 16px;
+	  font-size: 15px;
 	  line-height:26px;
   }
   .blog .blog-slider .build-desc p{
 	  margin-bottom: 15px;
   }
   .blog .blog-slider .build-desc h2{
-	  font-size: 24px;
+	  font-size: 23px;
 	  line-height: 35px;
 	  margin-bottom: 15px;
 	  margin-top: 15px;
@@ -877,11 +879,11 @@ text-decoration: underline;
 	  padding: 20px 0 30px 0;
   }
   .author_box .author_box_paragraph{
-	  font-size: 14px;
+	  font-size: 13px;
 	  line-height:22px;
   }
   .author_box .author_box_heading{
-	  font-size: 17px;
+	  font-size: 16px;
 	  line-height: 16px;
   }
   .author_box .author-image{
@@ -917,10 +919,10 @@ text-decoration: underline;
 	  padding: 16px;
   }
   .toc-content-container .blog-detail-sidebar .badge, .toc-content-container .blog-detail-sidebar{
-	  font-size: 15px;
+	  font-size: 14px;
   }
   .toc-content-container .blog-detail-heading	 {
-	  font-size: 19px;
+	  font-size: 18px;
 	  padding-bottom: 15px;
   }
 }
@@ -939,21 +941,21 @@ text-decoration: underline;
 	  display: flex;
   }
   .blog .blog-slider .build-desc h2{
-	  font-size: 35px;
+	  font-size: 34px;
 	  line-height: 45px;
 	  margin: 35px 0 30px 0;
   }
   .blog-detail-social-media .roommates-heading a{
-	  font-size: 15px;
-  }
-  .blog-detail-social-media .blog-name{
-	  font-size: 16px;
-  }
-  .blog-detail-social-media .blog-date, .blog-share{
 	  font-size: 14px;
   }
+  .blog-detail-social-media .blog-name{
+	  font-size: 15px;
+  }
+  .blog-detail-social-media .blog-date, .blog-share{
+	  font-size: 13x;
+  }
   .build-desc,.build-desc a{
-	  font-size: 17px;
+	  font-size: 16px;
 	  line-height: 26px;
   }
   .blog .blog-slider .build-desc .block-img img{

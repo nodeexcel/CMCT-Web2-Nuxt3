@@ -14,7 +14,7 @@
                           <div class="desktop">
                               <div class="row logo-img">
                                     <div v-if="flag == true">
-                                      <b-modal id="modal-1" size="lg" centered hide-footer hide-header body-class="p-0" style="border-radius: 10px !important;">
+                                      <BModal v-model="modal_1" id="modal-1" size="lg" centered hide-footer hide-header body-class="p-0" style="border-radius: 10px !important;">
                                         <div class="modal-container">
                                               <div class="col-lg-12 col-md-12 col-sm-12 col-12 justify-content-between align-items-end content-wrapper ">
                                                 <div class="d-flex d-sm-flex flex-column flex-sm-row p-2">
@@ -53,7 +53,7 @@
                                                 
                                               </div> 
                                         </div>
-                                      </b-modal>
+                                      </BModal>
                                     </div>
                                       <template v-for="(item, index) in Partnerslice">
                                                   <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3 d-flex justify-content-center align-items-center image_wrraper" v-if="item.logo !== null" :key="index">
@@ -78,33 +78,31 @@
   name: 'partners',
   data(){
     return{
+      envVars:useRuntimeConfig(),
       Partnerslice: null,
       partnerContent: null,
       flag:false,
-      MODE:'prod',
-      PROD_END_POINT:'https://asia-east2-colivhq-backend.cloudfunctions.net/apiHomes',
-      DEV_END_POINT :'https://asia-east2-colivhq-dev.cloudfunctions.net/apiHomes',
-      PROD_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoiSGFGNm1iMTlMNkF6V1ZhdlByNXQiLCJjb2xpdmhxIjpmYWxzZSwiaWF0IjoxNTkyOTkwNDc2fQ.m5cUdPaf6TErOJUbmSfG2qusUdwQY4QOnv61o-tY0Zk',
-      DEV_COLIV_HQ_KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVyYXRvcklkIjoidk9yWkxrY2kyb2lWb1plZlZTWmIiLCJjb2xpdmhxIjp0cnVlLCJpYXQiOjE1OTExMDMyMjh9.qsB8ioqPm197CFxnN-SPAr3UJFHeNhH6fTQ2L652nzA',
-      PROD_PARTNER_API_URL:'https://asia-east2-colivhq-backend.cloudfunctions.net/getPartner',
-      DEV_PARTNER_API_URL:'https://asia-east2-colivhq-dev.cloudfunctions.net/getPartner'
+      modal_1 :false
+      
+     
     }
   },
   methods: {
       async getPartner (){
+        
         this.slicess  = await axios.post(
-        this.MODE === "prod"
-          ? this.PROD_PARTNER_API_URL
-          : this.DEV_PARTNER_API_URL,
+          this.envVars.public.env.MODE === "prod"
+          ? this.envVars.public.env.PROD_PARTNER_API_URL
+          : this.envVars.public.env.DEV_PARTNER_API_URL,
         {
           cityId: "6504b37d-f43e-4d0d-959c-719b94bd127f",
         },
         {
           headers: {
             Authorization:
-              this.MODE === "prod"
-                ? "Bearer " + this.PROD_COLIV_HQ_KEY
-                : "Bearer " + this.DEV_COLIV_HQ_KEY,
+            this.envVars.public.env.MODE === "prod"
+                ? "Bearer " + this.envVars.public.env.PROD_COLIV_HQ_KEY
+                : "Bearer " + this.envVars.public.env.DEV_COLIV_HQ_KEY,
           },
         }
       ).then(async (response) => {
@@ -125,16 +123,17 @@
       openPartnerbox(item){
         this.flag = true ;
         this.partnerContent = item
-        this.$bvModal.show('modal-1');
+        this.modal_1 =true
+  
   
       },
       closeModal() {
-              this.$root.$emit('bv::hide::modal', 'modal-1')
+        this.modal_1 =false
           },
   },
   mounted(){
     this.getPartner();
-    this.$root.$emit('bv::hide::modal', 'modal-1')
+    this.modal_1 =false
     this.flag = false
   },
   }
@@ -160,11 +159,11 @@
   .membership-title{
     font-weight: 900;
     color: black;
-    font-size: 28px;
+    font-size: 27px;
   }
   .membership-subtitle{
     color: black;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
   
   }
@@ -178,7 +177,7 @@
   }
   .close_modal{
       content: "\f00d";
-      font-size: 24px;
+      font-size: 23px;
       position: absolute;
       right: 0;
       top: 0.3em;
@@ -206,7 +205,7 @@
     }
      .close_modal{
      content: "\f00d";
-      font-size: 24px;
+      font-size: 23px;
       position: absolute;
       right: 2rem;
       top: 0.26em;
@@ -248,10 +247,10 @@
       }
   
       .membership-title{
-        font-size: 22px !important;
+        font-size: 21px !important;
       }
       .membership-subtitle{
-        font-size: 14px !important;
+        font-size: 13px !important;
         margin-top: .8rem !important;
   
       }

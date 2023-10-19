@@ -106,14 +106,14 @@ export default {
     margin-bottom: 35px;
     padding-top: 35px;
     text-align: center;
-    font-size: 32px;
+    font-size: 31px;
     font-weight: 700;
     line-height: 39px;
     letter-spacing: normal;
 }
 #features-table .details p { 
     text-align: center;
-    font-size: 21px;
+    font-size: 20px;
     color: #000000;
     font-weight: 400;
     line-height: 31.5px;
@@ -160,7 +160,7 @@ export default {
 #features-table table thead th {
     text-align: center;
     vertical-align: middle;
-    font-size: 18px;
+    font-size: 17px;
     width: 180px;
     font-weight: 700;
     letter-spacing: normal;
@@ -195,7 +195,7 @@ export default {
 }
 #features-table table tbody th {
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     padding: 28px 12px 28px 27px;
     line-height: 22px;
     letter-spacing: normal;
@@ -235,15 +235,15 @@ export default {
         margin-bottom: 10px;
         padding-top: 0;
         text-align: center;
-        font-size: 22px;
+        font-size: 21px;
         line-height: 39px;
     }
     #features-table .details p {
-        font-size: 13px;
+        font-size: 12px;
         line-height: 20px;
     }
     #features-table table tbody th {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 19px;
     }
     #features-table table th, #features-table table td{
@@ -251,7 +251,7 @@ export default {
         min-width: 180px;
     }
     #features-table table thead th{
-        font-size: 15px;
+        font-size: 14px;
         min-width: 180px;
         padding: 18px 10px 18px 15px !important;
     }
@@ -295,29 +295,29 @@ export default {
 }
 @media (min-width:768px) and (max-width:1199px){
     #features-table .table-h4-heading :first-child{
-        font-size: 22px;
+        font-size: 21px;
         line-height: 39px;
         margin-bottom: 10px;
     }
     #features-table .details p{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 20px;
     }
     #features-table table thead th{
-        font-size: 16px;
+        font-size: 15px;
     }
     #features-table table tbody th{
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 @media (min-width:992px) and (max-width:1199px){
       #features-table .table-h4-heading :first-child{
-        font-size: 28px;
+        font-size: 27px;
         line-height: 39px;
         margin-bottom: 20px;
     }
     #features-table .details p{
-        font-size: 17px;
+        font-size: 16px;
         line-height: 22px;
     }
 }

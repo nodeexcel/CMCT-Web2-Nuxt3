@@ -69,8 +69,9 @@
                     <RecommendationSlice :slice="slice"/>
                 </div>
                 <!-- FAQ topic team -->
-                <div v-else-if="slice.slice_type === 'faq_topic' && isTopicSlice == true">
-                    <TopicSlice :slice="topicSlice" :faq-icon="false"/>
+                <div v-else-if="slice.slice_type === 'faq_topic' ">
+                    {{ slice }}
+                    <!-- <TopicSlice :slice="topicSlice" :faq-icon="false"/> -->
                 </div>
                 <!-- Welcome banner full -->
                 <div v-else-if="slice.slice_type === 'welcome_banner_full'">
@@ -114,8 +115,19 @@
         </div>    
     </div>
 </template>
+<script setup>
+import { ref, computed,onMounted } from 'vue';
+import axios from 'axios';
 
-<script>
+	const props = defineProps(['slices'])
+    onMounted( async () => {
+		console.log("oooo",props)
+        console.log(Object.values(props));
+    
+    })
+</script>
+
+<script >
 // Imports for all slices
 // const TextSlice = () => import("./slices/TextSlice.vue");
 // const QuoteSlice = () => import("./slices/QuoteSlice.vue");
@@ -147,7 +159,7 @@
 // const PartnersSlice = () => import("./slices/PartnersSlice.vue");
 {/* <script> */}
 export default {
-  props: ['slices'],
+    props: ['slices', 'banner', 'isHomeDetail', 'pageId', 'isMapOnPage'],
 //   name: 'slices-block',
 //   components: {
 //     TextSlice,
@@ -189,10 +201,12 @@ export default {
   },
   methods: {
       getClass(slice) {
+        console.log("jkhkhj")
           let className = '';
             if(this.isMapOnPage === true && (slice.slice_type != 'listing' && slice.slice_type != 'listing1')) {
                 className = 'section-overlap map-zindex';
             }
+            console.log("className",this.isMapOnPage)
           return className;
       }
   },
@@ -200,20 +214,21 @@ export default {
     if(this.$route.path == '/page/community'){
 		this.hideLogos = true       
 	  }
-    if(this.$route.path == '/page/faqs'){
-     this.slices.forEach((item,index) =>{
-        if(item.slice_type == "faq_topic" ){
-       this.topicSlice.push(item)
-      }
-      if(index == 1 && item.slice_type == "faq_topic" ){
-        item.slice_type = "faq_topic" 
-      }
-      else if(index != 1 && item.slice_type == "faq_topic" ){
-        item.slice_type = ""
-      }     
-     })
-    } 
-    this.isTopicSlice = true   
+      console.log("this.slices",this.slices)
+    // if(this.$route.path == '/page/faqs'){
+    //  this.slices.forEach((item,index) =>{
+    //     if(item.slice_type == "faq_topic" ){
+    //    this.topicSlice.push(item)
+    //   }
+    //   if(index == 1 && item.slice_type == "faq_topic" ){
+    //     item.slice_type = "faq_topic" 
+    //   }
+    //   else if(index != 1 && item.slice_type == "faq_topic" ){
+    //     item.slice_type = ""
+    //   }     
+    //  })
+    // } 
+    // this.isTopicSlice = true   
   }
 }
 </script>

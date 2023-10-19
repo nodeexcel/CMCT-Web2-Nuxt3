@@ -190,7 +190,7 @@ export default {
     color: #000000;
 }
 .testimonial-main-box .testimonial-box .member_description{
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
     line-height: 27px;
 }
@@ -202,13 +202,13 @@ export default {
     vertical-align: middle;
 }
 .testimonial-main-box .testimonial-box .member_name{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     line-height: normal;
 }
 .testimonial-main-box .testimonial-box .member_title{
     color: #8D8D8D;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: normal;
 }
@@ -233,7 +233,7 @@ export default {
         padding: 15px;
     }
     .testimonial-main-box .testimonial-box .member_description{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 24px;
     }
     .testimonial-main-box .testimonial-box .member_box{
@@ -244,7 +244,7 @@ export default {
         height: 40px;
     }
     .testimonial-main-box .testimonial-box .member_name,.testimonial-main-box .testimonial-box .member_title{
-        font-size: 12px;
+        font-size: 11px;
     }
     .main-testimonial-main-wrapper{
         padding-bottom: 50px;
@@ -266,14 +266,14 @@ export default {
         padding: 20px;
     }
     .testimonial-main-box .testimonial-box .member_description{
-        font-size: 16px;
+        font-size: 15px;
     }
      .testimonial-main-box .testimonial-box .member_image{
         min-width: 50px;
         height: 50px;
     }
     .testimonial-main-box .testimonial-box .member_name,.testimonial-main-box .testimonial-box .member_title{
-        font-size: 13px;
+        font-size: 12px;
     }
     .main-testimonial-main-wrapper{
         padding-bottom: 70px;

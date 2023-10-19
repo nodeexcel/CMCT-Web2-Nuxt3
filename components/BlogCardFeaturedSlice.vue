@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .blog-post-heading :first-child{
-    font-size: 32px;
+    font-size: 31px;
     font-weight: 700;
     line-height: 39px;
     padding: 100px 0;
@@ -100,7 +100,7 @@ export default {
     color: #000;
 }
 .blog-cms .blog-card .name   {
-    font-size: 28px;
+    font-size: 27px;
     color: #000;
     font-weight: 700;
     text-decoration: none;
@@ -122,7 +122,7 @@ export default {
 }
 .blog-card .card-main .card-link .desc {
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 17px;
@@ -141,7 +141,7 @@ export default {
     object-fit: cover;
 }
 .blog-card .card-main .content-wrap .blog-bottom-content {
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: normal;
     line-height: 27px;
     font-weight: 400;
@@ -157,18 +157,18 @@ export default {
         padding: 15px;
     }
     .blog-card .card-main .card-link .desc{
-        font-size: 12px;
+        font-size: 11px;
         margin-bottom: 3px;
     }
     .blog-card .card-main .content-wrap .blog-bottom-content{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 22px;
     }
     .blog-card .card-main{
         padding: 0 0px!important;
     }
     .blog-post-heading :first-child{
-        font-size: 22px;
+        font-size: 21px;
        line-height: 39px;
        padding: 30px 0;
     }
@@ -177,7 +177,7 @@ export default {
         padding-bottom: 10px;
     }
     .blog-cms .blog-card .name{
-        font-size: 18px;
+        font-size: 17px;
         line-height: 26px;
         margin-bottom: 10px;
     }
@@ -207,7 +207,7 @@ export default {
 }
 @media (min-width:1200px) and (max-width:1400px){
     .blog-cms .blog-card .name{
-        font-size: 25px;
+        font-size: 24px;
         line-height: 35px;
     }
 }

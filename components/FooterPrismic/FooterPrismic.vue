@@ -176,7 +176,7 @@ footer .footer-detail .footer-logo {
 }
 .footer .footer-content {
   color: #FFF;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
   margin-bottom: 15px;
@@ -184,18 +184,18 @@ footer .footer-detail .footer-logo {
 }
 .footer .footer-content .link-title.title-header { 
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 40px;
 }
  .footer-copyright{
-  font-size: 16px;
+  font-size: 15px;
    color: #000;
 }
  .footer-privacy-policy li{
     list-style: none;
  }
  .footer-privacy-policy li a{
-  font-size: 16px;
+  font-size: 15px;
   color: #000;
   text-decoration: none;
 }
@@ -207,7 +207,7 @@ footer .footer-detail .footer-logo {
     line-height: 120%;
     text-decoration: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
     color: #000;
 }
 .footer .footer-content .link-title:hover{
@@ -222,7 +222,7 @@ footer .footer-detail .footer-logo {
 }
 .footer .footer-content .footer-sublink {
   display: block;
-  font-size: 14px;
+  font-size: 13px;
   color: #FFF;
   text-align: left;
   line-height: normal;
@@ -290,7 +290,7 @@ footer .footer-logo .logo-right-text {
     display: inline-block;
     vertical-align: text-top;
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 13px;
 }
 footer .footer-logo {
   text-align: left;
@@ -317,13 +317,13 @@ footer .footer-logo {
 @media (min-width:992px) and (max-width:1199px){
   .footer .footer-content .link-title{
     margin-bottom: 15px;
-    font-size: 15px;
+    font-size: 14px;
   }
   .footer .footer-content .link-title.title-header{
     margin-bottom: 20px;
   }
    .footer-copyright ,.footer-privacy-policy li a{
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 @media(max-width: 767px) {
@@ -339,7 +339,7 @@ footer .footer-logo {
 }
 @media(max-width: 680px) {
   footer .footer-logo .logo-right-text {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 @media(min-width: 576px) {
@@ -397,17 +397,17 @@ footer .footer-logo {
 @media (min-width:768px) and (max-width:991px){
   .footer .footer-content .link-title {
       margin-bottom: 15px;
-      font-size: 13px;
+      font-size: 12px;
   }
   .footer .footer-content .link-title.title-header {
-      font-size: 15px;
+      font-size: 14px;
       margin-bottom: 20px;
   }
   .footer-bottom {
       max-width: 100%;
   }
   .footer-copyright ,.footer-privacy-policy li a{
-    font-size: 13px;
+    font-size: 12px;
   }
   /* .footer .footer-content .footer-soical-icon{
     width: 24px;
@@ -424,10 +424,10 @@ footer .footer-logo {
 @media (max-width:767px){
   .footer .footer-content .link-title {
       margin-bottom: 10px;
-      font-size: 14px;
+      font-size: 13px;
   }
   .footer .footer-content .link-title.title-header {
-      font-size: 16px;
+      font-size: 15px;
       margin-bottom: 20px;
   }
   .footer .floating-icon{
@@ -439,7 +439,7 @@ footer .footer-logo {
   }
   .bottom-bar {
       text-align: center;
-      font-size: 13px;
+      font-size: 12px;
   }
   .footer-bottom .footer-social {
       text-align: center !important;

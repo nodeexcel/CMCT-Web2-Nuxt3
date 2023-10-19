@@ -13,7 +13,7 @@
 					<prismic-rich-text :field="fields.tagline"/>
 					<div class="d-flex justify-content-between align-items-center navbar-heading-menu">
 						<nav class="navbar navbar-expand-lg">
-							<a class="navbar-brand title" href="#">Menu</a>
+							<!-- <a class="navbar-brand title" href="#">Menu</a> -->
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarmenuContent" aria-controls="navbarmenuContent" aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon">
 									<prismic-image :field="fields.mobileMenu"/>
@@ -63,6 +63,8 @@
 						</nav>
 						<NuxtLink  :to="`/page/${fields.bolder_link.uid}`" class="dashboard-btn" :style="button " id="FindAHome">
               <prismic-rich-text class="details text-image-slice-description" :field="fields.bolder_link_label"/> 
+              {{ $prismic.asText(fields.bolder_link_label) }}
+
 							<!-- {{ $prismic.asText(fields.bolder_link_label[0]) }} -->
                 <!-- Find A Home  -->
 						</NuxtLink>
@@ -350,7 +352,7 @@ export default {
 }
 /* header menu */
 .site-header .header-menu ul li .menu-maintitle {
-  font-size: 14px;
+  font-size: 13px;
   color: #000;
   font-weight: 700;
   padding: 0px 8px;
@@ -364,18 +366,18 @@ export default {
   color: #72BF44;
 }
 .site-header .header-menu .dashboard-btn {
-  font-size: 14px;
+  font-size: 13px;
   padding: 0px;
   border-radius: 20px;
   font-weight: 600;
   text-align: center;
   letter-spacing: 0;
-  line-height: 40px;
-  height: 40px;
+  line-height: 36px;
+  height: 36px;
   margin-left: 27px;
   font-weight: 700;
   text-transform: capitalize;
-  min-width: 168px;
+  min-width: 155px;
 }
 .site-header .header-menu a {
   text-decoration: none;
@@ -473,7 +475,6 @@ export default {
     margin: auto !important;
   }
   .site-header .header-menu .dashboard-btn{
-    width: 168px;
     margin-left: auto;
   }
 }
@@ -563,8 +564,8 @@ export default {
     position: absolute;
     right: 78px;
     left: auto;
-    height: 40px;
-    line-height: 38px;
+    height: 36px;
+    line-height: 35px;
   }
   .site-header .header-menu ul li a:hover {
     color: #72bf44;
@@ -575,7 +576,7 @@ export default {
         margin: 0px 5px !important;
   }
   .site-header .header-menu ul li .menu-maintitle{
-    font-size: 12px;
+    font-size: 11px;
   }
   .site-header .header-menu .navbar-expand-lg .navbar-nav .dropdown-menu .menu-subtitle{
     font-size: 13px;
@@ -613,7 +614,7 @@ export default {
     /* margin: 5px 0 0 0; */
   }
   .site-header .header-menu .dashboard-btn {
-    font-size: 12px;
+    font-size: 10px;
     padding: 0px 10px;
   }
   .site-header .header-menu .navbar-collapse {
@@ -647,11 +648,11 @@ export default {
       padding: 4px 8px;
   }
   .site-header .header-menu .dashboard-btn{
-      font-size: 11px;
+      font-size: 10px;
       padding: 0px 8px;
       right: 70px;
-      line-height: 32px;
-      height: 34px;
+      line-height: 30px;
+      height: 30px;
       border: 1px #72bf44 solid !important;
       min-width: 120px;
   }

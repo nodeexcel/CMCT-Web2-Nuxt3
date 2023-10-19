@@ -64,7 +64,7 @@
   .quote-section .quote-description{
     /* font-size: 24px;
     line-height: 36px; */
-    font-size: 21px;
+    font-size: 20px;
     line-height: 31.5px;
     letter-spacing: normal;
     font-weight: 400;
@@ -76,7 +76,7 @@
       font-size: unset !important;
     }
   .quote-section .block-quote-description :first-child{
-    font-size: 28px;
+    font-size: 27px;
     line-height: 42px;
     font-weight: 700;
   }
@@ -87,7 +87,7 @@
     background-color: #000000; */
     border-radius: 50%;
     text-align: center;
-    font-size: 28px;
+    font-size: 27px;
     line-height: 64px;
     position: absolute;
     top: -32px;
@@ -101,18 +101,18 @@
     .quote-section .quote-description{
       /* font-size: 16px;
       line-height: 26px; */
-      font-size: 14px;
+      font-size: 13px;
       line-height: 22px;
     }
     .quote-section .block-quote-description :first-child{
-      font-size: 18px;
+      font-size: 17px;
       line-height: 28px;
     }
     .quote-section .sel-care-icon{
       width: 50px;
       height: 50px;
       line-height: 50px;
-      font-size: 22px;
+      font-size: 21px;
       top: -25px;
     }
     .quote-section{
@@ -127,17 +127,17 @@
   @media (min-width:992px) and (max-width:1199px){
     .quote-section .quote-description{
       /* font-size: 18px; */
-      font-size: 15px;
+      font-size: 14px;
       line-height: 24px
     }
     .quote-section .block-quote-description :first-child{
-      font-size: 20px;
+      font-size: 19px;
       line-height: 32px;
     }
   }
   @media (min-width:1200px) and (max-width:1400px){
     .quote-section .block-quote-description :first-child{
-      font-size: 25px;
+      font-size: 24px;
     }
   }
   </style>

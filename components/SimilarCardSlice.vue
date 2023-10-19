@@ -180,7 +180,7 @@ export default {
      height: 100%;
  }
  .similar-cardslice-heading :first-child{
-      font-size: 28px;
+      font-size: 27px;
     letter-spacing: normal;
     font-weight: 700;
     line-height: 34px;
@@ -202,14 +202,14 @@ export default {
     object-fit: cover;
 }
 .building-cms .building-card .content-wrap .desc-box .desc{ 
-    font-size: 12px;
+    font-size: 11px;
     line-height: 15px;
     letter-spacing: normal;
     color: #8D8D8D;
     text-transform: uppercase;
 }
 .building-cms .building-card .name   {
-       font-size: 18px;
+       font-size: 17px;
     font-weight: 700;
     line-height: 27px;
     letter-spacing: normal;
@@ -217,14 +217,14 @@ export default {
 }
 .building-cms .building-card .address{
         line-height: 27px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     letter-spacing: normal;
     color: #000;
     border-bottom: 1px#D8D8D8 solid;
 }
 .building-cms .building-card .price div,.building-cms .building-card .price span{
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: normal;
     line-height: 27px;
     color: #000;
@@ -244,7 +244,7 @@ export default {
     padding: 0px 15px;
  }
  .building-cms .room-image .overlay :first-child{
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     color: #fff;
     text-transform: capitalize;
@@ -289,22 +289,22 @@ export default {
  }
  @media (max-width:1199px){
       .similar-cardslice-heading :first-child{
-          font-size: 20px;
+          font-size: 19px;
       }
      .building-cms .building-card .content-wrap .desc-box{
         padding: 15px;
     }
     .building-cms .building-card .content-wrap .desc-box .desc{
-        font-size: 11px;
+        font-size: 10px;
     }
     .building-cms .building-card .content-wrap .name{
-        font-size: 16px;
-    }
-    .building-cms .building-card .content-wrap .address{
         font-size: 14px;
     }
-    .building-cms .building-card .price div,.building-cms .building-card .price span{
+    .building-cms .building-card .content-wrap .address{
         font-size: 13px;
+    }
+    .building-cms .building-card .price div,.building-cms .building-card .price span{
+        font-size: 12px;
     }
     .similar-cardslice-section {
         padding: 30px 0;
@@ -313,7 +313,7 @@ export default {
  }
  @media (min-width:992px) and (max-width:1400px){
       .similar-cardslice-heading :first-child{
-          font-size: 22px;
+          font-size: 21px;
       }
      .similar-cardslice-section {
         padding: 50px 0;
@@ -328,7 +328,7 @@ export default {
  }
   @media (min-width:1200px) and (max-width:1400px){
     .similar-cardslice-heading :first-child{
-          font-size: 25px;
+          font-size: 24px;
      }
      .building-cms .building-card .address{
          margin-bottom: 12px !important;

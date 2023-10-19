@@ -170,7 +170,7 @@
         <hr v-if="slice.slice_devider != undefined && slice.slice_devider === true"/>
         <b-modal id="modal-1" size="lg" centered hide-footer hide-header body-class="p-0">
             <div class="carousel-content">
-                <VueSlickCarousel v-bind="settings" :adaptiveHeight="true" :autoplay="false" :autoplaySpeed="1000000" :infinite="true" :initialSlide="0" :pauseOnFocus="false" :pauseOnHover="false">
+                <!-- <VueSlickCarousel v-bind="settings" :adaptiveHeight="true" :autoplay="false" :autoplaySpeed="1000000" :infinite="true" :initialSlide="0" :pauseOnFocus="false" :pauseOnHover="false">
                     <div v-for="(item, item_index) in images" :key="item_index">
                         <img
                             class="d-block img-fluid w-100"
@@ -180,7 +180,7 @@
                             alt="image slot"
                         />
                     </div>
-                </VueSlickCarousel>
+                </VueSlickCarousel> -->
             </div>
         </b-modal>
     </div>
@@ -423,7 +423,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 }
 
 .section-main-title .cms-title :first-child{
-    font-size: 32px;
+    font-size: 31px;
     font-weight: 700;
     line-height: 39px;
     margin-bottom: 0;
@@ -432,7 +432,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 }
 .new-room-box .detail-inner .type h3  {
   color: #000;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: normal;
   line-height: 27px;
   font-weight: 700;
@@ -459,7 +459,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
     padding-left: 10px;
 }
 .new-room-box .detail-inner .price p { 
-    font-size: 14px;
+    font-size: 13px;
     color: #72BF44;
     font-weight: 700;
     line-height: 27px;
@@ -484,7 +484,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
     margin-bottom: 0;
     display: inline-block;
     vertical-align: middle;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     line-height: 29px;
     min-width: 116px;
@@ -509,7 +509,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
     bottom: 20px;
 }
 .new-room-box .room-detail .detail-inner .feature-wrap {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 21px;
     font-weight: 400;
     color: #000;
@@ -528,7 +528,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
     padding: 0;
     margin-bottom: 0;
     vertical-align: middle;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     line-height: 29px;
     min-height: 31px;
@@ -674,21 +674,21 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
         padding: 20px;
     }
     .new-room-box .detail-inner .type h3{
-        font-size: 17px;
+        font-size: 16px;
         line-height: 20px;
     }
     .new-room-box .detail-inner .price p{
-        font-size: 13px;
+        font-size: 12px;
         line-height: 20px;
     }
     .new-room-box .room-detail .detail-inner .feature-wrap{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 20px;
     }
 }
 @media (max-width:991px){
     .section-main-title .cms-title :first-child{
-        font-size: 22px;
+        font-size: 21px;
         line-height: 30px;
     }
     .new-room-box .room-item{
@@ -707,12 +707,12 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
     .new-room-box .room-image .overlay:first-child, .new-room-box .view-photos-btn{
         min-width: 90px;
         height: 25px;
-        font-size: 11px;
+        font-size: 10px;
     }
 }   
 @media (min-width:992px) and (max-width:1199px){
     .section-main-title .cms-title :first-child{
-       font-size: 28px;
+       font-size: 27px;
         line-height: 35px;
     }   
 }

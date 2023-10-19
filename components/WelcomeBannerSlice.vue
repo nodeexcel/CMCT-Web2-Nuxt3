@@ -180,7 +180,7 @@ export default {
 	padding: 96px;
 }
 .home-subbanner-page .silder-content-box-subheading :first-child{
-	font-size: 16px;
+	font-size: 15px;
 	letter-spacing: normal;
 	line-height: 19px;
 	font-weight: 700;
@@ -188,7 +188,7 @@ export default {
 	color: #000;
 }
 .home-subbanner-page .silder-content-box-description{
-	font-size: 21px;
+	font-size: 20px;
 	color: #000;
 	line-height: 36px;
 	letter-spacing: normal;
@@ -196,13 +196,14 @@ export default {
 }
 .home-subbanner-page .silder-content-box-btn{
 	height: 60px;
-	line-height: 47px;
-
-	background-color:#72BF44 !important;
+	line-height: 60px;
 	border-radius: 30px;
+
+	/* background-color:#72BF44 !important; */
+	/* border-radius: 30px; */
 }
 .home-subbanner-page  .square-type-subheading :first-child{
-	font-size: 14px;
+	font-size: 13px;
 	letter-spacing: normal;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -335,15 +336,15 @@ export default {
 		padding: 30px 15px;
 	}
 	.home-subbanner-page .silder-content-box-description{
-		font-size: 14px;
+		font-size: 13px;
     	line-height: 22px;
 	}
 	.home-subbanner-page .silder-content-box-btn{
 		height: 45px;
-		line-height: 32px;
+		line-height: 45px;
 	}
 	.home-subbanner-page .silder-content-box-subheading :first-child{
-		font-size: 13px;
+		font-size: 12px;
 		margin-bottom: 0;
 	}
 }
@@ -358,7 +359,7 @@ export default {
 		background-color: transparent;
 	}
 	.home-subbanner-page .square-type-subheading :first-child{
-		font-size: 13px;
+		font-size: 12px;
 	}
 	.home-subbanner-page .square-type-col{
 		background-color: #F7F7F7;
@@ -435,7 +436,7 @@ export default {
 	}
 	.home-subbanner-page .silder-content-box-btn{
 		height: 47px;
-    	line-height: 33px;
+    	line-height: 47px;
 	}
 	.home-subbanner-page .square-type-banner{
 		padding-left: 30px;
@@ -456,7 +457,7 @@ export default {
 	}
 	.home-subbanner-page .silder-content-fullbox-btn{
 		min-width: 200px;
-		font-size: 16px;
+		font-size: 15px;
 		height: 45px;
 		line-height: 45px;
 	}
@@ -473,7 +474,7 @@ export default {
 }
 @media (min-width:992px) and (max-width:1199px){
 	.home-subbanner-page .silder-content-box-description{
-		font-size: 15px;
+		font-size: 14px;
     	line-height: 24px;
 	}
 	.home-subbanner-page .silder-content-box{

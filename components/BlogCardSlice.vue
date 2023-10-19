@@ -17,7 +17,7 @@
                                                 </picture>
                                                 <div class="desc-box">
                                                     <div class="desc text-left">
-                                                        <span :href="'/blog/'+Records[key].uid" variant="light" v-for="(topic) in Records[key].data.topics" :key="topic+'_'+Math.ceil(Math.random()*10)">{{ topicList[topic]}} </span>
+                                                  <span :href="'/blog/'+Records[key].uid" variant="light" v-for="(topic) in Records[key].data.topics" :key="topic+'_'+Math.ceil(Math.random()*10)">{{ topicList[topic]}} </span>
                                                     </div>
                                                     <!-- <h3 class="name text-left mt-0"> {{ Records[key].data.page_title[0].text }} </h3> -->
                                                     <div class="blog-bottom-content">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 blog-filter-topics mt-3 mt-md-0  pr-lg-0 pl-lg-3 pl-xl-5">
+                        <div class="col-lg-3 blog-filter-topics mt-3 mt-md-0 pr-lg-0 pl-lg-3 pl-xl-5">
                             <div class="box" v-if="topics_and_authors">
                                    <div class="blog-post-heading"> <h2 class="py-0 my-0 mb-3">Topics</h2></div>
                                 <div class="blog-topic-items">
@@ -144,6 +144,7 @@ export default {
         async getTopicsData() {
              var self = this
             await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')},{}).then(async (response) => {
+                console.log("response",response);
                 var sortable = [];
                 for (let item of response.results) {
                     sortable.push([item.id, item.data.topic]);
@@ -277,7 +278,7 @@ export default {
     margin: 0;
 }
 .blog-post-heading :first-child{
-    font-size: 32px;
+    font-size: 31px;
     font-weight: 700;
     line-height: 39px;
    padding: 100px 0;
@@ -297,7 +298,7 @@ export default {
     color: #000;
 }
 .blog-cms .blog-card .name   {
-    font-size: 21px;
+    font-size: 20px;
     color: #000;
     font-weight: 700;
     text-decoration: none;
@@ -335,7 +336,7 @@ export default {
 }
 .blog-card .card-main .card-link .desc {
     color: #000;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 17px;
@@ -355,7 +356,7 @@ export default {
     border-radius: 10px 10px 0 0;
 }
 .blog-card .card-main .content-wrap .blog-bottom-content {
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: normal;
     line-height: 27px;
     font-weight: 400;
@@ -380,7 +381,7 @@ export default {
     border-bottom: 1px solid #E4E4E4;
     color: #000;
     margin-bottom: 0;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 22px;
     letter-spacing: normal;
     font-weight: 700;
@@ -428,23 +429,23 @@ export default {
         padding: 15px;
     }
     .blog-card .card-main .card-link .desc{
-        font-size: 11px;
+        font-size: 10px;
         margin-bottom: 3px;
     }
     .blog-cms .blog-card .name{
-        font-size: 17px;
+        font-size: 16px;
         margin-bottom: 10px;
         line-height: 25px;
     }
     .blog-card .card-main .content-wrap .blog-bottom-content{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 22px;
     }
     .blog-card .card-main{
         padding: 0 0px!important;
     }
    .blog-post-heading :first-child{
-        font-size: 22px;
+        font-size: 21px;
        line-height: 39px;
         padding: 30px 0;
     }
@@ -453,7 +454,7 @@ export default {
         padding-bottom: 10px;
     }
     .blog-filter-topics .blog-topic-items .badge{
-        font-size: 16px;
+        font-size: 15px;
     }   
     .blog-filter-topics .blog-topic-items .badge{
         padding: 12px 20px;
@@ -489,7 +490,7 @@ export default {
 }
 @media (min-width:992px) and (max-width:1199px){
     .blog-post-heading :first-child{
-        font-size: 28px;
+        font-size: 27px;
         line-height: 39px;
     }
     .blog-card .card-main.four-col:nth-child(4n+1){
@@ -518,7 +519,7 @@ export default {
     }
     .blog-filter-topics .blog-topic-items .badge{
         padding: 15px;
-        font-size: 16px;
+        font-size: 15px;
     }
 }
 @media (min-width:992px) and (max-width:1500px){

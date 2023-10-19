@@ -1,7 +1,7 @@
 <template>
     <div>
     <!-- 2nd Step Form: START  -->
-        <b-modal
+    <BModal v-model="modal_1"
             id="adjust-lease-modal" size="xl"
             :hide-footer="true" :hide-header="true" :no-close-on-backdrop="true" :no-close-on-esc="true"
         >
@@ -23,7 +23,7 @@
                         :src="slice.threeDtourLink"
                         allowfullscreen
                     ></b-embed>
-                    <nuxt-img v-else-if="this.$store.state.sideFormTop.mainImage != ''" :src="this.$store.state.sideFormTop.mainImage" class="detail-box-img" format="webp"/>
+                    <!-- <nuxt-img v-else-if="this.$store.state.sideFormTop.mainImage != ''" :src="this.$store.state.sideFormTop.mainImage" class="detail-box-img" format="webp"/> -->
                 </div>
                 <div class="col-sm-12 col-lg-6 col-md-12 mx-md-0 align-items-center d-flex">
                     <div class="step-1 modal-right-padding" v-show="currentStep === 1">
@@ -314,15 +314,15 @@
                     
                 </div>
             </div>
-        </b-modal>
+        </BModal>
         <!-- 2nd Step Form: END  -->
-        <b-modal id="schedule-modal" title="Modal with Popover" :hide-footer="true" :hide-header="true" :no-close-on-backdrop="true" :no-close-on-esc="true">
+        <BModal id="schedule-modal" v-model="modal_2" title="Modal with Popover" :hide-footer="true" :hide-header="true" :no-close-on-backdrop="true" :no-close-on-esc="true">
             <div class="row main-detail-top">
                 <div class="col-lg-8">
                     <div class="title">Thanks for your interest in {{ this.slice.homeName }}.</div>
                 </div>
                 <div class="col-lg-4">
-                    <img :src="this.$store.state.sideFormTop.image">
+                    <!-- <img :src="this.$store.state.sideFormTop.image"> -->
                 </div>
             </div>
             <p v-if="(this.slice.isThreeDtour && this.slice.threeDtourLink != null)">Have you already taken the virtual tour? 
@@ -332,7 +332,7 @@
                 <a target="_blank" :href="linkSchedule" class="btn pt-2 pb-2 btn-default" :style="{'background-color': sideFormBackgroundColor, 'border-color': sideFormBackgroundColor}">Book a Viewing</a>
             </p> -->
             <b-button class="pull-right" @click="closeScheduleModal()">Close</b-button>
-        </b-modal>
+        </BModal>  
     </div>
 </template>
 
@@ -349,6 +349,8 @@ export default {
     // },
     data() {
         return {
+            modal_1 :false,
+            modal_2 :false,
             sideFormBackgroundColor: '#ffb903', //this.slice.sideFormBackgroundColor,
             curDate: this.getNow(0),
             minDate: this.getNow(2),
@@ -426,7 +428,8 @@ export default {
         this.roomTypeOptions = roomsName
     },
     mounted() {
-        this.setToolTipValue()
+        // this.setToolTipValue()
+        console.log("advanced-usability-listing",this.$store)
     },
     watch: {
         '$store.state.sideFormTop.roomType': function() {
@@ -464,7 +467,7 @@ export default {
             this.form.bedsType = this.$store.state.sideFormTop.bedsType !== undefined ? this.$store.state.sideFormTop.bedsType : null
         },
         'form.los': function() {
-           this.setToolTipValue()
+        //    this.setToolTipValue()
         }
 
     },
@@ -624,7 +627,7 @@ export default {
         closeModal() {
             this.currentStep =1
             this.form.los = 12
-            this.$root.$emit('bv::hide::modal', 'adjust-lease-modal')
+            this.modal_1 =false
         },
         getWhatsappNumber(data){
             if(data.formattedNumber != undefined) {
@@ -654,13 +657,13 @@ export default {
         },
         closeScheduleModal() {
             this.currentStep =1
-            this.$root.$emit('bv::hide::modal', 'adjust-lease-modal')
+            this.modal_1 = false;
             //this.$root.$emit('bv::hide::modal', 'schedule-modal')
             //this.$router.push({ path: '/findahome/' + this.slice.homeID})
         },
         openScheduleWindow() {
             this.linkSchedule = (this.linkSchedule != null) ? this.slice.linkSchedule + '?' + 'email='+ this.form.email + '&first_name=' + this.form.firstName + '&last_name=' + this.form.lastName + '&a1=' + this.form.phone : null;
-            this.$root.$emit('bv::show::modal', 'schedule-modal')
+            this.modal_2 = true
         },
         onSubmit(evt) {
             evt.preventDefault();
@@ -819,7 +822,7 @@ export default {
     font-weight: 700;
     line-height: 40px;
     height: 40px;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: normal;
     padding: 0 !important;
     max-width: none;
@@ -846,14 +849,14 @@ export default {
 } */
 /* START:: find home side form- DAB (16/09/2020) */
 .find-home-outer .form-top-content .main-detail-top .title {
-    font-size: 18px;
+    font-size: 17px;
     color: #000;
     font-weight: 700;
     line-height: 27px;
     letter-spacing: normal;
 }
 .find-home-outer .form-top-content .main-detail-top .sub-title {
-    font-size: 14px;
+    font-size: 13px;
     color: #72BF44;
     font-weight: 700;
     line-height: 27px;
@@ -867,7 +870,7 @@ export default {
 }
 .find-home-outer .form-top-content .description {
     color: #222;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 18px;
     margin-top: 5px;
@@ -882,7 +885,7 @@ export default {
     display: block;
 }
 .find-home-outer .form-cms-build .input-group .input-group-text {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: #000;
     letter-spacing: normal;
@@ -909,7 +912,7 @@ export default {
     appearance: none;
 }
 .find-home-outer .form-cms-build .input-group .form-control::placeholder,.find-home-outer .form-cms-build .input-group .form-control,.find-home-outer .form-cms-build .input-group .custom-select option,.find-home-outer .form-cms-build .input-group .custom-select{
-    font-size: 14px;
+    font-size: 13px;
     color: #8D8D8D;
     font-weight: 400;
     letter-spacing: normal;
@@ -924,7 +927,7 @@ export default {
     top: 45%;
     transform: translateY(-50%);
     color:#000;
-    font-size: 18px;
+    font-size: 17px;
     right: 15px;
 }
 .find-home-outer .form-cms-build .custom-control-label {
@@ -970,20 +973,20 @@ export default {
         max-width: 398px;
     }
     .find-home-outer .form-top-content .main-detail-top .title{
-        font-size: 16px;
+        font-size: 15px;
     }
     .find-home-outer .form-top-content .main-detail-top .sub-title{
-        font-size: 12px;
+        font-size: 11px;
     }
     .find-home-outer .form-top-content .main-detail-top .detail-box-img{
         width: 100px;
         height: auto;
     }
     .find-home-outer .form-cms-build .input-group .input-group-text{
-        font-size: 13px;
+        font-size: 12px;
     }
     .find-home-outer .form-cms-build .input-group .form-control::placeholder, .find-home-outer .form-cms-build .input-group .form-control, .find-home-outer .form-cms-build .input-group .custom-select option, .find-home-outer .form-cms-build .input-group .custom-select{
-        font-size: 13px;
+        font-size: 12px;
     }
     .find-home-outer .form-cms-build .form-group{
         margin-bottom: 10px;
@@ -1011,10 +1014,10 @@ export default {
 }
 @media (min-width:992px) and (max-width:1199px){
      .find-home-outer .form-top-content .main-detail-top .title{
-        font-size: 18px;
+        font-size: 17px;
     }
     .find-home-outer .form-top-content .main-detail-top .sub-title{
-        font-size: 13px;
+        font-size: 12px;
     }
     .find-home-outer .form-top-content .main-detail-top .detail-box-img{
         width: 120px;
@@ -1044,12 +1047,12 @@ export default {
 }
 #adjust-lease-modal h1{
     color:#000;
-    font-size:30px;
+    font-size:29px;
     font-weight:600;
     line-height:35px
 }
 #adjust-lease-modal p{
-    font-size:17px;
+    font-size:16px;
     color:#000;
     font-weight:500;
     margin-bottom:5px
@@ -1060,7 +1063,7 @@ export default {
     height: 40px;
     padding:10px 16px;
     border-radius: 10px;
-    font-size:16px;
+    font-size:15px;
     color:#000;
     font-weight:500;
 }
@@ -1072,7 +1075,7 @@ export default {
     height: 40px !important;
     padding:10px 16px !important;
     border-radius: 10px !important;
-    font-size:16px !important;
+    font-size:15px !important;
     color:#000 !important;
     margin-left:10px;
     width:calc(100% - 10px);
@@ -1082,7 +1085,7 @@ export default {
     height: 40px !important;
     padding:10px 16px !important;
     border-radius: 10px !important;
-    font-size:12px !important;
+    font-size:11px !important;
     color:#000 !important;
     font-weight:600 !important;
 }
@@ -1095,7 +1098,7 @@ export default {
     height: auto;
 }
 #adjust-lease-modal .col-form-label {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
 }
 #adjust-lease-modal .custom-select{
@@ -1103,7 +1106,7 @@ export default {
     background:#f8f8f8;
     height: 40px;
     border-radius: 10px;
-    font-size:16px;
+    font-size:15px;
     color:#000;
     font-weight:500;
     position:relative;
@@ -1112,13 +1115,13 @@ export default {
     position: absolute;
     right: 34px;
     top: 5px;
-    font-size: 23px;
+    font-size: 22px;
 }
 #adjust-lease-modal textarea.form-control{
     height:75px;
 }
 #adjust-lease-modal .custom-control-label{
-    font-size:16px;
+    font-size:15px;
     font-weight:500;
 }
 #adjust-lease-modal .custom-control{
@@ -1131,7 +1134,7 @@ export default {
     background-color:#5a9836 !important;
 }
 #adjust-lease-modal .input-group .input-group-text{
-    font-size: 12px;
+    font-size: 11px;
     line-height: 13px;
     color: #000;
     width: 140px;
@@ -1155,7 +1158,7 @@ export default {
     font-weight: 600;
     color: #fff;
     padding: 10px 40px;
-    font-size: 17px;
+    font-size: 16px;
     border-radius: 40px;
     min-height: 54px;
     margin-top:10px;
@@ -1213,7 +1216,7 @@ export default {
 #adjust-lease-modal .header-modal-xl .header-close-button{
     padding: 3px 56px;
     height:34px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color:#000;
     border:0px;
@@ -1236,7 +1239,7 @@ export default {
     padding-left:0px;
 }
 #adjust-lease-modal .top-text-box p{
-    font-size:17px;
+    font-size:16px;
     font-weight:500;
 }
 #adjust-lease-modal .modal-left-padding img{
@@ -1254,7 +1257,7 @@ export default {
     margin-top:20px
 }
 #adjust-lease-modal .step-1-borderbox .text-title{
-    font-size:35px;
+    font-size:34px;
     font-weight:700;
     color:#000;
     border-bottom:1px solid#e6e6e6;
@@ -1262,7 +1265,7 @@ export default {
     margin-bottom:20px
 }
 #adjust-lease-modal .step-1-borderbox .text-title small{
-    font-size:22px;
+    font-size:21px;
 }
 #adjust-lease-modal .form-group{
     margin-bottom:8px;
@@ -1294,7 +1297,7 @@ export default {
     padding:30px 70px;
 }
 #adjust-lease-modal .step-2-text p{
-    font-size:17px;
+    font-size:16px;
     font-weight:500;
     margin-bottom:10px;
     line-height:22px;
@@ -1354,19 +1357,19 @@ export default {
 /*---------MEDIA-CSS---------- */
 @media (min-height:500px) and (max-height:800px){
     #adjust-lease-modal h1 {
-    font-size: 25px;
+    font-size: 24px;
     line-height: 27px;
     }
     #adjust-lease-modal .step-2-text p {
-        font-size: 16px;
+        font-size: 15px;
     }
     #adjust-lease-modal .col-form-label {
-        font-size: 14px;
+        font-size: 13px;
     }
     #adjust-lease-modal .form-control {
         height: 35px;
         padding: 5px 16px;
-        font-size: 14px;
+        font-size: 13px;
         border-radius:5px;
     }
     #adjust-lease-modal .country-selector__input {
@@ -1379,28 +1382,28 @@ export default {
         height: 35px !important;
         min-height: 35px !important;
         padding: 5px 16px !important;
-        font-size: 14px !important;
+        font-size: 13px !important;
         border-radius:5px !important;
     }
     #adjust-lease-modal .custom-select {
         height: 35px;
         padding: 5px 16px;
-        font-size: 14px;
+        font-size: 13px;
     }
     #adjust-lease-modal i {
         right: 32px;
         top: 4px;
-        font-size: 20px;
+        font-size: 19px;
     }
     #adjust-lease-modal textarea.form-control {
         height: 60px;
     }
     #adjust-lease-modal .custom-control-label {
-        font-size: 14px;
+        font-size: 13px;
     }
     #adjust-lease-modal .btn {
         padding: 5px 10px;
-        font-size: 15px;
+        font-size: 14px;
         min-height: 40px;
     }
     .country-selector__toggle {
@@ -1412,7 +1415,7 @@ export default {
         margin-top: 10px;
     }
     #adjust-lease-modal .step-1-borderbox .text-title {
-        font-size: 26px;
+        font-size: 25px;
         padding-bottom: 14px;
         margin-bottom: 10px;
     }
@@ -1547,7 +1550,7 @@ export default {
     #adjust-lease-modal .header-modal-xl .header-close-button {
         padding: 3px 29px;
         height: 30px;
-        font-size: 13px;
+        font-size: 12px;
         line-height: 10px;
     }
 }
@@ -1574,7 +1577,7 @@ export default {
         margin-top: 5px;
     }
     #adjust-lease-modal .btn {
-        font-size: 16px;
+        font-size: 15px;
         min-height: 48px;
         padding: 6px 10px;
     }
@@ -1589,7 +1592,7 @@ export default {
         text-align:center;
     }
     #adjust-lease-modal .custom-control-label {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 19px;
     }
 }

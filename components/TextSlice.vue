@@ -89,7 +89,7 @@
   }
   .text-slice-cms .details  p a {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     vertical-align: baseline;
   }
   .text-slice-cms .details  p a:hover {
@@ -131,7 +131,7 @@
       margin-bottom: 100px;
     } 
     .text-slice-cms .details > :first-child {
-      font-size: 20px;
+      font-size: 19px;
       line-height: 28px;
     } */
     .text-slice-cms .details p a  {
@@ -153,7 +153,7 @@
       margin-bottom: 60px;
     }  
     .text-slice-cms .details > :first-child {
-      font-size: 17px;
+      font-size: 16px;
     } */
     .text-slice-cms .image-block > div .only-image{
       text-align: center;
@@ -164,7 +164,7 @@
     .text-slice-cms .details p a  {
       padding: 8px 15px;
       margin-top: 30px;
-      font-size: 16px;
+      font-size: 15px;
     }
   }
   </style>

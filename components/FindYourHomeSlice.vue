@@ -80,7 +80,7 @@ export default {
     padding: 0;
     height: 60px;
     line-height: 60px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     background: #72BF44;
     border: 0;
@@ -93,7 +93,7 @@ export default {
     background: #222;
 }
 .welcome-find-your-wrapper .form-box p {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 700;
     color: #000000;
     line-height: 25px;
@@ -108,7 +108,7 @@ export default {
     color: #999;
     font-weight: 600;
     margin: 0 0 ;
-    font-size: 12px;
+    font-size: 11px;
     padding-bottom:0;
 }
 .welcome-find-your-wrapper .form-box .custom-select {
@@ -117,7 +117,7 @@ export default {
     height: 60px;
     max-width: 461px;
     min-width: 461px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     padding: 0 40px 0 24px;
     color: #000;
@@ -130,7 +130,7 @@ export default {
 .welcome-find-your-wrapper .form-box .home-dropdown-arrow{
     position: absolute;
     right: 20px;
-    font-size: 20px;
+    font-size: 19px;
     top: 42%;
     transform: translateY(-50%);
     color: #000;
@@ -155,7 +155,7 @@ export default {
         grid-template-columns: 20% 55% 25%;
     }
     .welcome-find-your-wrapper .form-box p{
-        font-size: 16px;
+        font-size: 15px;
         max-width: 108px;
     }
     .welcome-find-your-wrapper .form-box .custom-select{
@@ -163,17 +163,17 @@ export default {
         max-width: 300px;
         height: 45px;
         line-height: 45px;
-        font-size: 16px;
+        font-size: 15px;
         padding: 0 30px 0 15px;
     }
     .welcome-find-your-wrapper .form-box .submit-btn .btn.btn-primary{
         height: 45px;
         line-height: 45px;
-        font-size: 14px;
+        font-size: 13px;
          min-width: 150px;
     }
     .welcome-find-your-wrapper .form-box .home-dropdown-arrow{
-        font-size: 18px;
+        font-size: 17px;
         right: 15px;
     }
     .welcome-find-your-wrapper{
@@ -187,16 +187,16 @@ export default {
      padding: 30px;
  }
   .welcome-find-your-wrapper .form-box p{
-    font-size: 18px;
+    font-size: 17px;
     max-width: 168px;
   }
   .welcome-find-your-wrapper .form-box .custom-select{
-      font-size: 17px;
+      font-size: 16px;
       height: 50px;
       line-height: 50px;
   }
  .welcome-find-your-wrapper  .form-box .submit-btn .btn.btn-primary{
-      font-size: 15px;
+      font-size: 14px;
        height: 50px;
       line-height: 50px;
       min-width: 180px;
@@ -210,7 +210,7 @@ export default {
         width: 900px; 
     }
     .welcome-find-your-wrapper .form-box p{
-        font-size: 20px;
+        font-size: 19px;
         max-width: 168px;
     }
      .welcome-find-your-wrapper .form-box .custom-select{
@@ -233,7 +233,7 @@ export default {
         text-align: left;
     }
     .welcome-find-your-wrapper .form-box p{
-        font-size: 17px;
+        font-size: 16px;
         text-align: center;
         margin: 0 0 15px;
         max-width: 100%;
@@ -250,19 +250,19 @@ export default {
         min-width: 100%;
         height: 45px;
         line-height: 45px;
-        font-size: 13px;
+        font-size: 12px;
         margin-bottom: 5px;
         padding: 0 30px 0 15px;
     }
     .welcome-find-your-wrapper .form-box .home-dropdown-arrow{
-        font-size: 18px;
+        font-size: 17px;
         right: 15px;
     }
    .welcome-find-your-wrapper .form-box .submit-btn .btn.btn-primary{
         height: 45px;
         line-height: 45px;
         min-width: 160px;
-        font-size: 13px;
+        font-size: 12px;
     }
     .welcome-find-your-wrapper{
         position: initial;
