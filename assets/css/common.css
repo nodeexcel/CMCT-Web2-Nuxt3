@@ -4,17 +4,17 @@
     -webkit-font-smoothing: antialiased;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'helveticaneue-bold';
-    src: url('/assets/fonts/Helvetica Neu Bold.ttf') format('truetype');
-    font-display: optional
+    src: url('') format('truetype');
+    font-display: swap
 }
 
 @font-face {
     font-family: 'helveticaneue-font';
     src: url('') format('truetype');
-    font-display: optional
-}
+    font-display: swap
+} */
 
 ::selection {
     background: #FFF7C7;
@@ -208,6 +208,7 @@ footer .footer-inner {
     right: 0;
     padding: 10px 15px;
     height: 80px;
+    min-height: 90px;
     z-index: 9999;
     width: 100%;
     top: 0;
@@ -372,6 +373,7 @@ footer .footer-inner {
 
 .container-background-wrapper {
     max-width: 1870px;
+    width: 100%;
     margin: auto;
 }
 
@@ -617,14 +619,23 @@ footer .footer-inner {
 .findhome-card-tabs .card-header ul {
     margin: 0 !important;
 }
-
+.findhome-card-tabs .nav-item button {
+    min-width: 200px;
+    height: 60px;
+    line-height: 60px !important;
+    padding: 0;
+    background-color: #F7F7F7;
+    color: #000;
+    font-size: 16px;
+    border-radius: 10px;
+}
 .findhome-card-tabs .nav-item a {
     min-width: 300px;
     height: 60px;
     line-height: 60px !important;
     padding: 0;
     background-color: #F7F7F7;
-    border-radius: 30px;
+    border-radius: 25px;
     color: #000;
     font-size: 17px;
     line-height: 22px;
@@ -884,7 +895,10 @@ footer .footer-inner {
         width: 33.33% !important;
         display: inline-block;
     }
-
+    .findhome-card-tabs .nav-item button {
+        /* min-width: auto; */
+        font-size: 13px;
+    }
     .findhome-card-tabs .nav-item a {
         min-width: auto;
         height: 40px;
@@ -1031,6 +1045,12 @@ footer .footer-inner {
     }
 
     /* --------------findhome-card-tabs--------- */
+    .findhome-card-tabs .nav-item button {
+        height: 30px;
+        line-height: 30px !important;
+        font-size: 12px;
+        margin-right: 0;
+    }
     .findhome-card-tabs .nav-item a {
         height: 30px;
         line-height: 30px !important;
@@ -1444,6 +1464,11 @@ html .inclusive-wrapper {
 @media (min-width:768px) and (max-width:1400px) {
 
     /* --------------findhome-card-tabs--------- */
+    .findhome-card-tabs .nav-item button {
+        height: 50px;
+        line-height: 50px !important;
+        font-size: 16px;
+    }
     .findhome-card-tabs .nav-item a {
         height: 50px;
         line-height: 50px !important;

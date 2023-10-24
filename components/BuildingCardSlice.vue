@@ -1,5 +1,5 @@
 <template>
-	<div class="image-map-section">
+	<div class="image-map-section w-100" >
 	  <b-row  ref="map-block" class="d-flex mx-0">
 		<!-- {{newHomeLists}} -->
 		<b-col cols="12" v-if="slice.primary.map === true">
@@ -741,7 +741,7 @@
 								  <p>Promotion</p>
 								</div>
 							  </div>
-							  <div class="desc-box">
+							  <div class="desc-box mt-2" style="">
 								<div class="desc">
 								  {{
 									item.neighborhoodName != undefined
@@ -910,7 +910,7 @@
 							  <p>Promotion</p>
 							</div>
 						  </div>
-						  <div class="desc-box">
+						  <div class="desc-box mt-2">
 							<div class="desc mb-1 mb-lg-2">
 							  {{
 								item.neighborhoodName != undefined
@@ -1077,7 +1077,7 @@
 		  :class="[isMap ? (!isList ? 'col-12' : '') : 'map-hide'] + ' map-outer'"
 		  v-if="slice.primary.map === true"
 		>
-		  <div class="google-map" :id="mapName" style="height:100vh"></div>
+		  <div class="google-map" :id="mapName" style="min-width:100%"></div>
 		</b-col>
 	  </b-row>
 	</div>
@@ -1093,6 +1093,8 @@
   </script>
   
   <script>
+  import { createClient } from '@prismicio/client';
+  import * as prismic from "@prismicio/client";
 //   import dataList from '@/assets/mascot_image/data.json';
 //   import LottieAnimation   from "lottie-web-vue";
 //   import lottie from 'lottie-web';
@@ -3006,7 +3008,7 @@
 	  }
 	},
 	mounted() {
-		console.log("hh",this.homeLists)
+		console.log("hllh",createClient,prismic)
 		this.routeChange();
 		let query = Object.assign({}, this.$route.query);
 		console.log("query123",query)
@@ -3232,7 +3234,7 @@
   @import "@/assets/css/filterform.css";
   @import "@/assets/css/MultiRangeSliderBlack.css";
   @import "@/assets/css/MultiRangeSliderBarOnly.css";
-  @import "../assets/css/common.css";
+  @import "@/assets/css/common.css";
   /* ----------mainRangeSlide-range-start----- */
   :deep(.multiselect-clear-icon){
    display: none;

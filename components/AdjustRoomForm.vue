@@ -156,15 +156,35 @@
                                 </BFormGroup>
                                 <BFormGroup
                                     label="Phone"
-                                    class="col-lg-6 col-md-12 col-sm-12"
+                                    class="phonenumber col-lg-6 col-md-12 col-sm-12"
                                     >
+                                    <div>
+                                        <CountryCodeselector  v-model="selectedCountryCode1" />
+                                        <BFormInput
+                                                id="phone_number"
+                                                v-model="form.phoneNumber"
+                                                type="text"
+                                                class="form-inputs"
+                                                required
+                                            ></BFormInput>
+                                    </div> 
                                     <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true"  :required="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" /> -->
                                 </BFormGroup>
                                 <BFormGroup
                                     label="WhatsApp"
-                                    class="col-lg-6 col-md-12 col-sm-12"
+                                    class="phonenumber col-lg-6 col-md-12 col-sm-12"
                                     >
-                                    <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" /> -->
+                                    <div>
+                                        <CountryCodeselector  v-model="selectedCountryCode2" />
+                                        <BFormInput
+                                                id="phone_number"
+                                                v-model="form.whatsappNumber"
+                                                type="text"
+                                                class="form-inputs"
+                                                required
+                                            ></BFormInput>
+                                    </div> 
+                                                            <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="whatsappNumber" /> -->
                                 </BFormGroup>
                                 <BFormGroup
                                     label="Email"
@@ -349,6 +369,8 @@ export default {
     // },
     data() {
         return {
+            selectedCountryCode1:'',
+            selectedCountryCode2:'',
             modal_1 :false,
             modal_2 :false,
             sideFormBackgroundColor: '#ffb903', //this.slice.sideFormBackgroundColor,
@@ -807,7 +829,7 @@ export default {
 </script>
 <style scoped>
 @import "@/assets/css/form.css";
-@import "../assets/css/common.css";
+@import "@/assets/css/common.css";
 .country-selector__input , .input-tel__input{
     background: #fff !important;
 }

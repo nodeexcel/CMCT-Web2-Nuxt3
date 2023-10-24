@@ -2,6 +2,7 @@
 
     <section class="inner-content-wrapper pb-3 faq-content-section">
       <div class="cms-main-wrap">
+        {{ slice }}
         <div class="row mx-0 faq-content-row">
           <div class="col-md-9 px-0 order-2 order-md-1">
             <div v-for="(slice) in newSlice" :key="slice.id" class="">
@@ -30,7 +31,7 @@
             </div>
           </div>
           <div class="col-md-3  mt-md-0 px-0 pr-md-0 pl-md-3 pl-xl-5 order-1 order-md-2" >   
-          <div class="faq-wrapper-sidebar mb-4  mb-lg-5">
+          <!-- <div class="faq-wrapper-sidebar mb-4  mb-lg-5">
             <div v-for="(item,index) in $store.state.faq_topic" :key="index" class="topic-right-sidebar" @click="routeQuery(item)">
               <div>
                 <div class="card-header-sidebar cursor-pointer">
@@ -49,7 +50,8 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+          <!-- {{ $store.state.faq_topic.page_content }} -->
           </div>
         </div>
       </div>
@@ -108,22 +110,29 @@ export default {
     },
     routeQuery(item) {
       const id = this.goto(item).split('#').join('')
-      this.$router.push({
-        query: {'#': id}
-      })
+      this.$router.push({ path: this.$route.path,
+        query: {'#': id}})
     },
     scrollToSection() {
-      if(this.$route.query['#'] === this.slice[0].primary.title[0].text.split(' ').join('')) {
+      if(this.$store.state.faq_topic !== null){
+      this.$store.state.faq_topic.forEach((item) =>{
+      if(this.$route.fullPath.includes(item.primary.title[0].text.split(' ').join('').trim())){
+        if(this.$route.query['#'] === item.primary.title[0].text.replace(/ /g,'')) {
         const ID = this.$route.query['#']
         document.getElementById(`${ID}`).scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })
       }
-    }
+      }
+    })
+  }
+  }
   },
   created(){
      this.rendered = true;
   },
   mounted() {
-    this.scrollToSection()
+    // value?: string
+    console.log("jkl",this.$store.state,this.slice);
+    // this.scrollToSection()
   }
 }
 </script>

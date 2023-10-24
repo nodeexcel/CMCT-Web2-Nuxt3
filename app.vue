@@ -51,24 +51,23 @@ const { data } = await useAsyncData(async () => {
 
 <script>
 
-import { mapActions, mapState } from 'vuex'
+// import { mapActions, mapState } from 'vuex'
 export default {
   methods: {
     // ...mapActions(['markdata', 'eliminardata','setdata']),
-    ...mapActions(['increment']),
+    // ...mapActions(['increment']),
   },
     computed:{
-            ...mapState(['counter']),
+            // ...mapState(['counter']),
             
         },
   mounted(){
-    console.log("increment",this.increment())
+    // console.log("increment",this.increment())
   }
 }
 </script>
 <style>
-*{
-  margin: 0;
-  padding: 0;
+body{
+  min-width: 100vh;
 }
 </style>

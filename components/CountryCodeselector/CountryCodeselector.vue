@@ -1,78 +1,111 @@
-
-<!-- import { CountryCodeselector } from '#build/components'; -->
 <template>
-    <Bcard
-      :model-value="selectedValue"
-      @update:model-value="(value) => emit('update:modelValue', value)"
-      class="relative form-input flex flex-col justify-center block rounded-md border border-neutral-100 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-primary-600 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+  <div class="fixed top-16 w-25" >
+    <Listbox 
+    :model-value="selectedValue"
+    @update:model-value="(value) => emit('update:modelValue', value)"
     >
-      <div class="">
-        <BButton class="w-full h-full rounded-md shadow-sm text-start cursor-default">
-          <div
-            class="flex items-center gap-3 px-5"
-            :class="{ 'font-medium': selectedValue, 'font-normal': !selectedValue }"
-          >
-            <p class="text-lg" dir="ltr">{{ '+' + selectedValue.key }}</p>
-            <Icon :name="getCountryFlag(selectedValue.code.toLowerCase())" size="1.4rem" class="w-16" />
-          </div>
-        </BButton>
-  
+      <div class="position-relative listbox-main main mt-1 d-flex flex-column">
+        <ListboxButton
+          class="position-relative w-100 cursor-default rounded-lg bg-white py-2 pl-1 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+        style="border:none">
+        <div
+          class="d-flex justify-space-between gap-1  ListboxButton"
+          :class="{ 'font-medium': selectedValue, 'font-normal': !selectedValue }"
+        style="min-width: 100px;">
+          
+          <p class="fs-md w-3 mb-0" v-if="selectedValue.name == 'Country code'" style="font-size: 12px;color: #000;font-weight: 400;width:75px">Country Code</p>
+          <p class="text-lg  mb-0" v-else dir="ltr">{{ '+' + selectedValue.key }}</p>
+          <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
+          <!-- <Icon :name="getCountryFlag(selectedValue.code.toLowerCase())" size="1.5rem" class="w-16" style="height:15px" /> -->
+        </div>
+        </ListboxButton>
+
         <transition
           leave-active-class="transition duration-100 ease-in"
           leave-from-class="opacity-100"
           leave-to-class="opacity-0"
         >
-          <BDropdown
-            class="overflow-x-hidden absolute top-20 z-10 py-1 mt-1 w-full max-h-60 text-base bg-white rounded-md ring-1 ring-black ring-opacity-5 shadow-lg focus:outline-none sm:text-sm"
+          <ListboxOptions
+            class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base w-100 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
           >
-            <BDropdown 
+            <ListboxOption
+              v-slot="{ active, selected }"
               v-for="country in countriesCode"
               :key="country.code"
-              v-slot="{ active, selected }"
               :value="country.code"
               as="template"
             >
-              <li
-                class="relative cursor-default select-none py-4 pl-10 pr-4"
+            <li 
+                class="relative cursor-default select-none  pl-10 pr-1  list-unstyled"
                 :class="{
-                  'bg-teal-600 text-white': active,
+                  'bg-teal-600 text-black': active,
                   'text-gray-900': !active,
                 }"
               >
-                <div class="flex items-center gap-4 w-32" :class="{ 'font-medium': selected, 'font-normal': !selected }">
-                  <p class="font-medium w-3">{{ '+' + country.key }}</p>
-                  <Icon :name="getCountryFlag(country.code.toLowerCase())" size="1.4rem" class="w-16" />
+                <div class="d-flex justify-content-between gap-2 " :class="{ 'fs-md': selected, 'fs': !selected }" v-if="country.code !== ''" style="border-radius:unset !important" >
+                  <p class="pl-2" style="font-size: 14px;" >{{ country.name }}</p>
+                  <Icon :name="getCountryFlag(country.code.toLowerCase())" size="1.4rem" class="w-16 mt-1"  />
                 </div>
                 <span
                   v-if="selected"
-                  class="absolute inset-y-0 left-0 flex items-center pl-3"
+                  class="position-absolute d-flex justify-items-center pl-1"
                   :class="{ 'text-white': active, 'text-teal-600': !active }"
                 >
                 </span>
               </li>
-            </BDropdown>
-          </BDropdown>
+            </ListboxOption>
+          </ListboxOptions>
         </transition>
       </div>
-    </Bcard>
-  </template>
-  
-  <script setup lang="ts">
-//   import { getCountryFlag } from '~/helpers/countries';
-  
-  const props = defineProps<{ modelValue: string }>();
-  const { modelValue } = toRefs(props);
-  const getCountryFlag = (code: string) => {
-    return 'flag:' + code.toLowerCase() + '-4x3';
-  };
-  const { countriesCode } = useCountriesCode();
-  
-  const emit = defineEmits(['update:model-value']);
-  const selectedValue = computed(() => countriesCode.value?.find((co) => co.code === modelValue.value));
-  </script>
-  <style scoped>
-  :deep(.dropdown-menu){
-    display: block;
-  }
-  </style>
-  
+    </Listbox>
+  </div>
+</template>
+
+<script setup lang="ts">
+import {
+  Listbox,
+  ListboxLabel,
+  ListboxButton,
+  ListboxOptions,
+  ListboxOption,
+} from '@headlessui/vue'
+import { getCountryFlag } from '~/helpers/countries';
+
+const props = defineProps<{ modelValue: string }>();
+const { modelValue } = toRefs(props);
+
+const { countriesCode } = useCountriesCode();
+
+const emit = defineEmits(['update:model-value']);
+const selectedValue = computed(() => countriesCode.value?.find((co) => co.code === modelValue.value));
+</script>
+<style scoped>
+.main{
+  z-index: 9999;
+}
+.main ul{
+  height: 300px;
+  padding-left: 12px;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  list-style: none;
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  min-width: 230px;
+  overflow-x:hidden !important;
+  overflow-y:auto ;
+}
+.main ul li div{
+  height: 3rem;
+}
+.ListboxButton{
+  line-height: 15px;
+  height: 15px;
+}
+
+/* .listbox-main{
+  top:2.3rem
+} */
+</style>

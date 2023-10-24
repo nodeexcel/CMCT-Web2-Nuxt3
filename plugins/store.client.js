@@ -110,6 +110,7 @@ const store = createStore({
           // let menuContent = result
           console.log("result",result)
           commit('SET_MENU', result)
+          return result
          
           }).catch((error) => {
           console.error(error);
@@ -121,10 +122,11 @@ const store = createStore({
         commit('SET_ERROR', e);
       }
     },
-    async fetchAuthor ({},payload) {
+    async fetchAuthor ({commit},payload) {
       try {
         await client.get({filters:this.$prismic.filter.at('document.id', payload)}).then(async (response) => {
           console.log("resp",response)
+          commit('SET_AUTHOR', response)
            return response
         })
         

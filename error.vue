@@ -1,15 +1,8 @@
 
 <template>
     <div class="content-page page-not-found">
-      <!-- data: {{ data }} <br /> -->
-    <!-- pending: {{ pending }} -->
-
-   <!-- <div class="container">
-     <h1>Page not found</h1>
-     <p>Sorry we were unable to find the page you are looking for.</p>
-     <p><nuxt-link to="/" style="text-decoration: underline;">Back to home</nuxt-link></p>
-   </div> -->
-       <div class="container">
+      <NuxtLayout name="default">
+        <div class="container">
            <h1>Not found <span>:(</span></h1>
                <p  @click="handleError">Sorry, but the page you were trying to view does not exist.</p>
                <i>{{ error.statusCode }}</i>
@@ -18,6 +11,17 @@
                </div>
                
            </div>
+      <!-- -->
+    </NuxtLayout>
+      <!-- data: {{ data }} <br /> -->
+    <!-- pending: {{ pending }} -->
+
+   <!-- <div class="container">
+     <h1>Page not found</h1>
+     <p>Sorry we were unable to find the page you are looking for.</p>
+     <p><nuxt-link to="/" style="text-decoration: underline;">Back to home</nuxt-link></p>
+   </div> -->
+       
  </div>
  <!-- <div>{{ error.statusCode }}</div>
  <div><button @click="handleError">Go to the home page</button></div> -->

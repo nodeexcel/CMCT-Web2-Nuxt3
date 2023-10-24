@@ -7,180 +7,135 @@
       </div>
     </section>
   </template>
-  
-  <script>
-  // Imports for Prismic Slice components
-  import {client} from '~/prismic/prismic';
-//   import SlicesBlock from '~/components/SlicesBlock.vue'
-  
-  export default {
-    data(){
-        
-        return{
-            envVars: useRuntimeConfig(),
-            document :null,
-            slices: []
-        }
-    },
-    //   name: 'blog',
-    //   layout: 'homepage',
-    //   components: {
-    //       SlicesBlock
-    //   },
-      head () {
-          return {
-              title: this.meta_title,
-              htmlAttrs: {
-                  lang: 'en'
-              },
-              link: [
-                  { rel: 'canonical', href: this.meta_url },
-              ],
-              meta: [
-                  { hid: 'author', name: 'author', content: this.meta_author },
-                  { hid: 'description', name: 'description', content: this.meta_description },
-                  {
-                      hid: 'ogtitle',
-                      property: 'og:title',
-                      content: this.meta_title
-                  },
-                  {
-                      hid: 'ogdescription',
-                      property: 'og:description',
-                      content: this.meta_description
-                  },
-                  {
-                      hid: 'ogimage',
-                      property: 'og:image',
-                      content: this.meta_image
-                  },
-                  {
-                      hid: 'ogurl',
-                      property: 'og:url',
-                      content: this.meta_url
-                  },
-                  {
-                      hid: 'ogtype',
-                      property: 'og:type',
-                      content: 'article'
-                  },
-                  {
-                      hid: 'ogsite_name',
-                      property: 'og:site_name',
-                      content: this.meta_site_name
-                  },
-                  {
-                      hid: 'twittertitle',
-                      name: 'twitter:title',
-                      content: this.meta_title
-                  },
-                  {
-                      hid: 'twitterdescription',
-                      name: 'twitter:description',
-                      content: this.meta_description
-                  },
-                  {
-                      hid: 'twitter:card',
-                      name: 'twitter:card',
-                      content: 'summary'
-                  },
-                  {
-                      hid: 'twitterimage',
-                      name: 'twitter:image',
-                      content: this.meta_image
-                  },
-              ]
-          }
-    },
-    async asyncData({ $prismic, params, error }) {
-      try{
-        // Query to get post content
-          (await client.getByUID('page', 'blog')).then((result) => {
-          var document = result.data
-          
-          slices = document.page_content,
-          console.log("menu", slices)
-          return {
-              document: document,
-              // Set slices as variable
-              slices: document.page_content,
+
+<script setup>
+import {computed, onMounted } from 'vue';
+import { client } from '~/prismic/prismic'
+
               
-              //SEO
-              meta_title:  document.meta_title[0].text ,
-              meta_description: (document.meta_description.length) ? document.meta_description[0].text : '',
-              meta_image: (document.meta_image.url) ? document.meta_image.url : '',
-              meta_url: this.envVars.public.env.baseUrl + '/blog',
-              meta_site_name: this.envVars.public.env.COMPANY_NAME
-          }
-          }).catch((error) => {
-          console.error(error);
-          });
-          // const menu = this.$store
-         
+			   // Set slices as variable
+			  let  slices = ref(null) 
+              let document = ref(null)
+
+		        //SEO
+				
+			  let  meta_title = ref('') 
+			  let meta_description = ref(null)
+			  let meta_keywords = ref(null) 
+			  let meta_image = ref(null)
+			  let  meta_site_name = ref(null) 
+			  let  meta_url = ref(null) 
+
+			    //   let structuredData 
+
+			   
 
 
-        //   const document = (await $prismic.api.getByUID('page', 'blog')).data
-        //   //const document = (await $prismic.api.query($prismic.predicates.at('document.type', 'blogpage'))).results
-        //     return {
-        //       document: document,
-        //       // Set slices as variable
-        //       slices: document.page_content,
-              
-        //       //SEO
-        //       meta_title: (document.meta_title.length) ? document.meta_title[0].text : '',
-        //       meta_description: (document.meta_description.length) ? document.meta_description[0].text : '',
-        //       meta_image: (document.meta_image.url) ? document.meta_image.url : '',
-        //       meta_url: process.env.baseUrl + '/blog',
-        //       meta_site_name: process.env.COMPANY_NAME
-        //   }
-      } catch (e) {
-          // Returns error page
-          console.log(e)
-          error({ statusCode: 404, message: 'Page not found' })
-      }
-    },
-      created () {
-        //   const isForm = this.slices.filter(function(slice) {                
-        //       if(slice.slice_type == 'blog_cards') {
-        //           Object.assign(slice, {type:'blog_listing'});
-        //       }
-        //       return slice;
-        //   });
-      },
-      
-      mounted(){
+			
+
+      onMounted( async () => {
+		
+					// let headingArray = document.getElementsByTagName('h2')
+					// 	let headingThreeArray = document.getElementsByTagName('h3')
+					// 	if (headingArray && headingArray.length) {
+					// 		for (let index = 0; index < headingArray.length; index++) {
+					// 			let str = headingArray[index].textContent.split(" ").join("")
+					// 			headingArray[index].setAttribute("id", str);
+					// 		}
+					// 	}
+					// 	if (headingThreeArray && headingThreeArray.length) {
+					// 		for (let index = 0; index < headingThreeArray.length; index++) {
+					// 			let str = headingThreeArray[index].textContent.split(" ").join("")
+					// 			headingThreeArray[index].setAttribute("id", str);
+					// 		}
+					// 	}
+					
+				    })
+
+                    
+      const { data } = await useAsyncData(async () => {
+        const envVars = useRuntimeConfig()
         client.getByUID('page', 'blog').then((result) => {
+            var Doc = result.data
         //   letdocument = result.data
         //   let document= document,
               // Set slices as variable
-              this.slices = result.data.page_content
+              slices.value = result.data.page_content
               
               //SEO
-              meta_title = (document.meta_title.length) ? document.meta_title[0].text : ''
-              meta_description= (document.meta_description.length) ? document.meta_description[0].text : ''
-              meta_image = (document.meta_image.url) ? document.meta_image.url : ''
-              meta_url = this.envVars.public.env.BASE_URL + '/blog'
-              meta_site_name = this.envVars.public.env.COMPANY_NAME
+              document.value = Doc
+              meta_title.value = (document.meta_title.length) ? document.meta_title[0].text : ''
+              meta_description.value= (document.meta_description.length) ? document.meta_description[0].text : ''
+              meta_image.value = (document.meta_image.url) ? document.meta_image.url : ''
+              meta_url.value = envVars.public.env.BASE_URL + '/blog'
+              meta_site_name.value = envVars.public.env.COMPANY_NAME
             console.log("hh", client.getByUID('page', 'blog'),this.slices )
       })
         
-      }
-  }
-  </script>
-  <style scoped>
-  .blog-listing {
-      margin-top: 150px;
-  }
-  @media (max-width: 767px) { 
-      .blog-listing {
-          margin-top: 0px;
-      }
-  }
+	   
+     })
+	useHead({
+		    title: meta_title.value,
+			htmlAttrs: {
+				lang: 'en'
+			},
+			link: [
+				{ rel: 'canonical', href: meta_url.value },
+			],
+			meta: [
+				{ hid: 'keywords', name: 'keywords', content: meta_keywords.value },
+				{
+					hid: 'ogtitle',
+					property: 'og:title',
+					content: meta_title.value
+				},
+				{
+					hid: 'ogdescription',
+					property: 'og:description',
+					content: meta_description.value
+				},
+				{
+					hid: 'ogimage',
+					property: 'og:image',
+					content: meta_image.value
+				},
+				{
+					hid: 'ogurl',
+					property: 'og:url',
+					content: meta_url.value
+				},
+				{
+					hid: 'ogtype',
+					property: 'og:type',
+					content: 'Website'
+				},
+				{
+					hid: 'ogsite_name',
+					property: 'og:site_name',
+					content: meta_site_name.value
+				},
+				{
+					hid: 'twittertitle',
+					name: 'twitter:title',
+					content: meta_title.value
+				},
+				{
+					hid: 'twitterdescription',
+					name: 'twitter:description',
+					content: meta_description.value
+				},
+				{
+					hid: 'twitter:card',
+					name: 'twitter:card',
+					content: 'summary'
+				},
+				{
+					hid: 'twitterimage',
+					name: 'twitter:image',
+					content: meta_image.value
+				},
+			],
+    }) 
 
-
-  /* .then((result) => {
-          let document = result
-          }).catch((error) => {
-          console.error(error);
-          }); */
-  </style>
+</script>
+  

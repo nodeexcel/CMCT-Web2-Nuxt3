@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div class="header-wrap">
+    <div class="header-wrap" style="min-height: 90px;">
       <HeaderPrismic/>
     </div>
-    <slot />
+    <div class="content-wrap" style="min-height: 700px;margin-top:10px">
+        <slot />
+    </div>
     <FooterPrismic/>
   </div>
 </template>
@@ -20,3 +22,4 @@
       title
 })
  </script>
+ 

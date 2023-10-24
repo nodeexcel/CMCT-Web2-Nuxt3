@@ -1,5 +1,5 @@
 <template>
-    <div class="container-background-wrapper">
+    <div class="container-background-wrapper main-container">
         <div class="container-background-sub-wrapper" :style="{'background-color': slice.primary.background_color}">
           <section class="picturesoverlay-slice-section" >
             <div class="container">
@@ -30,6 +30,9 @@
   }
   </script>
   <style scoped>
+  .main-container{
+    min-height: 530px;
+  }
     .picturesoverlay-slice-section{
       padding: 165px 0px 165px 0px;
       margin-bottom: 165px;

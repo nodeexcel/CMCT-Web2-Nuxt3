@@ -1,153 +1,100 @@
 <template>
   <section :class="[isNormalLink ? 'custom-page-main' : '']">
     <!-- Slices block component -->
-    <!-- {{ slice }} -->
     <SlicesBlock :slices="slices" :banner="banner" :page-id="pageId" :isMapOnPage="isMapOnPage"/>
   </section>
 </template>
 
-<script>
-// Imports for Prismic Slice components
-// import SlicesBlock from '~/components/SlicesBlock.vue'
+<script setup>
+import { onMounted } from 'vue';
+import { client } from '~/prismic/prismic'
+import { useStore } from 'vuex'
 
-
-export default {
-  name: 'page',
-  layout: 'homepage',
-  // components: {
-  //   SlicesBlock
-  // },
-  data() {
-	  return {
-      isFormSlice: false,
-      isNormalLink: false,
-      banner:{},
-      slices: null,
-        data: null,
-        pageId : null,
-		    isMapOnPage: false,
+let slices = ref([])
+let isFormSlice =ref(false) 
+let  isNormalLink = ref(false)
+let  banner =ref({})
+let  data = ref(null) 
+let  pageId  =ref(null) 
+let		    isMapOnPage =ref(false) 
         //SEO
-        meta_title:null,
-        meta_description: null,
-        meta_image: null,
-        meta_url: null,
-        meta_site_name: null,
-	  }
-  },
-  head () {
-    return {
-      title: this.meta_title,
-      htmlAttrs: {
-        lang: 'en'
-      },
-      link: [
-        { rel: 'canonical', href: this.meta_url },
-        { rel: 'stylesheet', href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" },
-      ],
-      meta: [
-        { hid: 'author', name: 'author', content: this.meta_author },
-        { hid: 'description', name: 'description', content: this.meta_description },
-        {
-          hid: 'ogtitle',
-          property: 'og:title',
-          content: this.meta_title
-        },
-        {
-          hid: 'ogdescription',
-          property: 'og:description',
-          content: this.meta_description
-        },
-        {
-          hid: 'ogimage',
-          property: 'og:image',
-          content: this.meta_image
-        },
-        {
-          hid: 'ogurl',
-          property: 'og:url',
-          content: this.meta_url
-        },
-        {
-          hid: 'ogtype',
-          property: 'og:type',
-          content: 'Website'
-        },
-        {
-          hid: 'ogsite_name',
-          property: 'og:site_name',
-          content: this.meta_site_name
-        },
-        {
-          hid: 'twittertitle',
-          name: 'twitter:title',
-          content: this.meta_title
-        },
-        {
-          hid: 'twitterdescription',
-          name: 'twitter:description',
-          content: this.meta_description
-        },
-        {
-          hid: 'twitter:card',
-          name: 'twitter:card',
-          content: 'summary'
-        },
-        {
-          hid: 'twitterimage',
-          name: 'twitter:image',
-          content: this.meta_image
-        },
-      ],
-    }
-  },
-  // async asyncData({ $prismic, params, error,store }) {
-  //   console.log("params",params)
-    
-  // },
-  created () {
-    
-	let query_param = this.$route.query;
-  console.log("this.slices",this.slices)
-    // const isForm = this.slices.filter(function(slice) {                
-    //   if(slice.slice_type == 'form') {
-    //     return slice;
-    //   } else if(slice.slice_type == 'listing') {
-		// Object.assign(slice.primary, {query_param: query_param});
-    //   }
-    // });
-    // if(isForm.length >= 1) {
-    //   this.isFormSlice = true;
-    // }
-    if(this.$route.params.uid == 'privacy' || this.$route.params.uid == 'termsofservice') {
-      this.isNormalLink = true;
-    }
-    // console.log("routing path",Object.keys(this.$route.query).length , !this.$route.fullPath.includes("?byHomes"),this.$route.path)
-	  if((Object.keys(this.$route.query).length == 0 || !this.$route.fullPath.includes("?byHomes")) && this.$route.path == '/page/singapore'){
+let  meta_title =ref(null)
+let  meta_description =ref(null) 
+let  meta_image =ref(null) 
+let  meta_url =ref(null) 
+let  meta_site_name =ref(null) 
+
+
+  
+				//SEO
+
+    // expose to template and other options API hooks
+    onMounted( async () => {
+      const router = useRoute()
+    const Router = useRouter()
+    const store = useStore()
+
+    if((Object.keys(router.query).length == 0 || !router.fullPath.includes("?byHomes")) && router.path == '/page/singapore'){
+      console.log("yes")
       const query = {}
      query.byRooms = ""
-     this.$router.push({ path: this.$route.path ,
+     Router.push({ path: router.path ,
+        query})
+	  }
+      
+	
+    if(store.state.faq_topic !== null){
+      store.state.faq_topic.forEach((item) =>{
+      console.log("item",item)
+      if(router.fullPath.includes(item.primary.title[0].text)){
+        var id = (item.primary.title[0].text).replace(/ /g,'')
+        id = ('#'+id).split('#').join('')
+        Router.push({ path: router.path,
+        query: {'#': id}})
+      }
+    })
+  }
+    // console.log(" homeDetails.data", homeDetails.value      console.log("123",client, client.getSingle("homes"))
+     }); 
+
+	 const { asyncData } = await useAsyncData(async () => {
+    const router = useRoute()
+    const Router = useRouter()
+
+    let query_param = router.query;
+      
+    const isForm = slices.value.filter(function(slice) {                
+      if(slice.slice_type == 'form') {
+        return slice;
+      } else if(slice.slice_type == 'listing') {
+		Object.assign(slice.primary, {query_param: query_param});
+      }
+    });
+    if(isForm.length >= 1) {
+      isFormSlice.value = true;
+    }
+    if(router.params.uid  == 'privacy' || router.params.uid == 'termsofservice') {
+      isNormalLink.value = true;
+    }
+
+    if((Object.keys(router.query).length == 0 || !router.fullPath.includes("?byHomes")) && router.path == '/page/singapore'){
+      console.log("yes")
+      const query = {}
+     query.byRooms = ""
+     Router.push({ path: router.path ,
         query})
 	  }
 
-  //   if(this.$store.state.faq_topic !== null){
-  //   this.$store.state.faq_topic.forEach((item) =>{
-  //     console.log("item",item)
-  //     if(this.$route.fullPath.includes(item.primary.title[0].text)){
-  //       var id = (item.primary.title[0].text).replace(/ /g,'')
-  //       id = ('#'+id).split('#').join('')
-  //       this.$router.push({ path: this.$route.path,
-  //       query: {'#': id}})
-  //     }
-  //   })
-  // }
-  },
-  mounted(){
+	  const store = useStore()
+    // const router = useRoute()
+    const envVars = useRuntimeConfig();
+
     try{
       // Query to get post content
-      this.$prismic.client.getByUID('page', this.$route.params.uid).then((Response) =>{
+      client.getByUID('page', router.params.uid).then((Response) =>{
         var document = Response.data
         console.log("document",document)
-        this.isMapOnPage = false;
+        isMapOnPage.value = false;
       const isMap =  document.page_content.filter(function(slice) {                
         if(slice.slice_type == 'listing' || slice.slice_type == 'listing1') {
           if(slice.primary.map === true) {
@@ -159,19 +106,21 @@ export default {
       // in store set faq_topics
       // const store = useStore()
      
-      var data = [];
+      var Data = [];
       document.page_content.filter(function(slice) {                
         if(slice.slice_type == 'faq_topic') {
-            data.push(slice);
+          Data.push(slice);
         }
       });
-      if(data.length>0){
-          // this.$store.commit('SET_FAQ', data);
+      if(Data.length>0){
+          console.log("data",Data)
+          store.commit('SET_FAQ', Data);
+          console.log("this.$store",store)
       }
 
 
 		if(isMap.length >= 1) {
-			this.isMapOnPage = true;
+			isMapOnPage.value = true;
 		}
       // return {
         // Page content
@@ -183,7 +132,7 @@ export default {
          var half_page= document.half_page
          var divider_and_button_color= document.divider_and_button_color
 
-        this.banner = {
+        banner.value = {
            hero_image,
            title ,
           tagline,
@@ -193,16 +142,16 @@ export default {
           divider_and_button_color
         },
         // Set slices as variable
-        this.slices = document.page_content;
-        this.data= document;
-        this.pageId = this.$route.params.uid;
-		    this.isMapOnPage= this.isMapOnPage;
+        slices.value = document.page_content;
+        data.value = document;
+        pageId.value = router.params.uid;
+		    isMapOnPage.value= isMapOnPage.value;
         //SEO
-        this.meta_title= (document.meta_title.length) ? document.meta_title[0].text : '';
-        this.meta_description= (document.meta_description.length) ? document.meta_description[0].text : '';
-        this.meta_image= (document.meta_image.url) ? document.meta_image.url : '';
-        this.meta_url= process.env.baseUrl+'/page/'+ this.$route.params.uid;
-        this.meta_site_name= process.env.COMPANY_NAME
+        meta_title.value= (document.meta_title.length) ? document.meta_title[0].text : '';
+        meta_description.value= (document.meta_description.length) ? document.meta_description[0].text : '';
+        meta_image.value= (document.meta_image.url) ? document.meta_image.url : '';
+        meta_url.value= process.env.baseUrl+'/page/'+ router.params.uid;
+        meta_site_name.value= process.env.COMPANY_NAME
         console.log("document",document)
       // }
       })
@@ -211,9 +160,73 @@ export default {
     console.log('Error', e)
       error({ statusCode: 404, message: 'Page not found' })
     }
-  }
-}
+
+	 })
+	 useHead({
+		    title: 'Casa Mia Coliving Blog Post'+"-"+meta_title.value,
+			htmlAttrs: {
+				lang: 'en'
+			},
+			link: [
+				{ rel: 'canonical', href: meta_url.value },
+			],
+			meta: [
+			{ hid: 'description', name: 'description', content: meta_description.value },
+			{
+			hid: 'ogtitle',
+			property: 'og:title',
+			content: meta_title.value
+			},
+			{
+			hid: 'ogdescription',
+			property: 'og:description',
+			content: meta_description.value
+			},
+			{
+			hid: 'ogimage',
+			property: 'og:image',
+			content: meta_image.value
+			},
+			{
+			hid: 'ogurl',
+			property: 'og:url',
+			content: meta_url.value
+			},
+			{
+			hid: 'ogtype',
+			property: 'og:type',
+			content: 'Website'
+			},
+			{
+			hid: 'ogsite_name',
+			property: 'og:site_name',
+			content: meta_site_name.value
+			},
+			{
+			hid: 'twittertitle',
+			name: 'twitter:title',
+			content: meta_title.value
+			},
+			{
+			hid: 'twitterdescription',
+			name: 'twitter:description',
+			content: meta_description.value
+			},
+			{
+			hid: 'twitter:card',
+			name: 'twitter:card',
+			content: 'summary'
+			},
+			{
+			hid: 'twitterimage',
+			name: 'twitter:image',
+			content: meta_image.value
+			},
+		],
+
+    }) 
 </script>
+
 <style scoped>
 .custom-page-main .text-slice-cms .details p a {
   background-color: transparent;

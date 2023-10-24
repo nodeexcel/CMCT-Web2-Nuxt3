@@ -105,11 +105,11 @@ export default {
       }
     }
   },
-  // watch: {
-  //   "fields.logo"(newVal) {
-  //     this.$store.commit('setHeaderLogo' ,newVal)
-  //   }
-  // },
+  watch: {
+    "fields.logo"(newVal) {
+      this.$store.commit('setHeaderLogo' ,newVal)
+    }
+  },
   computed:{
     color () {
       if (this.fields.header.background_color) {
@@ -342,7 +342,7 @@ export default {
 .site-header .header-menu ul li {
   display: inline-block;
   vertical-align: middle;
-     padding: 34px 0;
+     padding: 25px 0;
     margin: 0px 35px;
 }
 .site-header .row {
@@ -465,7 +465,7 @@ export default {
     color: #72bf44;
   }
    .header-wrap{
-      margin-top: 100px;
+      /* margin-top: 100px; */
   }
   .navbar-heading-menu{
        display: grid !important;

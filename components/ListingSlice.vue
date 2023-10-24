@@ -1,5 +1,5 @@
 <template>
-  <section >
+  <section class="content-page findahome content-page-main">
     <!-- {{ envdeatils }} -->
     <b-container fluid class="px-0">
 		<!-- {{ homeLists }} -->
@@ -194,8 +194,7 @@ import axios from 'axios';
   useHead({
     script: [
 				{ type: 'application/ld+json', json: homeListLd.value },
-				{ src: `https://maps.googleapis.com/maps/api/js?key=${key.value}&map_ids=4df64ef1b112569a`},
-				{ src: `https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js`}
+				
             ]
     })  
 	onMounted( async () => {
@@ -207,6 +206,9 @@ import axios from 'axios';
 </script>
 
 <style>
+.content-page-main{
+	min-height: 700px;
+}
 .toggle-map-button {
     min-width: 225px;
     color: #fff;

@@ -8,8 +8,7 @@
         </picture>
     </div> -->
     <div class="inner-content-wrapper form form-comman-input mb-5 pb-5">
-        <CountryCodeselector  v-model="selectedCountryCode" />
-        <input />
+        
                <div class="main-part form-cms-build cms-main-wrap px-3">
             <BForm @submit="onSubmit">
                 <div class="row mx-md-0">
@@ -40,7 +39,17 @@
                         <!-- </b-input-group> -->
                     </BFormGroup>
                 
-                    <BFormGroup label="PHONE"  class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                    <BFormGroup label="PHONE"  class="phonenumber col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <div>
+                         <CountryCodeselector  v-model="selectedCountryCode1" />
+                         <BFormInput
+                                id="phone_number"
+                                v-model="form.phoneNumber"
+                                type="text"
+                                class="form-inputs"
+                                required
+                            ></BFormInput>
+                        </div>    
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
                             <!-- <VuePhoneNumberInput class="phoneInput" /> -->
                             <!-- <BFormInput
@@ -51,22 +60,32 @@
                                 required
                             ></BFormInput> -->
                         <!-- </b-input-group> -->
-                        <!-- <div class="mt-2" v-if="showValidationError.phoneNumber">
+                        <div class="mt-2" v-if="showValidationError.phoneNumber">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
                             <span class="error">Please select phoneNumber with country-code</span>
-                        </div> -->
+                        </div>
                     </BFormGroup> 
-                    <BFormGroup  label="WHATSAPP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                    <BFormGroup  label="WHATSAPP" class="phonenumber col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+                        <div>
+                            <CountryCodeselector  v-model="selectedCountryCode2" />
+                            <BFormInput
+                                    id="phone_number"
+                                    v-model="form.whatsappNumber"
+                                    type="text"
+                                    class="form-inputs"
+                                    required
+                                ></BFormInput>
+                        </div>    
                         <!-- <b-input-group -->
                            
                             <!-- class="input-group mb-4 mr-sm-2 mb-sm-0"
                         > -->
                             <!-- <VueTelInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="form.whatsappNumber" /> -->
                         <!-- </b-input-group> -->
-                        <!-- <div class="mt-2" v-if="showValidationError.whatsappNumber">
+                        <div class="mt-2" v-if="showValidationError.whatsappNumber">
                             <svg style="height: 30px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#e44e4e" stroke="#e44e4e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"></line> <line fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"></line> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle> </g> </g> </g> </g></svg>
                             <span class="error">Please select whatsappNumber with country-code</span>
-                        </div>-->
+                        </div>
                     </BFormGroup> 
                     <BFormGroup label="EMAIL" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
@@ -185,7 +204,7 @@
                     <BFormGroup label="ROOM FOR" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
                              <div class="position-relative">
-                                <b-form-select id="los" v-model="form.forCouples" :options="forCouplesOptions" class="form-inputs"></b-form-select>
+                                <b-form-select  v-model="form.forCouples" :options="forCouplesOptions" class="form-inputs"></b-form-select>
                                 <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
                             </div>
                         <!-- </b-input-group> -->
@@ -208,7 +227,7 @@
                     <BFormGroup  label="LENGTH OF STAY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
                             <div class="position-relative">
-                                <b-form-select id="los" v-model="form.los" :options="losOptions" class="form-inputs" disabled-field="disabled"></b-form-select>
+                                <b-form-select  v-model="form.los" :options="losOptions" class="form-inputs" disabled-field="disabled"></b-form-select>
                                 <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
                             </div>
                         <!-- </b-input-group> -->
@@ -220,7 +239,7 @@
                      <BFormGroup label="CITY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
                              <div class="position-relative">
-                                <b-form-select id="los" v-model="form.city" :options="cityOptions" class="form-inputs"></b-form-select>
+                                <b-form-select  v-model="form.city" :options="cityOptions" class="form-inputs"></b-form-select>
                                 <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i>
                             </div>
                         <!-- </b-input-group> -->
@@ -234,7 +253,7 @@
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0 d-block"> -->
                             <b-row class="multiSelectWrapper border-0 px-0">
                                 <b-col class="col-lg-3 col-md-4 col-sm-6 col-12" v-for="(item, index) in areaOptions" :key="index">
-                                <b-form-checkbox v-model="form.area" class="custom-checkbox" :value="item.value">{{item.text}}</b-form-checkbox></b-col>
+                                <b-form-checkbox v-model="form.area" class="custom-checkbox mr-2" :value="item.value">{{item.text}}</b-form-checkbox></b-col>
                                 <!-- <b-form-checkbox-group id="checkbox-group-1" v-model="form.area" :options="areaOptions"></b-form-checkbox-group> -->
                             </b-row>
                         <!-- </b-input-group> -->
@@ -290,6 +309,7 @@
 <script>
 import moment from "moment";
 import axios from 'axios';
+import { validateMobile } from '~/helpers/mobile';
 
 // import VueTelInput from 'vue3-tel-input'
 // import VueMultiselect from "vue-multiselect";
@@ -305,7 +325,8 @@ data() {
     return {
         envVars:useRuntimeConfig(),
         cities: [],
-        selectedCountryCode:'SA',
+        selectedCountryCode1:'',
+        selectedCountryCode2:'',
         RedirectedProspectTo: null,
         showPopOver: false,
         invalidtext:'',
@@ -471,26 +492,85 @@ mounted() { axios.post(this.envVars.public.env === 'prod' ? this.envVars.public.
     });
 },
 watch: {
-    // 'form.phoneNumber'(value){
-    //     if(value !== null) {
-    //         this.showValidationError.whatsappNumber = false
-    //         this.showValidationError.phoneNumber = false
-    //     }
-    //     else{
-    //         this.showValidationError.whatsappNumber = true
-    //         this.showValidationError.phoneNumber = true
-    //     }
-    // },
-    // 'form.whatsappNumber'(value){
-    //     if(value !== null) {
-    //         this.showValidationError.whatsappNumber = false
-    //         this.showValidationError.phoneNumber = false
-    //     }
-    //     else{
-    //         this.showValidationError.whatsappNumber = true
-    //         this.showValidationError.phoneNumber = true
-    //     }
-    // },
+    'form.phoneNumber'(value){     
+        console.log("value", value)
+        // if(data.formattedNumber != undefined){
+        //     this.phone = data.formattedNumber;
+        //     this.showValidationError.whatsappNumber = false
+        //     this.showValidationError.phoneNumber = false
+        // }else{
+        //     this.phone = "";
+        //     if(this.whatsapp == ""){
+        //         this.showValidationError.whatsappNumber = true
+        //     }
+        //     if(this.phone == ""){
+        //         this.showValidationError.phoneNumber = true;
+        //     }
+        // }  
+
+        // if(this.selectedCountryCode1 !== '') {
+            const formattedPhoneNumber = validateMobile(value , this.selectedCountryCode1);
+        console.log("formattedNumber",formattedPhoneNumber.number.input.length );
+            if(formattedPhoneNumber.number.input.length > 1 ){
+             this.showValidationError.whatsappNumber = false
+             this.showValidationError.phoneNumber = false
+             this.phone = formattedPhoneNumber.number.international
+             }
+             else{
+            this.phone = "";
+            if(this.whatsapp == ""){
+                this.showValidationError.whatsappNumber = true
+            }
+            if(this.phone == ""){``
+                this.showValidationError.phoneNumber = true;
+            }
+        }   
+        // }
+        // else{
+        //     this.showValidationError.whatsappNumber = true
+        //     this.showValidationError.phoneNumber = true
+        // }
+    },
+    'form.whatsappNumber'(value){    
+        console.log("value", value)
+
+        // if(data.formattedNumber != undefined) {
+        //     this.whatsapp = data.formattedNumber;
+        //     this.showValidationError.whatsappNumber = false
+        //     this.showValidationError.phoneNumber = false;
+        // } else {
+        //     this.whatsapp = "";
+        //     if(this.whatsapp == ""){
+        //         this.showValidationError.whatsappNumber = true
+        //     }
+        //     if(this.phone == ""){
+        //         this.showValidationError.phoneNumber = true;
+        //     }
+        // }
+
+        // if(this.selectedCountryCode1 !== '') {
+            const formattedwhatsappNumber = validateMobile(value  , this.selectedCountryCode2);
+            console.log("formattedNumber",formattedwhatsappNumber);
+            if(formattedwhatsappNumber.number.input.length > 1 ){
+             this.showValidationError.whatsappNumber = false
+             this.showValidationError.phoneNumber = false
+             this.whatsapp = formattedPhoneNumber.number.international
+            }
+            else {
+            this.whatsapp = "";
+            if(this.whatsapp == ""){
+                this.showValidationError.whatsappNumber = true
+            }
+            if(this.phone == ""){
+                this.showValidationError.phoneNumber = true;
+            }
+        }
+        // }   
+        // else{
+        //     this.showValidationError.whatsappNumber = true
+        //     this.showValidationError.phoneNumber = true
+        // }
+    },
   'form.maxPrice'(value){
     this.form.maxPrice  = value;
   },
@@ -636,8 +716,8 @@ methods: {
     onSubmit(evt) {
         evt.preventDefault();      
         // this.invalidText();     
-        this.form.whatsappNumber = '9999999';
-        this.form.phoneNumber = '9999999';
+        this.form.whatsappNumber = this.whatsapp;
+        this.form.phoneNumber = this.phone;
         if(!this.form.firstName.length) {
             this.errorMessage = "Please Enter First Name"
         } else if(!this.form.email.length) {
@@ -683,6 +763,7 @@ methods: {
             this.errorMessage = ''
             this.form.isActive = true;                
             var source = window.location.href;
+            var sourceDetails = "khkh";
             // var sourceDetails = this.$cookies.get("link_source"); 
             let flag = '/page/'+this.form.city.toLocaleLowerCase()+'?byRooms=&';
            
@@ -968,9 +1049,9 @@ methods: {
 }
 </script>
 <style>
-@import "../assets/css/form.css";
-@import "@/assets/css/common.css";
-@import "@/assets/css/filterform.css";
+/* @import "@/assets/css/form.css"; */
+/* @import "@/assets/css/common.css";
+@import "@/assets/css/filterform.css"; */
 
 .pop{
 position: fixed;
@@ -1218,10 +1299,46 @@ background: #41b883 !important;
 outline: none !important;
 color: #fff !important;
 }
+.custom-checkbox {
+    appearance: none;
+    background-color: #d8d8d8;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    height: 18px;
+    margin-right: 15px;
+    min-width: 18px;
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+}
+.form-label{
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+}
+.form-check-label{
+    font-size: 12px;
+    outline: 0;
+    vertical-align: middle;
+}
+
+.form-check{
+    display: flex;
+}
+.phonenumber div div{
+ display: flex;
+ background: #F7F7F7;
+ border-radius: 10px !important ;
+}
+.multiselect-clear-icon{
+   display: none;
+	}
 @media (max-width: 425px) {
     
 .pop{
     width: 15rem !important;
 }
 }
+
 </style> 

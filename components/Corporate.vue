@@ -39,7 +39,17 @@
               <!-- </b-input-group> -->
             </BFormGroup>
 
-            <BFormGroup label="PHONE" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+            <BFormGroup label="PHONE" class="phonenumber col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+              <div>
+                <CountryCodeselector  v-model="selectedCountryCode1" />
+                <BFormInput
+                        id="phone_number"
+                        v-model="form.phoneNumber"
+                        type="text"
+                        class="form-inputs"
+                        required
+                    ></BFormInput>
+              </div>  
               <!-- <b-input-group
                 prepend="PHONE"
                 class="input-group mb-2 mr-sm-2 mb-sm-0"
@@ -62,7 +72,17 @@
                 ></BFormInput>
               <!-- </b-input-group> -->
             </BFormGroup>
-            <BFormGroup label="WHATSAPP" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+            <BFormGroup label="WHATSAPP" class="phonenumber col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+              <div>
+                <CountryCodeselector  v-model="selectedCountryCode2" />
+                <BFormInput
+                        id="phone_number"
+                        v-model="form.whatsappNumber"
+                        type="text"
+                        class="form-inputs"
+                        required
+                    ></BFormInput>
+              </div> 
               <!-- <b-input-group
                 prepend="WHATSAPP"
                 class="input-group mb-2 mr-sm-2 mb-sm-0"
@@ -168,7 +188,7 @@
                   </div>
               <!-- </b-input-group> -->
             </BFormGroup>
-             <BFormGroup label="MESSAGE" class="col-12 form-input-label text-area px-0 mx-3 mb-4">
+             <BFormGroup label="MESSAGE" class="col-12 form-input-label text-area px-0  mb-4">
                 <!-- <b-input-group prepend="MESSAGE" class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
                     <b-row class="multiSelectWrapper mx-0">
                        <b-form-textarea id="message" class="mr-3" v-model="form.message" rows="3"></b-form-textarea>
@@ -203,6 +223,7 @@
 
 <script>
 import axios from "axios";
+import { validateMobile } from '~/helpers/mobile';
 // import VuePhoneNumberInput from 'vue-phone-number-input';
 // import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {
@@ -213,6 +234,8 @@ export default {
   // },
   data() {
     return {
+      selectedCountryCode1:'',
+      selectedCountryCode2:'',
       form: {
         status: true,
         firstName: "",

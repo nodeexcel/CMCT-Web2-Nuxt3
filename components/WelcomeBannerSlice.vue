@@ -1,5 +1,5 @@
 <template>
-    <section :class="'welcome-banner-section mb-5 mb-xl-5 pb-xl-5'">
+    <section :class="'welcome-banner-section mb-5 mb-xl-5 pb-xl-5'" class="welcome-banner-main">
       <div class="homepage-banner home-subbanner-page">
         <div class="slider-outer" v-if="slice.slice_label =='3_4'" >
 			<div class="slicer-image-full">
@@ -168,6 +168,9 @@ export default {
 </script>
 <style scoped>
 /* @import "../assets/css/common.css"; */
+.welcome-banner-main{
+  min-height: 350px;
+}
 
 .home-subbanner-page .silder-content-box{
 	width: 674px;

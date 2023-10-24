@@ -6,12 +6,12 @@
                     <div v-if="slice != undefined" class="section-main-title mb-0 mb-3 mb-xl-4">
                         <prismic-rich-text :field="slice.primary.title" class="cms-title similar-cardslice-heading px-sm-3"/>
                     </div>
-                    buildingbuildingbuildingbuildingbuildingbuildingbuildingbuilding
                     <div class="building-card">
-                        <template>
-                            <VueHorizontalList :items="newHomeLists" :options="options" class="card-main">
-                                <template v-slot:default="{item}">
-                                <div class="item">
+                        <div >
+                            <!-- <VueSlickCarousel v-bind="getTestimonialSetting" :class="(newHomeLists.length > 0 && newHomeLists.length < 3) ? 'centerTestimonial' :''" :autoplay="false" :infinite="true" :initialSlide="0" :pauseOnFocus="false" :pauseOnHover="false">
+                             <div  class="card-main " v-for="item in newHomeLists" :key="item" style="width: 300px;">
+                                <div class="">
+                                <div class="item" style="width: 300px;height:500px">
                                     <div class="content-wrap">
                                         <n-link :to="'/findahome/'+item.homeID" class="card-link" :id="'HomeDetails Card - '+item.homeID">
                                             <div class="room-image">
@@ -54,9 +54,10 @@
                                         </n-link>
                                     </div>
                                 </div>
-                                </template>
-                            </VueHorizontalList>
-                        </template>
+                                </div>
+                             </div>
+                            </VueSlickCarousel>  -->
+                        </div>
                     </div> 
                 </div>
             </div>
@@ -78,6 +79,77 @@ export default {
     props: ['slice', 'homeLists', 'divider_and_button_color'],
     data () {
         return {
+            setting1:{
+                    "dots": false,
+                    "infinite": false,
+                    "speed": 500,
+                    "autoplay":true,
+                    "slidesToShow": 3,
+                    "slidesToScroll": 3,
+                    "initialSlide": 0,
+                    "responsive": [
+                        {
+                        "breakpoint": 1024,
+                        "settings": {
+                            "slidesToShow": 3,
+                            "slidesToScroll": 3,
+                            "infinite": true,
+                        }
+                        },
+                        {
+                        "breakpoint": 991,
+                        "settings": {
+                            "slidesToShow": 2,
+                            "slidesToScroll": 2,
+                            "initialSlide": 0,
+                            "infinite": true,
+                        }
+                        },
+                        {
+                        "breakpoint": 575,
+                        "settings": {
+                            "slidesToShow": 1,
+                            "slidesToScroll": 1,
+                            "infinite": true,
+                        }
+                        }
+                    ]
+            },
+            slidesFor2:{
+                    "dots": false,
+                    "infinite": false,
+                    "speed": 500,
+                    "autoplay":true,
+                    "slidesToShow": 2,
+                    "slidesToScroll": 2,
+                    "initialSlide": 0,
+                    "responsive": [
+                        {
+                            "breakpoint": 1024,
+                            "settings": {
+                                "slidesToShow": 2,
+                                "slidesToScroll": 2,
+                                "infinite": true,
+                            }
+                        },
+                        {
+                            "breakpoint": 991,
+                            "settings": {
+                                "slidesToShow": 2,
+                                "slidesToScroll": 2,
+                                "initialSlide": 0
+                            }
+                        },
+                        {
+                            "breakpoint": 575,
+                            "settings": {
+                                "slidesToShow": 1,
+                                "slidesToScroll": 1
+                            }
+                        }
+                    ]
+            },
+
             value: [],
             options: {
                 responsive: [
@@ -103,6 +175,13 @@ export default {
         }
     },
     computed: {
+        getTestimonialSetting(){
+            if(this.newHomeLists.length == 1){
+                return this.slidesFor2;
+            }else{
+                return this.setting1;
+            }
+        },
         background () {
             if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(this.divider_and_button_color)) { 
                   

@@ -10,24 +10,26 @@
 						<prismic-rich-text :field="banner.title" class="blog-title content-h5-heading mb-0 mb-xl-4"/>
 						<hr class="line-color">
 						<div class="tag-social-share row align-items-center">
-							<div class="tag-list col-lg-6 col-md-6 col-sm-12 col-xs-12" v-if="topics_array && topics_array.length">
+							
+							<div class="tag-list col-lg-6 col-md-6 col-sm-12 col-xs-12" >
 								<!-- <b-badge :href="'/blog?topic='+topic.data.topic" @click="setFilter(topic.id)" class="tags" variant="light" v-for="topic in topics_array" :key="topic.topic">{{topic.data.topic}}</b-badge> -->
 								<div class="d-flex align-items-center">
+									<!-- <nuxt-img :src="author.data.author_picture" class="blog-img-rounded align-middle"/>  -->
 									<div class="mr-3 d-inline-block">
 										 <!-- <img src="../../../assets/img/four-col.png" class="blog-img-rounded"> -->
-										 <!-- <prismic-image v-if="isAuthor" :field="author.data.author_picture" class="blog-img-rounded align-middle"/> -->
+										 <prismic-image v-if="isAuthor" :field="author.data.author_picture" class="blog-img-rounded align-middle"/>
 									</div>
 									<div class="text-left"> 
-										<!-- <div class="blog-name pb-1" v-if="isAuthor">{{author.data.author}}</div> -->
-										<p class="blog-date">{{ publish_date | moment }}</p>
+										<div class="blog-name pb-1" v-if="isAuthor">{{author.data.author}}</div>
+										<p class="blog-date">{{ publish_date || moment }}</p>
 									</div>
 								</div>
 							</div>  
 							<div class="social-share-icons col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-3 mt-md-0"  v-if="blog_body != ''">
 								<div class="social-share-items-list share-box">
 									<span class="blog-share mr-4"> Share:</span>
-									<client-only>
-										<div class="position-relative d-inline-block">
+									<client-only class="d-flex">
+										<div class="position-relative d-inline-block social-icon-box">
 											<facebook :url="meta_url" scale="2" class="social-icon"></facebook>
 											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="social-icon-svg">
 												<g id="Group_670" data-name="Group 670" transform="translate(0.273 0.952)">
@@ -35,13 +37,13 @@
 												</g>
 											</svg>
 										</div>
-										<div class="position-relative d-inline-block">
+										<div class="position-relative d-inline-block social-icon-box">
 											<twitter :url="meta_url"  scale="2" class="social-icon"></twitter>
 											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="social-icon-svg">
 												<path id="Path_619" data-name="Path 619" d="M16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0Zm7.329,12.24c.012.163.012.326.012.489a10.687,10.687,0,0,1-10.76,10.76v0a10.708,10.708,0,0,1-5.8-1.7,7.755,7.755,0,0,0,.9.054,7.584,7.584,0,0,0,4.7-1.622A3.785,3.785,0,0,1,8.848,17.6a3.764,3.764,0,0,0,1.708-.065,3.783,3.783,0,0,1-3.034-3.707v-.048a3.757,3.757,0,0,0,1.716.473A3.785,3.785,0,0,1,8.067,9.2a10.741,10.741,0,0,0,7.793,3.952A3.785,3.785,0,0,1,22.3,9.7a7.582,7.582,0,0,0,2.4-.918,3.8,3.8,0,0,1-1.663,2.092,7.551,7.551,0,0,0,2.172-.594A7.687,7.687,0,0,1,23.329,12.24Z"/>
 											</svg>
 										</div>
-										<div class="position-relative d-inline-block">
+										<div class="position-relative d-inline-block social-icon-box">
 											<linkedin :url="meta_url" scale="2" class="social-icon"></linkedin>
 											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="social-icon-svg">
 											<g id="Group_669" data-name="Group 669" transform="translate(0.984 0.952)">
@@ -49,17 +51,17 @@
 											</g>
 											</svg>
 										</div>
-										<div class="position-relative d-inline-block">
+										<div class="position-relative d-inline-block social-icon-box">
 											<whats-app :url="meta_url" scale="2" class="social-icon">
 											</whats-app>
 											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="social-icon-svg" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/></svg>
 										</div>	
-										<div class="position-relative d-inline-block">
+										<div class="position-relative d-inline-block social-icon-box">
 											<google :url="meta_url" scale="2" class="social-icon">
 											</google>
 											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="social-icon-svg" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2.917 16.083c-2.258 0-4.083-1.825-4.083-4.083s1.825-4.083 4.083-4.083c1.103 0 2.024.402 2.735 1.067l-1.107 1.068c-.304-.292-.834-.63-1.628-.63-1.394 0-2.531 1.155-2.531 2.579 0 1.424 1.138 2.579 2.531 2.579 1.616 0 2.224-1.162 2.316-1.762h-2.316v-1.4h3.855c.036.204.064.408.064.677.001 2.332-1.563 3.988-3.919 3.988zm9.917-3.5h-1.75v1.75h-1.167v-1.75h-1.75v-1.166h1.75v-1.75h1.167v1.75h1.75v1.166z"/></svg>
 										</div>	
-										<div class="position-relative d-inline-block">
+										<div class="position-relative d-inline-block social-icon-box">
 											<email :url="meta_url"  scale="2" class="social-icon"></email>
 											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="social-icon-svg">
 											<g id="Group_680" data-name="Group 680" transform="translate(-881.528 -262.926)">
@@ -76,12 +78,11 @@
 						<prismic-rich-text  class="build-desc my-4  my-xl-5 py-xl-3 pb-xl-5" :field="blog_article"/>
 					</div>
 					<div ref="slicerImageMain" class="px-3 blog-big-image">
-						{{ banner }}
-						<!-- <picture>
+						<picture>
 							<source :srcset="banner.hero_image.phone.url" media="(max-width: 750px)">
 							<source :srcset="banner.hero_image.tablet.url" media="(max-width: 991px)">
 							<img :src="banner.hero_image.url">
-						</picture> -->
+						</picture>
 					</div>
 				</div>
 				<div class="blog-slider slider-cms">
@@ -93,11 +94,11 @@
 								<div class="toc-content-container mx-3">
 									<div class="blog-detail-sidebar pt-0 blog-detail-heading"> Contents </div>
 									<div class="content-container">
-										<div class="heading2-container blog-detail-sidebar" v-for="(content, tocIndex) in toc" :key="tocIndex">
+										<div class="heading2-container blog-detail-sidebar" v-for="(content, tocIndex) in tocc" :key="tocIndex">
 											<div class="">
 												 <!-- <a class="f-12" :href="'#' + getId(content)"> {{content.text}} </a> -->
 												 <!-- <a class="f-12" @click="hrefTo(getId(content))"> {{content.text}} </a> -->
-												<b-badge class="f-12" @click="hrefTo(getId(content))">{{content.text}} </b-badge>
+												 <b-badge class="f-12" @click="hrefTo(getId(content))">{{content.text}} </b-badge>
 												
 											</div>
 											<div v-for="(heading3, ind) in content.heading3" :key="ind" class="heading3">
@@ -121,17 +122,36 @@
 							<div class="row">
 								<div class="col-lg-8 d-sm-flex">
 									<div class="mr-sm-4 text-center text-lg-left">
-										<!-- <prismic-image :field="author.data.author_picture" class="author-image w-100"/> -->
+										<prismic-image :field="author.data.author_picture" class="author-image w-100"/>
 									</div>
 									<div>
-										 <!-- <span class="author_box_heading mb-2 d-inline-block">{{author.data.author}}</span>  -->
-										<!-- <prismic-rich-text :field="author.data.author_bio" class="author_bio author_box_paragraph"/> -->
+										 <span class="author_box_heading mb-2 d-inline-block">{{author.data.author}}</span> 
+										<prismic-rich-text :field="author.data.author_bio" class="author_bio author_box_paragraph"/>
 										<!-- <figure v-for="(item, index) in author.data.social_networks"
 											:key="'social_media_links-item-' + index">  
 											<prismic-link :field="item.social_links" class=" icons">
 												<prismic-image :field="item.social_icon" class="w-auto"/>
 											</prismic-link>
 										</figure> -->
+									</div>
+								</div>
+								<div class="col-lg-4 col-xl-3 offset-xl-1 text-center text-lg-left pl-xl-0" v-if="author.data.social_networks.length > 0">
+									<div class="tag-social-share mx-0 mt-3 mt-lg-0">
+										<!-- <div class="tag-list col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12" v-if="topics_array && topics_array.length">
+											<b-badge  :href="'/blog?topic='+topic.data.topic" @click="setFilter(topic.id)" class="tags" variant="light" v-for="topic in topics_array" :key="topic.topic">{{topic.data.topic}}</b-badge>
+										</div>   -->
+										<div class="vl d-none d-lg-block d-xl-block"></div>
+										<div class="social-share-icons mx-auto mx-lg-0"  v-if="blog_body != ''">
+											<div class="social-share-items-list">
+												<span class="blog-share d-block mb-2 mb-xl-4"> Share:</span>
+												<figure v-for="(item, index) in author.data.social_networks"
+												:key="'social_media_links-item-' + index" class="d-inline-block mr-1 mr-md-2 mr-lg-1 author_box_margin">  
+												<prismic-link :field="item.social_links" class=" icons d-inline-block">
+													<prismic-image :field="item.social_icon" class="w-auto author_box_image"/>
+												</prismic-link>
+												</figure>
+											</div>
+										</div>
 									</div>
 								</div>
 								
@@ -146,300 +166,198 @@
   	</section>
 </template>
 
-<script>
-// Imports for Prismic Slice components
-// const SlicesBlock = () => import('@/components/SlicesBlock.vue');
-const anotherHtmlSerializer = function (type, element, content, children) {} // Keep this line for link https://prnt.sc/v9tq4e
-// import moment from 'moment'
-export default {
-  name: 'blog-page',
-  layout: 'homepage',
-//   components: {
-// 	  SlicesBlock
-//   },
-  data() {
-	  return {
-		  socialShareStickyHeight: 0,
-		  author: null,
-		  anotherHtmlSerializer,
-		  pageId:null,
-		  document: null,
-			  banner: {},
+<script setup>
+import {computed, onMounted } from 'vue';
+import * as prismic from "@prismicio/client";
+import { client } from '~/prismic/prismic'
 
-			  // topics
-			  topics_array: [],
+              
+			  let  author = ref(null) 
+			  let pageId = ref(null)
+			  let document = ref(null) 
+			  let banner = ref({}) 
 
-			  // author
-			  author: null,
-			  // Set slices as variable
-			  slices: null,
-			  toc: null,
-			  //Blog
-			  author_image: null,
-			  autor: null,
-			  publish_date: null,
-			  modified_date: null,
-			  topics: null,
-			  summary: null,
-			  blog_article: null,
-			  blog_body: null,
-			  table_of_content: null,
+			   // topics
+			  let  topics_array = ref([]) 
+			   // Set slices as variable
+			  let  slices = ref(null) 
+			  let tocc = ref(null) 
+			   //Blog
+			  let author_image =ref (null) 
+			  let publish_date = ref(null) 
+			  let  modified_date = ref(null) 
+			  let topics = ref(null) 
+			  let summary = ref(null) 
+			  let blog_article = ref(null) 
+			  let blog_body = ref(null) 
+			  let table_of_content = ref(null) 
 
-			  //SEO
-			  meta_title: '',
-			  meta_description:null,
-			  meta_keywords: null,
-			  meta_image:null,
-			  meta_site_name: null,
-			  meta_url: null,
-			  structuredData:null
-	  }
-  },
-  computed: {
-	  // a computed getter
-	  isAuthor () {
-		  // `this` points to the vm instance
-		  if(Array.isArray(this.author) && this.author.length > 0) {
-			  return true
-		  } else if(Object.keys(this.author).length > 0) {
-			  return true
-		  } 
-		  return false
-	  }
-  },
-//   mounted () {
-// 	  let headingArray = document.getElementsByTagName('h2')
-// 	  let headingThreeArray = document.getElementsByTagName('h3')
-// 	  if (headingArray && headingArray.length) {
-// 		  for (let index = 0; index < headingArray.length; index++) {
-// 			  let str = headingArray[index].textContent.split(" ").join("")
-// 			  headingArray[index].setAttribute("id", str);
-// 		  }
-// 	  }
-// 	  if (headingThreeArray && headingThreeArray.length) {
-// 		  for (let index = 0; index < headingThreeArray.length; index++) {
-// 			  let str = headingThreeArray[index].textContent.split(" ").join("")
-// 			  headingThreeArray[index].setAttribute("id", str);
-// 		  }
-// 	  }
+		        //SEO
+				
+			  let  meta_title = ref('') 
+			  let meta_description = ref(null)
+			  let meta_keywords = ref(null) 
+			  let meta_image = ref(null)
+			  let  meta_site_name = ref(null) 
+			  let  meta_url = ref(null) 
 
-//   },
-  /* computed:{
-	  toc () {
-		  let tocArray = []
-		  let tempArray = []
-		  this.document.blog_body.forEach((content, index) => {
-			  if (content.type == 'heading2') {
-				  tocArray.push(content)
-			  }
-			  if (content.type == 'heading3') {
-				  if(!tempArray.includes(content.text)) {
-					  if ('heading3' in tocArray[tocArray.length - 1]) {
-						  tocArray[tocArray.length - 1]['heading3'].push(content)
-					  } else {
-						  console.log('contentELSE', content.text)
-						  tocArray[tocArray.length - 1]['heading3'] = []
-						  tocArray[tocArray.length - 1]['heading3'].push(content)
-					  }
-					  tempArray.push(content.text)
-				  }
-				  console.log('tempArray', tempArray)
-			  }
-		  })
-		  return tocArray
-	  }
-  }, */
-  head () {
-	  return {
-		  title: 'Casa Mia Coliving Blog Post'+"-"+this.meta_title,
-		  htmlAttrs: {
-			  lang: 'en'
-		  },
-		  link: [
-			  { rel: 'canonical', href: this.meta_url },
-		  ],
-		  meta: [
-			  { hid: 'author', name: 'author', content: this.meta_author },
-			  { hid: 'description', name: 'description', content: this.meta_description },
-			  { hid: 'keywords', name: 'keywords', content: this.meta_keywords },
-			  {
-				  hid: 'ogtitle',
-				  property: 'og:title',
-				  content: this.meta_title
-			  },
-			  {
-				  hid: 'ogdescription',
-				  property: 'og:description',
-				  content: this.meta_description
-			  },
-			  {
-				  hid: 'ogimage',
-				  property: 'og:image',
-				  content: this.meta_image
-			  },
-			  {
-				  hid: 'ogurl',
-				  property: 'og:url',
-				  content: this.meta_url
-			  },
-			  {
-				  hid: 'ogtype',
-				  property: 'og:type',
-				  content: 'Website'
-			  },
-			  {
-				  hid: 'ogsite_name',
-				  property: 'og:site_name',
-				  content: this.meta_site_name
-			  },
-			  {
-				  hid: 'twittertitle',
-				  name: 'twitter:title',
-				  content: this.meta_title
-			  },
-			  {
-				  hid: 'twitterdescription',
-				  name: 'twitter:description',
-				  content: this.meta_description
-			  },
-			  {
-				  hid: 'twitter:card',
-				  name: 'twitter:card',
-				  content: 'summary'
-			  },
-			  {
-				  hid: 'twitterimage',
-				  name: 'twitter:image',
-				  content: this.meta_image
-			  },
-		  ],
-		  script: [{ type: 'application/ld+json', json: this.structuredData }]
-	  }
-  },
- async mounted(){
+			    //   let structuredData 
 
-	
+			   let structuredData = ref(null)
 
-	
-	// try{
-		  let author = {}
-		  let topicArray = []
-	  // Query to get post content
-	      console.log("document", this.$route.params.uid)
-		  const Document = await this.$prismic.client.getByUID('blogpage', this.$route.params.uid)
-		  
-		  let document = Document.data
-		  console.log("document",document)
-		  if (document.author.id) {
-			console.log("document",document)
 
-			//    let author = (await this.$store.dispatch('fetchAuthor', 'YLXe5hIAACUAoSkS'))
-			//   console.log("jjj", mainStore)
-		  }
-		//   let topic = (await store.dispatch('fetchAuthor', 'topics')).results
 
-		  // topic array
-		//   if (document.topics1 && document.topics1.length) {
-		// 	  for(let i = 0; i < 3; i++) {
-		// 		  if (document.topics1[i] && document.topics1[i].topic && document.topics1[i].topic.id) {
-		// 			  let topic = await $prismic.api.query($prismic.predicates.at('document.id', document.topics1[i].topic.id))
-					  
-		// 			  topicArray.push(topic.results[0])
-		// 		  }
-		// 	  }
-		//   }
+				const isAuthor = computed(() => {
+					console.log(author.value)
+					if(Array.isArray(author.value) && author.value.length > 0) {
+						return true
+					} else if(Object.keys(author.value).length > 0) {
+						return true
+					} 
+					return false
+			})
 
-		//   let logo = (await this.$prismic.client.getSingle('menu'))
-		//   console.log("logo",logo)
-		//   const selSlice = document.body.filter(function(slice) {                
-		// 	  if(slice.slice_type == 'blog_cards') {
-		// 		  Object.assign(slice, { current_blog: params.uid })
-		// 	  }
-		// 	  return slice;
-		//   });
 
-		//   const header_logo_url = store.state.headerLogo ? store.state.headerLogo.url : ''
+			function setFilter(tagId) {
+			// this.$cookies.set("topicId", tagId);
+			}
+			function getId (article) {
+				console.log("article",article)
+				return article.text.split(" ").join("")
+			}
+			function hrefTo(val){
+				console.log("val",val)
+				const move = window.scrollY + document.getElementById(`${val}`).getBoundingClientRect().top
+				window.scrollTo(0, move - 100);
+			}
 
-		  const slices = document.body.filter(function(slice) {                
-			  if(slice.slice_type == 'blog_cards') {
-				  Object.assign(slice, {page_type:'blog_details'});
-			  }
-			  return slice;
-		  });
-		  let pdate = document.publish_date;
-		  if(document.publish_date != null) {
-			  pdate = new Date(document.publish_date);
-			  pdate = pdate.toISOString()
-		  }
-		  let mdate = document.modified_date;
-		  if(document.modified_date != null) {
-			  mdate = new Date(document.modified_date);
-			  mdate = mdate.toISOString()
-		  }
-		  
-		  let tocArray = []
-		  document.blog_body.forEach((content, index) => {
-			  if (content.type == 'heading2') {
-				  tocArray.push(content)
-			  }
-			  if (content.type == 'heading3') {
-				  if (tocArray.length > 0 && 'heading3' in tocArray[tocArray.length - 1]) {
-					  tocArray[tocArray.length - 1]['heading3'].push(content)
-				  } else {
-					  tocArray.push(content)
-				  }
-			  }
-		  })
-		  let toc = tocArray;
+      onMounted( async () => {
+		
+					// let headingArray = document.getElementsByTagName('h2')
+					// 	let headingThreeArray = document.getElementsByTagName('h3')
+					// 	if (headingArray && headingArray.length) {
+					// 		for (let index = 0; index < headingArray.length; index++) {
+					// 			let str = headingArray[index].textContent.split(" ").join("")
+					// 			headingArray[index].setAttribute("id", str);
+					// 		}
+					// 	}
+					// 	if (headingThreeArray && headingThreeArray.length) {
+					// 		for (let index = 0; index < headingThreeArray.length; index++) {
+					// 			let str = headingThreeArray[index].textContent.split(" ").join("")
+					// 			headingThreeArray[index].setAttribute("id", str);
+					// 		}
+					// 	}
+					
+				    })
 
-		//   return {
-			  // Page content
-			  this.pageId= this.$route.params.uid;
-			  this.document= document;
-			  this.banner= {
-				  hero_image: document.hero_image,
-				  title: document.page_title
+      const { data } = await useAsyncData(async () => {
+	    try{
+				const router = useRoute()
+				let topicArray = []
+
+				console.log("prismic",router.params,prismic,prismic.filter)
+				// const Document = await client.getByUID('blogpage', router.params.uid)
+				let Document =await  client.getByUID('blogpage', router.params.uid).then(async (response) => {return response})
+				console.log("prismic334",Document)
+				author.value = (await client.get({filters:prismic.filter.at('document.id', Document.data.author.id)})).results[0]
+				// await client.get({filters:prismic.filter.at('document.id', Document.data.author.id)}.then(async (response) => {}))
+				console.log("prismicio",author.value )
+
+				if (Document.data.topics1 && Document.data.topics1.length) {
+				for(let i = 0; i < 3; i++) {
+					if (Document.data.topics1[i] && Document.data.topics1[i].topic && Document.data.topics1[i].topic.id) {
+						let topic = await client.get({filters:prismic.filter.at('document.id', Document.data.topics1[i].topic.id)})
+						
+						topicArray.push(topic.results[0])
+					}
+				}
+			}
+
+			const slices = Document.data.body.filter(function(slice) {                
+				if(slice.slice_type == 'blog_cards') {
+					Object.assign(slice, {page_type:'blog_details'});
+				}
+				return slice;
+			});
+
+			let pdate = Document.data.publish_date;
+			if(Document.data.publish_date != null) {
+				pdate = new Date(Document.data.publish_date);
+				pdate = pdate.toISOString()
+			}
+
+			let mdate = Document.data.modified_date;
+			if(Document.data.modified_date != null) {
+				mdate = new Date(Document.data.modified_date);
+				mdate = mdate.toISOString()
+			}
+
+			let tocArray = []
+			Document.data.blog_body.forEach((content, index) => {
+				if (content.type == 'heading2') {
+					tocArray.push(content)
+				}
+				if (content.type == 'heading3') {
+					if (tocArray.length > 0 && 'heading3' in tocArray[tocArray.length - 1]) {
+						tocArray[tocArray.length - 1]['heading3'].push(content)
+					} else {
+						tocArray.push(content)
+					}
+				}
+			})
+			let toc = tocArray;
+			console.log("toc9999",toc)
+
+
+
+
+			pageId.value= router.params.uid;
+			  Document.data.value= Document.data;
+			  banner.value= {
+				  hero_image: Document.data.hero_image,
+				  title: Document.data.page_title
 			  };
-             console.log("ok",this.banner);
+             console.log("ok",banner.value);
 			  // topics
-			  this.topics_array= topicArray;
+			  topics_array.value= topicArray;
+			  console.log("topics_array",topics_array.value)
 
 			  // author
-			  this.author= (Object.keys(author).length) ? author.results[0] : [];
+			//   author= (Object.keys(author).length) ? author.results[0] : [];
 			  // Set slices as variable
-			  this.slices= slices;
-			  this.toc = toc;
+			  slices.value= slices;
+			  tocc.value = tocArray;
+			  console.log("toc999999999999999999999999999999",tocc.value)
 			  //Blog
-			  this.author_image= document.author_image;
-			  this.autor= document.autor;
-			  this.publish_date= document.publish_date;
-			  this.modified_date= document.modified_date;
-			  this.topics= document.topics;
-			  this.summary= document.summary;
-			  this.blog_article= document.blog_article;
-			  this.blog_body= document.blog_body;
-			  this.table_of_content= document.table_of_content;
+			  author_image.value= Document.data.author_image;
+			  publish_date.value= Document.data.publish_date;
+			  modified_date.value= Document.data.modified_date;
+			  topics.value= Document.data.topics;
+			  summary.value= Document.data.summary;
+			  blog_article.value= Document.data.blog_article;
+			  blog_body.value= Document.data.blog_body;
+			  table_of_content.value= Document.data.table_of_content;
 
 			  //SEO
-			  this.meta_title= (document.page_title.length) ? document.page_title[0].text : '';
-			  this.meta_description= (document.summary[0].text != null &&  document.summary[0].text.length > 170) ?  document.summary[0].text.substring(0, 167) + '...' :  document.summary[0].text;
-			  this.meta_keywords= document.seo_keywords;
-			  this.meta_image= (document.meta_image.url) ? document.meta_image.url : '';
-			  this.meta_site_name= process.env.COMPANY_NAME;
-			  this.meta_url= process.env.baseUrl+'/blog/'+params.uid;
+			  meta_title.value= (Document.data.page_title.length) ? Document.data.page_title[0].text : '';
+			  meta_description.value= (Document.data.summary[0].text != null &&  Document.data.summary[0].text.length > 170) ?  Document.data.summary[0].text.substring(0, 167) + '...' :  Document.data.summary[0].text;
+			  meta_keywords.value= Document.data.seo_keywords;
+			  meta_image.value= (Document.data.meta_image.url) ? Document.data.meta_image.url : '';
+			  meta_site_name.value= process.env.COMPANY_NAME;
+			  meta_url.value= process.env.baseUrl+'/blog/'+params.uid;
 
-			  
-			  this.structuredData= {
+
+			  structuredData.value= {
 				  "@context": "https://schema.org",
 				  "@type": "NewsArticle",
 				  "mainEntityOfPage":{
 					  "@type":"WebPage",
 					  "@id": process.env.baseUrl+'/blog/'+params.uid,
 				  },
-				  "headline": (document.page_title.length) ? document.page_title[0].text : '',
+				  "headline": (Document.data.page_title.length) ? Document.data.page_title[0].text : '',
 				  "image": {
 					  "@type": "ImageObject",
-					  "url": (document.meta_image.url) ? document.meta_image.url : '',
+					  "url": (Document.data.meta_image.url) ? Document.data.meta_image.url : '',
 					  "height": 1080,
 					  "width": 1920
 				  },
@@ -447,7 +365,7 @@ export default {
 				  "dateModified": mdate,
 				  "author": {
 					  "@type": "Person",
-					  "name": (Object.keys(author).length) ? author.results[0].data.author : 'Casa Mia Coliving'
+					  "name": (Object.keys(author.value).length) ? author.value.data.author : 'Casa Mia Coliving'
 				  },
 				  "publisher": {
 					  "@type": "Organization",
@@ -460,191 +378,78 @@ export default {
 					  }
 				  }
 			  }
-		//   }
-		let headingArray = document.getElementsByTagName('h2')
-	    let headingThreeArray = document.getElementsByTagName('h3')
-	  if (headingArray && headingArray.length) {
-		  for (let index = 0; index < headingArray.length; index++) {
-			  let str = headingArray[index].textContent.split(" ").join("")
-			  headingArray[index].setAttribute("id", str);
+		}  catch (e) {
+			// Returns error page
+			error({ statusCode: 404, message: 'Page not found' })
 		  }
-	  }
-	  if (headingThreeArray && headingThreeArray.length) {
-		  for (let index = 0; index < headingThreeArray.length; index++) {
-			  let str = headingThreeArray[index].textContent.split(" ").join("")
-			  headingThreeArray[index].setAttribute("id", str);
-		  }
-	  }
-		console.log(this.slices)
-	  
+     })
+	useHead({
+		    title: 'Casa Mia Coliving Blog Post'+"-"+meta_title.value,
+			htmlAttrs: {
+				lang: 'en'
+			},
+			link: [
+				{ rel: 'canonical', href: meta_url.value },
+			],
+			meta: [
+				{ hid: 'description', name: 'description', content: meta_description.value },
+				{ hid: 'keywords', name: 'keywords', content: meta_keywords.value },
+				{
+					hid: 'ogtitle',
+					property: 'og:title',
+					content: meta_title.value
+				},
+				{
+					hid: 'ogdescription',
+					property: 'og:description',
+					content: meta_description.value
+				},
+				{
+					hid: 'ogimage',
+					property: 'og:image',
+					content: meta_image.value
+				},
+				{
+					hid: 'ogurl',
+					property: 'og:url',
+					content: meta_url.value
+				},
+				{
+					hid: 'ogtype',
+					property: 'og:type',
+					content: 'Website'
+				},
+				{
+					hid: 'ogsite_name',
+					property: 'og:site_name',
+					content: meta_site_name.value
+				},
+				{
+					hid: 'twittertitle',
+					name: 'twitter:title',
+					content: meta_title.value
+				},
+				{
+					hid: 'twitterdescription',
+					name: 'twitter:description',
+					content: meta_description.value
+				},
+				{
+					hid: 'twitter:card',
+					name: 'twitter:card',
+					content: 'summary'
+				},
+				{
+					hid: 'twitterimage',
+					name: 'twitter:image',
+					content: meta_image.value
+				},
+			],
+			script: [{ type: 'application/ld+json', json: structuredData.value }]
+    }) 
 
-
-  },
-	async asyncData({  }) {
-	//   try{
-	// 	  let author = {}
-	// 	  let topicArray = []
-	//   // Query to get post content
-	// 	  const document = (await this.$prismic.client.getByUID('blogpage', this.$route.params.uid)).data
-	// 	  console.log("document",document, this.$route.params.uid)
-	// 	  if (document.author.id) {
-	// 		  author = (await store.dispatch('fetchAuthor', document.author.id))
-	// 	  }
-	// 	  let topic = (await store.dispatch('fetchAuthor', 'topics')).results
-
-	// 	  // topic array
-	// 	  if (document.topics1 && document.topics1.length) {
-	// 		  for(let i = 0; i < 3; i++) {
-	// 			  if (document.topics1[i] && document.topics1[i].topic && document.topics1[i].topic.id) {
-	// 				  let topic = await $prismic.api.query($prismic.predicates.at('document.id', document.topics1[i].topic.id))
-					  
-	// 				  topicArray.push(topic.results[0])
-	// 			  }
-	// 		  }
-	// 	  }
-
-	// 	  let logo = (await $prismic.client.getSingle('menu')).data.logo
-	// 	  const selSlice = document.body.filter(function(slice) {                
-	// 		  if(slice.slice_type == 'blog_cards') {
-	// 			  Object.assign(slice, { current_blog: params.uid })
-	// 		  }
-	// 		  return slice;
-	// 	  });
-
-	// 	  const header_logo_url = store.state.headerLogo ? store.state.headerLogo.url : ''
-
-	// 	  const slices = document.body.filter(function(slice) {                
-	// 		  if(slice.slice_type == 'blog_cards') {
-	// 			  Object.assign(slice, {page_type:'blog_details'});
-	// 		  }
-	// 		  return slice;
-	// 	  });
-	// 	  let pdate = document.publish_date;
-	// 	  if(document.publish_date != null) {
-	// 		  pdate = new Date(document.publish_date);
-	// 		  pdate = pdate.toISOString()
-	// 	  }
-	// 	  let mdate = document.modified_date;
-	// 	  if(document.modified_date != null) {
-	// 		  mdate = new Date(document.modified_date);
-	// 		  mdate = mdate.toISOString()
-	// 	  }
-		  
-	// 	  let tocArray = []
-	// 	  document.blog_body.forEach((content, index) => {
-	// 		  if (content.type == 'heading2') {
-	// 			  tocArray.push(content)
-	// 		  }
-	// 		  if (content.type == 'heading3') {
-	// 			  if (tocArray.length > 0 && 'heading3' in tocArray[tocArray.length - 1]) {
-	// 				  tocArray[tocArray.length - 1]['heading3'].push(content)
-	// 			  } else {
-	// 				  tocArray.push(content)
-	// 			  }
-	// 		  }
-	// 	  })
-	// 	  let toc = tocArray;
-
-	// 	  return {
-	// 		  // Page content
-	// 		  pageId: params.uid,
-	// 		  document: document,
-	// 		  banner: {
-	// 			  hero_image: document.hero_image,
-	// 			  title: document.page_title
-	// 		  },
-
-	// 		  // topics
-	// 		  topics_array: topicArray,
-
-	// 		  // author
-	// 		  author: (Object.keys(author).length) ? author.results[0] : [],
-	// 		  // Set slices as variable
-	// 		  slices: slices,
-	// 		  toc: toc,
-	// 		  //Blog
-	// 		  author_image: document.author_image,
-	// 		  autor: document.autor,
-	// 		  publish_date: document.publish_date,
-	// 		  modified_date: document.modified_date,
-	// 		  topics: document.topics,
-	// 		  summary: document.summary,
-	// 		  blog_article: document.blog_article,
-	// 		  blog_body: document.blog_body,
-	// 		  table_of_content: document.table_of_content,
-
-	// 		  //SEO
-	// 		  meta_title: (document.page_title.length) ? document.page_title[0].text : '',
-	// 		  meta_description: (document.summary[0].text != null &&  document.summary[0].text.length > 170) ?  document.summary[0].text.substring(0, 167) + '...' :  document.summary[0].text,
-	// 		  meta_keywords: document.seo_keywords,
-	// 		  meta_image: (document.meta_image.url) ? document.meta_image.url : '',
-	// 		  meta_site_name: process.env.COMPANY_NAME,
-	// 		  meta_url: process.env.baseUrl+'/blog/'+params.uid,
-
-			  
-	// 		  structuredData: {
-	// 			  "@context": "https://schema.org",
-	// 			  "@type": "NewsArticle",
-	// 			  "mainEntityOfPage":{
-	// 				  "@type":"WebPage",
-	// 				  "@id": process.env.baseUrl+'/blog/'+params.uid,
-	// 			  },
-	// 			  "headline": (document.page_title.length) ? document.page_title[0].text : '',
-	// 			  "image": {
-	// 				  "@type": "ImageObject",
-	// 				  "url": (document.meta_image.url) ? document.meta_image.url : '',
-	// 				  "height": 1080,
-	// 				  "width": 1920
-	// 			  },
-	// 			  "datePublished": pdate,
-	// 			  "dateModified": mdate,
-	// 			  "author": {
-	// 				  "@type": "Person",
-	// 				  "name": (Object.keys(author).length) ? author.results[0].data.author : 'Casa Mia Coliving'
-	// 			  },
-	// 			  "publisher": {
-	// 				  "@type": "Organization",
-	// 				  "name": JSON.stringify(process.env.COMPANY_NAME),
-	// 				  "logo": {
-	// 					  "@type": "ImageObject",
-	// 					  "url": logo.url,
-	// 					  "width": 550,
-	// 					  "height": 60
-	// 				  }
-	// 			  }
-	// 		  }
-	// 	  }
-	//   } catch (e) {
-	// 	  // Returns error page
-	// 	  error({ statusCode: 404, message: 'Page not found' })
-	//   }
-  },
-  filters: {
-	  moment: function (date) {
-		  if (date && date.length) {
-			  const dateParts = date.split("-")
-			  const aDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`
-			  return aDate
-		  } else {
-			  return ''
-		  }
-		  // return moment(date).format('DD-MM-YYYY');
-	  }
-  },
-  methods: {
-	  setFilter(tagId) {
-		//   this.$cookies.set("topicId", tagId);
-	  },
-	  getId (article) {
-		  return article.text.split(" ").join("")
-	  },
-	  hrefTo(val){
-		  const move = window.scrollY + document.getElementById(`${val}`).getBoundingClientRect().top
-		  window.scrollTo(0, move - 100);
-	  }
-  }
-}
 </script>
+
 <style >
 .blog-detail-section{
   background-color: #f7f7f7;
@@ -653,6 +458,9 @@ export default {
   max-width: 812px;
   padding: 0px 15px;
   margin: auto;
+}
+.social-icon-box{
+	width: 2.5rem
 }
 .toc-content-container {
   position: sticky;

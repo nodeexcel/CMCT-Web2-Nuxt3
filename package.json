@@ -25,10 +25,13 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.2",
+    "@headlessui/vue": "^1.7.16",
     "@nuxt/webpack-builder": "^3.7.4",
     "@nuxtjs/axios": "^5.13.6",
     "@prismicio/client": "^7.3.0",
+    "@vue-hero-icons/solid": "^1.7.2",
     "@vueform/multiselect": "^2.6.5",
+    "awesome-phonenumber": "^6.1.0",
     "bootstrap": "^5.3.2",
     "bootstrap-vue": "^2.23.1",
     "bootstrap-vue-3": "^0.5.1",

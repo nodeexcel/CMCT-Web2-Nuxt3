@@ -15,30 +15,23 @@
             <div class="position-relative find-home-carousel-with-tabs">
               <carousel
                 v-show="activeTab == 1"
+               
                 class="find-home-carousel"
                 v-if="
                   Homedetails.hero_banner &&
                   Homedetails.hero_banner.toLowerCase() === 'slider'
                 "
-                :autoplay="true"
-                :loop="true"
-                :perPage="1"
-                :navigationEnabled="true"
-                :paginationEnabled="true"
-                :speed="2000"
-                navigationNextLabel="<i class='fa angle-right cust-icon'></i>"
-                navigationPrevLabel="<i class='fa angle-left cust-icon'></i>"
-                paginationActiveColor="#72bf44"
-                :autoplayTimeout="3000"
-                :spacePadding="0"
-                :margin="10"
+               
+               :autoplay="3000" :wrap-around="true"
+                pause-autoplay-on-hover
+                
               >
                 <slide
                   v-for="(images, index) in Homedetails.picturesArray"
                   :key="index"
                   :style="{ height: JSON.stringify(css) - 174 + 'px' }"
                 >
-                  <picture class="slider-img" v-if="images">
+                  <picture class="slider-img mt-5" v-if="images">
                     <template v-for="(image, inx) in images.versions"  :key="inx">
                       <img
                         v-if="
@@ -71,6 +64,10 @@
                     </template>
                   </picture>
                 </slide>
+                <!-- <template #addons>
+                <navigation />
+                <pagination />
+              </template> -->
               </carousel>
               <div
                 v-show="activeTab == 2"
@@ -91,14 +88,14 @@
                   frameborder="0"
                 ></iframe>
               </div>
-              <location-slice
+              <MapSlice
                 v-if="activeTab == 3 && mapSlice != null"
                 :slice="mapSlice"
                 class="location-section"
                 :style="{ height: JSON.stringify(css) - 174 + 'px' }"
               />
               <div class="findhome-card-tabs mt-3 mt-md-0">
-                <b-card no-body>
+                <BCard no-body>
                   <b-tabs card>
                     <b-tab @click="activeTab = 1" title="Photos" active>
                     </b-tab>
@@ -119,7 +116,7 @@
                     >
                     </b-tab>
                   </b-tabs>
-                </b-card>
+                </BCard>
               </div>
             </div>
             <div
@@ -267,14 +264,13 @@ import { client } from '~/prismic/prismic'
 import axios from 'axios';
 import { useStore } from 'vuex'
 
-
+const envVars = useRuntimeConfig();
 let activeTab= ref(1)
 let slices = ref(null)
 let homeDetails = ref(null)
 let Homedetails = ref (null)
 let anyRoomAvailable = ref(null)
 let mapSlice = ref([])
-mapSlice = ref({})
 let meta_title = ref(null)
 let meta_description = ref(null)
 let meta_image = ref(null)
@@ -499,7 +495,7 @@ let banner = ref({})
           homeDetails.value.picturesArray[index].versions = item[key].sort(
             (a, b) => (a.versionsName < b.versionsName ? 1 : -1)
           );
-          // console.log("ok1");
+          console.log("okkkkkkkkkkkkkkk1",item);
         }
       });
     });
@@ -546,6 +542,7 @@ let banner = ref({})
             let roomType = [];
             if (appartment.rooms != undefined && appartment.rooms.length > 0) {
               appartment.rooms.forEach(function (item, i) {
+                console.log("itemitemitemitem2",item)
                 if (
                   item.availability == "Available" ||
                   item.availability == "At least a room available" ||
@@ -591,6 +588,7 @@ let banner = ref({})
               roomType = [
                 ...new Set(appartment.rooms.map((item) => item.type)),
               ];
+              console.log("roomTyperoomTyperoomTyperoomType3",roomType);
             }
             var cardImg = {
               url: "",
@@ -636,9 +634,7 @@ let banner = ref({})
             });
           }
         });
-        // console.log("ok1333",homeDetails.value,homeList);
         if (homeList.length < 4) {
-          // console.log("ok1333444",homeDetails.value);
           const newSimilarAppartments = await axios.post(
             envVars.public.env.MODE === "prod"
               ? envVars.public.env.PROD_END_POINT
@@ -672,6 +668,7 @@ let banner = ref({})
               let startingPrice = 0;
               if (appartment.rooms != undefined) {
                 appartment.rooms.forEach(function (item, i) {
+                  console.log("roomTyperoomTyperoomTyperoomType4",roomType);
                   if (
                     item.availability == "Available" ||
                     item.availability == "At least a room available" ||
@@ -716,6 +713,7 @@ let banner = ref({})
                  roomType = [
                   ...new Set(appartment.rooms.map((item) => item.type)),
                 ];
+                log
               }
               var cardImg = {
                 url: "",
@@ -797,8 +795,7 @@ let banner = ref({})
           homeList = homeList.concat(homeListWithNoAvailable);
         }
       }
-      
-    if (homeLists.value != undefined && homeLists.length > 0) {
+    if (homeLists.value != undefined && homeLists.value.length > 0) {
       slices.value = [
         {
           slice_type: "similar_cards",
@@ -863,26 +860,6 @@ let banner = ref({})
       ...slices.value,
     ];
 
-    /* this.slices = [{
-			slice_type: 'form',
-			slice_label: 'homedetails',
-			homeID: this.$route.params.uid,
-			OperatorID: this.homeDetails.operatorId,
-			neighborhoodId: this.homeDetails.neighborhoodId,
-			buildingId: this.homeDetails.buildingId,
-			homeName: this.homeDetails.name,
-			cityName: this.homeDetails.cityName,
-			cityID: this.homeDetails.cityId,
-			linkSchedule: this.homeDetails.linkSchedule,
-			threeDtourLink: this.homeDetails['3DtourLink'],
-			isThreeDtour: this.homeDetails.threeD_tour,
-			sideFormBackgroundColor: this.homeDetails.side_form_background_color,
-			anyRoomAvailable: this.anyRoomAvailable,
-			items: this.homeDetails.roomsArray,
-			room_image: this.homeDetails.room_image,
-			isBottomShow: true,
-		}, ...this.slices] */
-    // Spacer slice
     slices.value = [
       {
         slice_type: "spacer",
@@ -898,28 +875,6 @@ let banner = ref({})
     // Map slice
     // console.log("ok1333",homeDetails.value);
     if (homeDetails.value.map) {
-      /* this.slices = [{
-				primary:{
-					home: {
-						latitude: this.homeDetails.mapLocation._latitude,
-						longitude: this.homeDetails.mapLocation._longitude
-					},
-					marker: {
-						url: "/mapMarker.png"
-					},
-					map_title: [
-						{
-							spans: [],
-							text:"Location",
-							type:"heading2"
-						}
-					]
-				},
-				slice_type: 'map',
-				slice_devider: true,
-				slice_label: null,
-				items: [],
-			}, ...this.slices] */
       mapSlice.value = {
         primary: {
           home: {
@@ -1117,9 +1072,6 @@ let banner = ref({})
       ];
     }
 
-    // Spacer slice
-   
-
     // Rooms slice
     if (
       homeDetails.value.roomsArray != undefined &&
@@ -1154,100 +1106,107 @@ let banner = ref({})
         ...slices.value,
       ];
     }
-      // console.log("ok1333okfinaloooooooooooo",homeDetails.value);
       Homedetails.value = homeDetails.value
-      // console.log("ok1333okfinalooooooooooooDob",Homedetails.value);
       }).catch((error) => {
           console.error(error);
           });
-          // console.log("ok1333okfinalno",homeDetails.value);
       homeLists.value = homeList;
     }
-    // console.log("ok1333ok",homeDetails.value);
+    }).catch((error) => {
+      console.error(error);
+      });
 
-    
-
-        }).catch((error) => {
-          console.error(error);
-          });
-
-          // appartments.then((data)=>{
-          //   // console.log("in 74",data);
-          // })
-
-        // console.log("appartments2",appartments.then((ress) => {
-        //   return ress
-        // }
-        // ))
-        
-        
-       
-        // };
-        
-
-        
-
-
-          }).catch((error) => {
-          console.error(error);
-          });
+      }).catch((error) => {
+      console.error(error);
+      });
     
   })
+  useHead({
+    
+    title: 'Coliving Home Details',
+        htmlAttrs: {
+          lang: "en",
+        },
+        link: [
+          { rel: "canonical", href: meta_url.value },
+          {
+            rel: "stylesheet",
+            href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+          },
+        ],
+        // script: [
+        //   {
+        //     src: `https://maps.googleapis.com/maps/api/js?key=${envVars.public.env.GOOGLE_MAP_KEY}&map_ids=4df64ef1b112569a`,
+        //   },
+        //   { type: "application/ld+json", json: structuredData.value },
+        //   { type: "application/ld+json", json: roomStructureData.value },
+        //   // { type: 'application/ld+json', json: roomStructureData1 }
+        // ],
+        meta: [
+          // { hid: "author", name: "author", content: "CasaMiaCasaTua" },
+          {
+            hid: "description",
+            name: "description",
+            content: meta_description.value,
+          },
+          {
+            hid: "ogtitle",
+            property: "og:title",
+            content: meta_title.value,
+          },
+          {
+            hid: "ogdescription",
+            property: "og:description",
+            content: meta_description.value,
+          },
+          {
+            hid: "ogimage",
+            property: "og:image",
+            content: meta_image.value,
+          },
+          {
+            hid: "ogurl",
+            property: "og:url",
+            content: meta_url.value,
+          },
+          {
+            hid: "ogtype",
+            property: "og:type",
+            content: "Website",
+          },
+          {
+            hid: "ogsite_name",
+            property: "og:site_name",
+            content: meta_site_name.value,
+          },
+          {
+            hid: "twittertitle",
+            name: "twitter:title",
+            content: meta_title.value,
+          },
+          {
+            hid: "twitterdescription",
+            name: "twitter:description",
+            content: meta_description.value,
+          },
+          {
+            hid: "twitter:card",
+            name: "twitter:card",
+            content: "summary",
+          },
+          {
+            hid: "twitterimage",
+            name: "twitter:image",
+            content: meta_image.value,
+          },
+        ],
 
-
-
-  
-
-  
+    }) 
   </script>  
   
   <script>
-  import axios from 'axios';
   export default {
     name: "home-details",
-    layout: "homepage",
-    data() {
-      return {
-        activeTab: 1,
-        cssHeight: "",
-        homeDetails: {},
-        homeLists: [],
-        screenSize: "",
-        slices: null,
-        sideFormSlice: null,
-        adjustFormSlice: null,
-        params: "",
-        threeD_tour: false,
-        hero_banner: "Slider",
-        amenities_background_color: "",
-        housemates: false,
-        map: false,
-        room_image: "",
-        rooms_background_color: "",
-        similar_homes: false,
-        mapSlice: {},
-        embedSlice: {},
-
-
-        slices: null,
-          homeDetails: null,
-          anyRoomAvailable: null,
-          mapSlice: [],
-          //SEO
-          meta_title: null,
-          meta_description: "",
-          meta_image: null,
-          meta_site_name: null,
-          meta_url: null,
-          structuredData: {
-          },
-          roomStructureData: {
-          },
-          roomStructureData1: {
-          },
-          banner: {}
-      };
-    },
     computed: {
       css() {
         if (process.client) {
@@ -1261,7 +1220,6 @@ let banner = ref({})
       },
     },
     async mounted() {
-        let envVars = useRuntimeConfig();
       // await this.$fetch();
       // Remove lazy-load attribute
       $(".find-home-carousel-with-tabs iframe").removeAttr("v-lazy-load");
@@ -1273,7 +1231,6 @@ let banner = ref({})
       if (process.browser) {
         window.addEventListener("resize", this.handleResize);
       }
-      this.params = this.$route.params;
       this.handleResize();
     },
     
@@ -1282,91 +1239,11 @@ let banner = ref({})
         this.screenSize = process.browser ? screen.width : "";
       },
     },
-    // head() {
-    //   return {
-    //     title: 'Coliving Home Details for' + " " + this.homeDetails.name + " " + 'in'+ " " + this.homeDetails.cityName + '-'+  this.homeDetails.neighbourhoodName,
-    //     htmlAttrs: {
-    //       lang: "en",
-    //     },
-    //     link: [
-    //       { rel: "canonical", href: this.meta_url },
-    //       {
-    //         rel: "stylesheet",
-    //         href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-    //       },
-    //     ],
-    //     script: [
-    //       {
-    //         src: `https://maps.googleapis.com/maps/api/js?key=${envVars.public.env.GOOGLE_MAP_KEY}&map_ids=4df64ef1b112569a`,
-    //       },
-    //       { type: "application/ld+json", json: this.structuredData },
-    //       { type: "application/ld+json", json: this.roomStructureData },
-    //       // { type: 'application/ld+json', json: this.roomStructureData1 }
-    //     ],
-    //     meta: [
-    //       { hid: "author", name: "author", content: "CasaMiaCasaTua" },
-    //       {
-    //         hid: "description",
-    //         name: "description",
-    //         content: this.meta_description,
-    //       },
-    //       {
-    //         hid: "ogtitle",
-    //         property: "og:title",
-    //         content: this.meta_title,
-    //       },
-    //       {
-    //         hid: "ogdescription",
-    //         property: "og:description",
-    //         content: this.meta_description,
-    //       },
-    //       {
-    //         hid: "ogimage",
-    //         property: "og:image",
-    //         content: this.meta_image,
-    //       },
-    //       {
-    //         hid: "ogurl",
-    //         property: "og:url",
-    //         content: this.meta_url,
-    //       },
-    //       {
-    //         hid: "ogtype",
-    //         property: "og:type",
-    //         content: "Website",
-    //       },
-    //       {
-    //         hid: "ogsite_name",
-    //         property: "og:site_name",
-    //         content: this.meta_site_name,
-    //       },
-    //       {
-    //         hid: "twittertitle",
-    //         name: "twitter:title",
-    //         content: this.meta_title,
-    //       },
-    //       {
-    //         hid: "twitterdescription",
-    //         name: "twitter:description",
-    //         content: this.meta_description,
-    //       },
-    //       {
-    //         hid: "twitter:card",
-    //         name: "twitter:card",
-    //         content: "summary",
-    //       },
-    //       {
-    //         hid: "twitterimage",
-    //         name: "twitter:image",
-    //         content: this.meta_image,
-    //       },
-    //     ],
-    //   };
-    // },
+    
    
     }
   </script>
-  <style scoped>
+  <style>
   h3 {
     font-size: 31px;
   }
@@ -1402,7 +1279,7 @@ let banner = ref({})
   }
   /* Slider Bottom */
   .home-detail {
-    margin-top: 90px;
+    /* margin-top: 90px; */
   }
   .home-detail .home-detail-slider .home-detail-title h1 {
     font-weight: bold;

@@ -63,6 +63,8 @@
 // import moment from 'moment'
 // import Paginate from '~/components/Paginate.vue'
 // import Paginate from '~/components/Paginate.vue'
+import * as prismic from "@prismicio/client";
+import { client } from '~/prismic/prismic'
 export default {
     props: ['slice'],   
     name: 'blog-cards',
@@ -118,6 +120,24 @@ export default {
     },
     mounted(){
         this.getTopicsData()
+        // const client =new prismic.Client("https://cmct-web.cdn.prismic.io/api/v2")
+        //@ts-ignore
+       
+
+// Usage
+// customFulltext("my.post.tags.tag", 'Activities');
+
+
+    //     console.log(client.fetchFn({
+    //         filters: 
+    // prismic.filter.at('document.id','topics')},{}))
+    
+
+
+        console.log("response",client.query,prismic)
+         client.get({filters:[prismic.filter.at('document.id','topics')]},{}).then(async (response) => {
+            console.log("response",response)
+         })
     },
     async created() {
         this.filterSel = []

@@ -14,16 +14,7 @@
                                         <div class="room-image">
                                             <carousel 
                                                 v-if="slice.room_image && slice.room_image.toLowerCase() === 'slider'"
-                                                :autoplay="true" 
-                                                :loop="true"
-                                                :perPage="1"
-                                                :navigationEnabled="true"
-                                                :paginationEnabled="true"
-                                                :speed="2000" 
-                                                navigationNextLabel="<i class='fa angle-right cust-icon'></i>"
-                                                navigationPrevLabel="<i class='fa angle-left cust-icon'></i>"
-                                                paginationActiveColor="#72bf44" 
-                                                :autoplayTimeout="3000">
+                                                :autoplay="3000" :wrap-around="true" pause-autoplay-on-hover>
                                                 <template v-if="item.roomPicturesArray.length > 0">
                                                     <template v-for="(image, index) in item.roomPicturesArray" >
                                                         <slide :key="'carousel_'+index" v-if=" (image.link != '')">

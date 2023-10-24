@@ -23,13 +23,6 @@ useHead({
     export default {
     name: 'google-map',
     props: ['slice'],
-    head () {
-        return {
-            script: [
-                { src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAP_KEY}&map_ids=4df64ef1b112569a`}
-            ]
-        }
-    },
     data: function () {
         return {
             mapName: "location-map",

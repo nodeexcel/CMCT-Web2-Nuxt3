@@ -1,5 +1,5 @@
 <template>
-    <section :class="'welcome-banner-section'" v-if="JSON.stringify(css) != {} || JSON.stringify(css) != null || JSON.stringify(css) != ''">
+    <section :class="'welcome-banner-section'" v-if="JSON.stringify(css) != {} || JSON.stringify(css) != null || JSON.stringify(css) != ''" class="welcome-banner-main">
       <div class="homepage-banner">
         <div class="slider-outer">
           <!-- <img :src="mainView.url" :alt="mobileView.alt"> -->
@@ -78,6 +78,9 @@ export default {
 </script>
 
 <style scoped>
+.welcome-banner-main{
+  min-height: 550px;
+}
 .h1{
   font-size: 1.3rem
 }

@@ -24,6 +24,8 @@ export default defineNuxtConfig({
         { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css" }
       ],
       script: [
+        { src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyAWLpuDC9DVAbyKF99fI70Y-LFK2XRkmKI&map_ids=4df64ef1b112569a`},
+				{ src: `https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js`},
         {type:"module", src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', defer: true },
         { type:"module", src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', defer: true },
         { type:"module", src: "https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js", defer: true },
@@ -85,9 +87,11 @@ export default defineNuxtConfig({
     '@/assets/css/resetr.css',
     '@/assets/css/common.css',
     '@/assets/scss/bootstrap.scss',
-    'bootstrap/dist/css/bootstrap.css',
-    'bootstrap-vue/dist/bootstrap-vue.css',
-    'bootstrap/dist/css/bootstrap.min.css',
+    '~/node_modules/bootstrap/dist/css/bootstrap.css',
+    '~/node_modules/bootstrap-vue-3/dist/bootstrap-vue-3.css',
+    '~/node_modules/bootstrap-vue-next/dist/bootstrap-vue-next.css',
+    // 'bootstrap/dist/css/bootstrap.min.css',
+    "~/node_modules/bootstrap/dist/css/bootstrap.min.css"
   ],
   
   build: {

@@ -39,12 +39,21 @@
               <!-- </b-input-group> -->
             </BFormGroup>
 
-            <BFormGroup label="PHONE"  class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
+            <BFormGroup label="PHONE"  class="phonenumber col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
               <!-- <b-input-group
                 prepend="PHONE"
                 class="input-group mb-2 mr-sm-2 mb-sm-0"
               > -->
-                <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" :no-example="true" no-use-browser-locale v-model="phoneNumber" />
+              <div>
+                <CountryCodeselector  v-model="selectedCountryCode1" />
+                <BFormInput
+                        id="phone_number"
+                        v-model="form.phoneNumber"
+                        type="text"
+                        class="form-inputs"
+                        required
+                    ></BFormInput>
+              </div> 
                 <!-- <BFormInput
                   id="phone_number"
                   v-model="form.phone"
@@ -166,6 +175,7 @@ export default {
   // },
   data() {
     return {
+      selectedCountryCode1:'',
       form: {
         status: true,
         firstName: "",

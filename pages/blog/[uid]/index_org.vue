@@ -1,6 +1,5 @@
 <template>
     <section class="blog">
-     123
       <slices-block :slices="slices"/>
     </section>
   </template>

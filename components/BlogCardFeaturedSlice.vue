@@ -8,7 +8,7 @@
                         <div class="row">
                             <div v-for="item in blogList" :key="item.uid+'_'+Math.ceil(Math.random()*10)"  class="card-main col-sm-6 mb-4 mb-xl-5">
                                 <div class="content-wrap">
-                                    <n-link :to="'/blog/'+item.uid" class="card-link">
+                                    <NuxtLink :to="'/blog/'+item.uid" class="card-link">
                                         <picture>
                                             <img :src="item.hero_image.card.url" class="d-block w-100">
                                         </picture>
@@ -21,7 +21,7 @@
                                                 <prismic-rich-text :field="item.summary"/>
                                             </div>
                                         </div>
-                                    </n-link>
+                                    </NuxtLink>
                                 </div> 
                             </div>
                         </div>
