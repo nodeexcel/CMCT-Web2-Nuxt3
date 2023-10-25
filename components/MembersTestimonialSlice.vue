@@ -142,10 +142,7 @@ export default {
         async getMembersData() {
             this.count = this.slice.items.length;
             this.slice.items.forEach((item, index) => {
-            console.log("item",item,item.member_testimonial_link.id)
-        console.log("158",this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',item.member_testimonial_link.id)})
-        .then( (response) => {console.log(response.results[0].data.member_name,"response")})
-        )
+        
         this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',item.member_testimonial_link.id)}).then( (response) => {
             item.member_name = response.results[0].data.member_name;
             item.member_title = response.results[0].data.member_title ;
@@ -161,7 +158,6 @@ export default {
         })
         
         })
-        console.log("final",this.members,this.count)
             
         }
     },

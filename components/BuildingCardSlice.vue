@@ -1534,7 +1534,6 @@
 		this.sortHomelist();
 	  },
 	 changeList() {
-		console.log("ok")
 		let homeList = []
 		const searchResultsFor = this.resultFor === "Homes" ? "Rooms" : "Homes"
 		if(this.isSingaporeMasterPage) {
@@ -1819,7 +1818,6 @@
 	  },
 	  routeChange() {
 		let query = Object.assign({}, this.$route.query);
-		console.log("query",query)
 		const searchResultsFor = this.resultFor;
 		if(this.resultFor == "Rooms"){
 			query = { }
@@ -3008,10 +3006,8 @@
 	  }
 	},
 	mounted() {
-		console.log("hllh",createClient,prismic)
 		this.routeChange();
 		let query = Object.assign({}, this.$route.query);
-		console.log("query123",query)
 	  if (this.slice.primary.map === true) this.setCoordinates();
 	  // ---- <!-- =========[Range-Start]=========== -->----//
 	  const range = document.querySelectorAll(".range-slider span input");
@@ -3193,7 +3189,6 @@
 		)
 		.then((response) => {
 		  this.cities.push("Any City");
-          console.log("response",response)
 		  response.data.data.forEach((cittarr) => {
 			this.cities.push(cittarr.city);
 			let hood = [];

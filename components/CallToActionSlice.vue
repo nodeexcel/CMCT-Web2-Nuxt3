@@ -108,7 +108,6 @@ export default {
     },
     methods: {
         async getCTAData() {
-            console.log(this.$prismic,this.$route)
             let _this = this;
             this.slice.items.forEach((item, index) => {
                 const path = 'document.id'; // Replace with the actual path to the field you want to filter on

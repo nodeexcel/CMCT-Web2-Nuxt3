@@ -69,7 +69,6 @@ import { client } from '~/prismic/prismic'
               meta_image.value = (document.meta_image.url) ? document.meta_image.url : ''
               meta_url.value = envVars.public.env.BASE_URL + '/blog'
               meta_site_name.value = envVars.public.env.COMPANY_NAME
-            console.log("hh", client.getByUID('page', 'blog'),this.slices )
       })
         
 	   

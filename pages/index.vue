@@ -43,7 +43,7 @@ import { useStore } from 'vuex'
 				meta_url.value= (homepage.meta_url) ? homepage.meta_url.url : ''
 				meta_site_name.value= process.env.COMPANY_NAME
 
-				console.log(" response.data", response.data)
+				
 
             })
 		} catch (e) {

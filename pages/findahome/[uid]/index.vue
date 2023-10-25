@@ -292,13 +292,11 @@ let banner = ref({})
     const store = useStore()
     const router = useRoute()
     const envVars = useRuntimeConfig();
-    console.log("12",client, client.getSingle("homes"),router)
     let page2 = 3
     // await new Promise((resolve) => setTimeout(resolve, 2000))
     client.getSingle("homes").then(async (result) => {
       const document  = result.data
           //  page.value = result
-           console.log("12",client, client.getSingle("homes"))
            var homeData 
 
         const appartments = await axios.post(
@@ -319,9 +317,7 @@ let banner = ref({})
             },
           }
         ).then((result) => {
-          console.log("result",result)
            homeData = result.data;
-          console.log("in 67",document)
 
           var meta_image = null;
         if (
@@ -330,14 +326,12 @@ let banner = ref({})
         ) {
           homeData.data[0].picturesArray[0].versions.forEach(function (image) {
             if (image.versionsName == "desk") {
-              console.log("image1",image)
               meta_image = image.link;
               
             }
           });
         }
         let amenitiesFeatures = [];
-        // console.log("appartments",homeData)
         homeData.data[0].amenitiesArray = homeData.data[0].amenitiesArray.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         );
@@ -407,10 +401,7 @@ let banner = ref({})
           (homeData.data[0]["similar_homes"] = document.similar_homes);
         // return {
           slices.value = document.body
-          // console.log("homeDatahomeDatahomeDatahomeData",homeData.data[0]);
           homeDetails.value = JSON.parse(JSON.stringify(homeData.data[0]))
-          // console.log("5464",homeDetails.value,anyRoomAvailable);
-          // anyRoomAvailable.value = anyRoomAvailable
           mapSlice.value = []
           //SEO
           meta_title.value = homeData.data[0].name
@@ -422,7 +413,6 @@ let banner = ref({})
               : ""
              
           meta_image = meta_image
-          console.log("image2",typeof meta_image,meta_image)
           meta_site_name.value = envVars.public.env.COMPANY_NAME
           meta_url.value = envVars.public.env.BASE_URL + "/findahome/" + router.params.uid
           structuredData.value = {
@@ -485,22 +475,16 @@ let banner = ref({})
         },
       }
     );
-    // console.log("231",similarAppartments,homeDetails.value);
-    // var _this = this;
     homeDetails.value.picturesArray.filter(function (item, index) {
       var list = [];
-      // console.log("ok");
       Object.keys(item).map(function (key) {
         if (key.includes("versions")) {
           homeDetails.value.picturesArray[index].versions = item[key].sort(
             (a, b) => (a.versionsName < b.versionsName ? 1 : -1)
           );
-          console.log("okkkkkkkkkkkkkkk1",item);
         }
       });
     });
-    // console.log("ok1",homeDetails.value);
-    // Home details slice
     store.commit("setSideFormTop", {
       name: homeDetails.value.name,
       image: "",
@@ -515,11 +499,7 @@ let banner = ref({})
             homeDetails.value.priceUnit
           : "",
     });
-    // console.log("store",store)
-    // console.log("ok1",homeDetails.value);
-    // Similar homes
     if (homeDetails.value) {
-      // console.log("ok11",homeDetails.value);
       let homeList = [];
       let homeIdsArr = [];
       let curHomeId = router.params.uid;
@@ -542,7 +522,6 @@ let banner = ref({})
             let roomType = [];
             if (appartment.rooms != undefined && appartment.rooms.length > 0) {
               appartment.rooms.forEach(function (item, i) {
-                console.log("itemitemitemitem2",item)
                 if (
                   item.availability == "Available" ||
                   item.availability == "At least a room available" ||
@@ -588,7 +567,6 @@ let banner = ref({})
               roomType = [
                 ...new Set(appartment.rooms.map((item) => item.type)),
               ];
-              console.log("roomTyperoomTyperoomTyperoomType3",roomType);
             }
             var cardImg = {
               url: "",
@@ -668,7 +646,6 @@ let banner = ref({})
               let startingPrice = 0;
               if (appartment.rooms != undefined) {
                 appartment.rooms.forEach(function (item, i) {
-                  console.log("roomTyperoomTyperoomTyperoomType4",roomType);
                   if (
                     item.availability == "Available" ||
                     item.availability == "At least a room available" ||
@@ -873,7 +850,6 @@ let banner = ref({})
     ];
 
     // Map slice
-    // console.log("ok1333",homeDetails.value);
     if (homeDetails.value.map) {
       mapSlice.value = {
         primary: {
