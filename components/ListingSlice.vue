@@ -39,7 +39,6 @@ import axios from 'axios';
 	let queryParam= props.slice.primary.query_param
 
     onMounted( async () => {
-		console.log("oooo",homeListLd.value)
       const envVars = useRuntimeConfig();
 	  const router = useRoute()
       try{
@@ -52,7 +51,6 @@ import axios from 'axios';
             Authorization: envVars.public.env.MODE === 'prod' ? 'Bearer '+envVars.public.env.PROD_COLIV_HQ_KEY : 'Bearer '+envVars.public.env.DEV_COLIV_HQ_KEY
           }
         })
-        console.log("123rrrrr",appartments)
         let homeList = [];
         let homeListLd = [];
         if(appartments) {
@@ -182,7 +180,6 @@ import axios from 'axios';
             "@graph": homeListLd
           },
         pending.value = false
-		console.log("jjjhkxxhjhcjvvkjhvkj",homeLists.value,homeListsCpy.value,homeListLd.value,pending.value )
       } catch (e) {
         // Returns error page
         console.log('Page not found', e)
@@ -192,6 +189,7 @@ import axios from 'axios';
 	),
    
   useHead({
+	// title: seo_page_title.value,
     script: [
 				{ type: 'application/ld+json', json: homeListLd.value },
 				
