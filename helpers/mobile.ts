@@ -13,7 +13,6 @@ export const validateMobile = (value?: string, country?: string, onlyMobile?: bo
 
   // const mobile = parsePhoneNumber( '0999999999', { regionCode: 'AF'} );
   const mobile = parsePhoneNumber( valueParsed, { regionCode: countryParsed } );
-  console.log("itsojjjjj")
   // const mobile = parsePhoneNumber(valueParsed, {
   //   regionCode: countryParsed,
   // });
@@ -33,7 +32,7 @@ export const validateMobile = (value?: string, country?: string, onlyMobile?: bo
   //   return false;
     
   // }
-  console.log("itsojj9262 ",mobile)
+  console.log("mobile ",mobile)
   return mobile;
   // return getNumberFrom(mobile, 'e164');
 };

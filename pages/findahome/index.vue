@@ -214,7 +214,6 @@ export default {
 	},
 	async mounted(){
 		let envVars = useRuntimeConfig();
-		console.log("envVars",envVars,this.$prismic);
 		// try{
 			// Query to get post content
 			//const document = (await $prismic.api.getByUID('page', params.uid)).data
@@ -229,7 +228,6 @@ export default {
 			})
 			let homeList = [];
 			let homeListLd = [];
-			console.log("appartments",appartments);
 			// if(appartments) {
 			// 	if(appartments.data.data.length > 0) {
 			// 		appartments.data.data.forEach(function(appartment, index) {

@@ -1,6 +1,7 @@
 <template>
   <section :class="[isNormalLink ? 'custom-page-main' : '']">
     <!-- Slices block component -->
+    <!-- {{ asyncData }} -->
     <SlicesBlock :slices="slices" :banner="banner" :page-id="pageId" :isMapOnPage="isMapOnPage"/>
   </section>
 </template>
@@ -41,11 +42,12 @@ let  meta_site_name =ref(null)
      Router.push({ path: router.path ,
         query})
 	  }
+
+    console.log("meta_titlemeta_title",meta_title.value)
       
 	
     if(store.state.faq_topic !== null){
       store.state.faq_topic.forEach((item) =>{
-      console.log("item",item)
       if(router.fullPath.includes(item.primary.title[0].text)){
         var id = (item.primary.title[0].text).replace(/ /g,'')
         id = ('#'+id).split('#').join('')
@@ -78,7 +80,6 @@ let  meta_site_name =ref(null)
     }
 
     if((Object.keys(router.query).length == 0 || !router.fullPath.includes("?byHomes")) && router.path == '/page/singapore'){
-      console.log("yes")
       const query = {}
      query.byRooms = ""
      Router.push({ path: router.path ,
@@ -93,7 +94,6 @@ let  meta_site_name =ref(null)
       // Query to get post content
       client.getByUID('page', router.params.uid).then((Response) =>{
         var document = Response.data
-        console.log("document",document)
         isMapOnPage.value = false;
       const isMap =  document.page_content.filter(function(slice) {                
         if(slice.slice_type == 'listing' || slice.slice_type == 'listing1') {
@@ -113,12 +113,10 @@ let  meta_site_name =ref(null)
         }
       });
       if(Data.length>0){
-          console.log("data",Data)
           store.commit('SET_FAQ', Data);
-          console.log("this.$store",store)
       }
 
-
+     
 		if(isMap.length >= 1) {
 			isMapOnPage.value = true;
 		}
@@ -152,7 +150,6 @@ let  meta_site_name =ref(null)
         meta_image.value= (document.meta_image.url) ? document.meta_image.url : '';
         meta_url.value= process.env.baseUrl+'/page/'+ router.params.uid;
         meta_site_name.value= process.env.COMPANY_NAME
-        console.log("document",document)
       // }
       })
     } catch (e) {
@@ -163,7 +160,7 @@ let  meta_site_name =ref(null)
 
 	 })
 	 useHead({
-		    title: 'Casa Mia Coliving Blog Post'+"-"+meta_title.value,
+		    // title: meta_title.value,
 			htmlAttrs: {
 				lang: 'en'
 			},

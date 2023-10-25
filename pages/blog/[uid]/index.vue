@@ -208,7 +208,6 @@ import { client } from '~/prismic/prismic'
 
 
 				const isAuthor = computed(() => {
-					console.log(author.value)
 					if(Array.isArray(author.value) && author.value.length > 0) {
 						return true
 					} else if(Object.keys(author.value).length > 0) {
@@ -222,11 +221,9 @@ import { client } from '~/prismic/prismic'
 			// this.$cookies.set("topicId", tagId);
 			}
 			function getId (article) {
-				console.log("article",article)
 				return article.text.split(" ").join("")
 			}
 			function hrefTo(val){
-				console.log("val",val)
 				const move = window.scrollY + document.getElementById(`${val}`).getBoundingClientRect().top
 				window.scrollTo(0, move - 100);
 			}
@@ -255,13 +252,11 @@ import { client } from '~/prismic/prismic'
 				const router = useRoute()
 				let topicArray = []
 
-				console.log("prismic",router.params,prismic,prismic.filter)
+				
 				// const Document = await client.getByUID('blogpage', router.params.uid)
 				let Document =await  client.getByUID('blogpage', router.params.uid).then(async (response) => {return response})
-				console.log("prismic334",Document)
 				author.value = (await client.get({filters:prismic.filter.at('document.id', Document.data.author.id)})).results[0]
 				// await client.get({filters:prismic.filter.at('document.id', Document.data.author.id)}.then(async (response) => {}))
-				console.log("prismicio",author.value )
 
 				if (Document.data.topics1 && Document.data.topics1.length) {
 				for(let i = 0; i < 3; i++) {
@@ -306,7 +301,6 @@ import { client } from '~/prismic/prismic'
 				}
 			})
 			let toc = tocArray;
-			console.log("toc9999",toc)
 
 
 
@@ -317,17 +311,14 @@ import { client } from '~/prismic/prismic'
 				  hero_image: Document.data.hero_image,
 				  title: Document.data.page_title
 			  };
-             console.log("ok",banner.value);
 			  // topics
 			  topics_array.value= topicArray;
-			  console.log("topics_array",topics_array.value)
 
 			  // author
 			//   author= (Object.keys(author).length) ? author.results[0] : [];
 			  // Set slices as variable
 			  slices.value= slices;
 			  tocc.value = tocArray;
-			  console.log("toc999999999999999999999999999999",tocc.value)
 			  //Blog
 			  author_image.value= Document.data.author_image;
 			  publish_date.value= Document.data.publish_date;

@@ -201,7 +201,6 @@ export default {
   },
   methods: {
       getClass(slice) {
-        console.log("jkhkhj")
           let className = '';
             if(this.isMapOnPage === true && (slice.slice_type != 'listing' && slice.slice_type != 'listing1')) {
                 className = 'section-overlap map-zindex';

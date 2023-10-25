@@ -131,7 +131,6 @@ export default {
   },
   mounted() {
     // value?: string
-    console.log("jkl",this.$store.state,this.slice);
     // this.scrollToSection()
   }
 }
