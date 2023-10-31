@@ -48,7 +48,7 @@
                 <CountryCodeselector  v-model="selectedCountryCode1" />
                 <BFormInput
                         id="phone_number"
-                        v-model="form.phoneNumber"
+                        v-model="phoneNumber"
                         type="text"
                         class="form-inputs"
                         required
@@ -132,9 +132,9 @@
             </BFormGroup>
             <BFormGroup label="MESSAGE" class="col-12 form-input-label text-area  mx-0">
                 <!-- <b-input-group prepend="MESSAGE" class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
-                    <b-row class="multiSelectWrapper ">
-                       <b-form-textarea id="message" class="mx-3" v-model="form.message" rows="3"></b-form-textarea>
-                    </b-row>
+                    <!-- <b-row class="multiSelectWrapper "> -->
+                       <b-form-textarea id="message" class="" v-model="form.message" rows="3"></b-form-textarea>
+                    <!-- </b-row> -->
                 <!-- </b-input-group> -->
             </BFormGroup>
              <BFormGroup class="col-sm-12 update-check form-checkbox-label">
@@ -165,6 +165,7 @@
 
 <script>
 import axios from "axios";
+import { validateMobile } from '~/helpers/mobile';
 // import VuePhoneNumberInput from 'vue-phone-number-input';
 // import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {
@@ -192,6 +193,29 @@ export default {
       phoneNumber : "",
     };
   },
+
+  computed:{
+    formattedPhoneNumber1() {
+        const formattedPhoneNumber = validateMobile(this.phoneNumber , this.selectedCountryCode1);
+        return formattedPhoneNumber
+    },
+     
+
+},
+watch: {
+    'formattedPhoneNumber1' (value){
+        if(value.number.international != undefined) {
+            this.form.phone = value.number.international          
+        }
+        else {
+          this.form.phone = ""
+     
+       }
+    },
+    
+   
+  },
+  
   methods: {
     getPhoneNumber(data){
       if(data.formattedNumber != undefined){

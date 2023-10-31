@@ -1,8 +1,6 @@
 <template>
-
     <section class="inner-content-wrapper pb-3 faq-content-section">
       <div class="cms-main-wrap">
-        {{ slice }}
         <div class="row mx-0 faq-content-row">
           <div class="col-md-9 px-0 order-2 order-md-1">
             <div v-for="(slice) in newSlice" :key="slice.id" class="">
@@ -30,27 +28,17 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3  mt-md-0 px-0 pr-md-0 pl-md-3 pl-xl-5 order-1 order-md-2" >   
-          <!-- <div class="faq-wrapper-sidebar mb-4  mb-lg-5">
+          <div class="col-md-3  mt-md-0  pr-md-0 pl-md-3 pl-xl-5 order-1 order-md-2" >   
+          <div class="faq-wrapper-sidebar mb-4  mb-lg-5">
             <div v-for="(item,index) in $store.state.faq_topic" :key="index" class="topic-right-sidebar" @click="routeQuery(item)">
               <div>
                 <div class="card-header-sidebar cursor-pointer">
                   <prismic-rich-text :field="item.primary.title" class="topic-slice-title"  
-                    v-scroll-to="{
-                      el: goto(item),
-                      duration: 500,
-                      lazy: false,
-                      easing: 'linear',
-                      offset: -100,
-                      force: true,
-                      cancelable: true,
-                      x: false,
-                      y: true
-                  }" role="button" />  
+                   role="button" />  
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- {{ $store.state.faq_topic.page_content }} -->
           </div>
         </div>
@@ -76,8 +64,9 @@ export default {
   },
   computed:{
     matchString(){
+      let slice2 = this.slice.filter((item, index) => this.slice.indexOf(item) === index);
       if(this.$store.state.hasOwnProperty('faq_topic') && this.$store.state.faq_topic != null){
-        this.slice.forEach((slice) =>{
+        slice2.forEach((slice) =>{
         if(this.$store.state.faq_topic != null && this.$store.state.faq_topic.length > 0 && slice.primary.title[0].text != null){
           if(slice.primary.title[0].text == this.$store.state.faq_topic[0].primary.title[0].text){
             return true;
@@ -89,7 +78,8 @@ export default {
       }
     },
     newSlice(){
-      return this.slice
+      // this.slice.filter((item, index) => this.slice.indexOf(item) === index);
+      return this.slice.filter((item, index) => this.slice.indexOf(item) === index);
     }
   },
   methods:{
@@ -99,7 +89,7 @@ export default {
     },
     goto(item){
       var id = (item.primary.title[0].text).replace(/ /g,'');
-      return '#'+id;
+      return '#'+id
     },
     switchContent(index){
       if(index == 0){
@@ -112,6 +102,7 @@ export default {
       const id = this.goto(item).split('#').join('')
       this.$router.push({ path: this.$route.path,
         query: {'#': id}})
+        this.scrollToSection()
     },
     scrollToSection() {
       if(this.$store.state.faq_topic !== null){
@@ -131,7 +122,7 @@ export default {
   },
   mounted() {
     // value?: string
-    // this.scrollToSection()
+    this.scrollToSection()
   }
 }
 </script>

@@ -24,6 +24,9 @@
 <script setup>
 import { ref, computed,onMounted } from 'vue';
 import axios from 'axios';
+// definePageMeta({
+//   layout: "homepage",
+// });
 
 	const envVars = useRuntimeConfig();
 	const key = ref (envVars.public.env.GOOGLE_MAP_KEY)

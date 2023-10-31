@@ -87,7 +87,7 @@
                                             </div>   
                                         <!-- </b-input-group>  -->
                                     </BFormGroup>
-                                    <BFormGroup label="Start of stay" class="form-group_label form-group col-lg-12 col-md-12 col-sm-12 mx-auto mb-4">
+                                    <BFormGroup label="Start of stay" class=" form-label form-group_label form-group col-lg-12 col-md-12 col-sm-12 mx-auto mb-3">
                                         <!-- <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
                                             <!-- <template v-slot:prepend>
                                                 <b-input-group-text class="text-wrap">
@@ -100,7 +100,7 @@
                                                 placeholder="yyyy-mm-dd" required></BFormInput>
                                         <!-- </b-input-group> -->
                                     </BFormGroup>
-                                    <BFormGroup label="Lease Length" class=" form-group_label form-group col-lg-12 col-md-12 col-sm-12 mx-auto mb-2">
+                                    <BFormGroup label="Lease Length" class="form-label  form-group_label form-group col-lg-12 col-md-12 col-sm-12 mx-auto mb-2">
                                         <!-- <b-input-group class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
                                             <!-- <template v-slot:prepend> -->
                                                 <!-- <b-input-group-text class="text-wrap">
@@ -164,20 +164,20 @@
                                 </div>
                             </div>
                             <div class="row mx-md-0">
-                                <BFormGroup label="First name" class=" form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="First name" class="form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <BFormInput id="first_name" v-model="form.firstName" placeholder="Required Field"
                                         type="text" class="form-inputs" required></BFormInput>
                                 </BFormGroup>
-                                <BFormGroup label="Last name" class=" form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Last name" class="form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <BFormInput id="last_name" placeholder="Required Field" v-model="form.lastName"
                                         type="text" class="form-inputs" required></BFormInput>
                                 </BFormGroup>
-                                <BFormGroup label="Phone" class="phonenumber form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Phone" class="phonenumber form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <div>
                                         <CountryCodeselector  v-model="selectedCountryCode1" />
                                         <BFormInput
                                                 id="phone_number"
-                                                v-model="form.phoneNumber"
+                                                v-model="phoneNumber"
                                                 type="text"
                                                 class="form-inputs"
                                                 required
@@ -186,12 +186,12 @@
                                     <!-- <VuePhoneNumberInput class="phoneInput" @update="getPhoneNumber" :no-flags="true" -->
                                         <!-- :no-example="true" :required="true" no-use-browser-locale v-model="phoneNumber" /> -->
                                 </BFormGroup>
-                                <BFormGroup label="WhatsApp" class="phonenumber form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="WhatsApp" class="phonenumber form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <div>
                                         <CountryCodeselector  v-model="selectedCountryCode2" />
                                         <BFormInput
                                                 id="whatsapp_number"
-                                                v-model="form.whatsappNumber"
+                                                v-model="whatsappNumber"
                                                 type="text"
                                                 class="form-inputs"
                                                 required
@@ -200,59 +200,59 @@
                                     <!-- <VuePhoneNumberInput class="phoneInput" @update="getWhatsappNumber" :no-flags="true" -->
                                         <!-- :no-example="true" no-use-browser-locale v-model="whatsappNumber" /> -->
                                 </BFormGroup>
-                                <BFormGroup label="Email" class="form-group col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Email" class="form-label form-group col-lg-12 col-md-12 col-sm-12 mb-4">
                                     <BFormInput id="email" v-model="form.email" type="email" class="form-inputs"
                                         placeholder="Required Field" required></BFormInput>
                                 </BFormGroup>
-                                <BFormGroup label="Job" class="form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Job" class="form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <BFormInput id="job_function" v-model="form.job" placeholder="Required Field"
                                         class="form-inputs" type="text" required></BFormInput>
                                 </BFormGroup>
-                                <BFormGroup label="Company/school" class="form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Company/school" class="form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <BFormInput id="company_school" v-model="form.company_school" class="form-inputs"
                                         type="text"></BFormInput>
                                 </BFormGroup>
-                                <BFormGroup label="Age group" class=" form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Age group" class="form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <b-form-select id="age_group" v-model="form.ageGroup" :options="ageGroupOptions"
                                         class="form-inputs find-select" required></b-form-select>
                                     <i class="fa fa-sort-desc find-form-dropdown-arrow" aria-hidden="true"></i>
                                 </BFormGroup>
-                                <BFormGroup label="Discount code" class="form-group col-lg-6 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Discount code" class="form-label form-group col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <BFormInput id="discount_code" v-model="form.discount_code" class="form-inputs"
                                         type="text"></BFormInput>
                                 </BFormGroup>
-                                <BFormGroup label="Other requests" class="form-group col-lg-12 col-md-12 col-sm-12 mb-4">
+                                <BFormGroup label="Other requests" class="form-label form-group col-lg-12 col-md-12 col-sm-12 mb-4">
                                     <b-form-textarea id="other_request" v-model="form.other_request"
                                         rows="2"></b-form-textarea>
                                 </BFormGroup>
                                 <BFormGroup
-                                    class="form-group col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form mb-4">
+                                    class="form-label form-group col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form mb-4">
                                     <b-form-checkbox id="marketing_update" class="d-flex" v-model="form.roominperson"
                                         :checked="form.roominperson" name="marketing_update"
                                         :style="{ 'border-color': sideFormBackgroundColor, '--sideFormBackgroundColor': sideFormBackgroundColor }">
                                         I would like to view the room in person.
                                     </b-form-checkbox>
                                 </BFormGroup>
-                                <BFormGroup label="Preferred date for a viewing" v-if="form.roominperson" class="form-group col-lg-6 col-md-12 col-sm-12 mx-auto mb-4">
+                                <BFormGroup label="Preferred date for a viewing" v-if="form.roominperson" class="form-label form-group col-lg-6 col-md-12 col-sm-12 mx-auto mb-4">
                                     <!-- <BFormGroup label="Preferred date for a viewing"> -->
                                         <BFormInput id="startofstay" v-model="form.prefDate" type="date"
                                             class="form-inputs" :min="minDate" :max="maxDate" placeholder="yyyy-mm-dd"
                                             required></BFormInput>
                                     <!-- </BFormGroup> -->
                                 </BFormGroup>
-                                <BFormGroup label="Preferred time for a viewing" v-if="form.roominperson" class="form-group col-lg-6 col-md-12 col-sm-12 mx-auto mb-4">
+                                <BFormGroup label="Preferred time for a viewing" v-if="form.roominperson" class=" form-label form-group col-lg-6 col-md-12 col-sm-12 mx-auto mb-4">
                                     <!-- <BFormGroup label="Preferred time for a viewing"> -->
                                         <BFormInput id="startofstay" v-model="form.prefTime" type="time"
                                             class="form-inputs" placeholder="Time" required></BFormInput>
                                     <!-- </BFormGroup> -->
                                 </BFormGroup>
-                                <BFormGroup label="The viewing is not confirmed yet. One of our Sales representatives will contact you about your request." v-if="form.roominperson" class="form-group col-lg-12 col-md-12 col-sm-12 mx-auto mb-4">
+                                <BFormGroup label="form-label The viewing is not confirmed yet. One of our Sales representatives will contact you about your request." v-if="form.roominperson" class="form-group col-lg-12 col-md-12 col-sm-12 mx-auto mb-4">
                                     <!-- <BFormGroup
                                         label="The viewing is not confirmed yet. One of our Sales representatives will contact you about your request.">
                                     </BFormGroup> -->
                                 </BFormGroup>
                                 <BFormGroup
-                                    class="form-group col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form mb-4">
+                                    class="form-group form-label col-sm-12 update-check mx-auto custom-checkbox-true custom-checkbox-form mb-4">
                                     <b-form-checkbox id="marketing_update" class="d-flex" v-model="form.status"
                                         :checked="form.status" name="marketing_update"
                                         :style="{ 'border-color': sideFormBackgroundColor, '--sideFormBackgroundColor': sideFormBackgroundColor }">
@@ -295,7 +295,7 @@
             </div>
         </BModal>
         <!-- 2nd Step Form: END  -->
-        <BModal id="schedule-modal" v-model="modal_2" title="Modal with Popover" :hide-footer="true" :hide-header="true"
+        <BModal id="schedule-modal"  title="Modal with Popover" :hide-footer="true" :hide-header="true"
             :no-close-on-backdrop="true" :no-close-on-esc="true">
             <div class="row main-detail-top">
                 <div class="col-lg-8">
@@ -322,14 +322,10 @@
 <script>
 import axios from 'axios';
 import moment from 'moment'
-// import VuePhoneNumberInput from 'vue-phone-number-input';
-// import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+import { validateMobile } from '~/helpers/mobile';
 export default {
     name: 'finda-home-side-form',
     props: ['slice'],
-    // components: {
-    //     VuePhoneNumberInput
-    // },
     data() {
         return {
             selectedCountryCode1:'',
@@ -417,10 +413,70 @@ export default {
         },
         'form.los': function () {
             this.setValue()
+        },
+    'formattedPhoneNumber1' (value){
+        if(value.number.international != undefined) {
+            this.form.phone = value.number.international          
         }
+        else {
+          this.form.phone = ""
+     
+       }
+    },
+    
+    'formattedPhoneNumber2' (value){
+      if(value.number.international != undefined) {
+            this.form.whatsapp = value.number.international          
+        }
+        else {
+          this.form.whatsapp = ""
+     
+       }
+    },
+    'selectedCountryCode2' (value){
+        if(value != undefined && this.whatsappNumber !== '') {
+        const formattedwhatsappNumber = validateMobile(this.form.whatsappNumber,value );
+            if(formattedwhatsappNumber.number.input.length > 1 ){      
+             this.form.whatsapp = formattedPhoneNumber.number.international
+            }
+     }
+     else {
+          this.form.whatsapp = ""
+        }
+       },
+    'phoneNumber'(value){     
+        if(value != undefined ) {
+            const formattedPhoneNumber = validateMobile(value , this.selectedCountryCode1);
+            if(formattedPhoneNumber.number.input.length > 1 ){
+              this.form.phone = formattedPhoneNumber.number.international
+            }
+        }
+            else {
+              this.form.phone = ""
+        }
+    },
+    'whatsappNumber'(value){    
+        if(value != undefined ) {
+            const formattedwhatsappNumber = validateMobile(value  , this.selectedCountryCode2);
+            if(formattedwhatsappNumber.number.input.length > 1 ){     
+             this.form.whatsapp = formattedwhatsappNumber.number.international
+            }
+        }
+            else {
+            this.form.whatsapp = "";
+        }
+    },
 
     },
     computed: {
+        formattedPhoneNumber1() {
+        const formattedPhoneNumber = validateMobile(this.phoneNumber , this.selectedCountryCode1);
+        return formattedPhoneNumber
+        },
+        formattedPhoneNumber2() {
+            const formattedwhatsappNumber = validateMobile(this.whatsappNumber , this.selectedCountryCode2);
+            return formattedwhatsappNumber
+        }, 
         disableButton() {
             return !this.form.status
         },
@@ -624,7 +680,7 @@ export default {
         onSelectRoom(evt) {
             evt.preventDefault();
             this.currentStep = 2
-            this.modal_1 =true
+            this.modal_1 = true
         },
         getWhatsappNumber(data) {
             if (data.formattedNumber != undefined) {
@@ -682,7 +738,7 @@ export default {
         },
         openScheduleWindow() {
             this.linkSchedule = (this.linkSchedule != null) ? this.slice.linkSchedule + '?' + 'email=' + this.form.email + '&first_name=' + this.form.firstName + '&last_name=' + this.form.lastName + '&a1=' + this.form.phone : null;
-            this.modal_2 =true
+            this.$root.$emit('bv::show::modal', 'schedule-modal')
         },
         onSubmit(evt) {
             evt.preventDefault();
@@ -830,7 +886,7 @@ export default {
 </script>
 <style>
 @import "@/assets/css/common.css";
-@import "../assets/css/form.css";
+@import "@/assets/css/form.css";
 
 .country-selector__input,
 :deep(.form-group_label > .form-label) {
@@ -1037,6 +1093,21 @@ export default {
     text-align: center;
     transform: translate(-63%);
     width: 85px;
+}
+.form-box .col-form-label, .form-box legend {
+    background-color: transparent!important;
+    border: 0;
+    color: #000;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    height: auto;
+    letter-spacing: normal;
+    line-height: 17px;
+    margin-bottom: 8px;
+    padding: 0;
+    text-align: left;
+    width: 100%;
 }
 
 
@@ -1367,7 +1438,7 @@ export default {
     padding-left: 0px !important;
 }
 
-.detail-box-img.lazyLoad {
+.detail-box-img {
     width: 100%;
     height: 100%;
 }

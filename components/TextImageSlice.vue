@@ -12,7 +12,7 @@
                             <div class="row right-img-section mb-4 pb-2 mb-xl-5 pb-xl-5 text-image-slice-section"  v-if="item.image_position == 'Right'">
                                 <div class="col-lg-5 col-md-6 align-self-center order-2 order-md-1">
                                     <div class="right-description">
-                                        <prismic-rich-text class="title content-h3-heading mb-2 mb-xl-4 pb-xl-2" :field="item.title"/>
+                                        <prismic-rich-text class="title content-h3-heading mb-2 mb-1 pb-xl-2" :field="item.title"/>
                                         <prismic-rich-text class="description" :field="item.subtitle"/>
                                         <prismic-rich-text class="details text-image-slice-description" :field="item.text"/> 
                                         <prismic-link v-if="item.link_text != null" :field="item.link" class="button-link text-image-slice-btn text-center d-inline-block text-capitalize text-decoration-none mt-3 mt-xl-5">{{ item.link_text}}</prismic-link>
@@ -123,6 +123,7 @@ export default {
      margin-bottom: 0 !important;
      padding-bottom: 0 !important;
 }
+
 @media (max-width:576px){
     .right-video-part ,.left-video-part{
      height: 280px;
@@ -156,7 +157,7 @@ export default {
         font-size: 15px;
     }
     .text-image-slice .text-image-slice-description p{
-        margin-bottom: 10px;
+        margin-bottom: 5px !important;
     }
     .text-image-slice .left-description{
         max-width: 100%;

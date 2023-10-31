@@ -43,12 +43,12 @@ function handleRequest(req, res, next) {
   const isWWW = /^www\./i.test(host);
   const redirect = redirects.find(r => r.from === req.url)
 
-  if(redirect && !isWWW && host === 'casamia.co') {
+  if(redirect && !isWWW && host === 'localhost:4500') {
     const newURL = `https://www.${host}${redirect.to }`
     res.writeHead(301, { Location: newURL });
     res.end()
   }
-  else if (!isWWW && host === 'casamia.co') {
+  else if (!isWWW && host === 'localhost:4500') {
     const newURL = `https://www.${host}${url}`
     res.writeHead(301, { Location: newURL });
     res.end();

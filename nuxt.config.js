@@ -44,7 +44,9 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@nuxtjs/prismic',
-    'nuxt-icon'
+    'nuxt-icon',
+    'cookie-universal-nuxtjs',
+    
   ],
    image: {
      domains: ['wonderful-meadow-0d9011810.3.azurestaticapps.net'],

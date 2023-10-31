@@ -6,6 +6,12 @@
 	</section>
 </template>
 
+<script setup>
+// definePageMeta({
+// 	layout: "homepage",
+// });
+</script>
+
 <script>
 import axios from 'axios';
 import {client} from '~/prismic/prismic';
@@ -310,13 +316,7 @@ export default {
 			// 		//resolve(appartments)
 			// 	}
 			// }
-			console.log("response",client.getByUID('page', 'blog'), client.getFirst('page', 'findyourhome'))
-			client.getFirst('page', 'findyourhome').then((result) => {
-				console.log(result.data.page_content )
-			})
-			.catch((error) => {
-          console.error(error);
-          });
+			
 		// 	client.getFirst('page', 'findyourhome').then((response) => {
         //     // Use the menuData here
 		// 	console.log(response.data.page_content)

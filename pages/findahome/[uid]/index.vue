@@ -31,7 +31,7 @@
                   :key="index"
                   :style="{ height: JSON.stringify(css) - 174 + 'px' }"
                 >
-                  <picture class="slider-img mt-5" v-if="images">
+                  <picture class="slider-img mt-4" v-if="images">
                     <template v-for="(image, inx) in images.versions"  :key="inx">
                       <img
                         v-if="

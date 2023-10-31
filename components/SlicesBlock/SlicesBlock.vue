@@ -70,8 +70,8 @@
                 </div>
                 <!-- FAQ topic team -->
                 <div v-else-if="slice.slice_type === 'faq_topic' ">
-                    {{ slice }}
-                    <!-- <TopicSlice :slice="topicSlice" :faq-icon="false"/> -->
+                    <!-- {{ slice }} -->
+                    <TopicSlice :slice="topicSlice" :faq-icon="false"/>
                 </div>
                 <!-- Welcome banner full -->
                 <div v-else-if="slice.slice_type === 'welcome_banner_full'">
@@ -119,7 +119,9 @@
 import { ref, computed,onMounted } from 'vue';
 import axios from 'axios';
 
-	const props = defineProps(['slices'])
+const props = defineProps({
+  slices: Object
+})
     onMounted( async () => {
 		console.log("oooo",props)
         console.log(Object.values(props));
@@ -128,106 +130,54 @@ import axios from 'axios';
 </script>
 
 <script >
-// Imports for all slices
-// const TextSlice = () => import("./slices/TextSlice.vue");
-// const QuoteSlice = () => import("./slices/QuoteSlice.vue");
-// const ImageGallery = () => import("./slices/ImageGallery.vue");
-// const SpacerSlice = ()=> import("./slices/SpacerSlice.vue");
-// const BackgroundSlice = ()=> import("./slices/BackgroundSlice.vue");
-// const FormSlice = ()=> import("./slices/FormSlice.vue");
-// const BlogCardSlice = ()=> import("./slices/BlogCardSlice.vue");
-// const BlogCardFeaturedSlice = ()=> import("./slices/BlogCardFeaturedSlice.vue");
-// const TextImageSlice = ()=> import("./slices/TextImageSlice.vue");
-// const RoomSlice = ()=> import("./slices/BedroomsSlice.vue");
-// const MapSlice = ()=> import("./slices/MapSlice.vue");
-// const BuildingCardSlice = ()=> import("./slices/BuildingCardSlice.vue");
-// const SimilarCardSlice = ()=> import("./slices/SimilarCardSlice.vue");
-// const ListingSlice = ()=> import("./slices/ListingSlice.vue");
-// const TableSlice = ()=> import("./slices/TableSlice.vue");
-// const RecommendationSlice = ()=> import("./slices/RecommendationSlice.vue");
-// const TopicSlice = ()=> import("./slices/TopicSlice.vue");
-// const RoomListingSlice = ()=> import("./slices/RoomListingSlice.vue");
-// const WelcomeBannerFullSlice = ()=> import("./slices/WelcomeBannerFullSlice.vue");
-// const WelcomeBannerSlice = ()=> import("./slices/WelcomeBannerSlice.vue");
-// const PicturesOverlayTextSlice = ()=> import("./slices/PicturesOverlayTextSlice.vue");
-// const MembersTestimonialSlice = ()=> import("./slices/MembersTestimonialSlice.vue");
-// const CallToActionSlice = ()=> import("./slices/CallToActionSlice.vue");
-// const TeamSlice = ()=> import("./slices/TeamSlice.vue");
-// const NewsSlice = ()=> import("./slices/NewsSlice.vue");
-// const LogosSlice = ()=> import("./slices/LogosSlice.vue");
-// const YoutubeVideoSlice = ()=> import("./slices/YoutubeVideoSlice.vue");
-// const PartnersSlice = () => import("./slices/PartnersSlice.vue");
-{/* <script> */}
 export default {
     props: ['slices', 'banner', 'isHomeDetail', 'pageId', 'isMapOnPage'],
-//   name: 'slices-block',
-//   components: {
-//     TextSlice,
-//     QuoteSlice,
-//     ImageGallery,
-//     SpacerSlice,
-//     BackgroundSlice,
-//     FormSlice,
-//     BlogCardSlice,
-//     BlogCardFeaturedSlice,
-//     TextImageSlice,
-//     RoomSlice,
-//     MapSlice,
-//     BuildingCardSlice, 
-//     ListingSlice,
-//     TableSlice,
-//     RecommendationSlice,
-//     TopicSlice,
-//     SimilarCardSlice,
-//     RoomListingSlice,
-//     WelcomeBannerFullSlice,
-//     WelcomeBannerSlice,
-//     PicturesOverlayTextSlice,
-//     MembersTestimonialSlice,
-//     CallToActionSlice,
-//     TeamSlice,
-//     NewsSlice,
-//     LogosSlice,
-//     YoutubeVideoSlice,
-//     PartnersSlice
-//   },
   data() {
     return {
-        // backgroundColor: '',
-        // topicSlice:[],
-        // isTopicSlice: false,
-        // hideLogos: false
+        backgroundColor: '',
+        topicSlice:[],
+        isTopicSlice: false,
+        hideLogos: false
     }
   },
   methods: {
       getClass(slice) {
           let className = '';
-            if(this.isMapOnPage === true && (slice.slice_type != 'listing' && slice.slice_type != 'listing1')) {
+          if(this.$route.path == '/page/faqs'){
+            if( (slice.slice_type != 'listing' && slice.slice_type != 'listing1')) {
                 className = 'section-overlap map-zindex';
             }
-            console.log("className",this.isMapOnPage)
-          return className;
+            console.log("this.slices",this.slices)
+     this.slices.forEach((item,index) =>{
+        if(item.slice_type == "faq_topic" ){
+            
+       this.topicSlice.push(item)
+      }
+      if(index == 1 && item.slice_type == "faq_topic" ){
+        item.slice_type = "faq_topic" 
+      }
+      else if(index != 1 && item.slice_type == "faq_topic" ){
+        item.slice_type = ""
+      }     
+     })
+     this.isTopicSlice = true  
+     return this.topicSlice ,this.isTopicSlic , className;
+    } 
+    else{
+        if( (slice.slice_type != 'listing' && slice.slice_type != 'listing1')) {
+                className = 'section-overlap map-zindex';
+            }
+            return className;
+    }
+          
       }
   },
   mounted(){
     if(this.$route.path == '/page/community'){
 		this.hideLogos = true       
 	  }
-      console.log("this.slices",this.slices)
-    // if(this.$route.path == '/page/faqs'){
-    //  this.slices.forEach((item,index) =>{
-    //     if(item.slice_type == "faq_topic" ){
-    //    this.topicSlice.push(item)
-    //   }
-    //   if(index == 1 && item.slice_type == "faq_topic" ){
-    //     item.slice_type = "faq_topic" 
-    //   }
-    //   else if(index != 1 && item.slice_type == "faq_topic" ){
-    //     item.slice_type = ""
-    //   }     
-    //  })
-    // } 
-    // this.isTopicSlice = true   
+      
+    
   }
 }
 </script>

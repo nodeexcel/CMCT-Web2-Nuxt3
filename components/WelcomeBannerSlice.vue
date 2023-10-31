@@ -119,7 +119,6 @@
 
 <script>
 // import lazysizes from 'lazysizes';
-// import VueHorizontalList from 'vue-horizontal-list';
 export default {
   props: ['slice'],
   name: 'welcome-banner',
@@ -173,7 +172,7 @@ export default {
 }
 
 .home-subbanner-page .silder-content-box{
-	width: 674px;
+	width: 600px;
 	z-index: 2;
 	background-color: #F7F7F7;
 	border-radius: 60px 10px 10px 10px;
@@ -432,7 +431,7 @@ export default {
 }
 @media (min-width:768px) and (max-width:1199px){
 	.home-subbanner-page .silder-content-box{
-		width: 400px;
+		width: 370px;
 	}
 	.home-subbanner-page .slider-inner{
 		padding: 30px;
@@ -481,7 +480,7 @@ export default {
     	line-height: 24px;
 	}
 	.home-subbanner-page .silder-content-box{
-		width: 500px;
+		width: 470px;
 	}
 	.home-subbanner-page .slicer-image-full-content,.banner-type-section .banner-type-heading{
 		max-width: 400px;

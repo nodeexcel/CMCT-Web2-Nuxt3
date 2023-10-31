@@ -10,6 +10,9 @@
 import { onMounted } from 'vue';
 import { client } from '~/prismic/prismic'
 import { useStore } from 'vuex'
+// definePageMeta({
+// 	layout: "homepage",
+// });
 
 let slices = ref([])
 let isFormSlice =ref(false) 
@@ -35,15 +38,14 @@ let  meta_site_name =ref(null)
     const Router = useRouter()
     const store = useStore()
 
+    
     if((Object.keys(router.query).length == 0 || !router.fullPath.includes("?byHomes")) && router.path == '/page/singapore'){
-      console.log("yes")
       const query = {}
      query.byRooms = ""
      Router.push({ path: router.path ,
         query})
 	  }
 
-    console.log("meta_titlemeta_title",meta_title.value)
       
 	
     if(store.state.faq_topic !== null){
@@ -140,16 +142,19 @@ let  meta_site_name =ref(null)
           divider_and_button_color
         },
         // Set slices as variable
-        slices.value = document.page_content;
-        data.value = document;
+        slices.value = Response.data.page_content;
+        data.value = Response.data;
         pageId.value = router.params.uid;
 		    isMapOnPage.value= isMapOnPage.value;
         //SEO
-        meta_title.value= (document.meta_title.length) ? document.meta_title[0].text : '';
-        meta_description.value= (document.meta_description.length) ? document.meta_description[0].text : '';
-        meta_image.value= (document.meta_image.url) ? document.meta_image.url : '';
-        meta_url.value= process.env.baseUrl+'/page/'+ router.params.uid;
-        meta_site_name.value= process.env.COMPANY_NAME
+        meta_title.value= (Response.data.meta_title.length) ? Response.data.meta_title[0].text : '';
+        meta_description.value= (Response.data.meta_description.length) ? Response.data.meta_description[0].text : '';
+        meta_image.value= (Response.data.meta_image.url) ? Response.data.meta_image.url : '';
+        meta_url.value= envVars.public.env.BASE_URL+'/page/'+ router.params.uid;
+        meta_site_name.value= envVars.public.env.COMPANY_NAME
+        return {
+				slices,meta_title
+		}
       // }
       })
     } catch (e) {
@@ -159,67 +164,16 @@ let  meta_site_name =ref(null)
     }
 
 	 })
+    // definePageMeta({
+    // title: `Page Title - ${title}`,
+    //   })
 	 useHead({
-		    // title: meta_title.value,
+		    title: meta_title.value,
 			htmlAttrs: {
 				lang: 'en'
 			},
-			link: [
-				{ rel: 'canonical', href: meta_url.value },
-			],
-			meta: [
-			{ hid: 'description', name: 'description', content: meta_description.value },
-			{
-			hid: 'ogtitle',
-			property: 'og:title',
-			content: meta_title.value
-			},
-			{
-			hid: 'ogdescription',
-			property: 'og:description',
-			content: meta_description.value
-			},
-			{
-			hid: 'ogimage',
-			property: 'og:image',
-			content: meta_image.value
-			},
-			{
-			hid: 'ogurl',
-			property: 'og:url',
-			content: meta_url.value
-			},
-			{
-			hid: 'ogtype',
-			property: 'og:type',
-			content: 'Website'
-			},
-			{
-			hid: 'ogsite_name',
-			property: 'og:site_name',
-			content: meta_site_name.value
-			},
-			{
-			hid: 'twittertitle',
-			name: 'twitter:title',
-			content: meta_title.value
-			},
-			{
-			hid: 'twitterdescription',
-			name: 'twitter:description',
-			content: meta_description.value
-			},
-			{
-			hid: 'twitter:card',
-			name: 'twitter:card',
-			content: 'summary'
-			},
-			{
-			hid: 'twitterimage',
-			name: 'twitter:image',
-			content: meta_image.value
-			},
-		],
+			
+			
 
     }) 
 </script>

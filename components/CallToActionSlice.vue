@@ -113,7 +113,6 @@ export default {
                 const path = 'document.id'; // Replace with the actual path to the field you want to filter on
                 const value = item.cta_link.id;
                 this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',item.cta_link.id)}).then(async (response) => {
-                    console.log("response 114",response)
                     if(this.slice.slice_label == 'button') {
                         Object.assign(item, { image: response.results[0].data.image.regular })
                     } else if(this.slice.slice_label == 'left-right') {

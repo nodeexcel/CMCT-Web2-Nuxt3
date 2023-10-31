@@ -17,9 +17,20 @@
      endpoint: 'https://colivhq.cdn.prismic.io/api/v2'
    };
  }
+ const props = defineProps({
+ error: Object,
+ required: true,
+});
+// const {data} = useAsyncTest()
+// const { data, pending } = useAsyncData(async () => {
+//   await new Promise((resolve) => setTimeout(resolve, 2000))
+//   return 42
+// })
+
+const handleError = () => clearError({ redirect: '/' });
  const title = ref('Casa Mia Coliving Website')
  useHead({
-      title
+      title:title.value
 })
  </script>
  

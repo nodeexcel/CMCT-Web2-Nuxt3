@@ -8,7 +8,9 @@
 import { onMounted } from 'vue';
 import { client } from '~/prismic/prismic'
 import { useStore } from 'vuex'
-
+// definePageMeta({
+//   layout: "homepage",
+// });
 
     let slices = ref([])
 				//SEO
@@ -42,6 +44,7 @@ import { useStore } from 'vuex'
 				meta_image.value= (homepage.meta_image.url) ? homepage.meta_image.url : ''
 				meta_url.value= (homepage.meta_url) ? homepage.meta_url.url : ''
 				meta_site_name.value= process.env.COMPANY_NAME
+				console.log("slices",slices)
 
 				
 

@@ -6,7 +6,7 @@
 					<!-- <router-link to="/" class="logo Homepage-btn" id="HomepageButton"> -->
 					<router-link to="/" class="logo Homepage-btn" id="CMLogo">
 					  <!-- <prismic-image :field="fields.logo"/> -->
-            <img src="https://images.prismic.io/cmct-web/84e86b12-dfd7-46eb-ac61-f2cb4f43f553_Logo+for+website.png" width="135" height="60" :alt="fields.logo.alt"/>
+            <nuxt-img src="https://images.prismic.io/cmct-web/84e86b12-dfd7-46eb-ac61-f2cb4f43f553_Logo+for+website.png" width="135" height="60" :alt="fields.logo.alt" format="webp"/>
 					</router-link>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-8 col-8 header-menu">
@@ -632,7 +632,7 @@ export default {
       padding: 6px 8px;
   }
   .header-wrap{
-      margin-top: 100px;
+      /* margin-top: 100px; */
   }
 }
 @media (max-width:767px){

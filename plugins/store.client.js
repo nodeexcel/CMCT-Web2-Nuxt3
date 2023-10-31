@@ -104,7 +104,6 @@ const store = createStore({
     //   commit("increment", 2);
     // },
     async fetchMenu({ commit }) {
-      console.log(" this.$prismic", client)
       try {
         client.getSingle('menu').then((result) => {
           // let menuContent = result

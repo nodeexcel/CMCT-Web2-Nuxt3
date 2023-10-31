@@ -13,15 +13,15 @@
                                             <n-link :to="'/blog/'+Records[key].uid" class="card-link">
                                             <!-- <prismic-link :field="item.blog_link" class="card-link"> -->
                                                 <picture>
-                                                    <!-- <img :src="Records[key].data.hero_image.card.url" class="d-block w-100"> -->
+                                                    <img :src="Records[key].data.hero_image.card.url" class="d-block w-100">
                                                 </picture>
                                                 <div class="desc-box">
                                                     <div class="desc text-left">
-                                                  <span :href="'/blog/'+Records[key].uid" variant="light" v-for="(topic) in Records[key].data.topics" :key="topic+'_'+Math.ceil(Math.random()*10)">{{ topicList[topic]}} </span>
+                                                        <span :href="'/blog/'+Records[key].uid" variant="light" v-for="(topic, index) in Records[key].data.topics" :key="topic+'_'+Math.ceil(Math.random()*10)">{{ topicList[topic]}} </span>
                                                     </div>
-                                                    <!-- <h3 class="name text-left mt-0"> {{ Records[key].data.page_title[0].text }} </h3> -->
+                                                    <h3 class="name text-left mt-0"> {{ Records[key].data.page_title[0].text }} </h3>
                                                     <div class="blog-bottom-content">
-                                                        <!-- <prismic-rich-text :field="Records[key].data.summary"/> -->
+                                                        <prismic-rich-text :field="Records[key].data.summary"/>
                                                     </div>
                                                 </div>
                                             <!-- </prismic-link> -->
@@ -120,23 +120,15 @@ export default {
     },
     mounted(){
         this.getTopicsData()
-        // const client =new prismic.Client("https://cmct-web.cdn.prismic.io/api/v2")
-        //@ts-ignore
-       
 
-// Usage
-// customFulltext("my.post.tags.tag", 'Activities');
+    
 
-
-    //     console.log(client.fetchFn({
-    //         filters: 
-    // prismic.filter.at('document.id','topics')},{}))
     
 
 
-        console.log("response",client.query,prismic)
-         client.get({filters:[prismic.filter.at('document.id','topics')]},{}).then(async (response) => {
-            console.log("response",response)
+        
+        this.$prismic.client.get({filters:this.$prismic.filter.at('document.type', 'topics')},{}).then(async (response) => {
+            console.log("response55",response)
          })
     },
     async created() {
@@ -163,8 +155,7 @@ export default {
     methods: {
         async getTopicsData() {
              var self = this
-            await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id','topics')},{}).then(async (response) => {
-                console.log("response",response);
+            await this.$prismic.client.get({filters:this.$prismic.filter.at('document.type', 'topics')},{}).then(async (response) => {
                 var sortable = [];
                 for (let item of response.results) {
                     sortable.push([item.id, item.data.topic]);
@@ -189,6 +180,7 @@ export default {
             this.filterBlog();
         },
         setBlogcards(response) {
+            console.log("final response",response)
             this.totalRecords = response.results.length;
             this.Records = response.results;
             this.blogList = [];
@@ -236,42 +228,40 @@ export default {
             this.getData()
          
         },
-        async getTopics (blog) {
-            let topicArray = []
-            for (let i = 0; i < blog.data.topics1.length; i++) {
-                if (blog.data.topics1[i] && typeof blog.data.topics1[i].topic == 'object' && blog.data.topics1[i].topic.id) {
+        // async getTopics (blog) {
+        //     let topicArray = []
+        //     for (let i = 0; i < blog.data.topics1.length; i++) {
+        //         if (blog.data.topics1[i] && typeof blog.data.topics1[i].topic == 'object' && blog.data.topics1[i].topic.id) {
                     
-                    // let topic = await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)})
-                    let topic = await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)}).then(async (response) => {
-                        console.log("response 135",response)
-                        topicArray.push(response.results[0])
-                    })
-                    // topicArray.push(topic.results[0])
-                }
-            }
-            return topicArray
-        },
+        //             // let topic = await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)})
+        //             let topic = await this.$prismic.client.get({filters:this.$prismic.filter.at('document.id',blog.data.topics1[i].topic.id)}).then(async (response) => {
+        //                 console.log("response 13566",response)
+        //                 topicArray.push(response.results[0])
+        //             })
+        //             // topicArray.push(topic.results[0])
+        //         }
+        //     }
+        //     return topicArray
+        // },
         async filterBlog() {
             let limit= (this.slice.type !=undefined && this.slice.type == 'blog_listing') ? this.perPage : 100;
             if(this.filterSel.length > 0) {
-                await this.$prismic.client.get([
-                {filters:this.$prismic.filter.at('document.type','blogpage')},
-                {filters:this.$prismic.filter.at('my.blogpage.topics1.topic',this.filterSel)},
+                await this.$prismic.client.get(
+                    {filters:this.$prismic.filter.at('document.type','blogpage')},
+                    {filters:this.$prismic.filter.at('my.blogpage.topics1.topic',this.filterSel)},
                         // this.$prismic.predicates.at('document.type', 'blogpage'),
                         // this.$prismic.predicates.any('my.blogpage.topics1.topic', this.filterSel),
-                    ],
-                    { orderings : '[my.blogpage.publish_date desc]', 'pageSize': limit }
+                    
+                    // { orderings : '[my.blogpage.publish_date desc]', 'pageSize': limit }
                 ).then(async (response) => {
-                    console.log("response 135",response)
                     this.setBlogcards(response);
                 });
             } else {
-                await this.$prismic.client.get([
-                {filters:this.$prismic.filter.at('document.type','blogpage')}
-                    ],
-                    { orderings : '[my.blogpage.publish_date desc]', 'pageSize': limit }
+                await this.$prismic.client.get(
+                    {filters:this.$prismic.filter.at('document.type','blogpage')}
+                    
+                    // { orderings : '[my.blogpage.publish_date desc]', 'pageSize': limit }
                 ).then(async (response) => {
-                    console.log("response 135",response)
                     this.setBlogcards(response);
                 });
             }

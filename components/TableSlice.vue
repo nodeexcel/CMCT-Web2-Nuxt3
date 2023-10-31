@@ -111,10 +111,13 @@ export default {
     line-height: 39px;
     letter-spacing: normal;
 }
+:deep(.details p  ){
+    color: #000000 !important;
+}
 #features-table .details p { 
     text-align: center;
     font-size: 20px;
-    color: #000000;
+    color: #000000 !important;
     font-weight: 400;
     line-height: 31.5px;
     letter-spacing: normal;

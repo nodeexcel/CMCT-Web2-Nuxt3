@@ -44,7 +44,7 @@
                 <CountryCodeselector  v-model="selectedCountryCode1" />
                 <BFormInput
                         id="phone_number"
-                        v-model="form.phoneNumber"
+                        v-model="phoneNumber"
                         type="text"
                         class="form-inputs"
                         required
@@ -77,7 +77,7 @@
                 <CountryCodeselector  v-model="selectedCountryCode2" />
                 <BFormInput
                         id="phone_number"
-                        v-model="form.whatsappNumber"
+                        v-model="whatsappNumber"
                         type="text"
                         class="form-inputs"
                         required
@@ -163,7 +163,6 @@
               > -->
                 <div class="position-relative">
                     <b-form-select
-                      id="los"
                       v-model="form.sos"
                       :options="sosOptions"
                       class="form-inputs"
@@ -179,7 +178,6 @@
               > -->
                 <div class="position-relative">
                   <b-form-select
-                    id="los"
                     v-model="form.los"
                     :options="losOptions"
                     class="form-inputs"
@@ -188,11 +186,11 @@
                   </div>
               <!-- </b-input-group> -->
             </BFormGroup>
-             <BFormGroup label="MESSAGE" class="col-12 form-input-label text-area px-0  mb-4">
+            <BFormGroup label="MESSAGE" class="col-12 form-input-label text-area  mx-0">
                 <!-- <b-input-group prepend="MESSAGE" class="input-group mb-2 mr-sm-2 mb-sm-0"> -->
-                    <b-row class="multiSelectWrapper mx-0">
-                       <b-form-textarea id="message" class="mr-3" v-model="form.message" rows="3"></b-form-textarea>
-                    </b-row>
+                    <!-- <b-row class="multiSelectWrapper "> -->
+                       <b-form-textarea id="message" class="" v-model="form.message" rows="3"></b-form-textarea>
+                    <!-- </b-row> -->
                 <!-- </b-input-group> -->
             </BFormGroup>
              <BFormGroup class="col-sm-12 update-check form-checkbox-label mb-4">
@@ -276,22 +274,54 @@ export default {
     };
   },
 	created() {
-		// var formData = this.$store.state.preFillForm
-		// this.form.firstName = formData.firstName
-		// this.form.lastName = formData.lastName
-		// this.form.phone = formData.phone
-		// this.form.email = formData.email
-		// this.form.whatsapp = formData.whatsapp
-		// this.form.company = formData.company
-		// this.form.address = formData.address
-		// this.form.city = formData.city
-		// this.form.country = formData.country
-		// this.form.sos = formData.sos
-		// this.form.los = formData.los
-		// this.form.budget = (formData.budget == "") ? null : formData.budget
-    // this.whatsappNumber = formData.whatsapp
-    // this.phoneNumber = formData.phone
+		var formData = this.$store.state.preFillForm
+		this.form.firstName = formData.firstName
+		this.form.lastName = formData.lastName
+		this.form.phone = formData.phone
+		this.form.email = formData.email
+		this.form.whatsapp = formData.whatsapp
+		this.form.company = formData.company
+		this.form.address = formData.address
+		this.form.city = formData.city
+		this.form.country = formData.country
+		this.form.sos = formData.sos
+		this.form.los = formData.los
+		this.form.budget = (formData.budget == "") ? null : formData.budget
+    this.whatsappNumber = formData.whatsapp
+    this.phoneNumber = formData.phone
 	},
+  computed:{
+    formattedPhoneNumber1() {
+        const formattedPhoneNumber = validateMobile(this.phoneNumber , this.selectedCountryCode1);
+        return formattedPhoneNumber
+    },
+    formattedPhoneNumber2() {
+        const formattedwhatsappNumber = validateMobile(this.whatsappNumber , this.selectedCountryCode2);
+        return formattedwhatsappNumber
+    },    
+
+},
+watch: {
+    'formattedPhoneNumber1' (value){
+        if(value.number.international != undefined) {
+            this.form.phone = value.number.international          
+        }
+        else {
+          this.form.phone = ""
+     
+       }
+    },
+    
+    'formattedPhoneNumber2' (value){
+      if(value.number.international != undefined) {
+            this.form.whatsapp = value.number.international          
+        }
+        else {
+          this.form.whatsapp = ""
+     
+       }
+    },
+  },
   methods: {
     getWhatsappNumber(data){
       if(data.formattedNumber != undefined){

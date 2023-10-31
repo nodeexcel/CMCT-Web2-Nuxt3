@@ -170,6 +170,9 @@
 import {computed, onMounted } from 'vue';
 import * as prismic from "@prismicio/client";
 import { client } from '~/prismic/prismic'
+// definePageMeta({
+//   layout: "homepage",
+// });
 
               
 			  let  author = ref(null) 

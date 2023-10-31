@@ -1,7 +1,7 @@
 <template>
     <div>
     <!-- 2nd Step Form: START  -->
-    <BModal v-model="modal_1"
+    <BModal 
             id="adjust-lease-modal" size="xl"
             :hide-footer="true" :hide-header="true" :no-close-on-backdrop="true" :no-close-on-esc="true"
         >
@@ -162,7 +162,7 @@
                                         <CountryCodeselector  v-model="selectedCountryCode1" />
                                         <BFormInput
                                                 id="phone_number"
-                                                v-model="form.phoneNumber"
+                                                v-model="phoneNumber"
                                                 type="text"
                                                 class="form-inputs"
                                                 required
@@ -178,7 +178,7 @@
                                         <CountryCodeselector  v-model="selectedCountryCode2" />
                                         <BFormInput
                                                 id="phone_number"
-                                                v-model="form.whatsappNumber"
+                                                v-model="whatsappNumber"
                                                 type="text"
                                                 class="form-inputs"
                                                 required
@@ -359,6 +359,7 @@
 <script>
 import axios from 'axios';
 import moment from 'moment'
+import { validateMobile } from '~/helpers/mobile';
 // import VuePhoneNumberInput from 'vue-phone-number-input';
 // import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {  
@@ -451,8 +452,8 @@ export default {
     },
     mounted() {
         // this.setToolTipValue()
-        console.log("advanced-usability-listing",this.$store)
     },
+   
     watch: {
         '$store.state.sideFormTop.roomType': function() {
             this.form.roomType = this.$store.state.sideFormTop.roomType
@@ -490,10 +491,40 @@ export default {
         },
         'form.los': function() {
         //    this.setToolTipValue()
+        },
+
+        'formattedPhoneNumber1' (value){
+        if(value.number.international != undefined) {
+            this.form.phone = value.number.international          
         }
+        else {
+          this.form.phone = ""
+     
+       }
+    },
+    
+    'formattedPhoneNumber2' (value){
+      if(value.number.international != undefined) {
+            this.form.whatsapp = value.number.international          
+        }
+        else {
+          this.form.whatsapp = ""
+     
+       }
+    },
+
+
 
     },
     computed: {
+        formattedPhoneNumber1() {
+        const formattedPhoneNumber = validateMobile(this.phoneNumber , this.selectedCountryCode1);
+        return formattedPhoneNumber
+    },
+    formattedPhoneNumber2() {
+        const formattedwhatsappNumber = validateMobile(this.whatsappNumber , this.selectedCountryCode2);
+        return formattedwhatsappNumber
+    },    
         disableButton() {
             return !this.form.status
         },
@@ -685,7 +716,7 @@ export default {
         },
         openScheduleWindow() {
             this.linkSchedule = (this.linkSchedule != null) ? this.slice.linkSchedule + '?' + 'email='+ this.form.email + '&first_name=' + this.form.firstName + '&last_name=' + this.form.lastName + '&a1=' + this.form.phone : null;
-            this.modal_2 = true
+            this.$root.$emit('bv::show::modal', 'schedule-modal')
         },
         onSubmit(evt) {
             evt.preventDefault();

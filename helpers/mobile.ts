@@ -7,7 +7,7 @@ export const validateMobile = (value?: string, country?: string, onlyMobile?: bo
   // }
 
   const valueParsed = String(value).replace(/ /g, '');
-  const countryParsed = country ? String(country).toUpperCase() : 'SA';
+  const countryParsed = country ? String(country).toUpperCase() : '';
   const onlyMobileParsed = typeof onlyMobile === 'undefined' ? false : onlyMobile;
   console.log("ok",valueParsed,countryParsed ,typeof valueParsed ,typeof countryParsed )
 

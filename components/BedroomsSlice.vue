@@ -178,22 +178,13 @@
 </template>
 
 <script>
-import CountryFlag from 'vue-country-flag-next'
 import countryList from './countryList.json'
 import VueSlickCarousel from 'vue-slick-carousel'
 import moment from 'moment'
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-  // optional style for arrows & dots
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 // import VueScrollTo from "vue-scrollto";
     export default {
         props: ['slice', 'parentRefs'],   
         name: 'room-slice',
-        // components: {
-        //     VueScrollTo,
-        //     VueSlickCarousel,
-        //     CountryFlag
-        // },
         data () {
             return {
                 waitListLink: '',

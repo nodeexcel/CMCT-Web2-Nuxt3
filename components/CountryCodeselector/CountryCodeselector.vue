@@ -11,7 +11,7 @@
         <div
           class="d-flex justify-space-between gap-1  ListboxButton"
           :class="{ 'font-medium': selectedValue, 'font-normal': !selectedValue }"
-        style="min-width: 100px;">
+           style="min-width: 100px;background: #fff;">
           
           <p class="fs-md w-3 mb-0" v-if="selectedValue.name == 'Country code'" style="font-size: 12px;color: #000;font-weight: 400;width:75px">Country Code</p>
           <p class="text-lg  mb-0" v-else dir="ltr">{{ '+' + selectedValue.key }}</p>
@@ -82,6 +82,7 @@ const selectedValue = computed(() => countriesCode.value?.find((co) => co.code =
 <style scoped>
 .main{
   z-index: 9999;
+  left: 5px;
 }
 .main ul{
   height: 300px;

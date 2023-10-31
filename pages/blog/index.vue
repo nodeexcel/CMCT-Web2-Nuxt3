@@ -11,6 +11,9 @@
 <script setup>
 import {computed, onMounted } from 'vue';
 import { client } from '~/prismic/prismic'
+// definePageMeta({
+//   layout: "homepage",
+// });
 
               
 			   // Set slices as variable
@@ -64,11 +67,14 @@ import { client } from '~/prismic/prismic'
               
               //SEO
               document.value = Doc
-              meta_title.value = (document.meta_title.length) ? document.meta_title[0].text : ''
-              meta_description.value= (document.meta_description.length) ? document.meta_description[0].text : ''
-              meta_image.value = (document.meta_image.url) ? document.meta_image.url : ''
+              meta_title.value = (result.data.meta_title.length) ? result.data.meta_title[0].text : ''
+              meta_description.value= (result.data.meta_description.length) ? result.data.meta_description[0].text : ''
+              meta_image.value = (result.data.meta_image.url) ? result.data.meta_image.url : ''
               meta_url.value = envVars.public.env.BASE_URL + '/blog'
               meta_site_name.value = envVars.public.env.COMPANY_NAME
+			return {
+				slices,meta_title
+		}
       })
         
 	   

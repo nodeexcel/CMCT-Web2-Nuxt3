@@ -66,16 +66,10 @@
 </template>
 
 <script>
-// import lazysizes from 'lazysizes';
-// import Multiselect from 'vue-multiselect'
 // import VueHorizontalList from 'vue-horizontal-list';
 import axios from 'axios';
 export default {
     name: 'similar-cards',
-    // components: {
-    //     Multiselect,
-    //     VueHorizontalList
-    // },
     props: ['slice', 'homeLists', 'divider_and_button_color'],
     data () {
         return {

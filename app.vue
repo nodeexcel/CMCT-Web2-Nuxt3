@@ -62,7 +62,6 @@ export default {
             
         },
   mounted(){
-    // console.log("increment",this.increment())
   }
 }
 </script>

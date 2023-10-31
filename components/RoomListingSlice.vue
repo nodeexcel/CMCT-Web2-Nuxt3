@@ -21,20 +21,24 @@
 		  </div>
 	  </section>
   </template>
+
+
+  <script setup>
+	// definePageMeta({
+	// 	layout: "homepage",
+	// });
+  </script>
   
   <script>
-//   import SlicesBlock from '~/components/SlicesBlock.vue'
-//   import BuildingCardSlice from '~/components/slices/BuildingCardSlice.vue'
-  //import mapJson from '@/custom_types/GoogleMap.json'
+  import axios from 'axios';
   
   export default {
 	  name: 'room-listing-slice',
-	  layout: 'homepage',
+// 	  definePageMeta({
+//   layout: "homepage",
+// });
+	  
 	  props: ['slice'],
-	//   components: {
-	// 	  SlicesBlock,
-	// 	  BuildingCardSlice,
-	//   },
 	  data () {
 		  return {
 			  homeLists: [],
@@ -50,90 +54,26 @@
 			  listByHouse: []
 		  }
 	  },
-	  head () {
-		  return {
-			  title: this.seo_page_title,
-			  htmlAttrs: {
-				  lang: 'en'
-			  },
-			  script: [
-				  { type: 'application/ld+json', json: this.homeListLd },
-				  { src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAP_KEY}&map_ids=4df64ef1b112569a`},
-				  { src: `https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js`}
-			  ],
-			  meta: [
-				  { hid: 'author', name: 'author', content: this.meta_author },
-				  { hid: 'description', name: 'description', content: this.seo_description },
-				  {
-					  hid: 'ogtitle',
-					  property: 'og:title',
-					  content: this.meta_title
-				  },
-				  {
-					  hid: 'ogdescription',
-					  property: 'og:description',
-					  content: this.meta_description
-				  },
-				  {
-					  hid: 'ogimage',
-					  property: 'og:image',
-					  content: this.meta_image
-				  },
-				  {
-					  hid: 'ogurl',
-					  property: 'og:url',
-					  content: this.meta_url
-				  },
-				  {
-					  hid: 'ogtype',
-					  property: 'og:type',
-					  content: 'Website'
-				  },
-				  {
-					  hid: 'ogsite_name',
-					  property: 'og:site_name',
-					  content: this.meta_site_name
-				  },
-				  {
-					  hid: 'twittertitle',
-					  name: 'twitter:title',
-					  content: this.twitter_title
-				  },
-				  {
-					  hid: 'twitterdescription',
-					  name: 'twitter:description',
-					  content: this.twitter_description
-				  },
-				  {
-					  hid: 'twitter:card',
-					  name: 'twitter:card',
-					  content: 'summary'
-				  },
-				  {
-					  hid: 'twitterimage',
-					  name: 'twitter:image',
-					  content: this.twitter_image
-				  },
-			  ],
-		  }
-	},
+	
 	mounted () {
 	  this.getData()
 	},
 	fetchOnServer: false,
 	methods: {
 	  async getData () {
+	  const envVars = useRuntimeConfig();
+	  const router = useRoute()
 		try{
 		  // Query to get post content
 			  //const document = (await $prismic.api.getByUID('page', params.uid)).data
 		  let _this = this;
-		  const appartments = await this.$axios.post(process.env.MODE === 'prod' ? process.env.PROD_END_POINT : process.env.DEV_END_POINT, {
+		  const appartments = await axios.post(envVars.public.env.MODE === 'prod' ? envVars.public.env.PROD_END_POINT : envVars.public.env.DEV_END_POINT, {
 			//"operatorId": "HaF6mb19L6AzWVavPr5t",
 			"neighborhoodId": (this.slice != undefined && this.slice.primary.neighbourhood_id != undefined) ? this.slice.primary.neighbourhood_id : "",
 			"cityId": (this.slice != undefined && this.slice.primary.cityid != undefined) ? this.slice.primary.cityid : ""
 		  },{
 			headers: {
-			  Authorization: process.env.MODE === 'prod' ? 'Bearer '+process.env.PROD_COLIV_HQ_KEY : 'Bearer '+process.env.DEV_COLIV_HQ_KEY
+			  Authorization: envVars.public.env.MODE === 'prod' ? 'Bearer '+envVars.public.env.PROD_COLIV_HQ_KEY : 'Bearer '+envVars.public.env.DEV_COLIV_HQ_KEY
 			}
 		  })
 		  let homeList = [];
@@ -219,7 +159,7 @@
 											  "image": cardImg.url,
 											  "name": appartment.name,
 											  "numberOfRooms": appartment.totalBedrooms,
-											  "url": process.env.baseUrl + '/findahome/',
+											  "url": envVars.public.env.BASE_URL + '/findahome/',
 											  "geo": {
 											  "@type": "GeoCoordinates",
 											  "latitude": appartment.mapLocation._latitude,
@@ -258,7 +198,7 @@
 										  "image": cardImg.url,
 										  "name": appartment.name,
 										  "numberOfRooms": appartment.totalBedrooms,
-										  "url": process.env.baseUrl + '/findahome/',
+										  "url": envVars.public.env.BASE_URL + '/findahome/',
 										  "geo": {
 										  "@type": "GeoCoordinates",
 										  "latitude": appartment.mapLocation._latitude,
@@ -301,7 +241,7 @@
 											  "image": cardImg.url,
 											  "name": appartment.name,
 											  "numberOfRooms": appartment.totalBedrooms,
-											  "url": process.env.baseUrl + '/findahome/',
+											  "url": envVars.public.env.BASE_URL + '/findahome/',
 											  "geo": {
 											  "@type": "GeoCoordinates",
 											  "latitude": appartment.mapLocation._latitude,
@@ -340,7 +280,7 @@
 										  "image": cardImg.url,
 										  "name": appartment.name,
 										  "numberOfRooms": appartment.totalBedrooms,
-										  "url": process.env.baseUrl + '/findahome/',
+										  "url": envVars.public.env.BASE_URL + '/findahome/',
 										  "geo": {
 										  "@type": "GeoCoordinates",
 										  "latitude": appartment.mapLocation._latitude,

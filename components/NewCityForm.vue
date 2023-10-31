@@ -48,7 +48,7 @@
                 <CountryCodeselector  v-model="selectedCountryCode1" />
                 <BFormInput
                         id="phone_number"
-                        v-model="form.phoneNumber"
+                        v-model="phoneNumber"
                         type="text"
                         class="form-inputs"
                         required
@@ -82,7 +82,7 @@
                 <CountryCodeselector  v-model="selectedCountryCode2" />
                 <BFormInput
                         id="phone_number"
-                        v-model="form.whatsappNumber"
+                        v-model="whatsappNumber"
                         type="text"
                         class="form-inputs"
                         required
@@ -190,6 +190,7 @@
 
 <script>
 import axios from "axios";
+import { validateMobile } from '~/helpers/mobile';
 // import VuePhoneNumberInput from 'vue-phone-number-input';
 // import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {
@@ -241,7 +242,38 @@ export default {
       ],
     };
   },
+  computed:{
+    formattedPhoneNumber1() {
+        const formattedPhoneNumber = validateMobile(this.phoneNumber , this.selectedCountryCode1);
+        return formattedPhoneNumber
+    },
+    formattedPhoneNumber2() {
+        const formattedwhatsappNumber = validateMobile(this.whatsappNumber , this.selectedCountryCode2);
+        return formattedwhatsappNumber
+    },    
 
+},
+watch: {
+    'formattedPhoneNumber1' (value){
+        if(value.number.international != undefined) {
+            this.form.phone = value.number.international          
+        }
+        else {
+          this.form.phone = ""
+     
+       }
+    },
+    
+    'formattedPhoneNumber2' (value){
+      if(value.number.international != undefined) {
+            this.form.whatsapp = value.number.international          
+        }
+        else {
+          this.form.whatsapp = ""
+     
+       }
+    },
+  },
   methods: {
     getPhoneNumber(data){
       if(data.formattedNumber != undefined){

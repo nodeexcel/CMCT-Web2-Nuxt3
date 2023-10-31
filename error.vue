@@ -2,13 +2,10 @@
 <template>
     <div class="content-page page-not-found">
       <NuxtLayout name="default">
-        <div class="container">
-           <h1>Not found <span>:(</span></h1>
-               <p  @click="handleError">Sorry, but the page you were trying to view does not exist.</p>
-               <i>{{ error.statusCode }}</i>
-               <div>
-                   <button @click="handleError()">Go to the home page</button>
-               </div>
+          <div class="container">
+            <h1>Not found <span>:(</span></h1>
+            <p>Sorry, but the page you were trying to view does not exist.</p>
+            <i>404</i>
                
            </div>
       <!-- -->

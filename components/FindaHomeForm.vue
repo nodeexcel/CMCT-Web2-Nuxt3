@@ -45,9 +45,9 @@
                          <BFormInput
                                 id="phone_number"
                                 v-model="form.phoneNumber"
+                                placeholder="Phone number"
                                 type="text"
                                 class="form-inputs"
-                                required
                             ></BFormInput>
                         </div>    
                         <!-- <b-input-group  class="input-group mb-4 mr-sm-2 mb-sm-0"> -->
@@ -71,9 +71,9 @@
                             <BFormInput
                                     id="phone_number"
                                     v-model="form.whatsappNumber"
+                                    placeholder="Phone number"
                                     type="text"
                                     class="form-inputs"
-                                    required
                                 ></BFormInput>
                         </div>    
                         <!-- <b-input-group -->
@@ -105,7 +105,7 @@
                     <BFormGroup  label="NATIONALITY" class="col-lg-6 col-md-12 col-sm-12 form-input-label mb-4">
                         <!-- <b-input-group class="input-group mb-4 mr-sm-2 mb-sm-0 search-ct-imput input-groups"> -->
                             <div class="position-relative">
-                                <VueMultiselect v-model="form.nationality" :options="nationalityOptions" :multiple="false" placeholder="Select nationality" class="form-inputs w-100 VueMultiselect ct-dropdown-selector" required></VueMultiselect>
+                                <VueMultiselect v-model="form.nationality" :options="nationalityOptions" :multiple="false" placeholder="Select nationality" class="form-inputs w-100 VueMultiselect ct-dropdown-selector"></VueMultiselect>
                                 <!-- <b-form-select id="nationality"  v-model="form.nationality" :options="nationalityOptions" class="form-inputs"></b-form-select>
                                 <i class="fa fa-sort-desc form-dropdown-icon" aria-hidden="true"></i> -->
                             </div>
@@ -310,11 +310,7 @@
 import moment from "moment";
 import axios from 'axios';
 import { validateMobile } from '~/helpers/mobile';
-
-// import VueTelInput from 'vue3-tel-input'
-// import VueMultiselect from "vue-multiselect";
 import countryList from "./countryList.json";
-// import 'vue3-tel-input/dist/vue3-tel-input.css'
 export default {  
 name: 'finda-home-form',
 props: ['banner'],
@@ -457,14 +453,14 @@ mounted() { axios.post(this.envVars.public.env === 'prod' ? this.envVars.public.
         this.form.city = "Singapore"
     }); 
     
-    if(typeof window !== "undefined" && (window.sessionStorage.getItem('maxPrice') !== "null" || window.sessionStorage.getItem('minPrice') !== "null")){
-        this.form.minPrice = window.sessionStorage.getItem('minPrice');
-        this.form.maxPrice = window.sessionStorage.getItem('maxPrice');
-    }
-    else {
+    // if(typeof window !== "undefined" && (window.sessionStorage.getItem('maxPrice') !== "null" || window.sessionStorage.getItem('minPrice') !== "null")){
+    //     this.form.minPrice = window.sessionStorage.getItem('minPrice');
+    //     this.form.maxPrice = window.sessionStorage.getItem('maxPrice');
+    // }
+    // else {
         this.form.minPrice = 900;
         this.form.maxPrice = null;
-    }
+    // }
     const range = document.querySelectorAll(".range-slider span input");
     var progress = document.querySelector(".range-slider .progress");
     let gap = 0.1;
@@ -491,71 +487,47 @@ mounted() { axios.post(this.envVars.public.env === 'prod' ? this.envVars.public.
         });
     });
 },
-watch: {
-    'form.phoneNumber'(value){     
-        console.log("value", value)
-        // if(data.formattedNumber != undefined){
-        //     this.phone = data.formattedNumber;
-        //     this.showValidationError.whatsappNumber = false
-        //     this.showValidationError.phoneNumber = false
-        // }else{
-        //     this.phone = "";
-        //     if(this.whatsapp == ""){
-        //         this.showValidationError.whatsappNumber = true
-        //     }
-        //     if(this.phone == ""){
-        //         this.showValidationError.phoneNumber = true;
-        //     }
-        // }  
+computed:{
+    formattedPhoneNumber1() {
+        const formattedPhoneNumber = validateMobile(this.form.phoneNumber , this.selectedCountryCode1);
+        return formattedPhoneNumber
+    },
+    formattedPhoneNumber2() {
+        const formattedwhatsappNumber = validateMobile(this.form.whatsappNumber , this.selectedCountryCode2);
+        return formattedwhatsappNumber
+    },    
 
-        // if(this.selectedCountryCode1 !== '') {
-            const formattedPhoneNumber = validateMobile(value , this.selectedCountryCode1);
-        console.log("formattedNumber",formattedPhoneNumber.number.input.length );
-            if(formattedPhoneNumber.number.input.length > 1 ){
+},
+watch: {
+    'formattedPhoneNumber1' (value){
+        console.log("in 503",value,value.number.international,value.number.input);
+        if(value.number.international != undefined) {
+         console.log("value.number.international",value.number.international,value.number.input);
+
+             this.phone = value.number.international
              this.showValidationError.whatsappNumber = false
-             this.showValidationError.phoneNumber = false
-             this.phone = formattedPhoneNumber.number.international
-             }
-             else{
+             this.showValidationError.phoneNumber = false            
+        }
+        else {
             this.phone = "";
+            if(this.phone == ""){
+                this.showValidationError.phoneNumber = true;
+            }
             if(this.whatsapp == ""){
                 this.showValidationError.whatsappNumber = true
             }
-            if(this.phone == ""){``
-                this.showValidationError.phoneNumber = true;
-            }
-        }   
-        // }
-        // else{
-        //     this.showValidationError.whatsappNumber = true
-        //     this.showValidationError.phoneNumber = true
-        // }
+     
+       }
     },
-    'form.whatsappNumber'(value){    
-        console.log("value", value)
-
-        // if(data.formattedNumber != undefined) {
-        //     this.whatsapp = data.formattedNumber;
-        //     this.showValidationError.whatsappNumber = false
-        //     this.showValidationError.phoneNumber = false;
-        // } else {
-        //     this.whatsapp = "";
-        //     if(this.whatsapp == ""){
-        //         this.showValidationError.whatsappNumber = true
-        //     }
-        //     if(this.phone == ""){
-        //         this.showValidationError.phoneNumber = true;
-        //     }
-        // }
-
-        // if(this.selectedCountryCode1 !== '') {
-            const formattedwhatsappNumber = validateMobile(value  , this.selectedCountryCode2);
-            console.log("formattedNumber",formattedwhatsappNumber);
-            if(formattedwhatsappNumber.number.input.length > 1 ){
-             this.showValidationError.whatsappNumber = false
-             this.showValidationError.phoneNumber = false
-             this.whatsapp = formattedPhoneNumber.number.international
-            }
+    
+    'formattedPhoneNumber2' (value){
+        console.log("in 524",value,value.number.international,value.number.input);
+        if(value.number.international != undefined ) {
+         console.log("value.number.international",value.number.international,value.number.input);
+         this.whatsapp = value.number.international
+         this.showValidationError.phoneNumber = false 
+         this.showValidationError.whatsappNumber = false            
+        }
             else {
             this.whatsapp = "";
             if(this.whatsapp == ""){
@@ -564,12 +536,8 @@ watch: {
             if(this.phone == ""){
                 this.showValidationError.phoneNumber = true;
             }
-        }
-        // }   
-        // else{
-        //     this.showValidationError.whatsappNumber = true
-        //     this.showValidationError.phoneNumber = true
-        // }
+      
+       }
     },
   'form.maxPrice'(value){
     this.form.maxPrice  = value;
@@ -611,7 +579,6 @@ beforeMount() {
 },
 created() {
     var formData = this.preFillForm
-    console.log("formData" ,formData)
     this.form.firstName = formData.firstName
     this.form.lastName = formData.lastName
     this.form.phone = formData.phone
@@ -763,8 +730,7 @@ methods: {
             this.errorMessage = ''
             this.form.isActive = true;                
             var source = window.location.href;
-            var sourceDetails = "khkh";
-            // var sourceDetails = this.$cookies.get("link_source"); 
+            var sourceDetails = "uk"; 
             let flag = '/page/'+this.form.city.toLocaleLowerCase()+'?byRooms=&';
            
             let query =JSON.parse(JSON.stringify(this.form));
@@ -821,6 +787,7 @@ methods: {
                     if(query.sos !== null){
                     var today = moment().format("DD-MM-YYYY");
                     var next2Week = moment().add(14, "days").format("DD-MM-YYYY");
+                    var next1Week = moment().add(7, "days").format("DD-MM-YYYY");
                     var nextmonth = moment().add(1, "M").format("DD-MM-YYYY");
                     var nextTwomonth = moment().add(2, "M").format("DD-MM-YYYY");
                     var nextThreemonth = moment().add(3, "M").format("DD-MM-YYYY");
@@ -829,20 +796,22 @@ methods: {
                     var pastDate = formattedDate ;
                     const [day1, month1, year1] = today.split('-').map(Number);
                     const [day2, month2, year2] = next2Week.split('-').map(Number);
+                    
                     const [day3, month3, year3] = nextmonth.split('-').map(Number);
                     const [day4, month4, year4] = pastDate.split('-').map(Number);
-
                     const [day5, month5, year5] = nextTwomonth.split('-').map(Number);
                     const [day6, month6, year6] = nextThreemonth.split('-').map(Number);
+                    const [day7, month7, year7] = next1Week.split('-').map(Number);
 
                     const date1 = new Date(year1, month1 - 1, day1); // Month is 0-indexed in JavaScript Date
                     const date2 = new Date(year2, month2 - 1, day2);
                     const date3 = new Date(year3, month3 - 1, day3); // Month is 0-indexed in JavaScript Date
                     const date4 = new Date(year4, month4 - 1, day4);
-
                     const date5 = new Date(year5, month5 - 1, day5);
                     const date6 = new Date(year6, month6 - 1, day6);
-                    if(pastDate == today){
+                    const date7 = new Date(year7, month7 - 1, day7);
+
+                    if(pastDate == today || ( date4 <= date7 && date4 > date1) ){
                         query.startofstay = "Immediately";
                     }  
                     else if ( date4 <= date2 &&
@@ -938,8 +907,9 @@ methods: {
                     this.$store.commit('SET_FORM_FIELDS', this.form);
                     this.showPopOver=true;
                     setTimeout(() => (this.showPopOver=false), 4000);
-                    setTimeout( () => this.$router.push({path: '/page/'+this.form.city.toLocaleLowerCase()+'?byRooms=',query: query}), 4000);
-                } else {
+                    setTimeout( () => this.$router.push({path: '/page/'+this.form.city.toLocaleLowerCase()+'?byHomes=',query: query}), 4000);
+                } 
+                else {
                     this.$bvToast.toast(response.data.message, {
                         title: 'Error',
                         variant: 'danger',
@@ -976,14 +946,14 @@ methods: {
         else {
             this.showValidationError.ageGroup = true
         }
-        if(this.form.whatsappNumber || this.form.phoneNumber) {
-            this.showValidationError.whatsappNumber = false
-            this.showValidationError.phoneNumber = false
-        }
-        else {
-            this.showValidationError.whatsappNumber = true
-            this.showValidationError.phoneNumber = true
-        }
+        // if(this.form.whatsappNumber || this.form.phoneNumber) {
+        //     this.showValidationError.whatsappNumber = false
+        //     this.showValidationError.phoneNumber = false
+        // }
+        // else {
+        //     this.showValidationError.whatsappNumber = true
+        //     this.showValidationError.phoneNumber = true
+        // }
         if(this.form.gender) {
             this.showValidationError.gender = false
         }
